@@ -1,0 +1,26 @@
+# Classes d'essences dérivées de BD Forêt V2 (champ CODE_TFV), codées dans data/static/foret.tif.
+# Les clés sont celles utilisées dans les fichiers espèces (facteur `essence`).
+# Les codes TFV sont à confirmer à la première ingestion : tout code absent de cette table est
+# rangé dans `inconnu` et listé dans reports/ingestion/foret_codes.csv.
+
+classes:
+  hors_foret:        {code: 0,  libelle: "Hors forêt"}
+  chenes_decidus:    {code: 1,  libelle: "Chênes décidus",            tfv: [FF1-09-09]}
+  hetre:             {code: 2,  libelle: "Hêtre",                     tfv: [FF1G01-01]}
+  chataignier:       {code: 3,  libelle: "Châtaignier",               tfv: [FF1G06-06]}
+  robinier:          {code: 4,  libelle: "Robinier",                  tfv: [FF1-14-14]}
+  autres_feuillus:   {code: 5,  libelle: "Autres feuillus",           tfv: [FF1-49-49, FF1-10-10, FF1-00]}
+  melange_feuillus:  {code: 6,  libelle: "Mélange de feuillus",       tfv: [FF1-00-00]}
+  peupleraie:        {code: 7,  libelle: "Peupleraie",                tfv: [FP]}
+  sapin_epicea:      {code: 8,  libelle: "Sapin ou épicéa",           tfv: [FF2G61-61]}
+  pin_sylvestre:     {code: 9,  libelle: "Pin sylvestre",             tfv: [FF2-52-52]}
+  autres_pins:       {code: 10, libelle: "Autres pins",               tfv: [FF2-51-51, FF2-53-53, FF2-57-57, FF2-58-58, FF2-80-80, FF2-81-81]}
+  meleze:            {code: 11, libelle: "Mélèze",                    tfv: [FF2-63-63]}
+  douglas:           {code: 12, libelle: "Douglas",                   tfv: [FF2-64-64]}
+  melange_coniferes: {code: 13, libelle: "Mélange de conifères",      tfv: [FF2-90-90, FF2-91-91, FF2-00-00, FF2-00]}
+  mixte_feuillus:    {code: 14, libelle: "Mixte à feuillus prépondérants",  tfv: [FF31]}
+  mixte_coniferes:   {code: 15, libelle: "Mixte à conifères prépondérants", tfv: [FF32]}
+  foret_ouverte:     {code: 16, libelle: "Forêt ouverte",             tfv: [FO1, FO2, FO3]}
+  lande_ligneuse:    {code: 17, libelle: "Lande ligneuse ou forêt sans couvert arboré", tfv: [LA6, FO0, FF0]}
+  herbacee:          {code: 18, libelle: "Formation herbacée",        tfv: [LA4]}
+  inconnu:           {code: 19, libelle: "Code TFV non reconnu"}

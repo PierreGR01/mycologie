@@ -1,0 +1,104 @@
+# Paramètres généraux du pipeline.
+# Les règles écologiques sont dans config/especes/ (une espèce par fichier), jamais dans le code.
+
+departement: "38"
+
+grille:
+  crs: "EPSG:2154"
+  resolution_m: 25        # minimum autorisé : 25 m (précision des sources)
+  tampon_m: 1000          # marge autour du département (calcul des pentes en bordure)
+
+chemins:
+  brut: data/raw
+  statique: data/static
+  rapports: reports
+
+# Surchargeable par la variable d'environnement DATABASE_URL.
+base_de_donnees: postgresql+psycopg://myco:myco@localhost:5432/myco
+
+reseau:
+  delai_s: 300
+  tentatives: 4
+
+# Sources ouvertes : URL d'accès, licence et attribution affichée dans la PWA.
+# Les points marqués « à confirmer » n'ont pas encore pu être vérifiés sur les serveurs.
+sources:
+  admin_express:
+    nom: ADMIN EXPRESS COG (IGN)
+    licence: Licence Ouverte Etalab 2.0
+    attribution: "© IGN – ADMIN EXPRESS"
+    url: https://geoservices.ign.fr/adminexpress
+    wfs: https://data.geopf.fr/wfs/ows
+    couche: "ADMINEXPRESS-COG.LATEST:departement"
+    champ_code: code_insee
+    champ_nom: nom_officiel
+
+  rgealti:
+    nom: RGE ALTI® 5 m (IGN)
+    licence: Licence Ouverte Etalab 2.0
+    attribution: "© IGN – RGE ALTI®"
+    url: https://geoservices.ign.fr/rgealti
+    # Recherche de l'archive dans le service de téléchargement de la Géoplateforme (à confirmer).
+    # Pour forcer une URL, renseigner `archive`. On peut aussi déposer l'archive (.7z ou .7z.001…)
+    # à la main dans data/raw/rgealti/.
+    flux: https://data.geopf.fr/telechargement/resource/RGEALTI
+    motif: "RGEALTI_2-0_5M_ASC_LAMB93-IGN69_D038"
+    archive: null
+    # Dalles de MNT à extraire (les livraisons contiennent aussi des dalles annexes).
+    motif_dalles: "_MNT_.*\\.asc$"
+    nodata: -99999
+
+  bdforet:
+    nom: BD Forêt® V2 (IGN)
+    licence: Licence Ouverte Etalab 2.0
+    attribution: "© IGN – BD Forêt® V2"
+    url: https://geoservices.ign.fr/bdforet
+    wfs: https://data.geopf.fr/wfs/ows
+    couche: "LANDCOVER.FORESTINVENTORY.V2:formation_vegetale"
+    champs: {code_tfv: code_tfv, tfv: tfv, essence: essence}
+    taille_page: 5000
+
+  bdcharm50:
+    nom: BD Charm-50, carte géologique harmonisée au 1/50 000 (BRGM)
+    licence: Licence Ouverte Etalab 2.0 (à confirmer)
+    attribution: "© BRGM – BD Charm-50"
+    url: https://infoterre.brgm.fr
+    archive: https://infoterre.brgm.fr/telechargements/BDCharm50/GEO050K_HARM_038.zip
+    couche_motif: "*S_FGEOL*.shp"
+    champs: {notation: NOTATION, descr: DESCR, lithologie: LITHOLOGIE, geochimie: GEOCHIMIE}
+
+  soilgrids:
+    nom: SoilGrids 2.0 – pH eau (ISRIC)
+    licence: CC BY 4.0
+    attribution: "ISRIC – SoilGrids"
+    url: https://www.isric.org/explore/soilgrids
+    vrt: https://files.isric.org/soilgrids/latest/data/phh2o/phh2o_{profondeur}_mean.vrt
+    # Épaisseur de chaque horizon (cm), utilisée comme poids de la moyenne 0–30 cm.
+    profondeurs: {"0-5cm": 5, "5-15cm": 10, "15-30cm": 15}
+
+  # Sources utilisées aux étapes suivantes, déclarées ici pour les attributions.
+  plan_ign:
+    nom: Plan IGN v2
+    licence: Licence Ouverte Etalab 2.0
+    attribution: "© IGN – Plan IGN"
+    url: https://geoservices.ign.fr/services-web-experts-cartes
+  open_meteo:
+    nom: Open-Meteo (Forecast et Historical Weather API)
+    licence: CC BY 4.0
+    attribution: "Weather data by Open-Meteo.com (Météo-France, ECMWF, DWD)"
+    url: https://open-meteo.com
+  gbif:
+    nom: GBIF – observations (CC0 et CC BY uniquement)
+    licence: CC0 / CC BY 4.0 selon les jeux de données
+    attribution: "GBIF.org (DOI du téléchargement dans le rapport de calibrage)"
+    url: https://www.gbif.org
+  openobs:
+    nom: INPN / OpenObs (MNHN – PatriNat)
+    licence: à confirmer
+    attribution: "INPN / OpenObs – PatriNat"
+    url: https://openobs.mnhn.fr
+  taxref:
+    nom: TAXREF (MNHN)
+    licence: Licence Ouverte Etalab 2.0
+    attribution: "TAXREF – MNHN"
+    url: https://taxref.mnhn.fr

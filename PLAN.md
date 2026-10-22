@@ -1,24 +1,24 @@
 # PLAN — Prévision des zones de cueillette de champignons en Isère (38)
 
-> Statut : **proposition à valider**. Aucune ligne de code ne sera écrite avant validation.
-> Les valeurs écologiques (§4) sont des **valeurs initiales d'expert** à relire, puis à ajuster au calibrage (étape 5).
+> Statut : **plan validé le 22/10/2026** (décisions ci-dessous).
+> Les valeurs écologiques (§4) sont des **valeurs initiales d'expert**, validées pour être codées telles quelles, puis ajustées au calibrage (étape 5).
 
 ---
 
-## 0. Points à valider en priorité
+## 0. Décisions
 
-| # | Décision | Proposition par défaut |
-|---|----------|------------------------|
-| D1 | Combinaison des facteurs (habitat et météo) | Moyenne géométrique pondérée (un facteur à 0 annule le score) |
+| # | Décision | Retenu |
+|---|----------|--------|
+| D1 | Combinaison des facteurs (habitat et météo) | **Moyenne géométrique pondérée** (un facteur à 0 annule le score) |
 | D2 | Fenêtre saisonnière par espèce intégrée au score météo | Oui : fenêtre large et fixe avec rampes de 15 j. L'altitude agit via la température corrigée |
 | D3 | Fenêtres temporelles des indicateurs | Pluie : 15 j. Température moyenne, écart jour/nuit et gel : 7 j |
-| D4 | Tables et seuils par espèce (§4) | À relire ligne par ligne |
-| D5 | Morille : BD Forêt n'identifie pas le frêne | Proxy « alluvions récentes + feuillus/peupleraie + faible pente », confiance faible assumée |
+| D4 | Tables et seuils par espèce (§4) | **Validés tels quels**, ajustés au calibrage |
+| D5 | Morille : BD Forêt n'identifie pas le frêne | **Deux profils** : plaine (ripisylves, alluvions) et montagne (conifères). H = max des deux (§4.6) |
 | D6 | Maille d'échantillonnage Open-Meteo | 2,5 km (≈ 1 600 points, ≈ 3 500 appels/jour). Repli : 5 km |
-| D7 | Usage Open-Meteo | L'API gratuite est réservée à un usage non commercial. Sinon, prévoir une clé payante |
+| D7 | Usage Open-Meteo | **Non commercial** : API gratuite (10 000 appels/jour) |
 | D8 | Zone de calibrage | Isère seule. Option : ajouter les départements limitrophes si les effectifs sont trop faibles |
 | D9 | Fond de carte | Plan IGN v2 (WMTS Géoplateforme, Licence Ouverte) |
-| D10 | Licence du code | À choisir (MIT, Apache-2.0, AGPL…) |
+| D10 | Licence du code | À choisir avant le README final (MIT, Apache-2.0, AGPL…) |
 
 ---
 
@@ -79,7 +79,7 @@ flowchart LR
 |-----------|-------|
 | Stockage vecteur et tabulaire | PostGIS 16 (Docker) : limites, BD Forêt, géologie, observations, séries météo, métadonnées de run |
 | Stockage raster | Fichiers COG GeoTIFF (EPSG:2154), plus adaptés aux rasters de 28 M px que PostGIS raster |
-| Pipeline | Python 3.12, rasterio, geopandas/pyogrio, numpy, scipy, pydantic (validation YAML), httpx, typer (CLI) |
+| Pipeline | Python ≥ 3.11, rasterio, geopandas/pyogrio, numpy, scipy, pydantic (validation YAML), httpx, argparse (CLI) |
 | Tuiles | Raster PNG 8 bits paletté, EPSG:3857, PMTiles via `rio-pmtiles` (repli : MBTiles GDAL puis `pmtiles convert`) |
 | Front | Vite + TypeScript sans framework, `maplibre-gl`, `pmtiles`, `vite-plugin-pwa` (Workbox) |
 | Service local | Nginx (Docker), qui gère nativement les requêtes HTTP Range indispensables à PMTiles. Aucun backend applicatif |
@@ -237,6 +237,8 @@ Taxons regroupés (résolus via GBIF et TAXREF à l'étape 5) :
 
 ### 4.1 Habitat : essence forestière (facteur `bloquant`, poids 3)
 
+La colonne Morille correspond au profil **plaine**. Le profil montagne est décrit au §4.6.
+
 | Classe BD Forêt | Cèpe | Girolle | Trompette | Pied-de-mouton | Morille |
 |-----------------|:---:|:---:|:---:|:---:|:---:|
 | Hêtre | 1.0 | 1.0 | 1.0 | 1.0 | 0.3 |
@@ -246,14 +248,14 @@ Taxons regroupés (résolus via GBIF et TAXREF à l'étape 5) :
 | Autres feuillus | 0.6 | 0.6 | 0.7 | 0.7 | 0.8 |
 | Mélange de feuillus | 0.8 | 0.8 | 0.9 | 0.9 | 0.7 |
 | Peupleraie | 0.0 | 0.0 | 0.1 | 0.1 | 0.8 |
-| Sapin ou épicéa | 0.9 | 0.8 | 0.4 | 0.9 | 0.4 |
+| Sapin ou épicéa | 0.9 | 0.8 | 0.4 | 0.9 | 0.1 |
 | Pin sylvestre | 0.8 | 0.7 | 0.1 | 0.6 | 0.1 |
 | Autres pins | 0.5 | 0.4 | 0.0 | 0.5 | 0.1 |
-| Mélèze | 0.3 | 0.3 | 0.0 | 0.4 | 0.4 |
+| Mélèze | 0.3 | 0.3 | 0.0 | 0.4 | 0.1 |
 | Douglas | 0.4 | 0.4 | 0.1 | 0.4 | 0.1 |
-| Mélange de conifères | 0.7 | 0.6 | 0.2 | 0.8 | 0.3 |
+| Mélange de conifères | 0.7 | 0.6 | 0.2 | 0.8 | 0.1 |
 | Mixte à feuillus prépondérants | 1.0 | 0.9 | 0.9 | 1.0 | 0.4 |
-| Mixte à conifères prépondérants | 0.9 | 0.8 | 0.6 | 1.0 | 0.3 |
+| Mixte à conifères prépondérants | 0.9 | 0.8 | 0.6 | 1.0 | 0.2 |
 | Forêt ouverte (feuillus, conifères, mixte) | 0.5 | 0.5 | 0.3 | 0.5 | 0.6 |
 | Lande ligneuse | 0.1 | 0.1 | 0.0 | 0.1 | 0.1 |
 | Formation herbacée, hors forêt | 0 | 0 | 0 | 0 | 0 |
@@ -264,7 +266,7 @@ Notes :
 - **Cèpe** : *B. edulis* et *B. pinophilus* sont associés au hêtre, à l'épicéa, au sapin et aux pins. *B. aereus* et *B. reticulatus* sont associés aux chênes et au châtaignier, en situation plus thermophile [3].
 - **Girolle** : espèce acidophile, ectomycorhizienne des feuillus et des conifères [4].
 - **Trompette** : hêtraies et chênaies sur sols frais, argileux, à humus de type mull [1][2].
-- **Morille** : ripisylves (frênes, ormes, peupliers), anciens vergers, sols perturbés ou brûlés [5][6]. Ni le frêne ni les vergers ne sont identifiables dans BD Forêt, d'où le proxy du §4.2 (D5). Le groupe *M. elata* fructifie aussi sous conifères de montagne, d'où les valeurs 0,4 pour sapin/épicéa et mélèze.
+- **Morille** : ripisylves (frênes, ormes, peupliers), anciens vergers, sols perturbés ou brûlés [5][6]. Ni le frêne ni les vergers ne sont identifiables dans BD Forêt, d'où le profil plaine fondé sur les alluvions récentes et la faible pente. Le groupe *M. elata* fructifie aussi sous conifères de montagne, ce que couvre le profil montagne (§4.6).
 
 ### 4.2 Habitat : substrat géologique (critère principal du sol, poids 2)
 
@@ -292,7 +294,7 @@ Confiance M. Le plancher et le poids faible tiennent compte de la résolution de
 
 | Facteur (poids) | Cèpe | Girolle | Trompette | Pied-de-mouton | Morille |
 |---|---|---|---|---|---|
-| Altitude (m), trapèze (1) | 150 / 300 / 1700 / 2100 | 150 / 300 / 1600 / 2000 | 150 / 250 / 1300 / 1600 | 150 / 250 / 1700 / 2000 | 150 / 200 / 1400 / 1900 |
+| Altitude (m), trapèze (1) | 150 / 300 / 1700 / 2100 | 150 / 300 / 1600 / 2000 | 150 / 250 / 1300 / 1600 | 150 / 250 / 1700 / 2000 | 150 / 200 / 800 / 1200 |
 | Pente (°), trapèze (1), plancher 0,3 | 0 / 0 / 25 / 45 | 0 / 0 / 30 / 45 | 0 / 0 / 35 / 50 | 0 / 0 / 30 / 45 | 0 / 0 / 10 / 30 (plancher 0,2) |
 | Exposition, table (0,5) | neutre (non utilisée) | N, NE : 1 · E, NO : 0,9 · O, SE : 0,8 · S, SO : 0,7 | N, NE : 1 · NO : 0,9 · E : 0,8 · O : 0,7 · SE : 0,6 · S, SO : 0,5 | neutre | neutre |
 | Confiance | M | M | M | M | F |
@@ -328,7 +330,20 @@ Justifications :
 
 **Hors MVP** (extensions possibles par simple ajout au YAML et au code d'indicateurs) : humidité du sol et hauteur de neige Open-Meteo, noyau de pondération de la pluie (décalage de 7 à 10 jours), correction radiative selon l'exposition.
 
-### 4.6 Exemple de fichier espèce (`config/especes/cepe.yaml`)
+### 4.6 Morille : deux profils d'habitat (D5)
+
+Le fichier YAML de la morille remplace `habitat.facteurs` par `habitat.profils`. Chaque profil a ses propres facteurs, et H est le maximum des profils (`combinaison_profils: max`). La météo est commune aux deux profils : la température corrigée retarde naturellement la saison en altitude.
+
+| Facteur | Profil plaine (ripisylves, *M. esculenta*) | Profil montagne (conifères, groupe *M. elata*) |
+|---------|--------------------------------------------|-----------------------------------------------|
+| Essence (bloquant, poids 3) | Colonne Morille du §4.1 | Sapin ou épicéa 0,8 · mélèze 0,8 · mélange de conifères 0,7 · mixte à conifères prépondérants 0,7 · mixte à feuillus prépondérants 0,5 · hêtre 0,3 · pin sylvestre et autres pins 0,3 · forêt ouverte 0,5 · feuillus et peupleraie 0,1 |
+| Substrat (poids 2) | Colonne Morille du §4.2 | Calcaire 0,9 · marno-calcaire 0,9 · détritique mixte 0,8 · alluvions récentes 0,6 · siliceux 0,5 · indéterminé 0,6 |
+| pH (poids 0,5) | 5,5 / 6,5 / 8,0 / 8,5 (plancher 0,3) | 5,0 / 6,0 / 8,0 / 8,5 (plancher 0,4) |
+| Altitude (poids 1) | 150 / 200 / 800 / 1200 | 700 / 900 / 1700 / 2000 |
+| Pente (poids 1) | 0 / 0 / 10 / 30 (plancher 0,2) | 0 / 0 / 25 / 40 (plancher 0,3) |
+| Confiance | F | F |
+
+### 4.7 Exemple de fichier espèce (`config/especes/cepe.yaml`)
 
 ```yaml
 id: cepe
@@ -367,8 +382,8 @@ Un schéma pydantic valide chaque YAML (couches existantes, classes connues, poi
 ### 5.1 Étape 2 : ingestion
 
 1. Récupérer la limite du 38 (WFS ADMIN EXPRESS), puis construire la grille de 25 m et `masque.tif`.
-2. RGE ALTI 5 m (archives D038) : mosaïque, découpe, moyenne 5 × 5 vers `alt.tif`, puis pente et exposition.
-3. BD Forêt V2 (D038) : chargement dans PostGIS, attribution de la classe d'essence, rastérisation vers `foret.tif`.
+2. RGE ALTI 5 m : l'archive D038 est trouvée dans le flux Atom du service de téléchargement de la Géoplateforme. On en tire la mosaïque, la découpe et la moyenne 5 × 5 vers `alt.tif`, puis la pente et l'exposition.
+3. BD Forêt V2 : lecture WFS (Géoplateforme) sur l'emprise de la grille, chargement dans PostGIS, attribution de la classe d'essence, rastérisation vers `foret.tif`. Les codes rencontrés sont listés dans `reports/ingestion/foret_codes.csv`.
 4. BD Charm-50 (D038) : chargement dans PostGIS, classification semi-automatique, export de `geologie.csv` **pour relecture**, puis `geol.tif`.
 5. SoilGrids `phh2o` (WCS, Homolosine) : découpe, reprojection, moyenne pondérée des profondeurs, interpolation bilinéaire vers `ph.tif`.
 6. Traçabilité : chaque téléchargement est enregistré dans `ref.source` (URL, version, date, sha256). Les téléchargements sont idempotents et les reprises sur erreur gérées.

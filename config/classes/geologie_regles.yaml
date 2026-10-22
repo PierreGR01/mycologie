@@ -1,0 +1,24 @@
+# Classement semi-automatique des unités de la BD Charm-50 en classes de substrat.
+# Le résultat est écrit dans config/classes/geologie.csv, à relire : une classe corrigée à la main
+# dans la colonne `classe` est conservée aux exécutions suivantes.
+
+classes:
+  calcaire: 1
+  marno_calcaire: 2
+  siliceux: 3
+  detritique_mixte: 4
+  alluvions_recentes: 5
+  indetermine: 9
+
+# Règles appliquées dans l'ordre : la première qui correspond l'emporte.
+# `notation` : expression régulière sur la notation BRGM.
+# `texte` : expression régulière sur notation + description + lithologie + géochimie.
+# Les deux sont comparées en minuscules et sans accents.
+regles:
+  - {classe: alluvions_recentes, notation: "^fz"}
+  - {classe: alluvions_recentes, texte: "alluvions? (fluviatiles? )?(recentes|actuelles|modernes)"}
+  - {classe: calcaire, texte: "eboulis[^.;]*calcaire"}
+  - {classe: detritique_mixte, texte: "moraine|glaciaire|colluvi|eboulis|molasse|cones? de dejection|alluvions? anciennes|terrasse|loess|\\blimons?\\b|cailloutis|conglomerat|\\bsables?\\b"}
+  - {classe: marno_calcaire, texte: "\\bmarne|marneu|marno|argilo-calcaire|calcschiste|flysch|terres noires"}
+  - {classe: calcaire, texte: "calcaire|dolomi|\\bcraie|\\btufs?\\b|travertin|urgonien"}
+  - {classe: siliceux, texte: "granit|gneiss|micaschiste|schistes? cristallin|amphibolite|migmatite|anatexite|quartzite|\\bgres\\b|rhyolite|leptynite|gabbro|diorite|spilite|houiller|pegmatite"}
