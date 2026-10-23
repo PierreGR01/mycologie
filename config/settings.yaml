@@ -21,7 +21,7 @@ base_de_donnees: postgresql+psycopg://myco:myco@localhost:5432/myco
 
 reseau:
   delai_s: 300
-  tentatives: 4
+  tentatives: 6            # coupures réseau ponctuelles observées vers Open-Meteo
 
 # Météo (étape 4) : échantillonnage Open-Meteo, correction d'altitude, dates calculées.
 meteo:
