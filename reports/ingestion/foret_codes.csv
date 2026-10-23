@@ -1,0 +1,33 @@
+code_tfv,tfv,classe,n_polygones,surface_ha
+FF1-00-00,Forêt fermée à mélange de feuillus,melange_feuillus,10504,287105.0
+FF2G61-61,Forêt fermée de sapin ou épicéa,sapin_epicea,1115,109988.8
+LA6,Formation herbacée,herbacee,3820,99328.0
+FF31,Forêt fermée à mélange de feuillus prépondérants et conifères,mixte_feuillus,2764,69894.8
+FF32,Forêt fermée à mélange de conifères prépondérants et feuillus,mixte_coniferes,2065,56571.9
+LA4,Lande,lande_ligneuse,5125,56229.3
+FF1-09-09,Forêt fermée de hêtre pur,hetre,703,42271.3
+FF1G01-01,Forêt fermée de chênes décidus purs,chenes_decidus,744,32479.4
+FF2-52-52,Forêt fermée de pin sylvestre pur,pin_sylvestre,797,29666.8
+FF1-10-10,Forêt fermée de châtaignier pur,chataignier,824,23504.8
+FO1,Forêt ouverte de feuillus purs,foret_ouverte,2855,17354.9
+FO2,Forêt ouverte de conifères purs,foret_ouverte,1451,14245.2
+FF1-00,Forêt fermée de feuillus purs en îlots,autres_feuillus,12563,12257.0
+FF2-00-00,Forêt fermée à mélange de conifères,melange_coniferes,223,7902.5
+FO3,Forêt ouverte à mélange de feuillus et conifères,foret_ouverte,898,7627.3
+FF2G53-53,Forêt fermée de pin laricio ou pin noir pur,autres_pins,265,6247.4
+FP,Peupleraie,peupleraie,950,5902.4
+FF2-63-63,Forêt fermée de mélèze pur,meleze,225,5574.0
+FF2-80-80,Forêt fermée à mélange de pins purs,autres_pins,160,3978.9
+FF1G06-06,Forêt fermée de chênes sempervirents purs,autres_feuillus,42,2938.1
+FF1-14-14,Forêt fermée de robinier pur,robinier,370,2889.3
+FF2G58-58,Forêt fermée de pin à crochets ou pin cembro pur,autres_pins,76,2430.4
+FF2-64-64,Forêt fermée de douglas pur,douglas,112,1721.2
+FF2-90-90,Forêt fermée dun autre conifère pur autre que pin,melange_coniferes,49,1488.8
+FF1-49-49,Forêt fermée dun autre feuillu pur,autres_feuillus,148,1283.0
+FF0,Forêt fermée sans couvert arboré,lande_ligneuse,495,1240.1
+FF2-00,Forêt fermée de conifères purs en îlots,melange_coniferes,481,467.7
+FF2-90-90,Forêt fermée à mélange dautres conifères,melange_coniferes,35,456.8
+FF2-51-51,Forêt fermée de pin maritime pur,autres_pins,9,279.9
+FF2-91-91,Forêt fermée à mélange dautres conifères,melange_coniferes,29,173.9
+FF2-81-81,Forêt fermée dun autre pin pur,autres_pins,6,94.1
+FO0,Forêt ouverte sans couvert arboré,lande_ligneuse,11,29.1

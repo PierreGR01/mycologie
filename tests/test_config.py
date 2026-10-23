@@ -36,7 +36,7 @@ def test_database_url_surchargeable(parametres, monkeypatch):
 def test_classes_foret_du_depot():
     classes = charger_classes_foret(RACINE / "config" / "classes" / "foret.yaml")
     assert classes.classes["hors_foret"].code == 0
-    assert classes.code_par_tfv()["FF1G01-01"] == classes.classes["hetre"].code
+    assert classes.code_par_tfv()["FF1-09-09"] == classes.classes["hetre"].code
 
 
 def test_classes_foret_tfv_en_double_refuse():

@@ -38,10 +38,10 @@ sources:
     licence: Licence Ouverte Etalab 2.0
     attribution: "© IGN – RGE ALTI®"
     url: https://geoservices.ign.fr/rgealti
-    # Recherche de l'archive dans le service de téléchargement de la Géoplateforme (à confirmer).
+    # Recherche de l'archive dans le flux Atom du service de téléchargement de la Géoplateforme.
     # Pour forcer une URL, renseigner `archive`. On peut aussi déposer l'archive (.7z ou .7z.001…)
     # à la main dans data/raw/rgealti/.
-    flux: https://data.geopf.fr/telechargement/resource/RGEALTI
+    flux: https://data.geopf.fr/telechargement/resource/RGEALTI?zone=D038
     motif: "RGEALTI_2-0_5M_ASC_LAMB93-IGN69_D038"
     archive: null
     # Dalles de MNT à extraire (les livraisons contiennent aussi des dalles annexes).

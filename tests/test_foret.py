@@ -12,7 +12,7 @@ CHAMPS = {"code_tfv": "code_tfv", "tfv": "tfv", "essence": "essence"}
 def foret_test() -> gpd.GeoDataFrame:
     return gpd.GeoDataFrame(
         {
-            "CODE_TFV": ["FF1G01-01", "FP", "XX9", None],
+            "CODE_TFV": ["FF1-09-09", "FP", "XX9", None],
             "TFV": ["Forêt fermée de hêtre pur", "Peupleraie", "?", None],
         },
         geometry=[box(0, 0, 100, 100), box(100, 0, 200, 100), box(0, 100, 100, 200),

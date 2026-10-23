@@ -42,7 +42,7 @@ def deposer_donnees_brutes(racine):
                 z.write(d, f"1_DONNEES_LIVRAISON/{nom}")
 
     gpd.GeoDataFrame(
-        {"code_tfv": ["FF1G01-01", "FF2G61-61"], "tfv": ["Hêtre", "Sapin ou épicéa"]},
+        {"code_tfv": ["FF1-09-09", "FF2G61-61"], "tfv": ["Hêtre", "Sapin ou épicéa"]},
         geometry=[box(X0, Y0, X0 + 1000, Y0 + 2000), box(X0 + 1000, Y0, X0 + 2000, Y0 + 2000)],
         crs="EPSG:2154",
     ).to_file(_dossier(brut / "bdforet") / "bdforet_38.gpkg", driver="GPKG")

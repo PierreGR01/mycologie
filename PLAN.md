@@ -457,11 +457,11 @@ Biais connus : observations concentrées près des routes et des villes, effecti
 
 | Élément | Estimation |
 |---------|-----------|
-| Département | 7 431 km², soit ≈ 11,9 M pixels de 625 m² |
-| Emprise rectangulaire (+1 km) | ≈ 132 × 134 km, soit ≈ 5 300 × 5 400 px ≈ **28 M px** |
-| Pixels forestiers (H > 0) | ≈ 1/3 du département, soit ≈ 4 M px (à mesurer à l'étape 2) |
+| Département | **Mesuré** : 7 869 km² (contour ADMIN EXPRESS), soit 12,59 M pixels de 625 m² |
+| Emprise rectangulaire (+1 km) | **Mesuré** : 5 238 × 5 312 px, soit **27,8 M px** |
+| Pixels forestiers (H > 0) | **Mesuré** : 40 % du département (classes forestières de BD Forêt), soit 5,07 M px |
 | 1 couche de 28 M px, brute | uint8 ≈ 28 Mo · float32 ≈ 113 Mo |
-| Téléchargements bruts (une fois) | RGE ALTI 5 m ≈ 1–2 Go · BD Forêt et BD Charm-50 ≈ 0,1–0,3 Go chacune · SoilGrids < 10 Mo, **soit ≈ 2–3 Go** |
+| Téléchargements bruts (une fois) | **Mesuré** : archive RGE ALTI 5 m de 505 Mo (383 dalles, 2,6 Go une fois extraites) · BD Forêt 445 Mo (GeoPackage, 49 914 polygones) · BD Charm-50 à mesurer · SoilGrids lu à distance, **soit ≈ 3,5 Go** |
 | Couches statiques (COG compressés) | ≈ 100–200 Mo |
 | Habitat, 5 espèces (COG) | ≈ 20–50 Mo |
 | Champs météo grossiers par run | < 10 Mo (≈ 60 × 60 px × 30 jours × 4 variables) |
