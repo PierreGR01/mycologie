@@ -470,16 +470,16 @@ Biais connus : observations concentrées près des routes et des villes, effecti
 | 1 couche de 28 M px, brute | uint8 ≈ 28 Mo · float32 ≈ 113 Mo |
 | Téléchargements bruts (une fois) | **Mesuré** : archive RGE ALTI 5 m de 505 Mo (383 dalles, 2,6 Go une fois extraites) · BD Forêt 445 Mo (GeoPackage, 49 914 polygones) · BD Charm-50 à mesurer · SoilGrids lu à distance, **soit ≈ 3,5 Go** |
 | Couches statiques (COG compressés) | ≈ 100–200 Mo |
-| Habitat, 5 espèces (COG) | ≈ 20–50 Mo |
+| Habitat, 5 espèces (COG) | **Mesuré** : 3 à 4 Mo par espèce, soit ≈ 19 Mo |
 | Champs météo grossiers par run | < 10 Mo (≈ 60 × 60 px × 30 jours × 4 variables) |
 | Scores 25 m par run, 5 × 15 = 75 rasters | ≈ 2,1 Go bruts, ≈ 0,3–0,6 Go compressés. **Temporaires**, supprimés après tuilage (sauf `KEEP_RASTERS=1`) |
-| Tuiles z8–z12 par PMTiles | ≈ 300–450 tuiles (une tuile z12 couvre ≈ 47 km²), soit ≈ 2–5 Mo |
-| PMTiles par run | 75 × 2–5 Mo, soit **≈ 150–400 Mo** (+ habitat ≈ 10–25 Mo) |
-| Rétention de 3 runs | ≈ 0,5–1,2 Go |
+| Tuiles z8–z12 par PMTiles | **Mesuré** : ≈ 300 tuiles non vides, soit 1,2 à 1,7 Mo |
+| PMTiles par run | **Mesuré** : 75 fichiers, **88 Mo** (+ habitat ≈ 7,5 Mo) |
+| Rétention de 3 runs | ≈ 0,3 Go |
 | PostGIS | BD Forêt ≈ 10⁵ polygones, géologie ≈ 10⁴, observations 10³–10⁴, météo ≈ 50 000 lignes par run, **soit < 1 Go** |
-| Appels Open-Meteo par jour | ≈ 1 600 points × ≈ 2,1 (30 jours, 4 variables), soit ≈ 3 500 (≈ 900 avec une maille de 5 km) |
+| Appels Open-Meteo par jour | **Mesuré** : 1 698 points × 2,07 (29 jours, 4 variables), soit ≈ 3 500 (≈ 900 avec une maille de 5 km) |
 | Client hors ligne | Shell < 1 Mo + 1 PMTiles (2–5 Mo) + fond consulté (≤ 50 Mo) |
-| Temps de calcul (portable, 4 cœurs) | Ingestion ≈ 30–60 min (limitée par le réseau) · habitat < 5 min · `make pipeline` ≈ 5–15 min (à mesurer) |
+| Temps de calcul (conteneur 4 cœurs, 15 Go) | **Mesuré** : ingestion ≈ 10 min hors géologie · habitat ≈ 80 s · `make pipeline` ≈ 18 min (météo ≈ 8 min, limitée par le débit autorisé ; 75 cartes ≈ 10 min) · mémoire < 1,5 Go |
 
 ---
 

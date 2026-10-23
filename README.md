@@ -98,11 +98,12 @@ make pipeline DATE=2026-10-15    # rejouer un run
 
 `make pipeline` lance si nécessaire l'ingestion et l'habitat, puis :
 1. `myco meteo` : ≈ 1 600 points Open-Meteo (maille de 2,5 km), de J-21 à J+7. Le
-   téléchargement prend ≈ 7 min pour respecter la limite de l'API gratuite. Les réponses sont
+   téléchargement prend ≈ 8 min pour respecter la limite de l'API gratuite. Les réponses sont
    mises en cache dans `data/runs/<date>/meteo/cache/` (`--rafraichir` pour les ignorer).
 2. `myco score` : S = H × M à 25 m, avec température et gel corrigés de l'altitude (−0,65 °C
    par 100 m), puis une carte PMTiles par espèce et par date dans
-   `web/public/data/runs/<date>/<espece>/<date>.pmtiles`, et `web/public/data/latest.json`.
+   `web/public/data/runs/<date>/<espece>/<date>.pmtiles`, et `web/public/data/latest.json`
+   (≈ 10 min, 88 Mo par run).
 
 Les 3 derniers runs sont conservés (`meteo.retention_runs`). Pour une mise à jour quotidienne,
 planifiez `make pipeline` avec cron, par exemple à 6 h.
