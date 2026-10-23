@@ -63,6 +63,19 @@ def score(config: Path | None, jour: str | None, garder_rasters: bool) -> None:
     logging.getLogger("myco").info("manifeste : %s", sortie)
 
 
+def calibrage(config: Path | None, ids: list[str] | None, avec_meteo: bool,
+              avec_base: bool) -> None:
+    from myco.calibrage import executer
+    from myco.especes import charger_especes
+
+    p = charger_parametres(config)
+    especes = charger_especes()
+    if ids:
+        especes = {i: especes[i] for i in ids}
+    for sortie in executer.executer(p, especes, avec_meteo=avec_meteo, avec_base=avec_base):
+        logging.getLogger("myco").info("écrit : %s", sortie)
+
+
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(prog="myco", description=__doc__)
     parser.add_argument("--config", type=Path, help="chemin de settings.yaml")
@@ -95,6 +108,12 @@ def main(argv: list[str] | None = None) -> None:
     p_pipeline.add_argument("--sans-base", action="store_true")
     p_pipeline.add_argument("--garder-rasters", action="store_true")
 
+    p_calib = sous.add_parser("calibrage", help="étape 5 : rapports de calibrage (GBIF)")
+    p_calib.add_argument("--espece", action="append", dest="especes")
+    p_calib.add_argument("--sans-meteo", action="store_true",
+                         help="ne pas évaluer la météo historique (Open-Meteo)")
+    p_calib.add_argument("--sans-base", action="store_true")
+
     args = parser.parse_args(argv)
     logging.basicConfig(
         level=logging.DEBUG if args.verbeux else logging.INFO,
@@ -108,6 +127,8 @@ def main(argv: list[str] | None = None) -> None:
         meteo(args.config, args.date, not args.sans_base, args.rafraichir)
     elif args.commande == "score":
         score(args.config, args.date, args.garder_rasters)
+    elif args.commande == "calibrage":
+        calibrage(args.config, args.especes, not args.sans_meteo, not args.sans_base)
     elif args.commande == "pipeline":
         meteo(args.config, args.date, not args.sans_base, rafraichir=False)
         score(args.config, args.date, args.garder_rasters)

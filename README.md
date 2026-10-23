@@ -5,9 +5,9 @@ cèpe, girolle, trompette de la mort, pied-de-mouton et morille.
 
 Le score final vaut habitat × météo, sur une maille de 25 m. La conception est décrite dans [PLAN.md](PLAN.md).
 
-> Projet en cours. Les étapes 2 (ingestion), 3 (habitat), 4 (météo, score quotidien) et 6 (PWA)
-> sont implémentées. La géologie BRGM reste à ingérer : le serveur infoterre est indisponible.
-> L'étape 5 (calibrage) reste à faire.
+> Projet en cours. Toutes les étapes sont implémentées. La géologie BRGM reste à ingérer : le
+> serveur infoterre est indisponible. Les observations INPN (OpenObs) ne sont pas encore
+> utilisées : l'accès renvoie 403.
 
 ## Prérequis
 
@@ -109,6 +109,27 @@ make pipeline DATE=2026-10-15    # rejouer un run
 
 Les 3 derniers runs sont conservés (`meteo.retention_runs`). Pour une mise à jour quotidienne,
 planifiez `make pipeline` avec cron, par exemple à 6 h.
+
+## Étape 5 : calibrage
+
+```bash
+make calibrage                                        # rapports dans reports/calibration/
+.venv/bin/python -m myco calibrage --sans-meteo        # sans la météo historique (plus rapide)
+```
+
+Les observations GBIF des taxons de chaque fichier espèce (CC0 et CC BY uniquement, depuis 2005)
+sont comparées au modèle. Chaque rapport contient :
+- la phénologie : observations par quinzaine, comparées à la fenêtre saisonnière ;
+- l'habitat : AUC et indice de Boyce par rapport au fond de toutes les observations de
+  champignons, et composition en essences et en substrats autour des observations ;
+- la météo : score M le jour observé, comparé aux autres jours de la saison (météo historique
+  Open-Meteo) ;
+- la liste des règles que les données contredisent.
+
+Les fichiers espèces ne sont jamais modifiés automatiquement. Les observations étant floutées à
+≈ 2,8 km pour la plupart, l'évaluation porte sur l'échelle du paysage (voir PLAN.md §5.4). La
+météo historique demande ≈ 20 appels Open-Meteo par cellule de 0,1° et par année. Les réponses
+sont mises en cache dans `data/raw/meteo_historique/`, et le débit est limité à 80 appels/min.
 
 ## Étape 6 : PWA
 

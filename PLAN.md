@@ -416,6 +416,17 @@ Un schéma pydantic valide chaque YAML (couches existantes, classes connues, poi
 
 ### 5.4 Étape 5 : calibrage
 
+> **Adaptation du 23/10/2026, constatée sur les données.** En Isère, 80 % des observations GBIF des cinq espèces viennent de l'inventaire régional MycoflAURA, publié avec une incertitude de position de 2 821 m. Le filtre prévu à ≤ 100 m ne laisserait que 2 à 10 observations par espèce. Le calibrage est donc fait à l'échelle de cette incertitude :
+> - **Phénologie** : toutes les observations datées au jour près, quelle que soit leur précision.
+> - **Habitat et météo** : observations localisées à ≤ 3 000 m (`calibrage.incertitude_max_m`). L'habitat est moyenné dans le cercle d'incertitude ; le fond « target-group » (toutes les observations de champignons de même précision, ≈ 32 000) est traité de la même façon. La composition en essences et en substrats est comparée dans ces mêmes cercles.
+> - **Météo** : série historique Open-Meteo `best_match` (températures ERA5-Land, pluie ERA5 : ERA5-Land seul ne fournit pas la pluie journalière). Les requêtes sont regroupées par cellule de 0,1° et par année. Les températures sont ramenées à l'altitude médiane des forêts du cercle.
+> - **GBIF** : API de recherche, sans DOI : un téléchargement citable par DOI demanderait un compte GBIF. La requête et les jeux de données sont cités dans chaque rapport.
+>
+> L'évaluation de l'habitat à 25 m reste hors de portée de ces données. Les indicateurs portent sur l'échelle du paysage (≈ 3 km).
+
+Plan initial :
+
+
 1. **Observations** :
    - GBIF : téléchargement avec DOI, compte en `.env`, repli sur l'API de recherche. Filtres : `coordinateUncertaintyInMeters ≤ 100`, pas d'anomalie géographique, licences CC0 ou CC BY, années ≥ 2005.
    - OpenObs : mêmes filtres, en excluant les données floutées à la commune ou à la maille.

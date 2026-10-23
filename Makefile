@@ -3,7 +3,7 @@ PY      ?= $(VENV)/bin/python
 STATIC   = data/static
 INSTALLE = $(VENV)/.installe
 
-.PHONY: help install up down ingest habitat pipeline web serve test test-web lint
+.PHONY: help install up down ingest habitat pipeline calibrage web serve test test-web lint
 
 help:
 	@echo "make install     environnement Python (.venv)"
@@ -11,6 +11,7 @@ help:
 	@echo "make ingest      étape 2 : couches statiques à 25 m (SANS_BASE=1 : sans PostGIS)"
 	@echo "make habitat     étape 3 : score d'habitat par espèce (rasters, PMTiles, aperçus)"
 	@echo "make pipeline    étape 4 : cartes du jour J-7…J+7 (DATE=AAAA-MM-JJ pour rejouer)"
+	@echo "make calibrage   étape 5 : rapports de calibrage GBIF (reports/calibration/)"
 	@echo "make web         étape 6 : construit la PWA (web/dist)"
 	@echo "make serve       sert la PWA et les données sur http://localhost:8080 (Docker)"
 	@echo "make test | lint tests Python et analyse statique ; make test-web : tests de la PWA"
@@ -58,6 +59,10 @@ $(HABITAT_FAIT): $(STATIC)/masque.tif $(STATIC)/alt.tif $(STATIC)/foret.tif $(ST
 # DATE=AAAA-MM-JJ pour rejouer un run ; par défaut, la date du jour à Paris.
 pipeline: $(HABITAT_FAIT)
 	$(PY) -m myco pipeline $(if $(DATE),--date $(DATE)) $(if $(SANS_BASE),--sans-base)
+
+# --- Étape 5 : calibrage ------------------------------------------------------------------------
+calibrage: $(HABITAT_FAIT)
+	$(PY) -m myco calibrage $(if $(SANS_BASE),--sans-base)
 
 # --- Étape 6 : PWA -----------------------------------------------------------------------------
 WEB_SOURCES = $(wildcard web/src/*) web/index.html web/vite.config.ts web/package.json \

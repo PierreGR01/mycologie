@@ -50,6 +50,18 @@ class ParamMeteo(BaseModel):
     retention_runs: int = Field(ge=1)
 
 
+class ParamCalibrage(BaseModel):
+    gbif: str
+    annee_min: int
+    licences: list[str]
+    incertitude_max_m: float = Field(gt=0)
+    fond_taxon: str
+    archive: str
+    modele_historique: str
+    cellule_deg: float = Field(gt=0)
+    appels_par_minute: float = Field(gt=0)
+
+
 class ClasseAffichage(BaseModel):
     min: float = Field(ge=0, lt=1)
     libelle: str
@@ -89,6 +101,7 @@ class Parametres(BaseModel):
     base_de_donnees: str
     reseau: Reseau = Reseau()
     meteo: ParamMeteo
+    calibrage: ParamCalibrage
     affichage: Affichage
     sources: dict[str, Source]
 
