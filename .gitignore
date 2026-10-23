@@ -7,4 +7,6 @@ data/
 web/node_modules/
 web/dist/
 .env
-web/public/data/
+web/data/
+web/test-results/
+web/playwright-report/

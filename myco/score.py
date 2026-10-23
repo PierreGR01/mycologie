@@ -24,13 +24,16 @@ from myco.habitat import LIGNES_PAR_BLOC, NODATA_H
 from myco.ingest import grille_reference
 from myco.meteo import champs as mod_champs
 from myco.meteo.indicateurs import INDICATEURS, agreger, fenetre
-from myco.meteo.recuperation import dossier_meteo
+from myco.meteo.recuperation import dossier_meteo, limite_departement
 from myco.rasters import ecrire_cog
 from myco.tuiles import attribution, classer, ecrire_pmtiles, tuiler
 
 log = logging.getLogger(__name__)
 
 SOURCES_SCORE = ["bdforet", "bdcharm50", "soilgrids", "rgealti", "open_meteo"]
+# Sources visibles sur la carte (attribution affichée en permanence) ; les autres (calibrage)
+# sont listées dans la page « À propos » de la PWA.
+SOURCES_CARTE = ["plan_ign", "admin_express", *SOURCES_SCORE]
 ANNEE_REF = 2001  # année non bissextile servant à numéroter les jours
 
 
@@ -144,9 +147,11 @@ def ecrire_manifeste(p: Parametres, especes: dict[str, Espece], run: date, dates
                     for c in p.affichage.classes],
         "zoom": {"min": p.affichage.zoom_min, "max": p.affichage.zoom_max},
         "emprise": list(transform_bounds(grille.crs, "EPSG:4326", *grille.bornes)),
+        "limite": publier_limite(p),
         "sources": [
-            {"nom": s.nom, "licence": s.licence, "attribution": s.attribution, "url": s.url}
-            for s in p.sources.values()
+            {"id": cle, "nom": s.nom, "licence": s.licence, "attribution": s.attribution,
+             "url": s.url, "carte": cle in SOURCES_CARTE}
+            for cle, s in p.sources.items()
         ],
     }
     chemin = p.dossier_publication / "latest.json"
@@ -154,6 +159,16 @@ def ecrire_manifeste(p: Parametres, especes: dict[str, Espece], run: date, dates
     temporaire.write_text(json.dumps(manifeste, indent=2, ensure_ascii=False))
     os.replace(temporaire, chemin)
     return chemin
+
+
+def publier_limite(p: Parametres) -> str:
+    """Contour du département simplifié (≈ 25 m), en WGS84, pour l'affichage dans la PWA."""
+    limite = limite_departement(p)
+    limite = limite.assign(geometry=limite.simplify(25)).to_crs("EPSG:4326")[["geometry"]]
+    chemin = p.dossier_publication / "departement.geojson"
+    chemin.parent.mkdir(parents=True, exist_ok=True)
+    chemin.write_text(limite.to_json(drop_id=True, to_wgs84=True))
+    return chemin.name
 
 
 def purger(dossier: Path, garder: int, courant: str) -> None:

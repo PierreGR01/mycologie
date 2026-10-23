@@ -1,0 +1,284 @@
+:root {
+  --fond: #f4f1ea;
+  --surface: #ffffffee;
+  --texte: #1d211e;
+  --texte-doux: #5b625d;
+  --accent: #1f3d2b;
+  --accent-texte: #ffffff;
+  --bordure: #d5d0c4;
+  --alerte: #8a1c1c;
+  --ombre: 0 2px 12px #0003;
+  --rayon: 14px;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fond: #161a17;
+    --surface: #1f2420ee;
+    --texte: #ecefea;
+    --texte-doux: #a7b0a9;
+    --accent: #8cc49f;
+    --accent-texte: #10180f;
+    --bordure: #39413b;
+    --alerte: #ff9b8f;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--fond);
+  color: var(--texte);
+  font: 15px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+#carte {
+  position: fixed;
+  inset: 0;
+}
+
+.barre-haut {
+  position: fixed;
+  top: calc(8px + env(safe-area-inset-top));
+  left: 8px;
+  right: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.barre-haut > * {
+  pointer-events: auto;
+}
+
+.titre {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--surface);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre);
+  padding: 6px 8px 6px 14px;
+  backdrop-filter: blur(6px);
+  max-width: 480px;
+}
+
+h1 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.especes {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+
+.puce {
+  flex: none;
+  border: 1px solid var(--bordure);
+  background: var(--surface);
+  color: var(--texte);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font: inherit;
+  box-shadow: var(--ombre);
+  cursor: pointer;
+}
+
+.puce[aria-checked="true"] {
+  background: var(--accent);
+  color: var(--accent-texte);
+  border-color: var(--accent);
+}
+
+.bouton-rond {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--bordure);
+  background: transparent;
+  color: var(--texte);
+  font: 600 16px/1 Georgia, serif;
+  cursor: pointer;
+}
+
+.bandeau {
+  position: fixed;
+  top: calc(104px + env(safe-area-inset-top));
+  left: 8px;
+  right: 8px;
+  max-width: 480px;
+  background: var(--alerte);
+  color: #fff;
+  border-radius: 10px;
+  padding: 8px 12px;
+  box-shadow: var(--ombre);
+}
+
+.panneau {
+  position: fixed;
+  left: 8px;
+  right: 8px;
+  bottom: calc(8px + env(safe-area-inset-bottom));
+  max-width: 480px;
+  background: var(--surface);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre);
+  padding: 10px 14px;
+  backdrop-filter: blur(6px);
+}
+
+.ligne-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.date-libelle {
+  font-weight: 600;
+}
+
+.date-libelle::first-letter {
+  text-transform: uppercase;
+}
+
+.badge {
+  font-size: 12px;
+  border-radius: 999px;
+  padding: 2px 8px;
+  border: 1px solid var(--bordure);
+  color: var(--texte-doux);
+}
+
+.badge[data-type="prevision"] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+input[type="range"] {
+  width: 100%;
+  margin: 8px 0 0;
+  accent-color: var(--accent);
+}
+
+.graduations {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--texte-doux);
+}
+
+.bascule {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.legende {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  list-style: none;
+  margin: 4px 0;
+  padding: 0;
+  font-size: 13px;
+}
+
+.legende li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pastille {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1px solid #0002;
+}
+
+.note {
+  font-size: 12px;
+  color: var(--texte-doux);
+  margin: 4px 0 0;
+}
+
+.avertissement-espece {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--alerte);
+  margin: 6px 0 0;
+}
+
+dialog {
+  max-width: min(560px, calc(100vw - 32px));
+  max-height: calc(100vh - 48px);
+  border: none;
+  border-radius: var(--rayon);
+  background: var(--fond);
+  color: var(--texte);
+  box-shadow: var(--ombre);
+  padding: 20px;
+}
+
+dialog::backdrop {
+  background: #000a;
+}
+
+dialog h2 {
+  margin-top: 0;
+}
+
+.bouton {
+  margin-top: 12px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--accent-texte);
+  font: 600 15px/1.2 inherit;
+  cursor: pointer;
+}
+
+.bouton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.sources {
+  padding-left: 18px;
+  font-size: 13px;
+}
+
+.sources a {
+  color: var(--accent);
+}
+
+.maplibregl-ctrl-attrib {
+  font-size: 11px;
+}
+
+/* Le panneau du bas cache l'attribution : on la remonte au-dessus. */
+.maplibregl-ctrl-bottom-right {
+  bottom: 230px;
+}
+
+@media (min-width: 720px) {
+  .maplibregl-ctrl-bottom-right {
+    bottom: 0;
+  }
+}

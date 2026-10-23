@@ -80,7 +80,7 @@ def test_pipeline_hors_ligne(projet, parametres, monkeypatch):
     main(["habitat", "--sans-tuiles"])
     main(["pipeline", "--date", "2026-10-15", "--sans-base"])
 
-    publication = projet / "web" / "public" / "data"
+    publication = projet / "web" / "data"
     manifeste = json.loads((publication / "latest.json").read_text())
     assert manifeste["run"] == "2026-10-15"
     dates = [d["date"] for d in manifeste["dates"]]
@@ -88,8 +88,12 @@ def test_pipeline_hors_ligne(projet, parametres, monkeypatch):
     types = {d["date"]: d["type"] for d in manifeste["dates"]}
     assert types["2026-10-14"] == "analyse" and types["2026-10-15"] == "prevision"
     assert {e["id"] for e in manifeste["especes"]} == set(charger_especes())
-    assert any(s["attribution"].startswith("Weather data by Open-Meteo")
-               for s in manifeste["sources"])
+    sources = {s["id"]: s for s in manifeste["sources"]}
+    assert sources["open_meteo"]["attribution"].startswith("Weather data by Open-Meteo")
+    assert sources["open_meteo"]["carte"] and not sources["gbif"]["carte"]
+
+    limite = json.loads((publication / manifeste["limite"]).read_text())
+    assert limite["type"] == "FeatureCollection" and len(limite["features"]) == 1
 
     tuiles = sorted((publication / "runs" / "2026-10-15").rglob("*.pmtiles"))
     assert len(tuiles) == 5 * 15

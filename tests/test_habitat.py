@@ -97,7 +97,7 @@ def test_executer_rasters_tuiles_apercus(parametres, projet):
     assert (h[dedans & (np.arange(grille.largeur) >= 80)] == 0).all()   # prairie
     assert h[dedans & (np.arange(grille.largeur) < 80)].min() > 50      # hêtraie
 
-    entete, meta = lire_pmtiles(projet / "web" / "public" / "data" / "habitat" / "cepe.pmtiles")
+    entete, meta = lire_pmtiles(projet / "web" / "data" / "habitat" / "cepe.pmtiles")
     assert entete["min_zoom"] == 8 and entete["max_zoom"] == 12
     assert meta["espece"] == "cepe" and len(meta["legende"]) == 5
     assert "IGN" in meta["attribution"] and "ISRIC" in meta["attribution"]

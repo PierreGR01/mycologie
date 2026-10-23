@@ -212,13 +212,14 @@ Les index GiST portent sur toutes les géométries. Les rasters restent hors bas
 ### 3.5 Sorties publiées (statiques)
 
 ```
-web/public/data/
-├── latest.json                         # run courant, dates, espèces, légende, attributions
+web/data/
+├── latest.json                         # run courant, dates, espèces, légende, sources
+├── departement.geojson                 # contour du département (WGS84, simplifié)
 ├── habitat/<espece>.pmtiles            # habitat seul (statique)
 └── runs/<AAAA-MM-JJ>/<espece>/<date>.pmtiles   # 5 espèces × 15 dates
 ```
 
-`latest.json` est généré depuis les YAML. Le front ne connaît pas la liste des espèces en dur : ajouter un YAML suffit. Les 3 derniers runs sont conservés par défaut.
+`latest.json` est généré depuis les YAML. Le front ne connaît pas la liste des espèces en dur : ajouter un YAML suffit. Les 3 derniers runs sont conservés par défaut. `web/data` n'est pas copié dans le build : le serveur statique le sert sous `/data/`, ce qui permet de publier les cartes du jour sans reconstruire l'application.
 
 ---
 
@@ -443,7 +444,7 @@ Biais connus : observations concentrées près des routes et des villes, effecti
 | Curseur de date | J-7 à J+7. Libellé « analyse » ou « prévision », date du run affichée |
 | Légende | 5 classes et couleurs, avec la mention « indice de favorabilité, pas une garantie de présence » |
 | Habitat seul | Bascule optionnelle vers `habitat/<espece>.pmtiles` |
-| Sources et licences | Contrôle d'attribution MapLibre et page dédiée |
+| Sources et licences | Contrôle d'attribution MapLibre, replié par défaut sur mobile, limité aux sources visibles sur la carte. La liste complète (licence, attribution, lien) figure dans la page « À propos » |
 | Avertissement au premier lancement | Fenêtre modale bloquante avec case « J'ai compris ». L'acceptation est mémorisée en `localStorage` et l'avertissement reste consultable depuis « À propos » |
 | Installation | `manifest.webmanifest` (icônes 192 et 512, maskable, `display: standalone`) et service worker. HTTPS requis hors localhost |
 | Hors ligne | Voir ci-dessous |

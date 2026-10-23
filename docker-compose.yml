@@ -15,5 +15,15 @@ services:
       interval: 5s
       retries: 20
 
+  # PWA et données servies en statique (http://localhost:8080) : `make web` puis `make serve`.
+  web:
+    image: nginx:1.27-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./web/dist:/usr/share/nginx/html:ro
+      - ./web/data:/usr/share/nginx/html/data:ro
+      - ./web/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+
 volumes:
   pgdata:

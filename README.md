@@ -5,12 +5,14 @@ cèpe, girolle, trompette de la mort, pied-de-mouton et morille.
 
 Le score final vaut habitat × météo, sur une maille de 25 m. La conception est décrite dans [PLAN.md](PLAN.md).
 
-> Projet en cours. Les étapes 2 (ingestion), 3 (habitat) et 4 (météo, score quotidien) sont
-> implémentées. La géologie BRGM reste à ingérer : le serveur infoterre est indisponible.
+> Projet en cours. Les étapes 2 (ingestion), 3 (habitat), 4 (météo, score quotidien) et 6 (PWA)
+> sont implémentées. La géologie BRGM reste à ingérer : le serveur infoterre est indisponible.
+> L'étape 5 (calibrage) reste à faire.
 
 ## Prérequis
 
 - Python ≥ 3.11
+- Node.js ≥ 20 (PWA)
 - GNU Make
 - Docker et Docker Compose, pour PostGIS
 - Accès HTTPS aux domaines suivants :
@@ -82,7 +84,7 @@ entre guillemets : sans guillemets, `NO` est lu comme « faux ».
 | Sortie | Contenu |
 |--------|---------|
 | `data/habitat/<espece>.tif` | H de 0 à 100 (uint8), 255 hors département |
-| `web/public/data/habitat/<espece>.pmtiles` | Tuiles PNG z8–z12 en 5 classes, avec légende et attributions dans les métadonnées |
+| `web/data/habitat/<espece>.pmtiles` | Tuiles PNG z8–z12 en 5 classes, avec légende et attributions dans les métadonnées |
 | `reports/habitat/<espece>.png` | Aperçu de contrôle à 100 m sur fond de relief |
 | `reports/habitat/resume.csv` | Part du département dans chaque classe, par espèce |
 
@@ -102,11 +104,34 @@ make pipeline DATE=2026-10-15    # rejouer un run
    mises en cache dans `data/runs/<date>/meteo/cache/` (`--rafraichir` pour les ignorer).
 2. `myco score` : S = H × M à 25 m, avec température et gel corrigés de l'altitude (−0,65 °C
    par 100 m), puis une carte PMTiles par espèce et par date dans
-   `web/public/data/runs/<date>/<espece>/<date>.pmtiles`, et `web/public/data/latest.json`
+   `web/data/runs/<date>/<espece>/<date>.pmtiles`, et `web/data/latest.json`
    (≈ 10 min, 88 Mo par run).
 
 Les 3 derniers runs sont conservés (`meteo.retention_runs`). Pour une mise à jour quotidienne,
 planifiez `make pipeline` avec cron, par exemple à 6 h.
+
+## Étape 6 : PWA
+
+```bash
+make web      # construit l'application dans web/dist
+make serve    # Nginx (Docker) : http://localhost:8080, PWA + données de web/data sous /data/
+cd web && npm run dev   # développement (Vite), données servies depuis web/data
+```
+
+L'application, en Vite, TypeScript et MapLibre GL JS, lit `data/latest.json`. Elle affiche la
+carte de l'espèce et de la date choisies (J-7 à J+7), la légende, et une bascule « habitat
+seul ». Au premier lancement, un avertissement sur les risques d'intoxication doit être accepté.
+L'application ne propose aucune fonction d'identification.
+
+**Hors ligne** : le service worker garde l'application et les tuiles du fond Plan IGN déjà
+consultées. La page met en cache le fichier PMTiles complet de la dernière carte affichée
+(≈ 1,5 Mo), puis le service worker le sert par plages d'octets. Hors ligne, l'application
+rouvre cette carte et l'indique par un bandeau.
+
+**Hébergement** : n'importe quel serveur statique qui gère les requêtes HTTP Range (Nginx,
+stockage objet S3 ou équivalent, GitHub Pages…). L'installation sur mobile exige HTTPS, sauf
+sur `localhost`. Les fichiers `index.html`, `sw.js` et `data/` doivent être revalidés à chaque
+visite (voir `web/nginx.conf`).
 
 ## Tests
 
@@ -114,6 +139,10 @@ planifiez `make pipeline` avec cron, par exemple à 6 h.
 make test   # tests sur données synthétiques, sans réseau
 make lint
 ```
+
+Tests de bout en bout de la PWA (Playwright, Chromium) : `make test-web`. Ils utilisent les
+données présentes dans `web/data` et vérifient l'avertissement, les sélecteurs, l'installation
+(manifeste, service worker) et la réouverture de la dernière carte hors ligne.
 
 Pour tester aussi le chargement PostGIS, définissez `MYCO_TEST_DATABASE_URL` vers une base
 PostGIS initialisée avec `db/init.sql`. **Attention : ce test vide les tables `ref.*` de cette base.**

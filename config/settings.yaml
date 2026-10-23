@@ -13,7 +13,7 @@ chemins:
   statique: data/static
   habitat: data/habitat
   runs: data/runs                # champs météo et scores intermédiaires, par date de run
-  publication: web/public/data   # fichiers servis tels quels par la PWA (PMTiles, latest.json)
+  publication: web/data          # servi tel quel sous /data/ par la PWA (PMTiles, latest.json)
   rapports: reports
 
 # Surchargeable par la variable d'environnement DATABASE_URL.
