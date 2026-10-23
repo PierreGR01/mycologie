@@ -149,8 +149,10 @@ def faux_reseau(limite):
             r = {"usageKey": cle, "matchType": "EXACT", "rank": "SPECIES", "status": "ACCEPTED",
                  "scientificName": params["name"]}
         elif url.endswith("/occurrence/search"):
-            n = 120 if params["taxonKey"] == 5 else 25
-            r = {"results": occurrences(params["taxonKey"], n), "endOfRecords": True}
+            # Toutes les occurrences factices sont de 2020 (requêtes découpées par année).
+            n = (120 if params["taxonKey"] == 5 else 25) if params["year"] == "2020" else 0
+            r = ({"count": n} if params.get("limit") == 0
+                 else {"results": occurrences(params["taxonKey"], n), "endOfRecords": True})
         else:  # archive Open-Meteo
             debut, fin = (date.fromisoformat(params[k]) for k in ("start_date", "end_date"))
             jours = [(debut + timedelta(days=k)).isoformat() for k in range((fin - debut).days + 1)]

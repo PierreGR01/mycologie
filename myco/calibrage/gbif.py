@@ -16,6 +16,7 @@ from myco.reseau import obtenir
 log = logging.getLogger(__name__)
 
 TAILLE_PAGE = 300  # maximum de l'API de recherche
+SEUIL_DECOUPAGE = 6000
 CHAMPS = ["gbifID", "taxonKey", "scientificName", "eventDate", "year", "month", "day",
           "decimalLatitude", "decimalLongitude", "coordinateUncertaintyInMeters", "license",
           "datasetKey", "basisOfRecord"]
@@ -49,22 +50,49 @@ def parametres_recherche(pc: ParamCalibrage, emprise: tuple[float, float, float,
     return params
 
 
-def telecharger(cle: int, params: dict, pc: ParamCalibrage, reseau: Reseau,
-                cache: Path) -> pd.DataFrame:
-    """Toutes les occurrences d'un taxon (descendants compris), mises en cache en CSV."""
-    if cache.exists():
-        return pd.read_csv(cache, dtype={"gbifID": "string", "datasetKey": "string"})
+def _pages(url: str, params: dict, reseau: Reseau) -> list[dict]:
     lignes, decalage = [], 0
     while True:
-        page = obtenir(f"{pc.gbif}/occurrence/search", reseau, params={
-            **params, "taxonKey": cle, "limit": TAILLE_PAGE, "offset": decalage}).json()
+        page = obtenir(url, reseau, params={**params, "limit": TAILLE_PAGE,
+                                            "offset": decalage}).json()
         lignes += [{c: r.get(c) for c in CHAMPS} for r in page["results"]]
         decalage += TAILLE_PAGE
         if page["endOfRecords"] or decalage >= 100_000:
-            break
-    log.info("GBIF taxon %s : %d occurrences", cle, len(lignes))
-    df = pd.DataFrame(lignes, columns=CHAMPS)
-    cache.parent.mkdir(parents=True, exist_ok=True)
+            return lignes
+
+
+def _compte(url: str, params: dict, reseau: Reseau) -> int:
+    return obtenir(url, reseau, params={**params, "limit": 0}).json()["count"]
+
+
+def telecharger(cle: int, params: dict, pc: ParamCalibrage, reseau: Reseau,
+                cache: Path) -> pd.DataFrame:
+    """Toutes les occurrences d'un taxon (descendants compris), mises en cache en CSV.
+
+    La pagination profonde de l'API de recherche est très lente (plus de 2 min par page au-delà
+    de 30 000 résultats) : la requête est découpée par année, et par mois au-delà de
+    `SEUIL_DECOUPAGE` résultats. Chaque tranche est mise en cache, ce qui rend le téléchargement
+    reprenable."""
+    if cache.exists():
+        return pd.read_csv(cache, dtype={"gbifID": "string", "datasetKey": "string"})
+    url = f"{pc.gbif}/occurrence/search"
+    tranches = cache.with_suffix("")
+    tranches.mkdir(parents=True, exist_ok=True)
+    debut, fin = (int(a) for a in params["year"].split(","))
+    for annee in range(debut, fin + 1):
+        fichier = tranches / f"{annee}.csv"
+        if fichier.exists():
+            continue
+        p = {**params, "taxonKey": cle, "year": str(annee)}
+        if _compte(url, p, reseau) > SEUIL_DECOUPAGE:
+            lignes = [ligne for mois in range(1, 13)
+                      for ligne in _pages(url, {**p, "month": str(mois)}, reseau)]
+        else:
+            lignes = _pages(url, p, reseau)
+        pd.DataFrame(lignes, columns=CHAMPS).to_csv(fichier, index=False)
+        log.info("GBIF taxon %s, %d : %d occurrences", cle, annee, len(lignes))
+    df = pd.concat([pd.read_csv(f, dtype={"gbifID": "string", "datasetKey": "string"})
+                    for f in sorted(tranches.glob("*.csv"))], ignore_index=True)
     df.to_csv(cache, index=False)
     cache.with_suffix(".requete.json").write_text(json.dumps(
         {"url": f"{pc.gbif}/occurrence/search", "taxonKey": cle, **params,
