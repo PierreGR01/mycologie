@@ -29,7 +29,7 @@ Requête GBIF : https://api.gbif.org/v1/occurrence/search?hasCoordinate=true&has
 
 ![Phénologie](phenologie.png)
 
-Observations hors de la fenêtre saisonnière du modèle : **12 %**.
+Observations hors de la fenêtre saisonnière du modèle : **9 %**.
 
 ## Habitat
 
@@ -69,18 +69,17 @@ Score M calculé avec la météo historique (Open-Meteo, ERA5-Land et ERA5), à 
 
 ![Météo](meteo.png)
 
-- AUC temporelle : 0.57 (faible)
-- Sous-scores moyens le jour observé : pluie_15j 0.64, tmoy_7j 0.80, saison 0.82, gel 0.98
+- AUC temporelle : 0.59 (faible)
+- Sous-scores moyens le jour observé : pluie_15j 0.73, tmoy_7j 0.80, saison 0.92, gel 0.98
 
 Valeurs des indicateurs les jours d'observation (déciles 10 et 90, médiane), comparées aux seuils du trapèze de la règle :
 
 |  | seuils_regle | p10 | mediane | p90 | sous_score_moyen | jours_a_zero_pct |
 |---|---|---|---|---|---|---|
-| pluie_15j | 20 / 50 / 200 / 350 | 18.00 | 47.60 | 93.80 | 0.64 | 13.73 |
+| pluie_15j | 20 / 35 / 200 / 350 | 18.00 | 47.60 | 93.80 | 0.73 | 13.73 |
 | tmoy_7j | 2 / 6 / 15 / 20 | 8.37 | 13.16 | 18.98 | 0.80 | 5.88 |
 
 ## Règles à revoir
 
-- Phénologie : 12 % des observations hors saison du modèle (févr., avr., juin, juil.).
 - Habitat : AUC 0.54, le modèle distingue mal les zones observées du fond.
-- Météo : AUC temporelle 0.57, les jours observés ne sont pas nettement mieux notés que les autres jours.
+- Météo : AUC temporelle 0.59, les jours observés ne sont pas nettement mieux notés que les autres jours.

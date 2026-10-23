@@ -69,14 +69,14 @@ Score M calculé avec la météo historique (Open-Meteo, ERA5-Land et ERA5), à 
 
 ![Météo](meteo.png)
 
-- AUC temporelle : 0.62 (correct)
-- Sous-scores moyens le jour observé : pluie_15j 0.83, tmoy_7j 0.87, saison 0.97, gel 0.98
+- AUC temporelle : 0.61 (correct)
+- Sous-scores moyens le jour observé : pluie_15j 0.88, tmoy_7j 0.87, saison 0.97, gel 0.98
 
 Valeurs des indicateurs les jours d'observation (déciles 10 et 90, médiane), comparées aux seuils du trapèze de la règle :
 
 |  | seuils_regle | p10 | mediane | p90 | sous_score_moyen | jours_a_zero_pct |
 |---|---|---|---|---|---|---|
-| pluie_15j | 15 / 40 / 150 / 300 | 20.06 | 50.40 | 111.14 | 0.83 | 5.06 |
+| pluie_15j | 15 / 30 / 150 / 300 | 20.06 | 50.40 | 111.14 | 0.88 | 5.06 |
 | tmoy_7j | 9 / 13 / 22 / 27 | 11.08 | 14.84 | 18.20 | 0.87 | 5.06 |
 
 ## Règles à revoir
