@@ -194,6 +194,8 @@ def executer(p: Parametres, especes: dict[str, Espece], avec_meteo: bool = True,
             r.meteo = scores_meteo[scores_meteo["espece"] == i]
             r.auc_m = analyse.evaluation_temporelle(r.meteo)
             n = int(r.meteo["observe"].sum())
+            r.indicateurs = analyse.indicateurs_observes(r.meteo, e)
+            r.alertes += analyse.alertes_indicateurs(r.indicateurs, n)
             if n >= analyse.N_MIN and r.auc_m < analyse.AUC_FAIBLE:
                 r.alertes.append(f"Météo : AUC temporelle {r.auc_m:.2f}, les jours observés ne "
                                  "sont pas nettement mieux notés que les autres jours.")

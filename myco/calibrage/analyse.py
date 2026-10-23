@@ -19,6 +19,7 @@ N_MIN = 20                 # effectif minimal pour interpréter un indicateur
 HORS_SAISON_MAX = 10       # % d'observations hors fenêtre saisonnière toléré
 AUC_FAIBLE = 0.6           # pouvoir discriminant jugé faible en dessous
 RATIO_FORT, RATIO_FAIBLE = 1.5, 0.5
+NUL_MAX = 20               # % de jours observés où un indicateur vaut 0 au-delà duquel on alerte
 VALEUR_BASSE, VALEUR_HAUTE = 0.3, 0.8
 MOIS = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.",
         "nov.", "déc."]
@@ -40,6 +41,7 @@ class Resultat:
     courbe_boyce: pd.DataFrame | None = None
     compositions: dict[str, pd.DataFrame] = field(default_factory=dict)
     meteo: pd.DataFrame | None = None
+    indicateurs: pd.DataFrame | None = None
     auc_m: float = np.nan
     alertes: list[str] = field(default_factory=list)
     jeux: pd.Series | None = None
@@ -109,3 +111,29 @@ def evaluation_temporelle(scores: pd.DataFrame) -> float:
         m = jour.iloc[0]
         valeurs.append(((autres < m).sum() + 0.5 * (autres == m).sum()) / len(autres))
     return float(np.mean(valeurs)) if valeurs else np.nan
+
+
+def indicateurs_observes(meteo_obs: pd.DataFrame, espece: Espece) -> pd.DataFrame:
+    """Valeurs des indicateurs les jours d'observation, comparées aux seuils de la règle."""
+    jour = meteo_obs[meteo_obs["observe"]]
+    lignes = []
+    for nom, ind in espece.meteo.indicateurs.items():
+        v = jour[nom].dropna()
+        if v.empty:
+            continue
+        lignes.append({
+            "indicateur": nom,
+            "seuils_regle": " / ".join(f"{x:g}" for x in ind.points),
+            "p10": v.quantile(0.1), "mediane": v.median(), "p90": v.quantile(0.9),
+            "sous_score_moyen": jour[f"f_{nom}"].mean(),
+            "jours_a_zero_pct": 100 * (jour[f"f_{nom}"] == 0).mean(),
+        })
+    return pd.DataFrame(lignes).set_index("indicateur").round(2)
+
+
+def alertes_indicateurs(t: pd.DataFrame, n: int) -> list[str]:
+    if n < N_MIN:
+        return []
+    return [f"Météo : « {nom} » vaut 0 pour {ligne['jours_a_zero_pct']:.0f} % des jours "
+            f"observés (médiane observée {ligne['mediane']:g}, seuils {ligne['seuils_regle']})."
+            for nom, ligne in t.iterrows() if ligne["jours_a_zero_pct"] >= NUL_MAX]

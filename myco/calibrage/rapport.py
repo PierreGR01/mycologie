@@ -159,7 +159,7 @@ def ecrire(r: Resultat, dossier: Path, contexte: dict) -> Path:
         _fig_meteo(r, dossier / "meteo.png")
         n = int(r.meteo.loc[r.meteo["observe"], "M"].notna().sum())
         jour = r.meteo[r.meteo["observe"]]
-        colonnes = [c for c in jour.columns if c.startswith("f_")]
+        colonnes = [c for c in jour.columns if c.startswith("f_") and jour[c].notna().any()]
         lignes += [
             "Score M calculé avec la météo historique (Open-Meteo, ERA5-Land et ERA5), à "
             "l'altitude médiane des forêts du cercle, comparé aux autres jours de la saison "
@@ -172,6 +172,10 @@ def ecrire(r: Resultat, dossier: Path, contexte: dict) -> Path:
             + ", ".join(f"{c[2:]} {jour[c].mean():.2f}" for c in colonnes),
             "",
         ]
+        if r.indicateurs is not None and len(r.indicateurs):
+            lignes += ["Valeurs des indicateurs les jours d'observation (déciles 10 et 90, "
+                       "médiane), comparées aux seuils du trapèze de la règle :", "",
+                       _table(r.indicateurs), ""]
     else:
         lignes += ["Météo historique non évaluée.", ""]
 
