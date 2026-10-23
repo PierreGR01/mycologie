@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Champignons Isère</title>
+    <meta name="description" content="Zones et périodes favorables à la cueillette de champignons en Isère. Aucune fonction d'identification." />
+    <meta name="theme-color" content="#1f3d2b" />
+    <link rel="icon" type="image/png" href="icons/icone-192.png" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Champis 38" />
+    <script type="module" crossorigin src="./assets/index-BZqqSBBA.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BrZJWqR9.css">
+  <link rel="manifest" href="./manifest.webmanifest"></head>
+  <body>
+    <div id="carte" role="region" aria-label="Carte de favorabilité"></div>
+
+    <header class="barre-haut">
+      <div class="titre">
+        <h1>Champignons Isère</h1>
+        <button id="bouton-apropos" class="bouton-rond" type="button" aria-label="À propos, sources et licences">i</button>
+      </div>
+      <div id="especes" class="especes" role="radiogroup" aria-label="Espèce"></div>
+    </header>
+
+    <div id="bandeau" class="bandeau" role="status" hidden></div>
+
+    <section class="panneau" aria-label="Date et légende">
+      <div class="ligne-date">
+        <span id="date-libelle" class="date-libelle"></span>
+        <span id="date-type" class="badge"></span>
+      </div>
+      <input id="curseur-date" type="range" min="0" max="14" step="1" value="7" aria-label="Date affichée" />
+      <div id="graduations" class="graduations" aria-hidden="true"><span></span><span>aujourd'hui</span><span></span></div>
+      <label class="bascule"><input id="habitat-seul" type="checkbox" /> Habitat seul (sans la météo)</label>
+      <ul id="legende" class="legende" aria-label="Légende"></ul>
+      <p class="note">Indice de favorabilité calculé : ce n'est pas une garantie de présence.</p>
+      <p id="note-donnees" class="note note-donnees" hidden></p>
+      <p id="avertissement-espece" class="avertissement-espece" role="note" hidden></p>
+    </section>
+
+    <dialog id="avertissement" aria-labelledby="avertissement-titre">
+      <h2 id="avertissement-titre">Avant de commencer</h2>
+      <p>
+        Cette application indique des zones et périodes <strong>potentiellement favorables</strong>.
+        Elle ne permet pas d'identifier un champignon.
+      </p>
+      <p>
+        <strong>Ne consommez jamais un champignon dont l'identification n'est pas certaine</strong> :
+        faites contrôler votre cueillette par un pharmacien ou une association mycologique.
+        En cas de symptômes après consommation, appelez le 15 ou le centre antipoison.
+      </p>
+      <p>
+        Respectez la réglementation locale (arrêtés municipaux et préfectoraux, propriétés privées,
+        Parc national des Écrins et réserves naturelles), que l'application ne prend pas en compte.
+      </p>
+      <label class="bascule"><input id="avertissement-lu" type="checkbox" /> J'ai lu et compris ces risques</label>
+      <button id="avertissement-ok" class="bouton" type="button" disabled>Accéder à la carte</button>
+    </dialog>
+
+    <dialog id="apropos" aria-labelledby="apropos-titre">
+      <h2 id="apropos-titre">À propos</h2>
+      <p>
+        Pour chaque espèce, la carte combine un indice d'<strong>habitat</strong> (essences forestières,
+        nature du sol, relief) et un indice <strong>météo</strong> (pluie sur 15 jours, température
+        corrigée de l'altitude, écart jour/nuit, gel), sur une maille de 25 m.
+        Le résultat est un indice de favorabilité relatif, pas une probabilité de présence.
+      </p>
+      <p><strong>Aucune fonction d'identification.</strong> Ne consommez jamais un champignon dont
+        l'identification n'est pas certaine ; en cas de symptômes, appelez le 15 ou le centre antipoison.</p>
+      <p id="apropos-run" class="note"></p>
+      <h3>Sources et licences</h3>
+      <ul id="sources" class="sources"></ul>
+      <p class="note">Code de l'application : licence à préciser.</p>
+      <button id="apropos-fermer" class="bouton" type="button">Fermer</button>
+    </dialog>
+
+  </body>
+</html>

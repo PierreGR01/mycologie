@@ -1,0 +1,176 @@
+{
+  "run": "2026-10-23",
+  "genere_le": "2026-10-23T09:51:43+00:00",
+  "dates": [
+    {
+      "date": "2026-10-22",
+      "type": "analyse"
+    },
+    {
+      "date": "2026-10-23",
+      "type": "prevision"
+    },
+    {
+      "date": "2026-10-24",
+      "type": "prevision"
+    }
+  ],
+  "especes": [
+    {
+      "id": "cepe",
+      "nom": "Cèpe",
+      "avertissement": null,
+      "habitat": "habitat/cepe.pmtiles",
+      "tuiles": "runs/2026-10-23/cepe/{date}.pmtiles"
+    },
+    {
+      "id": "girolle",
+      "nom": "Girolle",
+      "avertissement": null,
+      "habitat": "habitat/girolle.pmtiles",
+      "tuiles": "runs/2026-10-23/girolle/{date}.pmtiles"
+    },
+    {
+      "id": "morille",
+      "nom": "Morille",
+      "avertissement": "Les morilles sont toxiques crues ou insuffisamment cuites.",
+      "habitat": "habitat/morille.pmtiles",
+      "tuiles": "runs/2026-10-23/morille/{date}.pmtiles"
+    },
+    {
+      "id": "pied_de_mouton",
+      "nom": "Pied-de-mouton",
+      "avertissement": null,
+      "habitat": "habitat/pied_de_mouton.pmtiles",
+      "tuiles": "runs/2026-10-23/pied_de_mouton/{date}.pmtiles"
+    },
+    {
+      "id": "trompette",
+      "nom": "Trompette de la mort",
+      "avertissement": null,
+      "habitat": "habitat/trompette.pmtiles",
+      "tuiles": "runs/2026-10-23/trompette/{date}.pmtiles"
+    }
+  ],
+  "legende": [
+    {
+      "min": 0.0,
+      "libelle": "très faible",
+      "couleur": "#ffffb2"
+    },
+    {
+      "min": 0.2,
+      "libelle": "faible",
+      "couleur": "#fecc5c"
+    },
+    {
+      "min": 0.4,
+      "libelle": "moyen",
+      "couleur": "#fd8d3c"
+    },
+    {
+      "min": 0.6,
+      "libelle": "bon",
+      "couleur": "#f03b20"
+    },
+    {
+      "min": 0.8,
+      "libelle": "très bon",
+      "couleur": "#bd0026"
+    }
+  ],
+  "zoom": {
+    "min": 8,
+    "max": 12
+  },
+  "emprise": [
+    4.707301935950052,
+    44.67019636011339,
+    6.431920965389893,
+    45.90348949560133
+  ],
+  "limite": "departement.geojson",
+  "sources": [
+    {
+      "id": "admin_express",
+      "nom": "ADMIN EXPRESS COG (IGN)",
+      "licence": "Licence Ouverte Etalab 2.0",
+      "attribution": "© IGN – ADMIN EXPRESS",
+      "url": "https://geoservices.ign.fr/adminexpress",
+      "carte": true
+    },
+    {
+      "id": "rgealti",
+      "nom": "RGE ALTI® 5 m (IGN)",
+      "licence": "Licence Ouverte Etalab 2.0",
+      "attribution": "© IGN – RGE ALTI®",
+      "url": "https://geoservices.ign.fr/rgealti",
+      "carte": true
+    },
+    {
+      "id": "bdforet",
+      "nom": "BD Forêt® V2 (IGN)",
+      "licence": "Licence Ouverte Etalab 2.0",
+      "attribution": "© IGN – BD Forêt® V2",
+      "url": "https://geoservices.ign.fr/bdforet",
+      "carte": true
+    },
+    {
+      "id": "bdcharm50",
+      "nom": "BD Charm-50, carte géologique harmonisée au 1/50 000 (BRGM)",
+      "licence": "Licence Ouverte Etalab 2.0 (à confirmer)",
+      "attribution": "© BRGM – BD Charm-50",
+      "url": "https://infoterre.brgm.fr",
+      "carte": true
+    },
+    {
+      "id": "soilgrids",
+      "nom": "SoilGrids 2.0 – pH eau (ISRIC)",
+      "licence": "CC BY 4.0",
+      "attribution": "ISRIC – SoilGrids",
+      "url": "https://www.isric.org/explore/soilgrids",
+      "carte": true
+    },
+    {
+      "id": "plan_ign",
+      "nom": "Plan IGN v2",
+      "licence": "Licence Ouverte Etalab 2.0",
+      "attribution": "© IGN – Plan IGN",
+      "url": "https://geoservices.ign.fr/services-web-experts-cartes",
+      "carte": true
+    },
+    {
+      "id": "open_meteo",
+      "nom": "Open-Meteo (Forecast et Historical Weather API)",
+      "licence": "CC BY 4.0",
+      "attribution": "Weather data by Open-Meteo.com (Météo-France, ECMWF, DWD)",
+      "url": "https://open-meteo.com",
+      "carte": true
+    },
+    {
+      "id": "gbif",
+      "nom": "GBIF – observations (CC0 et CC BY uniquement)",
+      "licence": "CC0 / CC BY 4.0 selon les jeux de données",
+      "attribution": "GBIF.org (DOI du téléchargement dans le rapport de calibrage)",
+      "url": "https://www.gbif.org",
+      "carte": false
+    },
+    {
+      "id": "openobs",
+      "nom": "INPN / OpenObs (MNHN – PatriNat)",
+      "licence": "à confirmer",
+      "attribution": "INPN / OpenObs – PatriNat",
+      "url": "https://openobs.mnhn.fr",
+      "carte": false
+    },
+    {
+      "id": "taxref",
+      "nom": "TAXREF (MNHN)",
+      "licence": "Licence Ouverte Etalab 2.0",
+      "attribution": "TAXREF – MNHN",
+      "url": "https://taxref.mnhn.fr",
+      "carte": false
+    }
+  ],
+  "note": "Démonstration : cartes provisoires, calculées sans la carte géologique BRGM et mises à jour manuellement."
+}
