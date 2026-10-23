@@ -5,7 +5,8 @@ cèpe, girolle, trompette de la mort, pied-de-mouton et morille.
 
 Le score final vaut habitat × météo, sur une maille de 25 m. La conception est décrite dans [PLAN.md](PLAN.md).
 
-> Projet en cours. Seule l'étape 2 (ingestion des couches statiques) est implémentée.
+> Projet en cours. Les étapes 2 (ingestion) et 3 (habitat) sont implémentées. La géologie BRGM
+> reste à ingérer : le serveur infoterre est indisponible.
 
 ## Prérequis
 
@@ -64,6 +65,29 @@ sha256. Une archive RGE ALTI introuvable automatiquement peut être déposée à
   unité, modifiez sa colonne `classe` : la correction est conservée aux exécutions suivantes.
 - `reports/ingestion/foret_codes.csv` : codes BD Forêt rencontrés. Les codes rangés en `inconnu`
   sont à ajouter dans `foret.yaml`.
+
+## Étape 3 : habitat
+
+```bash
+make habitat                                        # toutes les espèces
+.venv/bin/python -m myco habitat --espece morille   # une seule espèce
+```
+
+Les règles de chaque espèce sont dans `config/especes/<espece>.yaml`. Ajouter une espèce revient
+à ajouter un fichier : son identifiant doit être le nom du fichier. Les classes utilisables par
+les facteurs `table` sont celles de `config/classes/` (essences, substrats) et les secteurs
+d'exposition `N`, `NE`, `E`, `SE`, `S`, `SO`, `O`, `NO` et `plat`. En YAML, écrivez ces secteurs
+entre guillemets : sans guillemets, `NO` est lu comme « faux ».
+
+| Sortie | Contenu |
+|--------|---------|
+| `data/habitat/<espece>.tif` | H de 0 à 100 (uint8), 255 hors département |
+| `web/public/data/habitat/<espece>.pmtiles` | Tuiles PNG z8–z12 en 5 classes, avec légende et attributions dans les métadonnées |
+| `reports/habitat/<espece>.png` | Aperçu de contrôle à 100 m sur fond de relief |
+| `reports/habitat/resume.csv` | Part du département dans chaque classe, par espèce |
+
+Les classes d'affichage (seuils et couleurs) sont communes à toutes les espèces. Elles sont
+définies dans `config/settings.yaml`, rubrique `affichage`.
 
 ## Tests
 

@@ -1,0 +1,57 @@
+# Morille – valeurs validées le 22/10/2026 (PLAN.md §4.6) : deux profils d'habitat, H = max.
+# Confiance faible : BD Forêt ne distingue ni le frêne ni les vergers.
+id: morille
+nom: Morille
+taxons: [Morchella]
+avertissement: "Les morilles sont toxiques crues ou insuffisamment cuites."
+
+habitat:
+  combinaison: moyenne_geometrique
+  combinaison_profils: max
+  profils:
+    plaine:   # ripisylves, alluvions (M. esculenta)
+      facteurs:
+        essence:
+          {couche: foret, type: table, poids: 3, bloquant: true, defaut: 0,
+           valeurs: {hetre: 0.3, chenes_decidus: 0.4, chataignier: 0.2, robinier: 0.3,
+                     autres_feuillus: 0.8, melange_feuillus: 0.7, peupleraie: 0.8,
+                     sapin_epicea: 0.1, pin_sylvestre: 0.1, autres_pins: 0.1, meleze: 0.1,
+                     douglas: 0.1, melange_coniferes: 0.1, mixte_feuillus: 0.4,
+                     mixte_coniferes: 0.2, foret_ouverte: 0.6, lande_ligneuse: 0.1}}
+        substrat:
+          {couche: geol, type: table, poids: 2,
+           valeurs: {siliceux: 0.3, detritique_mixte: 0.6, marno_calcaire: 0.8, calcaire: 0.8,
+                     alluvions_recentes: 1.0, indetermine: 0.6}}
+        ph:       {couche: ph, type: trapeze, poids: 0.5, points: [5.5, 6.5, 8.0, 8.5], plancher: 0.3}
+        altitude: {couche: alt, type: trapeze, poids: 1, points: [150, 200, 800, 1200]}
+        pente:    {couche: pente, type: trapeze, poids: 1, points: [0, 0, 10, 30], plancher: 0.2}
+    montagne:  # conifères de montagne (groupe M. elata)
+      facteurs:
+        essence:
+          {couche: foret, type: table, poids: 3, bloquant: true, defaut: 0,
+           valeurs: {sapin_epicea: 0.8, meleze: 0.8, melange_coniferes: 0.7,
+                     mixte_coniferes: 0.7, mixte_feuillus: 0.5, hetre: 0.3, pin_sylvestre: 0.3,
+                     autres_pins: 0.3, foret_ouverte: 0.5, chenes_decidus: 0.1,
+                     chataignier: 0.1, robinier: 0.1, autres_feuillus: 0.1,
+                     melange_feuillus: 0.1, peupleraie: 0.1}}
+        substrat:
+          {couche: geol, type: table, poids: 2,
+           valeurs: {calcaire: 0.9, marno_calcaire: 0.9, detritique_mixte: 0.8,
+                     alluvions_recentes: 0.6, siliceux: 0.5, indetermine: 0.6}}
+        ph:       {couche: ph, type: trapeze, poids: 0.5, points: [5.0, 6.0, 8.0, 8.5], plancher: 0.4}
+        altitude: {couche: alt, type: trapeze, poids: 1, points: [700, 900, 1700, 2000]}
+        pente:    {couche: pente, type: trapeze, poids: 1, points: [0, 0, 25, 40], plancher: 0.3}
+
+meteo:
+  saison: {debut: "03-01", fin: "06-15", rampe_jours: 15}
+  combinaison: moyenne_geometrique
+  indicateurs:
+    pluie_15j:    {type: trapeze, poids: 3, points: [15, 30, 120, 250], plancher_haut: 0.5}
+    tmoy_7j:      {type: trapeze, poids: 2, points: [6, 9, 15, 20]}
+    amplitude_7j: {type: trapeze, poids: 1, points: [4, 8, 15, 20], plancher: 0.5}
+  gel: {seuil_tmin: 0, fenetre_jours: 7, paliers: {1: 0.7, 3: 0.3}}
+
+sources:
+  - Pilz et al. 2007, USDA PNW-GTR-710
+  - Kuo 2005, Morels
+  - Courtecuisse & Duhem

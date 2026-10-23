@@ -1,0 +1,35 @@
+# Pied-de-mouton – valeurs validées le 22/10/2026 (PLAN.md §4), à ajuster au calibrage.
+id: pied_de_mouton
+nom: Pied-de-mouton
+taxons: [Hydnum repandum]
+avertissement: null
+
+habitat:
+  combinaison: moyenne_geometrique
+  facteurs:
+    essence:
+      {couche: foret, type: table, poids: 3, bloquant: true, defaut: 0,
+       valeurs: {hetre: 1.0, chenes_decidus: 0.9, chataignier: 0.7, robinier: 0.2,
+                 autres_feuillus: 0.7, melange_feuillus: 0.9, peupleraie: 0.1, sapin_epicea: 0.9,
+                 pin_sylvestre: 0.6, autres_pins: 0.5, meleze: 0.4, douglas: 0.4,
+                 melange_coniferes: 0.8, mixte_feuillus: 1.0, mixte_coniferes: 1.0,
+                 foret_ouverte: 0.5, lande_ligneuse: 0.1}}
+    substrat:
+      {couche: geol, type: table, poids: 2,
+       valeurs: {siliceux: 0.8, detritique_mixte: 0.9, marno_calcaire: 1.0, calcaire: 1.0,
+                 alluvions_recentes: 0.6, indetermine: 0.8}}
+    ph:       {couche: ph, type: trapeze, poids: 0.5, points: [4.0, 5.0, 8.0, 8.5], plancher: 0.5}
+    altitude: {couche: alt, type: trapeze, poids: 1, points: [150, 250, 1700, 2000]}
+    pente:    {couche: pente, type: trapeze, poids: 1, points: [0, 0, 30, 45], plancher: 0.3}
+
+meteo:
+  saison: {debut: "08-01", fin: "12-31", rampe_jours: 15}
+  combinaison: moyenne_geometrique
+  indicateurs:
+    pluie_15j: {type: trapeze, poids: 3, points: [20, 50, 200, 350], plancher_haut: 0.5}
+    tmoy_7j:   {type: trapeze, poids: 2, points: [2, 6, 15, 20]}
+  gel: {seuil_tmin: 0, fenetre_jours: 7, paliers: {1: 0.8, 3: 0.5}}
+
+sources:
+  - Courtecuisse & Duhem ; Eyssartier & Roux
+  - Boddy et al. 2014

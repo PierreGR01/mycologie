@@ -1,0 +1,38 @@
+# Cèpe – valeurs validées le 22/10/2026 (PLAN.md §4), à ajuster au calibrage.
+id: cepe
+nom: Cèpe
+taxons: [Boletus edulis, Boletus pinophilus, Boletus aereus, Boletus reticulatus]
+avertissement: null
+
+habitat:
+  combinaison: moyenne_geometrique
+  facteurs:
+    essence:
+      {couche: foret, type: table, poids: 3, bloquant: true, defaut: 0,
+       valeurs: {hetre: 1.0, chenes_decidus: 0.9, chataignier: 0.9, robinier: 0.1,
+                 autres_feuillus: 0.6, melange_feuillus: 0.8, peupleraie: 0.0, sapin_epicea: 0.9,
+                 pin_sylvestre: 0.8, autres_pins: 0.5, meleze: 0.3, douglas: 0.4,
+                 melange_coniferes: 0.7, mixte_feuillus: 1.0, mixte_coniferes: 0.9,
+                 foret_ouverte: 0.5, lande_ligneuse: 0.1}}
+    substrat:
+      {couche: geol, type: table, poids: 2,
+       valeurs: {siliceux: 1.0, detritique_mixte: 0.9, marno_calcaire: 0.7, calcaire: 0.6,
+                 alluvions_recentes: 0.4, indetermine: 0.7}}
+    ph:       {couche: ph, type: trapeze, poids: 0.5, points: [4.0, 4.5, 6.5, 7.5], plancher: 0.4}
+    altitude: {couche: alt, type: trapeze, poids: 1, points: [150, 300, 1700, 2100]}
+    pente:    {couche: pente, type: trapeze, poids: 1, points: [0, 0, 25, 45], plancher: 0.3}
+
+meteo:
+  saison: {debut: "06-01", fin: "11-15", rampe_jours: 15}
+  combinaison: moyenne_geometrique
+  indicateurs:
+    pluie_15j:    {type: trapeze, poids: 3, points: [20, 50, 150, 300], plancher_haut: 0.5}
+    tmoy_7j:      {type: trapeze, poids: 2, points: [8, 12, 20, 25]}
+    amplitude_7j: {type: trapeze, poids: 1, points: [4, 8, 14, 20], plancher: 0.5}
+  gel: {seuil_tmin: 0, fenetre_jours: 7, paliers: {1: 0.5, 3: 0.1}}
+
+sources:
+  - Courtecuisse & Duhem, Guide des champignons de France et d'Europe
+  - Eyssartier & Roux, Le guide des champignons France et Europe
+  - Hall et al. 1998, Economic Botany 52(1)
+  - Büntgen et al. 2012 ; Boddy et al. 2014 ; Martínez de Aragón et al. 2007 ; Karavani et al. 2018

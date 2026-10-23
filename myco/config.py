@@ -25,12 +25,35 @@ class ParamGrille(BaseModel):
 class Chemins(BaseModel):
     brut: Path
     statique: Path
+    habitat: Path
+    publication: Path
     rapports: Path
 
 
 class Reseau(BaseModel):
     delai_s: float = 300
     tentatives: int = Field(default=4, ge=1)
+
+
+class ClasseAffichage(BaseModel):
+    min: float = Field(ge=0, lt=1)
+    libelle: str
+    couleur: str = Field(pattern=r"^#[0-9a-fA-F]{6}$")
+
+
+class Affichage(BaseModel):
+    zoom_min: int = Field(ge=0)
+    zoom_max: int = Field(le=12)  # z12 ≈ 27 m/px en Isère : rien de plus fin que 25 m
+    classes: list[ClasseAffichage] = Field(min_length=1, max_length=254)
+
+    @model_validator(mode="after")
+    def _ordre(self) -> Affichage:
+        bornes = [c.min for c in self.classes]
+        if bornes != sorted(bornes) or bornes[0] != 0:
+            raise ValueError("classes d'affichage : bornes croissantes à partir de 0")
+        if self.zoom_min > self.zoom_max:
+            raise ValueError("zoom_min > zoom_max")
+        return self
 
 
 class Source(BaseModel):
@@ -50,6 +73,7 @@ class Parametres(BaseModel):
     chemins: Chemins
     base_de_donnees: str
     reseau: Reseau = Reseau()
+    affichage: Affichage
     sources: dict[str, Source]
 
     @property
@@ -66,6 +90,14 @@ class Parametres(BaseModel):
     @property
     def dossier_statique(self) -> Path:
         return self.chemin(self.chemins.statique)
+
+    @property
+    def dossier_habitat(self) -> Path:
+        return self.chemin(self.chemins.habitat)
+
+    @property
+    def dossier_publication(self) -> Path:
+        return self.chemin(self.chemins.publication)
 
     @property
     def dossier_rapports(self) -> Path:

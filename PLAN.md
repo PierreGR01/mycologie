@@ -50,6 +50,8 @@ M = saison(d) × exp( Σ wⱼ·ln gⱼ / Σ wⱼ ) × multiplicateur_gel
 
 La moyenne géométrique pondérée est la méthode classique des modèles HSI (USFWS 1981). Elle conserve la logique du facteur limitant sans écraser le score lorsque plusieurs facteurs valent légèrement moins de 1. Un facteur peut être déclaré `bloquant: true` : s'il vaut 0, le score est 0. C'est le cas de l'essence forestière.
 
+**Données manquantes** : un facteur sans donnée sur un pixel (pH absent en haute montagne, géologie non renseignée) est écarté, et les poids des autres facteurs sont renormalisés. Un facteur `bloquant` sans donnée annule le score.
+
 ---
 
 ## 2. Architecture
@@ -349,7 +351,6 @@ Le fichier YAML de la morille remplace `habitat.facteurs` par `habitat.profils`.
 id: cepe
 nom: Cèpe
 taxons: [Boletus edulis, Boletus pinophilus, Boletus aereus, Boletus reticulatus]
-couleur_legende: viridis            # palette d'affichage
 avertissement: null                 # ex. morille : « toxique crue ou insuffisamment cuite »
 habitat:
   combinaison: moyenne_geometrique
