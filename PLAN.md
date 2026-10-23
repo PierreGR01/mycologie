@@ -18,7 +18,7 @@
 | D7 | Usage Open-Meteo | **Non commercial** : API gratuite (10 000 appels/jour) |
 | D8 | Zone de calibrage | Isère seule. Option : ajouter les départements limitrophes si les effectifs sont trop faibles |
 | D9 | Fond de carte | Plan IGN v2 (WMTS Géoplateforme, Licence Ouverte) |
-| D10 | Licence du code | À choisir avant le README final (MIT, Apache-2.0, AGPL…) |
+| D10 | Licence du code | **Aucune pour l'instant** (23/10/2026) : code public mais « tous droits réservés ». Pas d'usage commercial envisagé ; piste si besoin : PolyForm Noncommercial 1.0.0 |
 
 ---
 

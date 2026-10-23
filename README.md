@@ -188,3 +188,9 @@ Toutes les sources sont ouvertes. Leurs licences et attributions sont déclarée
 | Open-Meteo | CC BY 4.0 (API gratuite, usage non commercial) |
 | GBIF | CC0 et CC BY 4.0 uniquement |
 | INPN / OpenObs | À confirmer |
+
+## Licence
+
+Le code n'est pas encore placé sous licence : il est visible, mais « tous droits réservés ».
+Toute réutilisation demande l'accord de l'auteur. Les données utilisées gardent leurs propres
+licences (tableau ci-dessus).
