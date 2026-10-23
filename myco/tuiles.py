@@ -30,9 +30,9 @@ def classer(score: np.ndarray, affichage: Affichage, nodata: int = 255) -> np.nd
     """Score uint8 0–100 → indice de classe d'affichage (1…n), 0 = transparent (score nul ou
     pas de donnée)."""
     bornes = np.array([c.min * 100 for c in affichage.classes])
-    classes = np.searchsorted(bornes, score, side="right").astype("uint8")
-    classes[(score == 0) | (score == nodata)] = TRANSPARENT
-    return classes
+    correspondance = np.searchsorted(bornes, np.arange(256), side="right").astype("uint8")
+    correspondance[[0, nodata]] = TRANSPARENT
+    return correspondance[score]
 
 
 def palette(affichage: Affichage) -> list[int]:
@@ -46,7 +46,7 @@ def _png(tuile: np.ndarray, pal: list[int]) -> bytes:
     image = Image.fromarray(tuile, mode="P")
     image.putpalette(pal)
     tampon = io.BytesIO()
-    image.save(tampon, format="PNG", optimize=True, transparency=TRANSPARENT)
+    image.save(tampon, format="PNG", compress_level=6, transparency=TRANSPARENT)
     return tampon.getvalue()
 
 
@@ -90,6 +90,14 @@ def tuiler(classes: np.ndarray, grille: Grille, affichage: Affichage) -> list[tu
     return sorted(tuiles)
 
 
+def tuile_transparente(grille: Grille, affichage: Affichage) -> list[tuple[int, bytes]]:
+    ouest, sud, est, nord = transform_bounds(grille.crs, WEB_MERCATOR, *grille.bornes)
+    x, y = (ouest + est) / 2, (sud + nord) / 2
+    _, xs, ys = _tuiles_couvrant((x, y, x, y), affichage.zoom_min)
+    vide = np.zeros((TAILLE, TAILLE), dtype="uint8")
+    return [(zxy_to_tileid(affichage.zoom_min, xs[0], ys[0]), _png(vide, palette(affichage)))]
+
+
 def ecrire_pmtiles(
     chemin: Path,
     tuiles: list[tuple[int, bytes]],
@@ -97,8 +105,8 @@ def ecrire_pmtiles(
     affichage: Affichage,
     metadonnees: dict,
 ) -> Path:
-    if not tuiles:
-        raise ValueError(f"aucune tuile non vide pour {chemin.name}")
+    # Aucun pixel favorable (hors saison…) : une tuile transparente garde le fichier lisible.
+    tuiles = tuiles or tuile_transparente(grille, affichage)
     ouest, sud, est, nord = transform_bounds(grille.crs, "EPSG:4326", *grille.bornes)
     entete = {
         "tile_type": TileType.PNG,

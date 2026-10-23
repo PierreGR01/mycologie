@@ -5,8 +5,8 @@ cèpe, girolle, trompette de la mort, pied-de-mouton et morille.
 
 Le score final vaut habitat × météo, sur une maille de 25 m. La conception est décrite dans [PLAN.md](PLAN.md).
 
-> Projet en cours. Les étapes 2 (ingestion) et 3 (habitat) sont implémentées. La géologie BRGM
-> reste à ingérer : le serveur infoterre est indisponible.
+> Projet en cours. Les étapes 2 (ingestion), 3 (habitat) et 4 (météo, score quotidien) sont
+> implémentées. La géologie BRGM reste à ingérer : le serveur infoterre est indisponible.
 
 ## Prérequis
 
@@ -88,6 +88,24 @@ entre guillemets : sans guillemets, `NO` est lu comme « faux ».
 
 Les classes d'affichage (seuils et couleurs) sont communes à toutes les espèces. Elles sont
 définies dans `config/settings.yaml`, rubrique `affichage`.
+
+## Étape 4 : pipeline quotidien
+
+```bash
+make pipeline                    # cartes du jour : J-7 à J+7, 5 espèces
+make pipeline DATE=2026-10-15    # rejouer un run
+```
+
+`make pipeline` lance si nécessaire l'ingestion et l'habitat, puis :
+1. `myco meteo` : ≈ 1 600 points Open-Meteo (maille de 2,5 km), de J-21 à J+7. Le
+   téléchargement prend ≈ 7 min pour respecter la limite de l'API gratuite. Les réponses sont
+   mises en cache dans `data/runs/<date>/meteo/cache/` (`--rafraichir` pour les ignorer).
+2. `myco score` : S = H × M à 25 m, avec température et gel corrigés de l'altitude (−0,65 °C
+   par 100 m), puis une carte PMTiles par espèce et par date dans
+   `web/public/data/runs/<date>/<espece>/<date>.pmtiles`, et `web/public/data/latest.json`.
+
+Les 3 derniers runs sont conservés (`meteo.retention_runs`). Pour une mise à jour quotidienne,
+planifiez `make pipeline` avec cron, par exemple à 6 h.
 
 ## Tests
 

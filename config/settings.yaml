@@ -12,6 +12,7 @@ chemins:
   brut: data/raw
   statique: data/static
   habitat: data/habitat
+  runs: data/runs                # champs météo et scores intermédiaires, par date de run
   publication: web/public/data   # fichiers servis tels quels par la PWA (PMTiles, latest.json)
   rapports: reports
 
@@ -21,6 +22,20 @@ base_de_donnees: postgresql+psycopg://myco:myco@localhost:5432/myco
 reseau:
   delai_s: 300
   tentatives: 4
+
+# Météo (étape 4) : échantillonnage Open-Meteo, correction d'altitude, dates calculées.
+meteo:
+  url: https://api.open-meteo.com/v1/forecast
+  modele: best_match
+  fuseau: Europe/Paris
+  espacement_m: 2500        # maille d'échantillonnage (D6) ; repli : 5000
+  tampon_m: 5000            # points échantillonnés autour du département
+  gradient_c_par_m: 0.0065  # −0,65 °C par 100 m
+  jours_avant: 7            # dates affichées : J-7 …
+  jours_apres: 7            # … J+7
+  taille_lot: 100           # points par requête
+  appels_par_minute: 500    # sous la limite de l'API gratuite (600/min, 5 000/h, 10 000/jour)
+  retention_runs: 3
 
 # Affichage commun à toutes les espèces : score (0–1) en 5 classes ; un score nul est transparent.
 affichage:

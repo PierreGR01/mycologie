@@ -296,12 +296,17 @@ Confiance M. Le plancher et le poids faible tiennent compte de la résolution de
 
 | Facteur (poids) | Cèpe | Girolle | Trompette | Pied-de-mouton | Morille |
 |---|---|---|---|---|---|
-| Altitude (m), trapèze (1) | 150 / 300 / 1700 / 2100 | 150 / 300 / 1600 / 2000 | 150 / 250 / 1300 / 1600 | 150 / 250 / 1700 / 2000 | 150 / 200 / 800 / 1200 |
+| Altitude (m), trapèze (1) | 100 / 300 / 1700 / 2100 | 100 / 300 / 1600 / 2000 | 100 / 250 / 1300 / 1600 | 100 / 250 / 1700 / 2000 | 100 / 200 / 800 / 1200 |
 | Pente (°), trapèze (1), plancher 0,3 | 0 / 0 / 25 / 45 | 0 / 0 / 30 / 45 | 0 / 0 / 35 / 50 | 0 / 0 / 30 / 45 | 0 / 0 / 10 / 30 (plancher 0,2) |
 | Exposition, table (0,5) | neutre (non utilisée) | N, NE : 1 · E, NO : 0,9 · O, SE : 0,8 · S, SO : 0,7 | N, NE : 1 · NO : 0,9 · E : 0,8 · O : 0,7 · SE : 0,6 · S, SO : 0,5 | neutre | neutre |
 | Confiance | M | M | M | M | F |
 
-L'altitude reste volontairement large, car l'effet thermique de l'altitude est déjà porté par la température corrigée (§4.5). Cela limite le double comptage. L'exposition ne traduit ici que le régime hydrique (versants nord plus frais) : son effet thermique saisonnier n'est pas modélisé dans le MVP.
+Le premier point d'altitude est à 100 m (décision du 23/10/2026), sous le point bas mesuré du département (129 m). L'altitude reste volontairement large, car l'effet thermique de l'altitude est déjà porté par la température corrigée (§4.5). Cela limite le double comptage. L'exposition ne traduit ici que le régime hydrique (versants nord plus frais) : son effet thermique saisonnier n'est pas modélisé dans le MVP.
+
+Précisions validées le 23/10/2026 :
+- Le terrain plat (pente < 3°) est neutre (1) pour l'exposition.
+- Dans un facteur `table`, une classe non listée prend la valeur `defaut` (0). Exemple : douglas et lande dans le profil montagne de la morille.
+- Au-delà du dernier seuil de pluie, la valeur est 0,5 (`plancher_haut`) pour toutes les espèces.
 
 ### 4.5 Météo (D2, D3)
 
@@ -317,7 +322,7 @@ Indicateurs calculés pour chaque date d et chaque pixel (§5.2) :
 | Paramètre | Cèpe | Girolle | Trompette | Pied-de-mouton | Morille |
 |---|---|---|---|---|---|
 | Saison (rampe 15 j) | 01-06 → 15-11 | 15-05 → 15-11 | 01-08 → 15-12 | 01-08 → 31-12 | 01-03 → 15-06 |
-| `pluie_15j` trapèze (poids 3) | 20 / 50 / 150 / 300 (plancher 0,5 au-delà) | 15 / 40 / 150 / 300 | 25 / 60 / 200 / 350 | 20 / 50 / 200 / 350 | 15 / 30 / 120 / 250 |
+| `pluie_15j` trapèze (poids 3, 0,5 au-delà) | 20 / 50 / 150 / 300 | 15 / 40 / 150 / 300 | 25 / 60 / 200 / 350 | 20 / 50 / 200 / 350 | 15 / 30 / 120 / 250 |
 | `tmoy_7j` trapèze (poids 2) | 8 / 12 / 20 / 25 | 9 / 13 / 22 / 27 | 5 / 9 / 17 / 22 | 2 / 6 / 15 / 20 | 6 / 9 / 15 / 20 |
 | `amplitude_7j` trapèze (poids 1, plancher 0,5) | 4 / 8 / 14 / 20 | non utilisée | non utilisée | non utilisée | 4 / 8 / 15 / 20 |
 | `gel_7j` multiplicateur | 0 j : 1 · 1–2 j : 0,5 · ≥ 3 j : 0,1 | 0 j : 1 · 1–2 j : 0,5 · ≥ 3 j : 0,1 | 0 j : 1 · 1–2 j : 0,7 · ≥ 3 j : 0,3 | 0 j : 1 · 1–2 j : 0,8 · ≥ 3 j : 0,5 | 0 j : 1 · 1–2 j : 0,7 · ≥ 3 j : 0,3 |
@@ -341,7 +346,7 @@ Le fichier YAML de la morille remplace `habitat.facteurs` par `habitat.profils`.
 | Essence (bloquant, poids 3) | Colonne Morille du §4.1 | Sapin ou épicéa 0,8 · mélèze 0,8 · mélange de conifères 0,7 · mixte à conifères prépondérants 0,7 · mixte à feuillus prépondérants 0,5 · hêtre 0,3 · pin sylvestre et autres pins 0,3 · forêt ouverte 0,5 · feuillus et peupleraie 0,1 |
 | Substrat (poids 2) | Colonne Morille du §4.2 | Calcaire 0,9 · marno-calcaire 0,9 · détritique mixte 0,8 · alluvions récentes 0,6 · siliceux 0,5 · indéterminé 0,6 |
 | pH (poids 0,5) | 5,5 / 6,5 / 8,0 / 8,5 (plancher 0,3) | 5,0 / 6,0 / 8,0 / 8,5 (plancher 0,4) |
-| Altitude (poids 1) | 150 / 200 / 800 / 1200 | 700 / 900 / 1700 / 2000 |
+| Altitude (poids 1) | 100 / 200 / 800 / 1200 | 700 / 900 / 1700 / 2000 |
 | Pente (poids 1) | 0 / 0 / 10 / 30 (plancher 0,2) | 0 / 0 / 25 / 40 (plancher 0,3) |
 | Confiance | F | F |
 
@@ -391,10 +396,10 @@ Un schéma pydantic valide chaque YAML (couches existantes, classes connues, poi
 
 ### 5.2 Étape 4 : météo et correction d'altitude
 
-1. **Échantillonnage** : grille régulière L93 de 2,5 km sur le département plus un tampon de 5 km, soit ≈ 1 600 points. `z_ref` est l'altitude RGE ALTI lissée sur 500 m.
-2. **Requête Open-Meteo Forecast** : `past_days=22`, `forecast_days=8`, variables journalières `temperature_2m_min`, `temperature_2m_max`, `temperature_2m_mean` et `precipitation_sum`, `elevation=z_ref` explicite, `models=best_match`. Les points sont regroupés par lots. Les résultats vont dans `meteo.journalier`.
+1. **Échantillonnage** : grille régulière L93 de 2,5 km sur le département plus un tampon de 5 km, soit ≈ 1 600 points.
+2. **Requête Open-Meteo Forecast** : `start_date` = J-21 (J-7 moins la fenêtre de pluie de 15 jours) et `end_date` = J+7, soit 29 jours. Variables journalières : `temperature_2m_min`, `temperature_2m_max`, `temperature_2m_mean` et `precipitation_sum`, avec `models=best_match`. Les points sont regroupés par lots de 100. Les requêtes sont espacées pour rester sous 500 appels/min, et chaque lot est mis en cache. `z_ref` est l'altitude qu'Open-Meteo renvoie pour chaque point, celle à laquelle il a ramené sa température. Les résultats vont dans `meteo.journalier`.
 3. **Retrait de la tendance altitudinale** : T₀ = T + γ·z_ref, avec γ = 0,65 °C/100 m. Un gradient mensuel est optionnel (cf. [16] pour sa variabilité saisonnière dans les Alpes).
-4. **Interpolation** : les champs T₀, la pluie et l'amplitude, connus sur la grille régulière de 2,5 km, sont rééchantillonnés en spline cubique vers 25 m, ce qui donne un rendu lisse sans carrés de 1 km. La pluie est bornée à ≥ 0.
+4. **Interpolation** : les champs T₀, la pluie et l'amplitude, connus sur la grille régulière de 2,5 km, sont rééchantillonnés vers 25 m par une B-spline cubique (GDAL `cubicspline`), ce qui donne un rendu lisse sans carrés de 1 km. Cette spline lisse légèrement les extrêmes locaux. Les cellules sans point en bordure prennent la valeur du point le plus proche. La pluie est bornée à ≥ 0.
 5. **Réapplication de la tendance à 25 m** : T(x) = T₀(x) − γ·z(x), avec z issu de `alt.tif`.
    - `tmoy_7j(x) = T₀moy_7j(x) − γ·z(x)` : l'opération est linéaire, donc on la calcule sur la grille grossière puis on la réapplique.
    - `gel_7j(x) = Σ_d [ z(x) > z₀,d(x) ]`, où z₀,d = Tmin₀,d / γ est l'altitude de l'isotherme 0 °C du jour d. Seuls 7 champs grossiers sont nécessaires par date.
@@ -404,7 +409,8 @@ Un schéma pydantic valide chaque YAML (couches existantes, classes connues, poi
 ### 5.3 Score et tuilage
 
 - Pour chaque espèce et chaque date de J-7 à J+7 : S = H × M, codé en uint8 (0–100, 255 = nodata), puis reprojeté en EPSG:3857 au plus proche voisin, colorisé en 5 classes (PNG 8 bits, transparent quand S = 0) et écrit en PMTiles z8–z12.
-- Les dates postérieures à J sont marquées « prévision » dans `latest.json`. Les dates antérieures utilisent les analyses du run courant.
+- Les dates à partir du jour de récupération sont marquées « prévision » dans `latest.json`, les dates antérieures « analyse ».
+- La fenêtre saisonnière vaut 0 au premier et au dernier jour, et monte ou descend linéairement sur `rampe_jours` à l'intérieur de la fenêtre. Hors saison, la carte est vide : son fichier PMTiles ne contient qu'une tuile transparente.
 - Une écriture atomique (répertoire temporaire puis renommage) garantit que `latest.json` ne pointe jamais vers un run incomplet.
 
 ### 5.4 Étape 5 : calibrage

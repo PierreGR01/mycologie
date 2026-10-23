@@ -26,6 +26,7 @@ class Chemins(BaseModel):
     brut: Path
     statique: Path
     habitat: Path
+    runs: Path
     publication: Path
     rapports: Path
 
@@ -33,6 +34,20 @@ class Chemins(BaseModel):
 class Reseau(BaseModel):
     delai_s: float = 300
     tentatives: int = Field(default=4, ge=1)
+
+
+class ParamMeteo(BaseModel):
+    url: str
+    modele: str = "best_match"
+    fuseau: str = "Europe/Paris"
+    espacement_m: float = Field(gt=0)
+    tampon_m: float = Field(ge=0)
+    gradient_c_par_m: float = Field(gt=0)
+    jours_avant: int = Field(ge=0)
+    jours_apres: int = Field(ge=0, le=15)
+    taille_lot: int = Field(ge=1, le=1000)
+    appels_par_minute: float = Field(gt=0)
+    retention_runs: int = Field(ge=1)
 
 
 class ClasseAffichage(BaseModel):
@@ -73,6 +88,7 @@ class Parametres(BaseModel):
     chemins: Chemins
     base_de_donnees: str
     reseau: Reseau = Reseau()
+    meteo: ParamMeteo
     affichage: Affichage
     sources: dict[str, Source]
 
@@ -94,6 +110,10 @@ class Parametres(BaseModel):
     @property
     def dossier_habitat(self) -> Path:
         return self.chemin(self.chemins.habitat)
+
+    @property
+    def dossier_runs(self) -> Path:
+        return self.chemin(self.chemins.runs)
 
     @property
     def dossier_publication(self) -> Path:

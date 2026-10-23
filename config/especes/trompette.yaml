@@ -19,7 +19,7 @@ habitat:
        valeurs: {siliceux: 0.6, detritique_mixte: 0.8, marno_calcaire: 1.0, calcaire: 1.0,
                  alluvions_recentes: 0.6, indetermine: 0.7}}
     ph:       {couche: ph, type: trapeze, poids: 0.5, points: [4.5, 5.5, 7.5, 8.3], plancher: 0.4}
-    altitude: {couche: alt, type: trapeze, poids: 1, points: [150, 250, 1300, 1600]}
+    altitude: {couche: alt, type: trapeze, poids: 1, points: [100, 250, 1300, 1600]}
     pente:    {couche: pente, type: trapeze, poids: 1, points: [0, 0, 35, 50], plancher: 0.3}
     exposition:
       {couche: expo, type: table, poids: 0.5,

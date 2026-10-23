@@ -23,7 +23,7 @@ habitat:
            valeurs: {siliceux: 0.3, detritique_mixte: 0.6, marno_calcaire: 0.8, calcaire: 0.8,
                      alluvions_recentes: 1.0, indetermine: 0.6}}
         ph:       {couche: ph, type: trapeze, poids: 0.5, points: [5.5, 6.5, 8.0, 8.5], plancher: 0.3}
-        altitude: {couche: alt, type: trapeze, poids: 1, points: [150, 200, 800, 1200]}
+        altitude: {couche: alt, type: trapeze, poids: 1, points: [100, 200, 800, 1200]}
         pente:    {couche: pente, type: trapeze, poids: 1, points: [0, 0, 10, 30], plancher: 0.2}
     montagne:  # conifères de montagne (groupe M. elata)
       facteurs:
