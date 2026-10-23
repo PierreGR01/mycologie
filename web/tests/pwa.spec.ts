@@ -33,6 +33,11 @@ test("sélecteur d'espèce, curseur de date, légende et sources", async ({ page
   await accepterAvertissement(page);
   await expect(page.locator(".puce")).toHaveCount(manifeste.especes.length);
   await expect(page.locator("#legende li")).toHaveCount(manifeste.legende.length);
+  const jRun = manifeste.dates.findIndex((d: { date: string }) => d.date === manifeste.run);
+  await expect(page.locator("#graduations span").first()).toHaveText(`J-${jRun}`);
+  await expect(page.locator("#graduations span").last()).toHaveText(
+    `J+${manifeste.dates.length - 1 - jRun}`,
+  );
 
   await page.getByRole("radio", { name: "Girolle" }).click();
   await expect(page.getByRole("radio", { name: "Girolle" })).toHaveAttribute("aria-checked", "true");

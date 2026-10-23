@@ -1,4 +1,4 @@
-# Pied-de-mouton – valeurs validées le 22/10/2026 (PLAN.md §4), à ajuster au calibrage.
+# Pied-de-mouton – valeurs validées le 22/10/2026 (PLAN.md §4), ajustées le 23/10/2026 après calibrage.
 id: pied_de_mouton
 nom: Pied-de-mouton
 taxons: [Hydnum repandum]
@@ -23,10 +23,10 @@ habitat:
     pente:    {couche: pente, type: trapeze, poids: 1, points: [0, 0, 30, 45], plancher: 0.3}
 
 meteo:
-  saison: {debut: "08-01", fin: "12-31", rampe_jours: 15}
+  saison: {debut: "07-01", fin: "12-31", rampe_jours: 15}
   combinaison: moyenne_geometrique
   indicateurs:
-    pluie_15j: {type: trapeze, poids: 3, points: [20, 50, 200, 350], plancher_haut: 0.5}
+    pluie_15j: {type: trapeze, poids: 3, points: [20, 35, 200, 350], plancher_haut: 0.5}
     tmoy_7j:   {type: trapeze, poids: 2, points: [2, 6, 15, 20]}
   gel: {seuil_tmin: 0, fenetre_jours: 7, paliers: {1: 0.8, 3: 0.5}}
 

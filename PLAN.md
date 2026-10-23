@@ -245,7 +245,7 @@ La colonne Morille correspond au profil **plaine**. Le profil montagne est décr
 | Classe BD Forêt | Cèpe | Girolle | Trompette | Pied-de-mouton | Morille |
 |-----------------|:---:|:---:|:---:|:---:|:---:|
 | Hêtre | 1.0 | 1.0 | 1.0 | 1.0 | 0.3 |
-| Chênes décidus | 0.9 | 0.9 | 0.8 | 0.9 | 0.4 |
+| Chênes décidus | 0.9 | 0.9 | 0.5 ¹ | 0.9 | 0.4 |
 | Châtaignier | 0.9 | 0.9 | 0.5 | 0.7 | 0.2 |
 | Robinier | 0.1 | 0.1 | 0.1 | 0.2 | 0.3 |
 | Autres feuillus | 0.6 | 0.6 | 0.7 | 0.7 | 0.8 |
@@ -264,6 +264,8 @@ La colonne Morille correspond au profil **plaine**. Le profil montagne est décr
 | Formation herbacée, hors forêt | 0 | 0 | 0 | 0 | 0 |
 | **Confiance** | E | E | E | M | **F** |
 | **Sources** | [1][2][3] | [1][2][4] | [1][2] | [1][2] | [1][5][6] |
+
+¹ Valeur modifiée le 23/10/2026 après le calibrage GBIF (§5.4, `reports/calibration/`).
 
 Notes :
 - **Cèpe** : *B. edulis* et *B. pinophilus* sont associés au hêtre, à l'épicéa, au sapin et aux pins. *B. aereus* et *B. reticulatus* sont associés aux chênes et au châtaignier, en situation plus thermophile [3].
@@ -322,13 +324,15 @@ Indicateurs calculés pour chaque date d et chaque pixel (§5.2) :
 
 | Paramètre | Cèpe | Girolle | Trompette | Pied-de-mouton | Morille |
 |---|---|---|---|---|---|
-| Saison (rampe 15 j) | 01-06 → 15-11 | 15-05 → 15-11 | 01-08 → 15-12 | 01-08 → 31-12 | 01-03 → 15-06 |
-| `pluie_15j` trapèze (poids 3, 0,5 au-delà) | 20 / 50 / 150 / 300 | 15 / 40 / 150 / 300 | 25 / 60 / 200 / 350 | 20 / 50 / 200 / 350 | 15 / 30 / 120 / 250 |
+| Saison (rampe 15 j) | 01-06 → 15-11 | 15-05 → 15-11 | 01-08 → 15-12 | 01-07 ¹ → 31-12 | 01-03 → 15-06 |
+| `pluie_15j` trapèze (poids 3, 0,5 au-delà) | 20 / 35 ¹ / 150 / 300 | 15 / 30 ¹ / 150 / 300 | 25 / 40 ¹ / 200 / 350 | 20 / 35 ¹ / 200 / 350 | 15 / 30 / 120 / 250 |
 | `tmoy_7j` trapèze (poids 2) | 8 / 12 / 20 / 25 | 9 / 13 / 22 / 27 | 5 / 9 / 17 / 22 | 2 / 6 / 15 / 20 | 6 / 9 / 15 / 20 |
 | `amplitude_7j` trapèze (poids 1, plancher 0,5) | 4 / 8 / 14 / 20 | non utilisée | non utilisée | non utilisée | 4 / 8 / 15 / 20 |
 | `gel_7j` multiplicateur | 0 j : 1 · 1–2 j : 0,5 · ≥ 3 j : 0,1 | 0 j : 1 · 1–2 j : 0,5 · ≥ 3 j : 0,1 | 0 j : 1 · 1–2 j : 0,7 · ≥ 3 j : 0,3 | 0 j : 1 · 1–2 j : 0,8 · ≥ 3 j : 0,5 | 0 j : 1 · 1–2 j : 0,7 · ≥ 3 j : 0,3 |
 | Confiance | M | M | F–M | F–M | F |
 | Sources | [7][8][9][10][11] | [4][7][9] | [1][2][9] | [1][2][9] | [5][6] |
+
+¹ Valeurs modifiées le 23/10/2026 après le calibrage GBIF : le jour d'une observation, le cumul médian de pluie sur 15 jours est de 44 à 54 mm, et 12 % des observations de pied-de-mouton datent de juin-juillet.
 
 Justifications :
 - La pluie des 2 à 3 semaines précédentes est le premier déterminant de la fructification. La température module son effet [9][10][11].

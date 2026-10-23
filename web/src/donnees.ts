@@ -15,6 +15,7 @@ export interface Manifeste {
   zoom: { min: number; max: number };
   emprise: [number, number, number, number];
   limite: string;
+  note?: string; // précision sur les données (ex. démonstration), affichée dans le panneau
   sources: {
     id: string;
     nom: string;

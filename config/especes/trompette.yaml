@@ -1,4 +1,4 @@
-# Trompette de la mort – valeurs validées le 22/10/2026 (PLAN.md §4), à ajuster au calibrage.
+# Trompette de la mort – valeurs validées le 22/10/2026 (PLAN.md §4), ajustées le 23/10/2026 après calibrage.
 id: trompette
 nom: Trompette de la mort
 taxons: [Craterellus cornucopioides]
@@ -9,7 +9,7 @@ habitat:
   facteurs:
     essence:
       {couche: foret, type: table, poids: 3, bloquant: true, defaut: 0,
-       valeurs: {hetre: 1.0, chenes_decidus: 0.8, chataignier: 0.5, robinier: 0.1,
+       valeurs: {hetre: 1.0, chenes_decidus: 0.5, chataignier: 0.5, robinier: 0.1,
                  autres_feuillus: 0.7, melange_feuillus: 0.9, peupleraie: 0.1, sapin_epicea: 0.4,
                  pin_sylvestre: 0.1, autres_pins: 0.0, meleze: 0.0, douglas: 0.1,
                  melange_coniferes: 0.2, mixte_feuillus: 0.9, mixte_coniferes: 0.6,
@@ -29,7 +29,7 @@ meteo:
   saison: {debut: "08-01", fin: "12-15", rampe_jours: 15}
   combinaison: moyenne_geometrique
   indicateurs:
-    pluie_15j: {type: trapeze, poids: 3, points: [25, 60, 200, 350], plancher_haut: 0.5}
+    pluie_15j: {type: trapeze, poids: 3, points: [25, 40, 200, 350], plancher_haut: 0.5}
     tmoy_7j:   {type: trapeze, poids: 2, points: [5, 9, 17, 22]}
   gel: {seuil_tmin: 0, fenetre_jours: 7, paliers: {1: 0.7, 3: 0.3}}
 

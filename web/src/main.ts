@@ -102,6 +102,17 @@ async function demarrer(): Promise<void> {
     changer({ ...selection, habitatSeul: habitatSeul.checked }),
   );
 
+  // Graduations : écart en jours entre la première / dernière date et le jour du run.
+  const jRun = Math.max(0, manifeste.dates.findIndex((d) => d.date === manifeste.run));
+  const [premiere, , derniere] = $("graduations").children;
+  premiere.textContent = `J-${jRun}`;
+  derniere.textContent = `J+${manifeste.dates.length - 1 - jRun}`;
+  if (manifeste.note) {
+    const note = $("note-donnees");
+    note.hidden = false;
+    note.textContent = manifeste.note;
+  }
+
   // Légende
   $("legende").replaceChildren(
     ...manifeste.legende.map((c) => {

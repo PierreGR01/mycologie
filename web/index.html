@@ -30,10 +30,11 @@
         <span id="date-type" class="badge"></span>
       </div>
       <input id="curseur-date" type="range" min="0" max="14" step="1" value="7" aria-label="Date affichée" />
-      <div class="graduations" aria-hidden="true"><span>J-7</span><span>aujourd'hui</span><span>J+7</span></div>
+      <div id="graduations" class="graduations" aria-hidden="true"><span></span><span>aujourd'hui</span><span></span></div>
       <label class="bascule"><input id="habitat-seul" type="checkbox" /> Habitat seul (sans la météo)</label>
       <ul id="legende" class="legende" aria-label="Légende"></ul>
       <p class="note">Indice de favorabilité calculé : ce n'est pas une garantie de présence.</p>
+      <p id="note-donnees" class="note note-donnees" hidden></p>
       <p id="avertissement-espece" class="avertissement-espece" role="note" hidden></p>
     </section>
 

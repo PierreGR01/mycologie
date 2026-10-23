@@ -154,6 +154,13 @@ stockage objet S3 ou équivalent, GitHub Pages…). L'installation sur mobile ex
 sur `localhost`. Les fichiers `index.html`, `sw.js` et `data/` doivent être revalidés à chaque
 visite (voir `web/nginx.conf`).
 
+### Démo en ligne
+
+`make demo` prépare dans `build/demo` une version statique réduite : l'application, l'habitat et
+les cartes de J-1 à J+1, avec une note « démonstration ». Ce dossier peut être publié sur la
+branche `gh-pages` et servi par GitHub Pages (*Settings → Pages → Deploy from a branch →
+gh-pages*). GitHub Pages fournit le HTTPS et gère les requêtes Range.
+
 ## Tests
 
 ```bash

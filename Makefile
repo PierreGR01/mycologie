@@ -3,7 +3,7 @@ PY      ?= $(VENV)/bin/python
 STATIC   = data/static
 INSTALLE = $(VENV)/.installe
 
-.PHONY: help install up down ingest habitat pipeline calibrage web serve test test-web lint
+.PHONY: help install up down ingest habitat pipeline calibrage web serve demo test test-web lint
 
 help:
 	@echo "make install     environnement Python (.venv)"
@@ -14,6 +14,7 @@ help:
 	@echo "make calibrage   étape 5 : rapports de calibrage GBIF (reports/calibration/)"
 	@echo "make web         étape 6 : construit la PWA (web/dist)"
 	@echo "make serve       sert la PWA et les données sur http://localhost:8080 (Docker)"
+	@echo "make demo        démo statique réduite dans build/demo (GitHub Pages…)"
 	@echo "make test | lint tests Python et analyse statique ; make test-web : tests de la PWA"
 
 install: $(INSTALLE)
@@ -77,6 +78,11 @@ web/dist/index.html: web/node_modules/.package-lock.json $(WEB_SOURCES)
 serve: web
 	docker compose up -d web
 	@echo "PWA : http://localhost:8080"
+
+# Démo statique réduite (J-1 à J+1), à publier par exemple sur GitHub Pages.
+DEMO ?= build/demo
+demo: web
+	$(PY) web/scripts/preparer_demo.py $(DEMO)
 
 test-web: web
 	cd web && npx playwright test

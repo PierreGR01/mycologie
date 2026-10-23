@@ -282,3 +282,8 @@ dialog h2 {
     bottom: 0;
   }
 }
+
+.note-donnees {
+  font-weight: 600;
+  color: var(--alerte);
+}
