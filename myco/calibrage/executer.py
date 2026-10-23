@@ -165,8 +165,9 @@ def executer(p: Parametres, especes: dict[str, Espece], avec_meteo: bool = True,
             hors_saison_pct=hors, jeux=o["jeu_donnees"].value_counts(),
         )
         if r.n_dates >= analyse.N_MIN and hors > analyse.HORS_SAISON_MAX:
-            mois = sorted({analyse.MOIS[d.month - 1] for d in o["date_obs"].dropna()
-                           if analyse.facteur_saison(d, e.meteo.saison) == 0})
+            mois = [analyse.MOIS[m - 1] for m in sorted(
+                {d.month for d in o["date_obs"].dropna()
+                 if analyse.facteur_saison(d, e.meteo.saison) == 0})]
             r.alertes.append(f"Phénologie : {hors:.0f} % des observations hors saison du modèle "
                              f"({', '.join(mois)}).")
         h = _lire(p.dossier_habitat / f"{i}.tif")
