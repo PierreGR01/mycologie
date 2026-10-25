@@ -41,7 +41,7 @@ meteo:
 calibrage:
   gbif: https://api.gbif.org/v1
   annee_min: 2005
-  licences: [CC0_1_0, CC_BY_4_0]   # données ouvertes uniquement
+  licences: [CC0_1_0, CC_BY_4_0, CC_BY_NC_4_0]   # usage non commercial gratuit (contrainte clarifiée)
   # Les observations MycoflAURA publiées sur GBIF sont floutées à ≈ 2,8 km : au-delà de ce seuil,
   # une observation n'est utilisée que pour la phénologie.
   incertitude_max_m: 3000
@@ -130,8 +130,8 @@ sources:
     attribution: "Weather data by Open-Meteo.com (Météo-France, ECMWF, DWD)"
     url: https://open-meteo.com
   gbif:
-    nom: GBIF – observations (CC0 et CC BY uniquement)
-    licence: CC0 / CC BY 4.0 selon les jeux de données
+    nom: GBIF – observations (CC0, CC BY, CC BY-NC)
+    licence: CC0 / CC BY 4.0 / CC BY-NC 4.0 selon les jeux de données
     attribution: "GBIF.org (DOI du téléchargement dans le rapport de calibrage)"
     url: https://www.gbif.org
   openobs:

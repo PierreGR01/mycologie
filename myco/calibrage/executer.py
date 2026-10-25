@@ -46,13 +46,13 @@ def observations(p: Parametres, especes: dict[str, Espece], limite) -> tuple:
             t = gbif.resoudre_taxon(nom, pc, p.reseau) | {"espece": i}
             taxons.append(t)
             df = gbif.telecharger(t["gbif_key"], params, pc, p.reseau,
-                                  brut / f"taxon_{t['gbif_key']}.csv")
+                                  brut / f"taxon_{t['gbif_key']}_{gbif.empreinte(params)}.csv")
             morceaux.append(gbif.en_observations(df, i, limite))
     obs = pd.concat(morceaux, ignore_index=True).drop_duplicates(["espece", "source_id"])
     fond_t = gbif.resoudre_taxon(pc.fond_taxon, pc, p.reseau)
-    fond_df = gbif.telecharger(fond_t["gbif_key"],
-                               gbif.parametres_recherche(pc, emprise, pc.incertitude_max_m),
-                               pc, p.reseau, brut / f"fond_{fond_t['gbif_key']}.csv")
+    params_fond = gbif.parametres_recherche(pc, emprise, pc.incertitude_max_m)
+    cache_fond = brut / f"fond_{fond_t['gbif_key']}_{gbif.empreinte(params_fond)}.csv"
+    fond_df = gbif.telecharger(fond_t["gbif_key"], params_fond, pc, p.reseau, cache_fond)
     fond = gbif.en_observations(fond_df, "fond", limite)
     requete = f"{pc.gbif}/occurrence/search?" + "&".join(
         f"{k}={','.join(v) if isinstance(v, list) else v}" for k, v in params.items())
@@ -151,6 +151,7 @@ def executer(p: Parametres, especes: dict[str, Espece], avec_meteo: bool = True,
         "date": datetime.now(UTC).strftime("%d/%m/%Y"),
         "annee_min": pc.annee_min,
         "incertitude_max_m": pc.incertitude_max_m,
+        "licences": ", ".join(gbif.LIBELLES_LICENCES.get(lic, lic) for lic in pc.licences),
         "requete": requete,
         "provisoire": contexte_provisoire(p, geol, masque),
     }

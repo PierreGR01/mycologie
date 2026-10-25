@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import logging
 from datetime import UTC, datetime
@@ -17,6 +18,7 @@ log = logging.getLogger(__name__)
 
 TAILLE_PAGE = 300  # maximum de l'API de recherche
 SEUIL_DECOUPAGE = 6000
+LIBELLES_LICENCES = {"CC0_1_0": "CC0", "CC_BY_4_0": "CC BY", "CC_BY_NC_4_0": "CC BY-NC"}
 CHAMPS = ["gbifID", "taxonKey", "scientificName", "eventDate", "year", "month", "day",
           "decimalLatitude", "decimalLongitude", "coordinateUncertaintyInMeters", "license",
           "datasetKey", "basisOfRecord"]
@@ -59,6 +61,12 @@ def _pages(url: str, params: dict, reseau: Reseau) -> list[dict]:
         decalage += TAILLE_PAGE
         if page["endOfRecords"] or decalage >= 100_000:
             return lignes
+
+
+def empreinte(params: dict) -> str:
+    """Empreinte courte des paramètres de requête : un changement de filtre (licences, années…)
+    donne un autre fichier de cache."""
+    return hashlib.sha1(json.dumps(params, sort_keys=True).encode()).hexdigest()[:8]
 
 
 def _compte(url: str, params: dict, reseau: Reseau) -> int:

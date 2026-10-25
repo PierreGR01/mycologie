@@ -117,7 +117,7 @@ make calibrage                                        # rapports dans reports/ca
 .venv/bin/python -m myco calibrage --sans-meteo        # sans la météo historique (plus rapide)
 ```
 
-Les observations GBIF des taxons de chaque fichier espèce (CC0 et CC BY uniquement, depuis 2005)
+Les observations GBIF des taxons de chaque fichier espèce (CC0, CC BY et CC BY-NC, depuis 2005)
 sont comparées au modèle. Chaque rapport contient :
 - la phénologie : observations par quinzaine, comparées à la fenêtre saisonnière ;
 - l'habitat : AUC et indice de Boyce par rapport au fond de toutes les observations de
@@ -177,8 +177,9 @@ PostGIS initialisée avec `db/init.sql`. **Attention : ce test vide les tables `
 
 ## Sources et licences
 
-Toutes les sources sont ouvertes. Leurs licences et attributions sont déclarées dans
-[config/settings.yaml](config/settings.yaml) et seront affichées dans l'application.
+Toutes les sources sont utilisables gratuitement pour un usage non commercial (décision D11 du
+plan). Leurs licences et attributions sont déclarées dans [config/settings.yaml](config/settings.yaml)
+et affichées dans l'application.
 
 | Source | Licence |
 |--------|---------|
@@ -186,7 +187,7 @@ Toutes les sources sont ouvertes. Leurs licences et attributions sont déclarée
 | BRGM : BD Charm-50 | Licence Ouverte Etalab 2.0 (à confirmer) |
 | ISRIC : SoilGrids 2.0 | CC BY 4.0 |
 | Open-Meteo | CC BY 4.0 (API gratuite, usage non commercial) |
-| GBIF | CC0 et CC BY 4.0 uniquement |
+| GBIF | CC0, CC BY 4.0 et CC BY-NC 4.0 |
 | INPN / OpenObs | À confirmer |
 
 ## Licence

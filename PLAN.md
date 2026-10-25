@@ -18,6 +18,7 @@
 | D7 | Usage Open-Meteo | **Non commercial** : API gratuite (10 000 appels/jour) |
 | D8 | Zone de calibrage | Isère seule. Option : ajouter les départements limitrophes si les effectifs sont trop faibles |
 | D9 | Fond de carte | Plan IGN v2 (WMTS Géoplateforme, Licence Ouverte) |
+| D11 | Sens de « données ouvertes » (contrainte initiale) | **Clarifié le 25/10/2026** : données utilisables **gratuitement pour un usage non commercial**. Les licences non commerciales (CC BY-NC, CC BY-NC-SA) sont admises, avec attribution affichée ; les cartes dérivées d'une source « SA » reprennent sa licence |
 | D10 | Licence du code | **Aucune pour l'instant** (23/10/2026) : code public mais « tous droits réservés ». Pas d'usage commercial envisagé ; piste si besoin : PolyForm Noncommercial 1.0.0 |
 
 ---
@@ -432,7 +433,7 @@ Plan initial :
 
 
 1. **Observations** :
-   - GBIF : téléchargement avec DOI, compte en `.env`, repli sur l'API de recherche. Filtres : `coordinateUncertaintyInMeters ≤ 100`, pas d'anomalie géographique, licences CC0 ou CC BY, années ≥ 2005.
+   - GBIF : téléchargement avec DOI, compte en `.env`, repli sur l'API de recherche. Filtres : `coordinateUncertaintyInMeters ≤ 100`, pas d'anomalie géographique, licences CC0, CC BY ou CC BY-NC (D11), années ≥ 2005.
    - OpenObs : mêmes filtres, en excluant les données floutées à la commune ou à la maille.
    - Dédoublonnage GBIF / INPN (même taxon, même date, distance < 50 m).
 2. **Habitat** : valeurs de H aux présences, comparées à un fond de 10 000 points tirés parmi **toutes les observations de champignons** de la zone (fond « target-group », pour corriger le biais d'accessibilité [13]). Métriques :
