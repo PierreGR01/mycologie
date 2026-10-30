@@ -3,6 +3,8 @@ from datetime import date
 
 import numpy as np
 import pytest
+from pmtiles.tile import tileid_to_zxy
+from rasterio.crs import CRS
 from rasterio.windows import Window
 
 from myco.cli import main
@@ -10,7 +12,7 @@ from myco.especes import Gel, Meteo, Saison, charger_especes
 from myco.grid import Grille
 from myco.meteo import openmeteo, recuperation
 from myco.score import Affineur, facteur_saison, multiplicateur_gel, score_meteo
-from myco.tuiles import lire_pmtiles
+from myco.tuiles import lire_pmtiles, tuiles_transparentes
 from tests.test_habitat import deposer_couches_statiques
 from tests.test_meteo import faux_obtenir, limite_test
 
@@ -101,6 +103,17 @@ def test_pipeline_hors_ligne(projet, parametres, monkeypatch):
     _, meta = lire_pmtiles(publication / "runs" / "2026-10-15" / "cepe" / "2026-10-15.pmtiles")
     assert meta["type"] == "score" and "Open-Meteo" in meta["attribution"]
 
-    # La morille est hors saison en octobre : fichiers présents, mais une seule tuile vide.
+    # La morille est hors saison en octobre : fichiers présents, avec la seule tuile (vide) du
+    # zoom minimal qui couvre ce petit département fictif.
     entete, _ = lire_pmtiles(publication / "runs" / "2026-10-15" / "morille" / "2026-10-15.pmtiles")
     assert entete["addressed_tiles_count"] == 1
+
+
+def test_zoom_minimal_complete(parametres):
+    """Toute l'emprise est couverte au zoom minimal, même sans pixel favorable."""
+    grille = Grille(crs=CRS.from_epsg(2154), xmin=840000, ymin=6400000, xmax=965000, ymax=6535000,
+                    resolution=25)
+    vides = tuiles_transparentes(grille, parametres.affichage, set())
+    assert len(vides) > 1
+    assert {tileid_to_zxy(i)[0] for i, _ in vides} == {parametres.affichage.zoom_min}
+    assert tuiles_transparentes(grille, parametres.affichage, {vides[0][0]}) == vides[1:]

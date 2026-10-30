@@ -90,12 +90,15 @@ def tuiler(classes: np.ndarray, grille: Grille, affichage: Affichage) -> list[tu
     return sorted(tuiles)
 
 
-def tuile_transparente(grille: Grille, affichage: Affichage) -> list[tuple[int, bytes]]:
-    ouest, sud, est, nord = transform_bounds(grille.crs, WEB_MERCATOR, *grille.bornes)
-    x, y = (ouest + est) / 2, (sud + nord) / 2
-    _, xs, ys = _tuiles_couvrant((x, y, x, y), affichage.zoom_min)
-    vide = np.zeros((TAILLE, TAILLE), dtype="uint8")
-    return [(zxy_to_tileid(affichage.zoom_min, xs[0], ys[0]), _png(vide, palette(affichage)))]
+def tuiles_transparentes(grille: Grille, affichage: Affichage,
+                         presentes: set[int]) -> list[tuple[int, bytes]]:
+    """Tuiles vides au zoom minimal, là où l'emprise n'en a pas : MapLibre ne termine pas le
+    chargement d'une source PMTiles dont une tuile manque au zoom minimal."""
+    bornes = transform_bounds(grille.crs, WEB_MERCATOR, *grille.bornes)
+    _, xs, ys = _tuiles_couvrant(bornes, affichage.zoom_min)
+    vide = _png(np.zeros((TAILLE, TAILLE), dtype="uint8"), palette(affichage))
+    ids = (zxy_to_tileid(affichage.zoom_min, x, y) for x in xs for y in ys)
+    return [(i, vide) for i in ids if i not in presentes]
 
 
 def ecrire_pmtiles(
@@ -105,8 +108,8 @@ def ecrire_pmtiles(
     affichage: Affichage,
     metadonnees: dict,
 ) -> Path:
-    # Aucun pixel favorable (hors saison…) : une tuile transparente garde le fichier lisible.
-    tuiles = tuiles or tuile_transparente(grille, affichage)
+    # Jour sans pixel favorable (hors saison…) ou peu favorable : zoom minimal complété.
+    tuiles = sorted(tuiles + tuiles_transparentes(grille, affichage, {i for i, _ in tuiles}))
     ouest, sud, est, nord = transform_bounds(grille.crs, "EPSG:4326", *grille.bornes)
     entete = {
         "tile_type": TileType.PNG,
