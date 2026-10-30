@@ -8,7 +8,24 @@ const PLAN_IGN =
   "&LAYER=GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2&STYLE=normal&TILEMATRIXSET=PM" +
   "&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image/png";
 
-maplibregl.addProtocol("pmtiles", new Protocol().tile);
+// Les cartes ne contiennent pas les tuiles sans pixel favorable. Le protocole PMTiles renvoie
+// alors `data: null`, et MapLibre ne termine jamais le chargement de la source (pas d'événement
+// « idle », donc pas de mémorisation hors ligne) : on lui donne une image transparente.
+const protocole = new Protocol();
+let tuileVide: Promise<Uint8Array> | undefined;
+async function imageTransparente(): Promise<Uint8Array> {
+  const canevas = new OffscreenCanvas(1, 1);
+  const png = await canevas.convertToBlob({ type: "image/png" });
+  return new Uint8Array(await png.arrayBuffer());
+}
+maplibregl.addProtocol("pmtiles", async (params, abandon) => {
+  const reponse = await protocole.tilev4(params, abandon);
+  if (params.type !== "json" && reponse.data == null) {
+    tuileVide ??= imageTransparente();
+    return { data: await tuileVide };
+  }
+  return reponse;
+});
 
 export function creerCarte(conteneur: string, m: Manifeste): CarteMapLibre {
   const style: StyleSpecification = {

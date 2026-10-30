@@ -104,3 +104,14 @@ test("hors ligne : la dernière carte consultée reste affichée", async ({ page
   await expect(page.locator("#bandeau")).toContainText("seule la dernière carte");
   await context.setOffline(false);
 });
+
+test.describe("écran large", () => {
+  test.use({ viewport: { width: 1280, height: 900 }, isMobile: false, hasTouch: false });
+
+  // Les tuiles sans pixel favorable sont absentes des cartes : la source doit tout de même
+  // terminer son chargement, sinon la dernière carte n'est jamais mémorisée pour le hors-ligne.
+  test("la carte termine son chargement malgré les tuiles absentes", async ({ page }) => {
+    await accepterAvertissement(page);
+    await carteChargee(page);
+  });
+});
