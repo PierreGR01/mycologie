@@ -1,17 +1,17 @@
 {
-  "run": "2026-10-23",
-  "genere_le": "2026-10-23T09:51:43+00:00",
+  "run": "2026-10-30",
+  "genere_le": "2026-10-30T10:51:08+00:00",
   "dates": [
     {
-      "date": "2026-10-22",
+      "date": "2026-10-29",
       "type": "analyse"
     },
     {
-      "date": "2026-10-23",
+      "date": "2026-10-30",
       "type": "prevision"
     },
     {
-      "date": "2026-10-24",
+      "date": "2026-10-31",
       "type": "prevision"
     }
   ],
@@ -21,35 +21,35 @@
       "nom": "Cèpe",
       "avertissement": null,
       "habitat": "habitat/cepe.pmtiles",
-      "tuiles": "runs/2026-10-23/cepe/{date}.pmtiles"
+      "tuiles": "runs/2026-10-30/cepe/{date}.pmtiles"
     },
     {
       "id": "girolle",
       "nom": "Girolle",
       "avertissement": null,
       "habitat": "habitat/girolle.pmtiles",
-      "tuiles": "runs/2026-10-23/girolle/{date}.pmtiles"
+      "tuiles": "runs/2026-10-30/girolle/{date}.pmtiles"
     },
     {
       "id": "morille",
       "nom": "Morille",
       "avertissement": "Les morilles sont toxiques crues ou insuffisamment cuites.",
       "habitat": "habitat/morille.pmtiles",
-      "tuiles": "runs/2026-10-23/morille/{date}.pmtiles"
+      "tuiles": "runs/2026-10-30/morille/{date}.pmtiles"
     },
     {
       "id": "pied_de_mouton",
       "nom": "Pied-de-mouton",
       "avertissement": null,
       "habitat": "habitat/pied_de_mouton.pmtiles",
-      "tuiles": "runs/2026-10-23/pied_de_mouton/{date}.pmtiles"
+      "tuiles": "runs/2026-10-30/pied_de_mouton/{date}.pmtiles"
     },
     {
       "id": "trompette",
       "nom": "Trompette de la mort",
       "avertissement": null,
       "habitat": "habitat/trompette.pmtiles",
-      "tuiles": "runs/2026-10-23/trompette/{date}.pmtiles"
+      "tuiles": "runs/2026-10-30/trompette/{date}.pmtiles"
     }
   ],
   "legende": [
@@ -116,11 +116,11 @@
       "carte": true
     },
     {
-      "id": "bdcharm50",
-      "nom": "BD Charm-50, carte géologique harmonisée au 1/50 000 (BRGM)",
-      "licence": "Licence Ouverte Etalab 2.0 (à confirmer)",
-      "attribution": "© BRGM – BD Charm-50",
-      "url": "https://infoterre.brgm.fr",
+      "id": "bdlisa",
+      "nom": "BD LISA v3, entités hydrogéologiques de niveau local (BRGM / SANDRE)",
+      "licence": "CC BY-NC-SA 2.0 FR (cartes dérivées sous la même licence)",
+      "attribution": "BRGM / SANDRE – BD LISA v3 (CC BY-NC-SA)",
+      "url": "https://bdlisa.eaufrance.fr",
       "carte": true
     },
     {
@@ -149,8 +149,8 @@
     },
     {
       "id": "gbif",
-      "nom": "GBIF – observations (CC0 et CC BY uniquement)",
-      "licence": "CC0 / CC BY 4.0 selon les jeux de données",
+      "nom": "GBIF – observations (CC0, CC BY, CC BY-NC)",
+      "licence": "CC0 / CC BY 4.0 / CC BY-NC 4.0 selon les jeux de données",
       "attribution": "GBIF.org (DOI du téléchargement dans le rapport de calibrage)",
       "url": "https://www.gbif.org",
       "carte": false
@@ -172,5 +172,6 @@
       "carte": false
     }
   ],
-  "note": "Démonstration : cartes provisoires, calculées sans la carte géologique BRGM et mises à jour manuellement."
+  "licence_cartes": "Les cartes de favorabilité sont dérivées de BD LISA v3, entités hydrogéologiques de niveau local (BRGM / SANDRE) : elles sont diffusées sous licence CC BY-NC-SA (attribution, pas d'usage commercial, partage dans les mêmes conditions).",
+  "note": "Démonstration : cartes mises à jour manuellement, pas chaque jour ; géologie issue de la BD LISA en attendant la BD Charm-50."
 }
