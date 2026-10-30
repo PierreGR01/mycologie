@@ -42,7 +42,7 @@ $(STATIC)/alt.tif: $(STATIC)/masque.tif
 $(STATIC)/foret.tif: $(STATIC)/masque.tif config/classes/foret.yaml
 	$(PY) -m myco ingest foret $(if $(SANS_BASE),--sans-base)
 
-$(STATIC)/geol.tif: $(STATIC)/masque.tif config/classes/geologie_regles.yaml $(wildcard config/classes/geologie.csv)
+$(STATIC)/geol.tif: $(STATIC)/masque.tif config/classes/geologie_regles.yaml $(wildcard config/classes/geologie*.csv)
 	$(PY) -m myco ingest geologie $(if $(SANS_BASE),--sans-base)
 
 $(STATIC)/ph.tif: $(STATIC)/masque.tif

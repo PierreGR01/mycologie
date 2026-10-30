@@ -20,7 +20,8 @@ Le score final vaut habitat × météo, sur une maille de 25 m. La conception es
 | Domaine | Usage |
 |---------|-------|
 | `data.geopf.fr` | IGN Géoplateforme : WFS ADMIN EXPRESS et BD Forêt, téléchargement du RGE ALTI |
-| `infoterre.brgm.fr` | Carte géologique BD Charm-50 |
+| `infoterre.brgm.fr` | Carte géologique BD Charm-50 (source préférée) |
+| `services.sandre.eaufrance.fr` | BD LISA v3, carte géologique de repli |
 | `files.isric.org` | SoilGrids (pH) |
 | `api.open-meteo.com`, `archive-api.open-meteo.com` | Météo (étapes 4 et 5) |
 | `api.gbif.org`, `openobs.mnhn.fr`, `taxref.mnhn.fr` | Observations (étape 5) |
@@ -63,8 +64,17 @@ sha256. Une archive RGE ALTI introuvable automatiquement peut être déposée à
 
 **À relire après la première ingestion :**
 
-- `config/classes/geologie.csv` : classe de substrat de chaque unité géologique. Pour corriger une
-  unité, modifiez sa colonne `classe` : la correction est conservée aux exécutions suivantes.
+- `config/classes/geologie.csv` (BD Charm-50) ou `geologie_bdlisa.csv` (BD LISA) : classe de
+  substrat de chaque unité géologique. Pour corriger une unité, modifiez sa colonne `classe` : la
+  correction est conservée aux exécutions suivantes.
+
+La carte géologique vient de la première source accessible de `geologie.sources`
+([config/settings.yaml](config/settings.yaml)) : la BD Charm-50 du BRGM (1/50 000), sinon la
+BD LISA v3 (BRGM / SANDRE). Pour la BD LISA, chaque polygone élémentaire prend l'entité
+hydrogéologique affleurante (ordre relatif 1 dans sa pile), classée d'après son libellé et ses
+lithologies. Elle est moins fine que la BD Charm-50 : ses entités regroupent plusieurs formations
+(« Calcaires et marnes crétacés de la Chartreuse »). La source retenue est notée dans
+`data/static/geol.tif.source.json` et reprise dans les attributions.
 - `reports/ingestion/foret_codes.csv` : codes BD Forêt rencontrés. Les codes rangés en `inconnu`
   sont à ajouter dans `foret.yaml`.
 
@@ -185,10 +195,15 @@ et affichées dans l'application.
 |--------|---------|
 | IGN : RGE ALTI®, BD Forêt® V2, ADMIN EXPRESS, Plan IGN | Licence Ouverte Etalab 2.0 |
 | BRGM : BD Charm-50 | Licence Ouverte Etalab 2.0 (à confirmer) |
+| BRGM / SANDRE : BD LISA v3 | CC BY-NC-SA 2.0 FR |
 | ISRIC : SoilGrids 2.0 | CC BY 4.0 |
 | Open-Meteo | CC BY 4.0 (API gratuite, usage non commercial) |
 | GBIF | CC0, CC BY 4.0 et CC BY-NC 4.0 |
 | INPN / OpenObs | À confirmer |
+
+Avec la BD LISA (licence « partage dans les mêmes conditions »), les cartes d'habitat et de
+favorabilité qui en dérivent sont diffusées sous **CC BY-NC-SA**. L'application l'indique dans
+« À propos ».
 
 ## Licence
 

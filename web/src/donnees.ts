@@ -16,6 +16,7 @@ export interface Manifeste {
   emprise: [number, number, number, number];
   limite: string;
   note?: string; // précision sur les données (ex. démonstration), affichée dans le panneau
+  licence_cartes?: string | null; // licence imposée aux cartes par une source « SA »
   sources: {
     id: string;
     nom: string;

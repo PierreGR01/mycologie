@@ -16,6 +16,7 @@ from myco import regles
 from myco.config import Parametres, charger_classes_foret, charger_regles_geologie
 from myco.especes import Espece, FacteurTable, Habitat
 from myco.ingest import grille_reference
+from myco.ingest.geologie import source_utilisee
 from myco.rasters import ecrire_cog
 from myco.terrain import NODATA_U8, SECTEURS
 from myco.tuiles import attribution, classer, ecrire_pmtiles, palette, tuiler
@@ -24,7 +25,11 @@ log = logging.getLogger(__name__)
 
 NODATA_H = 255  # H est stocké en uint8 de 0 à 100 ; 255 = hors département
 LIGNES_PAR_BLOC = 512
-SOURCES_HABITAT = ["bdforet", "bdcharm50", "soilgrids", "rgealti"]
+
+
+def sources_habitat(p: Parametres) -> list[str]:
+    return ["bdforet", source_utilisee(p), "soilgrids", "rgealti"]
+
 
 # Codage des couches catégorielles : code → clé du vocabulaire, et code « pas de donnée ».
 NODATA_CATEGORIEL = {"foret": None, "geol": 0, "expo": NODATA_U8}
@@ -169,7 +174,7 @@ def executer(p: Parametres, especes: dict[str, Espece], tuiles: bool = True) -> 
                 p.dossier_publication / "habitat" / f"{i}.pmtiles",
                 tuiler(classer(h, p.affichage), grille, p.affichage), grille, p.affichage,
                 {"name": f"Habitat – {especes[i].nom}", "espece": i, "type": "habitat",
-                 "attribution": attribution(p.sources, SOURCES_HABITAT)},
+                 "attribution": attribution(p.sources, sources_habitat(p))},
             ))
     tableau = resume(scores, p)
     tableau.to_csv(rapports / "resume.csv", index=False)

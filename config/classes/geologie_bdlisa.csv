@@ -1,0 +1,230 @@
+notation,classe,classe_auto,regle,surface_ha,n_polygones,description
+585AA01,marno_calcaire,marno_calcaire,6,131214.9,7,Formations marno-calcaires secondaires du bassin versant du Drac et grès tertiaires du Champsaur
+521AU00,detritique_mixte,detritique_mixte,4,98569.1,131,"NV3 absent, nom de l'entité NV2 : Formations molassiques du Bas-Dauphiné"
+712AB03,detritique_mixte,detritique_mixte,4,86699.7,583,Placages quaternaires discontinus du Bas-Dauphiné et Alluvions fluvio-glaciaires würmiennes
+525AK00,siliceux,siliceux,8,76101.3,3,"NV3 absent, nom de l'entité NV2 : Formations cristallines du bassin versant de la Romanche"
+525AM00,siliceux,siliceux,8,58450.0,3,"NV3 absent, nom de l'entité NV2 : Formations cristallines du bassin versant du Drac"
+531AE00,marno_calcaire,marno_calcaire,6,56105.2,2,Complément de l'entité NV2 : Calcaires et marnes crétacés et jurassiques de la vallée du Rhône au Diois et aux Baronnies
+521AV00,detritique_mixte,detritique_mixte,4,50349.5,67,"NV3 absent, nom de l'entité NV2 : Conglomérats de Voreppe"
+521AM00,detritique_mixte,detritique_mixte,4,47583.2,3,"NV3 absent, nom de l'entité NV2 : Alluvions fluvio-glaciaires de la plaine de Bièvre-Valloire"
+525AJ00,indetermine,indetermine,,44246.0,5,"NV3 absent, nom de l'entité NV2 : Formations sédimentaires du bas bassin versant de l'Isère"
+516AL00,detritique_mixte,detritique_mixte,4,44125.6,6,"NV3 absent, nom de l'entité NV2 : Formations molassiques et variées de l'avant pays savoyard"
+525AF00,indetermine,indetermine,,41201.3,4,"NV3 absent, nom de l'entité NV2 : Formations sédimentaires du bassin versant de l'Arc - Alpes externes"
+521AS00,detritique_mixte,detritique_mixte,4,40602.5,20,"NV3 absent, nom de l'entité NV2 : Formations du Pliocène supérieur des plateaux de Bonnevaux et Chambaran"
+525AL00,indetermine,indetermine,,39089.7,5,"NV3 absent, nom de l'entité NV2 : Formations sédimentaires du bassin versant de la Romanche"
+517AP00,marno_calcaire,marno_calcaire,6,36702.2,3,Complément de l'entité NV2 : Calcaires et marnes jurassiques et crétacés des Bauges orientales
+517AK00,marno_calcaire,marno_calcaire,6,36347.7,2,Complément de l'entité NV2 : Calcaires et marnes crétacés de la Chartreuse
+515AD00,marno_calcaire,marno_calcaire,6,34947.3,3,Complément de l'entité NV2 : Calcaires et marnes jurassiques de l'Ile Crémieu
+525AE00,siliceux,siliceux,8,30057.5,5,"NV3 absent, nom de l'entité NV2 : Formations cristallines de Belledonne du bassin versant de l'Arc - Alpes externes"
+516AK00,detritique_mixte,detritique_mixte,4,28356.5,14,Complément de l'entité NV2 : Formations glaciaires et molassiques de l'Albanais et du Bas-Chablais
+525AI00,siliceux,siliceux,8,27394.6,2,"NV3 absent, nom de l'entité NV2 : Formations cristallines de Belledonne du bas bassin versant de l'Isère"
+517AA09,calcaire,calcaire,7,25901.7,3,Système karstique de Luire-Arbois-Bournillon
+527AD00,siliceux,siliceux,8,24530.8,2,"NV3 absent, nom de l'entité NV2 : Formations primaires cristallophylliennes et magmatiques (gneiss, granites) dans le bassin versant du Doux"
+521AN00,detritique_mixte,detritique_mixte,4,23797.4,10,"NV3 absent, nom de l'entité NV2 : Alluvions anciennes des terrasses de l'Isère"
+712AB01,alluvions_recentes,alluvions_recentes,5,22105.6,13,Alluvions de la Bourbre et du Catelan
+515AM00,calcaire,calcaire,7,21701.6,1,Complément de l'entité NV2 : Calcaires jurassiques du Bas-Bugey
+507AA00,detritique_mixte,detritique_mixte,4,18398.5,14,"NV3 absent, nom de l'entité NV2 : Formations morainiques de la Dombes"
+521AR01,detritique_mixte,detritique_mixte,4,17661.6,4,Cailloutis calcaires quaternaires d'Alixan
+521AT00,detritique_mixte,detritique_mixte,4,16555.9,10,"NV3 absent, nom de l'entité NV2 : Formations molassiques de l'Est Lyonnais"
+527AB00,siliceux,siliceux,8,15621.9,1,"Complément de l'entité NV2 : Formations primaires cristallophylliennes et magmatiques (gneiss, granites) entre Givors et Beausemblant"
+527AC00,siliceux,siliceux,8,12881.8,2,"NV3 absent, nom de l'entité NV2 : Formations primaires cristallophylliennes et magmatiques (gneiss, granites) dans le bassin versant de la Cance et de l'Ay"
+516AP00,calcaire,calcaire,7,12512.9,3,Complément de l'entité NV2 : Calcaires jurassiques et crétacés de l'Epine
+712AH01,alluvions_recentes,alluvions_recentes,5,12192.9,26,Alluvions du Rhône dans la plaine de Morestel entre La Balme et Creys-Mepieu
+521AR00,detritique_mixte,detritique_mixte,4,11908.7,5,Complément de l'entité NV2 : Alluvions anciennes de la plaine de Valence
+565AA00,calcaire,calcaire,7,11710.7,1,"NV3 absent, nom de l'entité NV2 : Massif calcaire du Crétacé supérieur du Dévoluy"
+517AC00,indetermine,indetermine,,11694.1,2,Complément de l'entité NV2 : Formations variées secondaires et tertiaires de la bordure nord du Vercors
+714BE03,alluvions_recentes,alluvions_recentes,5,11098.6,1,Alluvions de l'Isère entre Pontcharra et Grenoble
+517AO00,marno_calcaire,marno_calcaire,6,10790.0,6,Complément de l'entité NV2 : Calcaires et marnes jurassiques et crétacés des Bauges occidentales
+714FA05,alluvions_recentes,alluvions_recentes,5,10612.3,6,Alluvions de l'Isère en aval de Grenoble
+527AJ00,siliceux,siliceux,8,10150.1,5,"NV3 absent, nom de l'entité NV2 : Formations primaires métamorphiques et plutoniques affleurantes ou sub-affleurantes dans l'ouest lyonnais"
+517AJ00,marno_calcaire,marno_calcaire,6,10144.1,2,"NV3 absent, nom de l'entité NV2 : Formations variées secondaires et tertiaires entre Vercors et Royans"
+516AQ00,calcaire,calcaire,7,9999.3,2,"NV3 absent, nom de l'entité NV2 : Calcaires jurassiques et crétacés des chaînons jurassiens du Mont Tournier, de la montagne du Ratz et de l'anticlinal de Poliénas"
+521AB00,detritique_mixte,detritique_mixte,4,9805.1,2,"NV3 absent, nom de l'entité NV2 : Formations morainiques de Chavanoz, Saint-Bonnet et Saint-Priest"
+714AB01,alluvions_recentes,alluvions_recentes,5,9417.9,4,Alluvions de la vallée de l'Isère en amont de Pontcharra
+517AD00,marno_calcaire,marno_calcaire,6,9101.2,1,"NV3 absent, nom de l'entité NV2 : Calcaires et marnes crétacés de la bordure ouest du Royans"
+517AL00,marno_calcaire,marno_calcaire,6,9013.5,1,Complément de l'entité NV2 : Calcaires et marnes jurassiques et crétacés des Bornes occidentales
+714DA01,alluvions_recentes,alluvions_recentes,5,8851.5,4,Alluvions de la vallée du Drac
+525AQ00,siliceux,siliceux,8,8730.0,3,"NV3 absent, nom de l'entité NV2 : Formations cristallines du haut bassin de l'Isère - Alpes externes"
+521AK00,detritique_mixte,detritique_mixte,4,8168.5,1,"NV3 absent, nom de l'entité NV2 : Formations fluvio-glaciaires du couloir d'Heyrieux"
+517AB03,calcaire,calcaire,7,7917.9,2,Système karstique Gervanne
+712AH37,alluvions_recentes,alluvions_recentes,5,7696.7,10,Alluvions du Rhône dans la plaine de Lavours-Chautagne entre Seyssel et Yenne
+712AA01,alluvions_recentes,alluvions_recentes,5,7259.4,13,Alluvions en rive gauche du Rhône de Solaize à Laveyron
+516AJ00,detritique_mixte,detritique_mixte,4,7067.0,13,"NV3 absent, nom de l'entité NV2 : Formations glaciaires et molassiques de Belley"
+517AA01,calcaire,calcaire,7,7020.2,1,Système karstique du synclinal d'Autrans-Goule Noire
+517AA00,calcaire,calcaire,7,6711.1,10,Complément de l'entité NV2 : Formations crétacées du Vercors
+712GB05,alluvions_recentes,alluvions_recentes,5,6693.4,1,Alluvions de la plaine de l'Ain
+517AA15,calcaire,calcaire,7,6306.5,2,Système karstique Glandasse-Archiane
+521AI00,detritique_mixte,detritique_mixte,4,6205.4,1,"NV3 absent, nom de l'entité NV2 : Formations fluvio-glaciaires du couloir de Meyzieu"
+529AA00,indetermine,indetermine,,6205.2,20,"NV3 absent, nom de l'entité NV2 : Argiles bleues du Pliocène inférieur de la moyenne et basse vallée du Rhône"
+521AJ00,detritique_mixte,detritique_mixte,4,6088.2,1,"NV3 absent, nom de l'entité NV2 : Formations fluvio-glaciaires du couloir de Décines-Chassieu"
+517AB00,calcaire,calcaire,7,6004.6,6,Complément de l'entité NV2 : Formations crétacées du Royans
+521AD00,detritique_mixte,detritique_mixte,4,5947.8,6,"NV3 absent, nom de l'entité NV2 : Formations glaciaires du plateau de Louze, de Saint-Prim et de Salaise-sur-Sanne"
+521AP00,detritique_mixte,detritique_mixte,4,5470.7,2,"NV3 absent, nom de l'entité NV2 : Formations fluvio-glaciaires du Bas-Dauphiné - Gère et Vésonne"
+515AL00,calcaire,calcaire,7,5356.4,9,Complément de l'entité NV2 : Calcaires jurassiques du Haut-Bugey
+527AB01,siliceux,siliceux,8,5277.6,2,Formations primaires cristallines et cristallophylliennes affleurantes et sub-affleurantes à Vienne en rive gauche du Rhône
+517AA11,calcaire,calcaire,7,5150.8,1,Système karstique de Goule blanche-Goule Bleue
+517AM00,calcaire,calcaire,7,5081.8,1,Complément de l'entité NV2 : Grès oligocènes et calcaires liasiques du synclinal de Thônes
+517AB01,calcaire,calcaire,7,5052.0,2,Système karstique de Léoncel-Bouvante-Monts du Matin
+516AN00,calcaire,calcaire,7,5043.9,2,"NV3 absent, nom de l'entité NV2 : Calcaires jurassiques et crétacés du Gros Foug"
+531AF00,calcaire,calcaire,7,4954.1,3,Complément de l'entité NV2 : Calcaires barrémo-bédoulien de Montélimar-Francillon et Valdaine
+517AA13,calcaire,calcaire,7,4855.1,1,Système karstique Brudour-Cholet
+517AA05,calcaire,calcaire,7,4838.6,1,Système karstique du synclinal de Villard de Lans
+712AG05,alluvions_recentes,alluvions_recentes,5,4734.1,2,Alluvions de l'île de Miribel-Jonage
+521AH00,detritique_mixte,detritique_mixte,4,4723.1,2,"NV3 absent, nom de l'entité NV2 : Formations fluvio-glaciaires de Meximieux à Montluel"
+712DA01,alluvions_recentes,alluvions_recentes,5,4652.9,3,"Alluvions de la Fure, de lAinan, de la Morge, de Chantabot et des Rivoires"
+712HC01,alluvions_recentes,alluvions_recentes,5,4511.6,6,Alluvions de la dépression de Chambéry et du Sierroz-Tillet
+527AF00,siliceux,siliceux,8,4431.4,1,"NV3 absent, nom de l'entité NV2 : Formations primaires cristallophylliennes et magmatiques (gneiss, granites) dans les bassins versants de l'Eyrieux et de l'Ouvèze"
+712AF01,alluvions_recentes,alluvions_recentes,5,4359.3,2,Alluvions de l'Herbasse et de la Galaure
+712BM02,alluvions_recentes,alluvions_recentes,5,4280.0,7,Alluvions de la Drôme en amont de Livron-sur-Drôme
+712BM01,alluvions_recentes,alluvions_recentes,5,4168.6,1,Alluvions à la confluence de la Drôme et du Rhône
+712AE01,alluvions_recentes,alluvions_recentes,5,4117.2,13,Alluvions en rive gauche du Rhône de Tain-l'Hermitage à Les Tourettes
+712AG06,alluvions_recentes,alluvions_recentes,5,4110.5,2,Alluvions en rive gauche du Rhône entre la confluence des canaux de Miribel-Jonage et Solaize
+712AG03,alluvions_recentes,alluvions_recentes,5,3993.4,12,Alluvions en rive droite du Rhône et du canal de Miribel entre la confluence de l'Ain et Miribel
+521AO00,detritique_mixte,detritique_mixte,4,3990.9,3,"NV3 absent, nom de l'entité NV2 : Formations fluvio-glaciaires du Bas-Dauphiné - Véga et Sévenne"
+714DA03,alluvions_recentes,alluvions_recentes,5,3873.2,5,Alluvions de l'Eau d'Olle et de la Romanche
+714AF01,alluvions_recentes,alluvions_recentes,5,3841.1,6,Alluvions de la vallée de l'Arc
+525AR00,indetermine,indetermine,,3690.7,4,"NV3 absent, nom de l'entité NV2 : Formations sédimentaires du haut bassin de l'Isère - Alpes externes"
+521AG00,detritique_mixte,detritique_mixte,4,3622.3,6,"NV3 absent, nom de l'entité NV2 : Formations morainiques de la basse vallée de l'Ain"
+712AE51,alluvions_recentes,alluvions_recentes,5,3607.6,17,Alluvions en rive droite du Rhône de la confluence du Doux à la confluence de l'Eyrieux
+712AA49,alluvions_recentes,alluvions_recentes,5,3600.8,16,Alluvions en rive droite du Rhône d'Irigny à la confluence de la Cance
+527AM00,siliceux,siliceux,8,3555.8,3,"NV3 absent, nom de l'entité NV2 : Formations primaires cristallines du bassin versant du Garon"
+517AC01,calcaire,calcaire,7,3307.2,1,Système karstique de la bordure nord-ouest du Vercors
+525CA00,siliceux,siliceux,8,3246.1,1,"NV3 absent, nom de l'entité NV2 : Formations cristallines du Massif des Ecrins du bassin versant de la Durance"
+577AA00,marno_calcaire,marno_calcaire,6,3149.7,1,"NV3 absent, nom de l'entité NV2 : Formations marno-calcaires du Jurassique moyen au Crétacé des bassins versants du Buech et du Jabron"
+517AA06,calcaire,calcaire,7,3072.3,1,Système karstique de Coulmes Presles
+517AA07,calcaire,calcaire,7,3065.6,1,Système karstique du synclinal de Rencurel
+521AF00,detritique_mixte,detritique_mixte,4,3010.1,5,"NV3 absent, nom de l'entité NV2 : Alluvions anciennes des basses terrasses entre la confluence de l'Isère et de la Drôme"
+517AA10,calcaire,calcaire,7,2950.1,1,Système karstique de l'Adouin
+517AN00,marno_calcaire,marno_calcaire,6,2943.3,1,Complément de l'entité NV2 : Calcaires et marnes jurassiques et crétacés de la Chaîne des Aravis
+710IJ01,alluvions_recentes,alluvions_recentes,5,2644.2,11,Alluvions de la Saône entre Ambérieux et Caluire-et-Cuire
+517AA02,calcaire,calcaire,7,2579.0,1,Système karstique de Sornin  Saint-Nizier  Furon
+621AX01,calcaire,calcaire,7,2431.1,2,Calcaires jurassiques et triasiques du Mont d'Or
+517AO08,calcaire,calcaire,7,2392.9,1,Système karstique du Bourbouillon
+712AH57,alluvions_recentes,alluvions_recentes,5,2383.9,2,Alluvions du Rhône entre Creys-Mepieu et Lagnieu
+517AO15,calcaire,calcaire,7,2270.4,1,Système karstique du Mont Margériaz
+517AA14,calcaire,calcaire,7,2228.4,1,Système karstique du plateau d'Ambel
+712BD43,alluvions_recentes,alluvions_recentes,5,2174.8,1,Alluvions des vallées du Guiers Vif et du Guiers Mort au niveau de la dépression de Saint-Laurent-du-Pont
+712AG02,alluvions_recentes,alluvions_recentes,5,2013.0,1,Alluvions en rive droite du Rhône entre l'Ile Crémieu et la confluence de l'Ain
+515AD01,calcaire,calcaire,7,1895.0,1,Unité karstique Annoisin-Chatelans
+517AO04,calcaire,calcaire,7,1874.8,2,Système karstique de Prérouge
+521AQ00,detritique_mixte,detritique_mixte,4,1862.5,3,"NV3 absent, nom de l'entité NV2 : Terrasses fluvio-glaciaires du Rhône entre Vertrieu et Saint- Romain-de-Jalionas"
+515AM08,calcaire,calcaire,7,1818.9,1,Système karstique de Gland
+517AK28,calcaire,calcaire,7,1788.4,1,Système karstique de Grande Sure Sénonien
+712HA01,alluvions_recentes,alluvions_recentes,5,1732.9,5,Alluvions de la cluse d'Annecy
+515AL17,calcaire,calcaire,7,1695.8,1,Système karstique de l'Arène
+714FA03,alluvions_recentes,alluvions_recentes,5,1631.0,3,Alluvions de la Bourne et du Méaudret
+517AA03,calcaire,calcaire,7,1616.5,1,Système karstique Bruyant
+533AF01,calcaire,calcaire,7,1543.4,1,Unité karstique entre Escrinet et la vallée du Rhône
+517AP04,calcaire,calcaire,7,1455.6,1,Système karstique de Sambuy
+712AA82,alluvions_recentes,alluvions_recentes,5,1449.3,4,Alluvions de la vallée du Garon
+714AB03,alluvions_recentes,alluvions_recentes,5,1367.6,11,Alluvions de la vallée de l'Arly
+521AA00,detritique_mixte,detritique_mixte,4,1349.7,1,"NV3 absent, nom de l'entité NV2 : Formations morainiques de Chassieu"
+527AN00,siliceux,siliceux,8,1313.2,2,"NV3 absent, nom de l'entité NV2 : Formations primaires cristallines du bassin versant du Gier"
+517AB02,calcaire,calcaire,7,1281.0,1,Système karstique de Thaïs
+515AL19,calcaire,calcaire,7,1241.4,1,Système karstique des Hoteaux
+712AA02,alluvions_recentes,alluvions_recentes,5,1229.7,2,Alluvions de l'Ozon
+521AC00,detritique_mixte,detritique_mixte,4,1223.6,4,"NV3 absent, nom de l'entité NV2 : Formations morainiques de la plaine de la Bourbre"
+517AO02,calcaire,calcaire,7,1215.6,3,Système karstique de la Doria
+517AO09,calcaire,calcaire,7,1206.2,2,Système karstique de Bange - l'Eau Morte
+517AO07,calcaire,calcaire,7,1205.3,2,Système karstique du Bout du Monde
+517AO03,calcaire,calcaire,7,1195.2,2,Système karstique de Duy Saint-François
+712AA50,alluvions_recentes,alluvions_recentes,5,1167.0,10,Alluvions en rive droite du Rhône de la confluence de la Cance à la confluence du Doux
+517AA08,calcaire,calcaire,7,1143.6,1,Système karstique de Goule verte
+517AK14,calcaire,calcaire,7,1087.3,1,Système karstique de la Grande Sure nord
+527AL00,siliceux,siliceux,8,1067.2,1,"NV3 absent, nom de l'entité NV2 : Formations primaires cristallines des bassins versants Azergues-Brévenne-Ardière"
+517AP03,calcaire,calcaire,7,1059.2,1,Système karstique de l'anticlinal de Charbon
+712AG04,alluvions_recentes,alluvions_recentes,5,1045.5,2,Alluvions en rive gauche du Rhône entre l'Ile Crémieu et les canaux de Miribel-Jonage
+517AK13,calcaire,calcaire,7,1035.9,1,Système karstique du massif du Seuil
+516AP01,calcaire,calcaire,7,1033.1,1,Système karstique des Echelles
+517AP02,calcaire,calcaire,7,1024.0,1,Système karstique de Vivier Barbouillot
+517AK06,calcaire,calcaire,7,991.2,1,Système karstique de l'Alpe
+517AK26,calcaire,calcaire,7,948.7,1,Système karstique de Grande Sure sud
+515AM06,calcaire,calcaire,7,917.8,1,Système karstique de la Burbanche
+712BD44,alluvions_recentes,alluvions_recentes,5,913.2,1,Alluvions de la basse vallée du Guiers
+517AP05,calcaire,calcaire,7,912.0,1,Système karstique d'Arclusaz - Pécloz
+714DA05,alluvions_recentes,alluvions_recentes,5,878.1,7,Alluvions de la Bonne et de la Roizonne
+712AA04,alluvions_recentes,alluvions_recentes,5,871.7,3,Alluvions en rive gauche du Rhône de Laveyron à Tain-l'Hermitage
+525AA00,alluvions_recentes,alluvions_recentes,5,854.7,4,"NV3 absent, nom de l'entité NV2 : Alluvions du plateau de la Matheysine"
+548AC00,marno_calcaire,marno_calcaire,6,847.1,1,Complément de l'entité NV2 : Marnes et marno-calcaires crétacés et oligocènes de la bordure des Cévennes et du Bas-Vivarais
+714FA07,alluvions_recentes,alluvions_recentes,5,840.0,5,Alluvions de l'Isère en amont de la confluence avec le Rhône
+712AA03,alluvions_recentes,alluvions_recentes,5,822.9,2,Alluvions de la Varèze
+533AJ00,calcaire,calcaire,7,808.4,1,"NV3 absent, nom de l'entité NV2 : Formations variées du Trias supérieur au Jurassique moyen de la bordure sous-cévenole"
+516AK02,detritique_mixte,detritique_mixte,4,795.4,1,Alluvions fluvio-glaciaires de Madrid
+712AA14,detritique_mixte,detritique_mixte,4,794.9,4,Alluvions des terrasses de Beausemblant
+517AK21,calcaire,calcaire,7,783.0,1,Système karstique de la Forêt de Génieux nord
+517AP10,calcaire,calcaire,7,776.9,1,Unité karstique du Colombier d'Aillons
+517AK07,calcaire,calcaire,7,776.2,1,Système karstique de lArpison
+712AA53,detritique_mixte,detritique_mixte,4,758.9,6,Alluvions anciennes du paléo-Rhône à Saint-Genis-Laval
+517AK20,calcaire,calcaire,7,704.1,1,Système karstique de Scia-Fraisses-Colleret
+517AP09,calcaire,calcaire,7,682.6,1,Système karstique du Mont Chardonnet - Fontaine de la Rave
+517AP12,calcaire,calcaire,7,666.8,1,Système karstique des Allues
+714DA07,alluvions_recentes,alluvions_recentes,2,660.9,1,Alluvions récentes du Haut Drac
+517AO11,calcaire,calcaire,7,642.8,1,Système karstique de Beuglions
+517AK27,calcaire,calcaire,7,634.5,1,Système karstique de la Forêt de Génieux sud
+515AL06,calcaire,calcaire,7,621.6,1,Système karstique de la Dorche
+517AK29,calcaire,calcaire,7,614.9,1,Unité karstique du Saint-Eynard
+517AK04,calcaire,calcaire,7,606.9,1,Système karstique de Roche Veyrand
+517AO10,calcaire,calcaire,7,597.2,1,Système karstique de Bourneau
+517AK23,calcaire,calcaire,7,594.2,1,Système karstique d'Arguille-Océpé
+517AO12,calcaire,calcaire,7,590.0,1,Système karstique de la source Etang
+517AA12,calcaire,calcaire,7,578.9,1,Système karstique de Côte Belle
+517AK03,calcaire,calcaire,7,574.0,1,Système karstique de la Combe-la Gorgeat
+515AM03,calcaire,calcaire,7,544.4,1,Système karstique de Darroz
+712AE02,alluvions_recentes,alluvions_recentes,5,539.9,2,Alluvions en rive droite du Rhône de la confluence de l'Ouvèze au défilé de Donzère
+515AM04,calcaire,calcaire,7,522.9,1,Système karstique de la Tuffière
+515AM09,calcaire,calcaire,7,520.6,1,Système karstique du Creux de la Roche
+517AM01,calcaire,calcaire,7,469.1,1,Calcaires liasiques karstifiés de la montagne de Sulens
+577AH00,siliceux,siliceux,8,463.7,2,"NV3 absent, nom de l'entité NV2 : Grès éocènes du Champsaur - bassin versant de la Durance"
+527AD01,calcaire,calcaire,7,456.7,2,Calcaires jurassiques entre Saint-Peray (Crussol) et Charmes-sur-Rhône
+515AL18,calcaire,calcaire,7,441.0,1,Système karstique des Hopitaux
+712AG52,alluvions_recentes,alluvions_recentes,5,430.6,3,Alluvions en rive droite du Rhône au Sud de Lyon entre La Mulatière et Irigny
+517AO14,calcaire,calcaire,7,421.4,1,Système karstique de Duy-Empereur
+517AP11,calcaire,calcaire,7,411.1,1,Système karstique de La Touvière
+515AM10,calcaire,calcaire,7,409.9,1,Système karstique de Setrin
+517AO01,calcaire,calcaire,7,398.5,1,Système karstique de Fontaine Noire (73)
+517AP08,calcaire,calcaire,7,395.4,1,Système karstique de Clochez
+517AK09,calcaire,calcaire,7,392.5,1,Système karstique de Noirfond
+517AK17,calcaire,calcaire,7,389.8,1,Système karstique du Pont Saint-Pierre
+712AG01,alluvions_recentes,alluvions_recentes,5,388.9,1,Alluvions de la presqu'île de Lyon en amont de la confluence Saône-Rhône
+714FA01,detritique_mixte,detritique_mixte,4,359.6,1,Alluvions glaciaires et fluvio-glaciaires de la plaine de Chantesse
+517AK18,calcaire,calcaire,7,353.8,1,Système karstique de la Maison Forestière
+517AA04,calcaire,calcaire,7,353.5,1,Système karstique du Pont des Olivets
+712HA05,alluvions_recentes,alluvions_recentes,5,337.6,2,Alluvions du Chéran
+517AK05,calcaire,calcaire,7,336.9,1,Système karstique du Mont Granier
+517AK08,calcaire,calcaire,7,331.6,1,Système karstique de Sermes
+517AO05,calcaire,calcaire,7,307.0,1,Système karstique de la Meune
+714BE01,alluvions_recentes,alluvions_recentes,5,296.4,1,Alluvions de la vallée du Bréda
+517AK22,calcaire,calcaire,7,296.2,1,Système karstique de Charmant Som est
+517AP01,calcaire,calcaire,7,292.3,1,Unité karstique de la Thuile
+517AP06,calcaire,calcaire,7,290.7,1,Système karstique de Pécloz - Mont de la Coche
+712AE00,alluvions_recentes,alluvions_recentes,5,283.6,1,Alluvions de l'Eyrieux
+712AH02,alluvions_recentes,alluvions_recentes,5,275.7,2,Alluvions de la Bièvre
+710IM01,alluvions_recentes,alluvions_recentes,5,264.7,3,Alluvions de la boucle de Vaise
+517AK11,calcaire,calcaire,7,264.2,1,Système karstique du Mort Ru
+517AK24,calcaire,calcaire,7,247.1,1,Système karstique de Chaos de Bellefond - Fontaine noire
+515AM12,calcaire,calcaire,7,234.3,1,Système karstique de Monitieu
+517AK01,calcaire,calcaire,7,233.4,1,Système karstique de Bonne Allée
+525BD00,detritique_mixte,detritique_mixte,4,230.2,1,"NV3 absent, nom de l'entité NV2 : Formations schisteuses, et carbonatées primaires et secondaires de la zone briançonnaise du bassin versant de la Durance"
+515AM11,calcaire,calcaire,7,228.8,1,Système karstique de Chamont
+517AK25,calcaire,calcaire,7,215.9,1,Système karstique de la Dent de Crolles - Guiers Mort
+517AK02,calcaire,calcaire,7,214.3,1,Système karstique du Mont Outheran
+517AO13,calcaire,calcaire,7,192.5,1,Système karstique de Marquisats
+517AN05,calcaire,calcaire,7,186.7,1,Système karstique Marlens
+151AE01,detritique_mixte,detritique_mixte,4,182.7,1,"Conglomérats, grès, pélites, schistes et charbon du Carbonifère du bassin houiller stéphanois"
+712AA51,alluvions_recentes,alluvions_recentes,5,173.7,1,Alluvions du Doux
+712AA52,alluvions_recentes,alluvions_recentes,5,154.7,1,Alluvions du Gier
+517AK15,calcaire,calcaire,7,147.1,1,Système karstique de Passerelle
+517AK10,calcaire,calcaire,7,127.3,1,Système karstique de Château
+515AM02,calcaire,calcaire,7,118.8,1,Système karstique du Pissoir
+517AO06,calcaire,calcaire,7,118.3,1,Système karstique du Goul Moine
+710FM01,alluvions_recentes,alluvions_recentes,5,109.2,2,Alluvions de l'Azergues et de la Brévenne
+517AN04,calcaire,calcaire,7,92.3,1,Système karstique du Charvin
+527AK00,siliceux,siliceux,8,80.7,2,"NV3 absent, nom de l'entité NV2 : Formations primaires métamorphiques affleurantes ou sub-affleurantes entre Neuville-Sur-Saône et Lyon en rive gauche de la Saône"
+517AK16,calcaire,calcaire,7,78.5,1,Système karstique de Cambise
+515AM07,calcaire,calcaire,7,78.0,1,Système karstique de Tovière du Pilet
+515AM05,calcaire,calcaire,7,76.1,1,Système karstique de Pissot
+517AK12,calcaire,calcaire,7,63.8,1,Système karstique de Fontaine Froide
+712HE01,alluvions_recentes,alluvions_recentes,5,56.5,1,Alluvions de la vallée de Couz
+517AK19,calcaire,calcaire,7,43.2,1,Système karstique de Combe Chaude
+507AE00,detritique_mixte,detritique_mixte,4,37.7,2,"NV3 absent, nom de l'entité NV2 : Formations molassiques de la Dombes et de la Bresse"
+515AL07,calcaire,calcaire,7,5.1,1,Système karstique de Saint-Martin-Groin

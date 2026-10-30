@@ -13,7 +13,8 @@ RACINE = Path(__file__).resolve().parent.parent
 def projet(tmp_path, monkeypatch):
     """Copie de config/ dans un répertoire temporaire servant de racine du projet."""
     shutil.copytree(RACINE / "config", tmp_path / "config")
-    (tmp_path / "config" / "classes" / "geologie.csv").unlink(missing_ok=True)
+    for table in (tmp_path / "config" / "classes").glob("geologie*.csv"):
+        table.unlink()
     monkeypatch.setenv("MYCO_RACINE", str(tmp_path))
     return tmp_path
 

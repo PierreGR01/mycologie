@@ -1,6 +1,8 @@
-# Classement semi-automatique des unités de la BD Charm-50 en classes de substrat.
-# Le résultat est écrit dans config/classes/geologie.csv, à relire : une classe corrigée à la main
-# dans la colonne `classe` est conservée aux exécutions suivantes.
+# Classement semi-automatique des unités géologiques en classes de substrat : notations de la
+# BD Charm-50 ou entités de la BD LISA (code, libellé et lithologies).
+# Le résultat est écrit dans config/classes/geologie.csv (BD Charm-50) ou geologie_bdlisa.csv,
+# à relire : une classe corrigée à la main dans la colonne `classe` est conservée aux exécutions
+# suivantes.
 
 classes:
   calcaire: 1
@@ -11,14 +13,16 @@ classes:
   indetermine: 9
 
 # Règles appliquées dans l'ordre : la première qui correspond l'emporte.
-# `notation` : expression régulière sur la notation BRGM.
+# `notation` : expression régulière sur la notation BRGM ou le code BD LISA.
 # `texte` : expression régulière sur notation + description + lithologie + géochimie.
 # Les deux sont comparées en minuscules et sans accents.
 regles:
   - {classe: alluvions_recentes, notation: "^fz"}
   - {classe: alluvions_recentes, texte: "alluvions? (fluviatiles? )?(recentes|actuelles|modernes)"}
   - {classe: calcaire, texte: "eboulis[^.;]*calcaire"}
-  - {classe: detritique_mixte, texte: "moraine|glaciaire|colluvi|eboulis|molasse|cones? de dejection|alluvions? anciennes|terrasse|loess|\\blimons?\\b|cailloutis|conglomerat|\\bsables?\\b"}
+  - {classe: detritique_mixte, texte: "moraine|glaciaire|colluvi|eboulis|molasse|cones? de dejection|alluvions? anciennes|terrasse|loess|\\blimons?\\b|cailloutis|conglomerat|\\bsables?\\b|\\b(gunz|mindel|riss|wurm)"}
+  # BD LISA : « Alluvions de l'Isère… », « Alluvions du Rhône… » (fonds de vallée actuels).
+  - {classe: alluvions_recentes, texte: "\\balluvions? (a |de |du |des |d'|en |entre )"}
   - {classe: marno_calcaire, texte: "\\bmarne|marneu|marno|argilo-calcaire|calcschiste|flysch|terres noires"}
   - {classe: calcaire, texte: "calcaire|dolomi|\\bcraie|\\btufs?\\b|travertin|urgonien"}
-  - {classe: siliceux, texte: "granit|gneiss|micaschiste|schistes? cristallin|amphibolite|migmatite|anatexite|quartzite|\\bgres\\b|rhyolite|leptynite|gabbro|diorite|spilite|houiller|pegmatite"}
+  - {classe: siliceux, texte: "granit|gneiss|micaschiste|schistes? cristallin|amphibolite|migmatite|anatexite|quartzite|\\bgres\\b|rhyolite|leptynite|gabbro|diorite|spilite|houiller|pegmatite|cristallin|cristallophyllien|roches? (metamorphique|magmatique|plutonique)|metaplutonite|granitoide"}

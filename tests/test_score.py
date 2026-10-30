@@ -91,6 +91,7 @@ def test_pipeline_hors_ligne(projet, parametres, monkeypatch):
     sources = {s["id"]: s for s in manifeste["sources"]}
     assert sources["open_meteo"]["attribution"].startswith("Weather data by Open-Meteo")
     assert sources["open_meteo"]["carte"] and not sources["gbif"]["carte"]
+    assert manifeste["licence_cartes"] is None  # BD Charm-50 (source par défaut) : pas de « SA »
 
     limite = json.loads((publication / manifeste["limite"]).read_text())
     assert limite["type"] == "FeatureCollection" and len(limite["features"]) == 1

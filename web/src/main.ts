@@ -141,6 +141,9 @@ async function demarrer(): Promise<void> {
       return li;
     }),
   );
+  const licenceCartes = $("licence-cartes");
+  licenceCartes.textContent = manifeste.licence_cartes ?? "";
+  licenceCartes.hidden = !manifeste.licence_cartes;
   const apropos = $<HTMLDialogElement>("apropos");
   $("bouton-apropos").addEventListener("click", () => apropos.showModal());
   $("apropos-fermer").addEventListener("click", () => apropos.close());

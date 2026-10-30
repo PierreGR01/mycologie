@@ -35,6 +35,15 @@ def test_normaliser():
         ("ζ", "Gneiss et micaschistes de Belledonne", "siliceux"),
         ("t", "Grès et quartzites du Trias", "siliceux"),
         ("x", "Série transgressive argileuse", "indetermine"),
+        ("Fx", "Alluvions du Riss", "detritique_mixte"),
+        # BD LISA : code, libellé et lithologies (la dominante en premier).
+        ("712AB01", "Alluvions de la Bourbre et du Catelan Alluvions", "alluvions_recentes"),
+        ("521AN00", "Alluvions anciennes des terrasses de l'Isère Alluvions", "detritique_mixte"),
+        ("525AK00", "Formations cristallines de la Romanche Roche métamorphique, Roche magmatique",
+         "siliceux"),
+        ("517AK00", "Calcaires et marnes crétacés de la Chartreuse Calcaire, Marne",
+         "marno_calcaire"),
+        ("517AA09", "Système karstique de Luire-Arbois-Bournillon Calcaire", "calcaire"),
     ],
 )
 def test_classer_unite(projet, notation, texte, attendu):

@@ -20,6 +20,7 @@
 | D9 | Fond de carte | Plan IGN v2 (WMTS Géoplateforme, Licence Ouverte) |
 | D11 | Sens de « données ouvertes » (contrainte initiale) | **Clarifié le 25/10/2026** : données utilisables **gratuitement pour un usage non commercial**. Les licences non commerciales (CC BY-NC, CC BY-NC-SA) sont admises, avec attribution affichée ; les cartes dérivées d'une source « SA » reprennent sa licence |
 | D10 | Licence du code | **Aucune pour l'instant** (23/10/2026) : code public mais « tous droits réservés ». Pas d'usage commercial envisagé ; piste si besoin : PolyForm Noncommercial 1.0.0 |
+| D12 | Carte géologique de repli | **Accordé le 25/10/2026** (BD Charm-50 inaccessible) : BD LISA v3, entité affleurante de chaque polygone élémentaire, classée par libellé et lithologies (`geologie_bdlisa.csv`, **à relire**). La BD Charm-50 reste la source préférée (`geologie.sources`). Cartes dérivées sous CC BY-NC-SA |
 
 ---
 
@@ -140,6 +141,7 @@ mycologie/
 | ADMIN EXPRESS (IGN) | Limite du département | WFS data.geopf.fr | Licence Ouverte Etalab 2.0 | © IGN – ADMIN EXPRESS |
 | Plan IGN v2 | Fond de carte | WMTS data.geopf.fr | Licence Ouverte Etalab 2.0 | © IGN – Plan IGN |
 | BD Charm-50 (BRGM), carte harmonisée D038 | Substrat calcaire / siliceux | infoterre.brgm.fr | Licence Ouverte (à confirmer, étape 2) | © BRGM |
+| BD LISA v3 (BRGM / SANDRE), entités affleurantes de niveau local (D12) | Substrat, repli de la BD Charm-50 | services.sandre.eaufrance.fr | CC BY-NC-SA 2.0 FR | BRGM / SANDRE – BD LISA v3 |
 | SoilGrids 2.0 (ISRIC), `phh2o` 0–30 cm | pH (indicateur secondaire) | WCS maps.isric.org | CC BY 4.0 | ISRIC – SoilGrids |
 | Open-Meteo (Forecast et Historical API) | Météo J-22..J+7 et rétro-analyse | api.open-meteo.com, archive-api.open-meteo.com | Données CC BY 4.0 | Weather data by Open-Meteo.com (Météo-France, ECMWF, DWD) |
 | GBIF | Observations (calibrage) | api.gbif.org, téléchargement avec DOI | Filtre **CC0 et CC BY uniquement** | GBIF.org + DOI du téléchargement |
@@ -164,7 +166,7 @@ La PWA affiche ces attributions dans le contrôle d'attribution MapLibre et sur 
 | `pente.tif` | uint8 | Pente (°), Horn sur `alt.tif` |
 | `expo.tif` | uint8 | Secteur 0–7 (N, NE…, NO), 8 = plat (pente < 3°) |
 | `foret.tif` | uint8 | Code de classe d'essence (`config/classes/foret.yaml`) |
-| `geol.tif` | uint8 | Classe de substrat (`config/classes/geologie.csv`) |
+| `geol.tif` | uint8 | Classe de substrat (`config/classes/geologie.csv` ou `geologie_bdlisa.csv`) |
 | `ph.tif` | uint8 | pH × 10, moyenne pondérée 0–5, 5–15 et 15–30 cm, interpolation bilinéaire |
 
 **Classes d'essences** (correspondance des codes `CODE_TFV` de BD Forêt V2 à vérifier à l'étape 2) : chênes décidus, hêtre, châtaignier, robinier, autres feuillus (purs ou en îlots), mélange de feuillus, peupleraie, sapin ou épicéa (**ces deux essences ne sont pas distinguées dans BD Forêt V2**), pin sylvestre, autres pins (noir, à crochets, cembro), mélèze, douglas, mélange de conifères, mixte à feuillus prépondérants, mixte à conifères prépondérants, forêt ouverte (feuillus, conifères ou mixte), lande ligneuse, formation herbacée.
@@ -485,7 +487,7 @@ Biais connus : observations concentrées près des routes et des villes, effecti
 | Emprise rectangulaire (+1 km) | **Mesuré** : 5 238 × 5 312 px, soit **27,8 M px** |
 | Pixels forestiers (H > 0) | **Mesuré** : 40 % du département (classes forestières de BD Forêt), soit 5,07 M px |
 | 1 couche de 28 M px, brute | uint8 ≈ 28 Mo · float32 ≈ 113 Mo |
-| Téléchargements bruts (une fois) | **Mesuré** : archive RGE ALTI 5 m de 505 Mo (383 dalles, 2,6 Go une fois extraites) · BD Forêt 445 Mo (GeoPackage, 49 914 polygones) · BD Charm-50 à mesurer · SoilGrids lu à distance, **soit ≈ 3,5 Go** |
+| Téléchargements bruts (une fois) | **Mesuré** : archive RGE ALTI 5 m de 505 Mo (383 dalles, 2,6 Go une fois extraites) · BD Forêt 445 Mo (GeoPackage, 49 914 polygones) · BD Charm-50 à mesurer · BD LISA v3 (France métropolitaine) 370 Mo · SoilGrids lu à distance, **soit ≈ 3,5 Go** |
 | Couches statiques (COG compressés) | ≈ 100–200 Mo |
 | Habitat, 5 espèces (COG) | **Mesuré** : 3 à 4 Mo par espèce, soit ≈ 19 Mo |
 | Champs météo grossiers par run | < 10 Mo (≈ 60 × 60 px × 30 jours × 4 variables) |

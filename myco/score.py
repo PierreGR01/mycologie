@@ -20,8 +20,9 @@ from myco import regles
 from myco.config import Parametres
 from myco.especes import Espece, Gel, Meteo, Saison
 from myco.grid import Grille
-from myco.habitat import LIGNES_PAR_BLOC, NODATA_H
+from myco.habitat import LIGNES_PAR_BLOC, NODATA_H, sources_habitat
 from myco.ingest import grille_reference
+from myco.ingest.geologie import CHARGEURS, source_utilisee
 from myco.meteo import champs as mod_champs
 from myco.meteo.indicateurs import INDICATEURS, agreger, fenetre
 from myco.meteo.recuperation import dossier_meteo, limite_departement
@@ -30,11 +31,34 @@ from myco.tuiles import attribution, classer, ecrire_pmtiles, tuiler
 
 log = logging.getLogger(__name__)
 
-SOURCES_SCORE = ["bdforet", "bdcharm50", "soilgrids", "rgealti", "open_meteo"]
-# Sources visibles sur la carte (attribution affichée en permanence) ; les autres (calibrage)
-# sont listées dans la page « À propos » de la PWA.
-SOURCES_CARTE = ["plan_ign", "admin_express", *SOURCES_SCORE]
 ANNEE_REF = 2001  # année non bissextile servant à numéroter les jours
+
+
+def sources_score(p: Parametres) -> list[str]:
+    return [*sources_habitat(p), "open_meteo"]
+
+
+def sources_manifeste(p: Parametres) -> list[dict]:
+    """Sources de la page « À propos » (sans la carte géologique non retenue). Celles du score
+    et du fond de carte ont leur attribution affichée en permanence sur la carte."""
+    carte = ["plan_ign", "admin_express", *sources_score(p)]
+    ecartees = set(CHARGEURS) - {source_utilisee(p)}
+    return [
+        {"id": cle, "nom": s.nom, "licence": s.licence, "attribution": s.attribution,
+         "url": s.url, "carte": cle in carte}
+        for cle, s in p.sources.items() if cle not in ecartees
+    ]
+
+
+def licence_cartes(p: Parametres) -> str | None:
+    """Licence imposée aux cartes publiées par une source « partage dans les mêmes conditions »."""
+    sa = [p.sources[c] for c in sources_score(p) if "BY-NC-SA" in p.sources[c].licence]
+    if not sa:
+        return None
+    noms = ", ".join(s.nom for s in sa)
+    return (f"Les cartes de favorabilité sont dérivées de {noms} : elles sont diffusées sous "
+            "licence CC BY-NC-SA (attribution, pas d'usage commercial, partage dans les mêmes "
+            "conditions).")
 
 
 def _jour_annee(mois: int, jour: int) -> int:
@@ -148,11 +172,8 @@ def ecrire_manifeste(p: Parametres, especes: dict[str, Espece], run: date, dates
         "zoom": {"min": p.affichage.zoom_min, "max": p.affichage.zoom_max},
         "emprise": list(transform_bounds(grille.crs, "EPSG:4326", *grille.bornes)),
         "limite": publier_limite(p),
-        "sources": [
-            {"id": cle, "nom": s.nom, "licence": s.licence, "attribution": s.attribution,
-             "url": s.url, "carte": cle in SOURCES_CARTE}
-            for cle, s in p.sources.items()
-        ],
+        "sources": sources_manifeste(p),
+        "licence_cartes": licence_cartes(p),
     }
     chemin = p.dossier_publication / "latest.json"
     temporaire = chemin.with_name("latest.json.tmp")
@@ -200,7 +221,7 @@ def executer(p: Parametres, especes: dict[str, Espece], run: date,
 
     dates = dates_affichees(run, p)
     publication = p.dossier_publication / "runs" / run.isoformat()
-    attrib = attribution(p.sources, SOURCES_SCORE)
+    attrib = attribution(p.sources, sources_score(p))
     for jour in dates:
         scores = calculer_date(p, especes, jour, habitats, alt, grille, grossiere, jours, champs)
         for i, s in scores.items():

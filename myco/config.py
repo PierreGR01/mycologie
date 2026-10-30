@@ -83,6 +83,10 @@ class Affichage(BaseModel):
         return self
 
 
+class ParamGeologie(BaseModel):
+    sources: list[str] = Field(min_length=1)
+
+
 class Source(BaseModel):
     """Source de données. Les champs propres à chaque source restent accessibles en attributs."""
 
@@ -103,7 +107,15 @@ class Parametres(BaseModel):
     meteo: ParamMeteo
     calibrage: ParamCalibrage
     affichage: Affichage
+    geologie: ParamGeologie
     sources: dict[str, Source]
+
+    @model_validator(mode="after")
+    def _sources_geologie(self) -> Parametres:
+        inconnues = set(self.geologie.sources) - self.sources.keys()
+        if inconnues:
+            raise ValueError(f"geologie.sources : sources non déclarées {sorted(inconnues)}")
+        return self
 
     @property
     def url_base(self) -> str:

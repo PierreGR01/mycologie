@@ -17,8 +17,17 @@ from tests.conftest import RACINE
 def test_parametres_du_depot():
     p = charger_parametres(RACINE / "config" / "settings.yaml")
     assert p.grille.resolution_m == 25
-    for cle in ("admin_express", "rgealti", "bdforet", "bdcharm50", "soilgrids", "open_meteo"):
+    for cle in ("admin_express", "rgealti", "bdforet", "bdcharm50", "bdlisa", "soilgrids",
+                "open_meteo"):
         assert p.sources[cle].licence and p.sources[cle].attribution
+    assert p.geologie.sources == ["bdcharm50", "bdlisa"]
+
+
+def test_source_geologique_non_declaree_refusee():
+    brut = lire_yaml(RACINE / "config" / "settings.yaml")
+    brut["geologie"]["sources"] = ["bdlisa", "inconnue"]
+    with pytest.raises(ValidationError, match="inconnue"):
+        Parametres.model_validate(brut)
 
 
 def test_resolution_sous_25_m_refusee():
