@@ -7,11 +7,11 @@ notation,classe,classe_auto,regle,surface_ha,n_polygones,description
 531AE00,marno_calcaire,marno_calcaire,6,56105.2,2,Complément de l'entité NV2 : Calcaires et marnes crétacés et jurassiques de la vallée du Rhône au Diois et aux Baronnies
 521AV00,detritique_mixte,detritique_mixte,4,50349.5,67,"NV3 absent, nom de l'entité NV2 : Conglomérats de Voreppe"
 521AM00,detritique_mixte,detritique_mixte,4,47583.2,3,"NV3 absent, nom de l'entité NV2 : Alluvions fluvio-glaciaires de la plaine de Bièvre-Valloire"
-525AJ00,indetermine,indetermine,,44246.0,5,"NV3 absent, nom de l'entité NV2 : Formations sédimentaires du bas bassin versant de l'Isère"
+525AJ00,marno_calcaire,indetermine,,44246.0,5,"NV3 absent, nom de l'entité NV2 : Formations sédimentaires du bas bassin versant de l'Isère"
 516AL00,detritique_mixte,detritique_mixte,4,44125.6,6,"NV3 absent, nom de l'entité NV2 : Formations molassiques et variées de l'avant pays savoyard"
-525AF00,indetermine,indetermine,,41201.3,4,"NV3 absent, nom de l'entité NV2 : Formations sédimentaires du bassin versant de l'Arc - Alpes externes"
+525AF00,marno_calcaire,indetermine,,41201.3,4,"NV3 absent, nom de l'entité NV2 : Formations sédimentaires du bassin versant de l'Arc - Alpes externes"
 521AS00,detritique_mixte,detritique_mixte,4,40602.5,20,"NV3 absent, nom de l'entité NV2 : Formations du Pliocène supérieur des plateaux de Bonnevaux et Chambaran"
-525AL00,indetermine,indetermine,,39089.7,5,"NV3 absent, nom de l'entité NV2 : Formations sédimentaires du bassin versant de la Romanche"
+525AL00,marno_calcaire,indetermine,,39089.7,5,"NV3 absent, nom de l'entité NV2 : Formations sédimentaires du bassin versant de la Romanche"
 517AP00,marno_calcaire,marno_calcaire,6,36702.2,3,Complément de l'entité NV2 : Calcaires et marnes jurassiques et crétacés des Bauges orientales
 517AK00,marno_calcaire,marno_calcaire,6,36347.7,2,Complément de l'entité NV2 : Calcaires et marnes crétacés de la Chartreuse
 515AD00,marno_calcaire,marno_calcaire,6,34947.3,3,Complément de l'entité NV2 : Calcaires et marnes jurassiques de l'Ile Crémieu
@@ -83,7 +83,7 @@ notation,classe,classe_auto,regle,surface_ha,n_polygones,description
 521AO00,detritique_mixte,detritique_mixte,4,3990.9,3,"NV3 absent, nom de l'entité NV2 : Formations fluvio-glaciaires du Bas-Dauphiné - Véga et Sévenne"
 714DA03,alluvions_recentes,alluvions_recentes,5,3873.2,5,Alluvions de l'Eau d'Olle et de la Romanche
 714AF01,alluvions_recentes,alluvions_recentes,5,3841.1,6,Alluvions de la vallée de l'Arc
-525AR00,indetermine,indetermine,,3690.7,4,"NV3 absent, nom de l'entité NV2 : Formations sédimentaires du haut bassin de l'Isère - Alpes externes"
+525AR00,marno_calcaire,indetermine,,3690.7,4,"NV3 absent, nom de l'entité NV2 : Formations sédimentaires du haut bassin de l'Isère - Alpes externes"
 521AG00,detritique_mixte,detritique_mixte,4,3622.3,6,"NV3 absent, nom de l'entité NV2 : Formations morainiques de la basse vallée de l'Ain"
 712AE51,alluvions_recentes,alluvions_recentes,5,3607.6,17,Alluvions en rive droite du Rhône de la confluence du Doux à la confluence de l'Eyrieux
 712AA49,alluvions_recentes,alluvions_recentes,5,3600.8,16,Alluvions en rive droite du Rhône d'Irigny à la confluence de la Cance
