@@ -5,9 +5,13 @@ cèpe, girolle, trompette de la mort, pied-de-mouton et morille.
 
 Le score final vaut habitat × météo, sur une maille de 25 m. La conception est décrite dans [PLAN.md](PLAN.md).
 
-> Projet en cours. Toutes les étapes sont implémentées. La géologie BRGM reste à ingérer : le
-> serveur infoterre est indisponible. Les observations INPN (OpenObs) ne sont pas encore
-> utilisées : l'accès renvoie 403.
+**Application (démonstration) : <https://pierregr01.github.io/mycologie/>**
+
+Auteur : Pierre Grambert ([@PierreGR01](https://github.com/PierreGR01)).
+
+> Projet en cours. Toutes les étapes sont implémentées. La géologie vient de la BD LISA v3
+> (BRGM / SANDRE), en attendant le retour de la BD Charm-50 (serveur infoterre indisponible).
+> Les observations INPN (OpenObs) ne sont pas encore utilisées : l'accès renvoie 403.
 
 ## Prérequis
 
