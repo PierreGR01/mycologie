@@ -281,12 +281,14 @@ Notes :
 | Classe | Cèpe | Girolle | Trompette | Pied-de-mouton | Morille |
 |--------|:---:|:---:|:---:|:---:|:---:|
 | siliceux | 1.0 | 1.0 | 0.6 | 0.8 | 0.3 |
-| detritique_mixte | 0.9 | 0.8 | 0.8 | 0.9 | 0.6 |
+| detritique_mixte | 1.0 ² | 0.8 | 0.8 | 0.9 | 0.6 |
 | marno_calcaire | 0.7 | 0.4 | 1.0 | 1.0 | 0.8 |
 | calcaire | 0.6 | 0.3 | 1.0 | 1.0 | 0.8 |
 | alluvions_recentes | 0.4 | 0.3 | 0.6 | 0.6 | 1.0 |
 | indetermine | 0.7 | 0.6 | 0.7 | 0.8 | 0.6 |
 | **Confiance** | M | E | M | M | F |
+
+² Valeur modifiée le 31/10/2026 après le calibrage avec la géologie BD LISA : les observations de cèpe sont 1,43 fois plus fréquentes que le fond sur les formations détritiques (moraines, molasse).
 
 Limite connue : la roche mère ne détermine pas entièrement le sol. Sur les plateaux calcaires, les sols peuvent être décarbonatés et acides. Le pH SoilGrids sert de correctif secondaire.
 
@@ -327,7 +329,7 @@ Indicateurs calculés pour chaque date d et chaque pixel (§5.2) :
 
 | Paramètre | Cèpe | Girolle | Trompette | Pied-de-mouton | Morille |
 |---|---|---|---|---|---|
-| Saison (rampe 15 j) | 01-06 → 15-11 | 15-05 → 15-11 | 01-08 → 15-12 | 01-07 ¹ → 31-12 | 01-03 → 15-06 |
+| Saison (rampe 15 j) | 01-06 → 15-11 | 15-05 → 15-11 | 15-07 ² → 15-12 | 01-07 ¹ → 31-12 | 01-03 → 15-06 |
 | `pluie_15j` trapèze (poids 3, 0,5 au-delà) | 20 / 35 ¹ / 150 / 300 | 15 / 30 ¹ / 150 / 300 | 25 / 40 ¹ / 200 / 350 | 20 / 35 ¹ / 200 / 350 | 15 / 30 / 120 / 250 |
 | `tmoy_7j` trapèze (poids 2) | 8 / 12 / 20 / 25 | 9 / 13 / 22 / 27 | 5 / 9 / 17 / 22 | 2 / 6 / 15 / 20 | 6 / 9 / 15 / 20 |
 | `amplitude_7j` trapèze (poids 1, plancher 0,5) | 4 / 8 / 14 / 20 | non utilisée | non utilisée | non utilisée | 4 / 8 / 15 / 20 |
@@ -336,6 +338,8 @@ Indicateurs calculés pour chaque date d et chaque pixel (§5.2) :
 | Sources | [7][8][9][10][11] | [4][7][9] | [1][2][9] | [1][2][9] | [5][6] |
 
 ¹ Valeurs modifiées le 23/10/2026 après le calibrage GBIF : le jour d'une observation, le cumul médian de pluie sur 15 jours est de 44 à 54 mm, et 12 % des observations de pied-de-mouton datent de juin-juillet.
+
+² Valeur modifiée le 31/10/2026 : 3 observations de trompette datent de la seconde quinzaine de juillet.
 
 Justifications :
 - La pluie des 2 à 3 semaines précédentes est le premier déterminant de la fructification. La température module son effet [9][10][11].

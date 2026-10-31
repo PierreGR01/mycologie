@@ -1,4 +1,4 @@
-# Cèpe – valeurs validées le 22/10/2026 (PLAN.md §4), ajustées le 23/10/2026 après calibrage.
+# Cèpe – valeurs validées le 22/10/2026 (PLAN.md §4), ajustées le 23/10 et le 31/10/2026 après calibrage.
 id: cepe
 nom: Cèpe
 taxons: [Boletus edulis, Boletus pinophilus, Boletus aereus, Boletus reticulatus]
@@ -16,7 +16,7 @@ habitat:
                  foret_ouverte: 0.5, lande_ligneuse: 0.1}}
     substrat:
       {couche: geol, type: table, poids: 2,
-       valeurs: {siliceux: 1.0, detritique_mixte: 0.9, marno_calcaire: 0.7, calcaire: 0.6,
+       valeurs: {siliceux: 1.0, detritique_mixte: 1.0, marno_calcaire: 0.7, calcaire: 0.6,
                  alluvions_recentes: 0.4, indetermine: 0.7}}
     ph:       {couche: ph, type: trapeze, poids: 0.5, points: [4.0, 4.5, 6.5, 7.5], plancher: 0.4}
     altitude: {couche: alt, type: trapeze, poids: 1, points: [100, 300, 1700, 2100]}
