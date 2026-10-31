@@ -66,6 +66,7 @@ class ClasseAffichage(BaseModel):
     min: float = Field(ge=0, lt=1)
     libelle: str
     couleur: str = Field(pattern=r"^#[0-9a-fA-F]{6}$")
+    affichee: bool = True  # sinon transparente sur la carte et absente de la légende
 
 
 class Affichage(BaseModel):

@@ -52,13 +52,15 @@ calibrage:
   appels_par_minute: 80            # ≈ 4 800 appels/h, sous la limite horaire de l'API gratuite
 
 # Affichage commun à toutes les espèces : score (0–1) en 5 classes ; un score nul est transparent.
+# `affichee: false` : classe calculée mais transparente sur la carte et absente de la légende
+# (31/10/2026 : seules « bon » et « très bon » sont montrées, la carte paraissait trop pleine).
 affichage:
   zoom_min: 8
   zoom_max: 12            # ≈ 27 m/px à 45° N : pas de tuile plus fine que la grille de 25 m
   classes:
-    - {min: 0.0, libelle: "très faible", couleur: "#ffffb2"}
-    - {min: 0.2, libelle: "faible",      couleur: "#fecc5c"}
-    - {min: 0.4, libelle: "moyen",       couleur: "#fd8d3c"}
+    - {min: 0.0, libelle: "très faible", couleur: "#ffffb2", affichee: false}
+    - {min: 0.2, libelle: "faible",      couleur: "#fecc5c", affichee: false}
+    - {min: 0.4, libelle: "moyen",       couleur: "#fd8d3c", affichee: false}
     - {min: 0.6, libelle: "bon",         couleur: "#f03b20"}
     - {min: 0.8, libelle: "très bon",    couleur: "#bd0026"}
 

@@ -5,7 +5,7 @@ from PIL import Image
 from pmtiles.tile import tileid_to_zxy
 
 from myco.grid import Grille
-from myco.tuiles import classer, palette, tuiler
+from myco.tuiles import classer, legende_affichee, opacites, palette, tuiler
 
 
 def test_classer(parametres):
@@ -26,6 +26,12 @@ def test_tuiler(parametres):
 
     z12 = [png for t, png in tuiles if tileid_to_zxy(t)[0] == 12]
     image = Image.open(io.BytesIO(z12[0]))
-    assert image.mode == "P" and image.info.get("transparency") == 0
+    # Fond et classes masquées (« très faible » à « moyen ») transparents ; « bon » opaque.
+    assert image.mode == "P" and image.info.get("transparency")[:6] == bytes([0, 0, 0, 0, 255, 255])
     valeurs = set(np.unique(np.array(image)))
     assert valeurs <= {0, 4} and 4 in valeurs
+
+
+def test_classes_masquees(parametres):
+    assert opacites(parametres.affichage) == bytes([0, 0, 0, 0, 255, 255])
+    assert [c["libelle"] for c in legende_affichee(parametres.affichage)] == ["bon", "très bon"]

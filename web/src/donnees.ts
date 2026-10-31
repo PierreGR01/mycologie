@@ -11,7 +11,8 @@ export interface Manifeste {
     habitat: string;
     tuiles: string;
   }[];
-  legende: { min: number; libelle: string; couleur: string }[];
+  legende: { min: number; libelle: string; couleur: string }[]; // classes affichées
+  classes_masquees?: string[]; // classes calculées mais transparentes sur la carte
   zoom: { min: number; max: number };
   emprise: [number, number, number, number];
   limite: string;

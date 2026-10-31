@@ -42,11 +42,16 @@ def palette(affichage: Affichage) -> list[int]:
     return [v for rgb in couleurs for v in rgb] + [0] * (3 * (256 - len(couleurs)))
 
 
-def _png(tuile: np.ndarray, pal: list[int]) -> bytes:
+def opacites(affichage: Affichage) -> bytes:
+    """Opacité de chaque indice de palette : 0 pour le fond et les classes non affichées."""
+    return bytes([0] + [255 if c.affichee else 0 for c in affichage.classes])
+
+
+def _png(tuile: np.ndarray, affichage: Affichage) -> bytes:
     image = Image.fromarray(tuile, mode="P")
-    image.putpalette(pal)
+    image.putpalette(palette(affichage))
     tampon = io.BytesIO()
-    image.save(tampon, format="PNG", compress_level=6, transparency=TRANSPARENT)
+    image.save(tampon, format="PNG", compress_level=6, transparency=opacites(affichage))
     return tampon.getvalue()
 
 
@@ -65,7 +70,6 @@ def tuiler(classes: np.ndarray, grille: Grille, affichage: Affichage) -> list[tu
     Au zoom maximal, le rééchantillonnage est au plus proche voisin ; aux zooms inférieurs, la
     classe majoritaire des pixels non transparents est retenue."""
     bornes = transform_bounds(grille.crs, WEB_MERCATOR, *grille.bornes)
-    pal = palette(affichage)
     tuiles = []
     for z in range(affichage.zoom_min, affichage.zoom_max + 1):
         cote, xs, ys = _tuiles_couvrant(bornes, z)
@@ -86,7 +90,7 @@ def tuiler(classes: np.ndarray, grille: Grille, affichage: Affichage) -> list[tu
             for i, x in enumerate(xs):
                 tuile = mosaique[j * TAILLE:(j + 1) * TAILLE, i * TAILLE:(i + 1) * TAILLE]
                 if tuile.any():
-                    tuiles.append((zxy_to_tileid(z, x, y), _png(tuile, pal)))
+                    tuiles.append((zxy_to_tileid(z, x, y), _png(tuile, affichage)))
     return sorted(tuiles)
 
 
@@ -96,7 +100,7 @@ def tuiles_transparentes(grille: Grille, affichage: Affichage,
     chargement d'une source PMTiles dont une tuile manque au zoom minimal."""
     bornes = transform_bounds(grille.crs, WEB_MERCATOR, *grille.bornes)
     _, xs, ys = _tuiles_couvrant(bornes, affichage.zoom_min)
-    vide = _png(np.zeros((TAILLE, TAILLE), dtype="uint8"), palette(affichage))
+    vide = _png(np.zeros((TAILLE, TAILLE), dtype="uint8"), affichage)
     ids = (zxy_to_tileid(affichage.zoom_min, x, y) for x in xs for y in ys)
     return [(i, vide) for i in ids if i not in presentes]
 
@@ -122,8 +126,7 @@ def ecrire_pmtiles(
         "center_lon_e7": int((ouest + est) / 2 * 1e7),
         "center_lat_e7": int((sud + nord) / 2 * 1e7),
     }
-    legende = [{"min": c.min, "libelle": c.libelle, "couleur": c.couleur}
-               for c in affichage.classes]
+    legende = legende_affichee(affichage)
     chemin.parent.mkdir(parents=True, exist_ok=True)
     temporaire = chemin.with_name(chemin.name + ".tmp")
     with temporaire.open("wb") as f:
@@ -133,6 +136,11 @@ def ecrire_pmtiles(
         writer.finalize(entete, {**metadonnees, "legende": legende})
     os.replace(temporaire, chemin)
     return chemin
+
+
+def legende_affichee(affichage: Affichage) -> list[dict]:
+    return [{"min": c.min, "libelle": c.libelle, "couleur": c.couleur}
+            for c in affichage.classes if c.affichee]
 
 
 def attribution(sources: dict, cles: list[str]) -> str:

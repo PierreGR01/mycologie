@@ -114,6 +114,10 @@ async function demarrer(): Promise<void> {
   }
 
   // Légende
+  const masquees = manifeste.classes_masquees ?? [];
+  $("legende-masquees").hidden = masquees.length === 0;
+  $("legende-masquees").textContent =
+    `Non affichées (sans couleur sur la carte) : ${masquees.join(", ")}.`;
   $("legende").replaceChildren(
     ...manifeste.legende.map((c) => {
       const li = document.createElement("li");

@@ -27,7 +27,7 @@ from myco.meteo import champs as mod_champs
 from myco.meteo.indicateurs import INDICATEURS, agreger, fenetre
 from myco.meteo.recuperation import dossier_meteo, limite_departement
 from myco.rasters import ecrire_cog
-from myco.tuiles import attribution, classer, ecrire_pmtiles, tuiler
+from myco.tuiles import attribution, classer, ecrire_pmtiles, legende_affichee, tuiler
 
 log = logging.getLogger(__name__)
 
@@ -167,8 +167,8 @@ def ecrire_manifeste(p: Parametres, especes: dict[str, Espece], run: date, dates
              "habitat": f"habitat/{i}.pmtiles", "tuiles": f"{racine_runs}/{i}/{{date}}.pmtiles"}
             for i, e in especes.items()
         ],
-        "legende": [{"min": c.min, "libelle": c.libelle, "couleur": c.couleur}
-                    for c in p.affichage.classes],
+        "legende": legende_affichee(p.affichage),
+        "classes_masquees": [c.libelle for c in p.affichage.classes if not c.affichee],
         "zoom": {"min": p.affichage.zoom_min, "max": p.affichage.zoom_max},
         "emprise": list(transform_bounds(grille.crs, "EPSG:4326", *grille.bornes)),
         "limite": publier_limite(p),

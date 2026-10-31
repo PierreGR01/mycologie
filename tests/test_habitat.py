@@ -99,7 +99,7 @@ def test_executer_rasters_tuiles_apercus(parametres, projet):
 
     entete, meta = lire_pmtiles(projet / "web" / "data" / "habitat" / "cepe.pmtiles")
     assert entete["min_zoom"] == 8 and entete["max_zoom"] == 12
-    assert meta["espece"] == "cepe" and len(meta["legende"]) == 5
+    assert meta["espece"] == "cepe" and len(meta["legende"]) == 2  # classes affichées
     assert "IGN" in meta["attribution"] and "ISRIC" in meta["attribution"]
 
     rapports = projet / "reports" / "habitat"
