@@ -6,7 +6,7 @@ taxons: [Morchella]
 avertissement: "Les morilles sont toxiques crues ou insuffisamment cuites."
 
 habitat:
-  combinaison: moyenne_geometrique
+  combinaison: produit   # 31/10/2026 : plus sélectif que la moyenne géométrique
   combinaison_profils: max
   profils:
     plaine:   # ripisylves, alluvions (M. esculenta)

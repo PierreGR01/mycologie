@@ -43,8 +43,9 @@ def test_evaluer_cepe(projet):
     h = evaluer(habitat, c, codes_categoriels())
     assert h[0] == pytest.approx(1.0)
     assert h[1] == 0                                  # essence bloquante nulle
-    # Restent essence (1, poids 3), altitude (0,25, poids 1) et pente (1, poids 1).
-    assert h[2] == pytest.approx(0.25 ** (1 / 5), rel=1e-5)
+    # Restent essence (1, poids 3), altitude (0,25, poids 1) et pente (1, poids 1). Produit :
+    # chaque facteur est élevé à son poids rapporté au poids maximal (3).
+    assert h[2] == pytest.approx(0.25 ** (1 / 3), rel=1e-5)
 
 
 def test_morille_maximum_des_profils(projet):
@@ -56,8 +57,8 @@ def test_morille_maximum_des_profils(projet):
     )
     h = evaluer(habitat, c, codes_categoriels())
     # Pixel 1 : profil montagne (sapin 0,8, calcaire 0,9, autres à 1) ; pixel 2 : profil plaine.
-    attendu_montagne = np.exp((3 * np.log(0.8) + 2 * np.log(0.9)) / 7.5)
-    attendu_plaine = np.exp(3 * np.log(0.8) / 7.5)
+    attendu_montagne = 0.8 * 0.9 ** (2 / 3)
+    attendu_plaine = 0.8
     assert h[0] == pytest.approx(attendu_montagne, rel=1e-5)
     assert h[1] == pytest.approx(attendu_plaine, rel=1e-5)
 

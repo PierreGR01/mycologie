@@ -54,8 +54,9 @@ def decoder_continue(couche: str, brut: np.ndarray, nodata: float | None) -> np.
 def evaluer(habitat: Habitat, couches: dict[str, np.ndarray],
             codes: dict[str, dict[int, str]]) -> np.ndarray:
     """H en float32 (0–1). Couches catégorielles : codes entiers ; continues : valeurs physiques
-    avec NaN. Un facteur sans donnée est écarté de la moyenne ; un facteur `bloquant` nul ou sans
-    donnée annule H. Avec plusieurs profils, H est le maximum des profils."""
+    avec NaN. Facteurs combinés selon `habitat.combinaison` ; un facteur sans donnée est écarté,
+    un facteur `bloquant` nul ou sans donnée annule H. Avec plusieurs profils, H est le maximum
+    des profils."""
     scores = []
     for profil in habitat.liste_profils().values():
         valeurs, poids = [], []
@@ -71,7 +72,7 @@ def evaluer(habitat: Habitat, couches: dict[str, np.ndarray],
                 bloque = nul if bloque is None else bloque | nul
             valeurs.append(v)
             poids.append(f.poids)
-        h = regles.moyenne_geometrique(valeurs, poids)
+        h = regles.COMBINAISONS[habitat.combinaison](valeurs, poids)
         if bloque is not None:
             h[bloque] = 0
         scores.append(h)

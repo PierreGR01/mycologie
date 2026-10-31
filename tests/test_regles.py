@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from myco.regles import moyenne_geometrique, table, trapeze
+from myco.regles import moyenne_geometrique, produit_pondere, table, trapeze
 
 
 @pytest.mark.parametrize(
@@ -38,3 +38,16 @@ def test_moyenne_geometrique():
     assert m[1] == 0                      # un facteur nul annule
     assert m[2] == pytest.approx(0.25)    # facteur sans donnée écarté, poids renormalisés
     assert np.isnan(m[3])
+
+
+def test_produit_pondere():
+    a = np.array([0.5, 0.0, np.nan, np.nan, 0.81], dtype="float32")
+    b = np.array([0.5, 1.0, 0.25, np.nan, 1.0], dtype="float32")
+    m = produit_pondere([a, b], [2, 1])
+    assert m[0] == pytest.approx(0.5 * np.sqrt(0.5))   # poids 1 sur 2 : racine carrée
+    assert m[1] == 0
+    assert m[2] == pytest.approx(0.5)                  # facteur sans donnée écarté
+    assert np.isnan(m[3])
+    # Même classement que la moyenne géométrique, mais plus contrasté.
+    geo = moyenne_geometrique([a, b], [2, 1])
+    assert m[0] < geo[0] and m[4] == pytest.approx(geo[4] ** 1.5)

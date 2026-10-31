@@ -67,7 +67,8 @@ class Profil(BaseModel):
 
 
 class Habitat(BaseModel):
-    combinaison: Literal["moyenne_geometrique"] = "moyenne_geometrique"
+    # `produit` : plus sélectif, chaque facteur imparfait pénalise (myco.regles.produit_pondere).
+    combinaison: Literal["moyenne_geometrique", "produit"] = "moyenne_geometrique"
     facteurs: dict[str, Facteur] | None = None
     # Plusieurs profils (ex. morille de plaine et de montagne) : H = max des profils.
     profils: dict[str, Profil] | None = None

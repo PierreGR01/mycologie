@@ -5,7 +5,7 @@ taxons: [Cantharellus cibarius]
 avertissement: null
 
 habitat:
-  combinaison: moyenne_geometrique
+  combinaison: produit   # 31/10/2026 : plus sélectif que la moyenne géométrique
   facteurs:
     essence:
       {couche: foret, type: table, poids: 3, bloquant: true, defaut: 0,

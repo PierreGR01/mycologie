@@ -9,7 +9,7 @@
 
 | # | Décision | Retenu |
 |---|----------|--------|
-| D1 | Combinaison des facteurs (habitat et météo) | **Moyenne géométrique pondérée** (un facteur à 0 annule le score) |
+| D1 | Combinaison des facteurs (habitat et météo) | **Moyenne géométrique pondérée** (un facteur à 0 annule le score). **Habitat : produit pondéré depuis le 31/10/2026** (D13) |
 | D2 | Fenêtre saisonnière par espèce intégrée au score météo | Oui : fenêtre large et fixe avec rampes de 15 j. L'altitude agit via la température corrigée |
 | D3 | Fenêtres temporelles des indicateurs | Pluie : 15 j. Température moyenne, écart jour/nuit et gel : 7 j |
 | D4 | Tables et seuils par espèce (§4) | **Validés tels quels**, ajustés au calibrage |
@@ -21,6 +21,7 @@
 | D11 | Sens de « données ouvertes » (contrainte initiale) | **Clarifié le 25/10/2026** : données utilisables **gratuitement pour un usage non commercial**. Les licences non commerciales (CC BY-NC, CC BY-NC-SA) sont admises, avec attribution affichée ; les cartes dérivées d'une source « SA » reprennent sa licence |
 | D10 | Licence du code | **Aucune pour l'instant** (23/10/2026) : code public mais « tous droits réservés ». Pas d'usage commercial envisagé ; piste si besoin : PolyForm Noncommercial 1.0.0 |
 | D12 | Carte géologique de repli | **Accordé le 25/10/2026** (BD Charm-50 inaccessible) : BD LISA v3, entité affleurante de chaque polygone élémentaire, classée par libellé et lithologies (`geologie_bdlisa.csv`, **à relire**). La BD Charm-50 reste la source préférée (`geologie.sources`). Cartes dérivées sous CC BY-NC-SA |
+| D13 | Sélectivité de la carte | **31/10/2026** : habitat en produit pondéré (§3) ; classes « très faible » à « moyen » calculées mais non affichées (`affichage.classes[].affichee`) |
 
 ---
 
@@ -46,11 +47,14 @@ score_final(x, d) = H_espèce(x) × M_espèce(x, d)        ∈ [0, 1]
 ### 1.2 Combinaison (D1)
 
 ```
-H = masque_foret × exp( Σ wᵢ·ln fᵢ / Σ wᵢ )                       (moyenne géométrique pondérée)
+H = masque_foret × exp( Σ wᵢ·ln fᵢ / max wᵢ )                     (produit pondéré, D13)
+  (avant le 31/10/2026 : exp( Σ wᵢ·ln fᵢ / Σ wᵢ ), moyenne géométrique pondérée)
 M = saison(d) × exp( Σ wⱼ·ln gⱼ / Σ wⱼ ) × multiplicateur_gel
 ```
 
 La moyenne géométrique pondérée est la méthode classique des modèles HSI (USFWS 1981). Elle conserve la logique du facteur limitant sans écraser le score lorsque plusieurs facteurs valent légèrement moins de 1. Un facteur peut être déclaré `bloquant: true` : s'il vaut 0, le score est 0. C'est le cas de l'essence forestière.
+
+**Produit pondéré (habitat, D13)** : la moyenne géométrique notait bien presque toute la forêt (H médian en forêt de 0,84 pour le cèpe, 0,93 pour le pied-de-mouton) et la carte paraissait « pleine de champignons ». Le produit élève chaque facteur à son poids rapporté au poids maximal : l'essence (poids 3) compte pleinement, le substrat (poids 2) à la puissance 2/3, l'altitude (poids 1) à la puissance 1/3. Le classement des zones est inchangé (H produit = H moyenne^(Σw / max w), soit ≈ H^2,5), mais chaque facteur imparfait pénalise. Part du département en H ≥ 0,8 : cèpe 32 → 5 %, girolle 12 → 0,2 %, trompette 20 → 8 %, morille 10 → 0 %, pied-de-mouton 37 → 23 %. Choix par espèce : `habitat.combinaison` (`produit` ou `moyenne_geometrique`).
 
 **Données manquantes** : un facteur sans donnée sur un pixel (pH absent en haute montagne, géologie non renseignée) est écarté, et les poids des autres facteurs sont renormalisés. Un facteur `bloquant` sans donnée annule le score.
 

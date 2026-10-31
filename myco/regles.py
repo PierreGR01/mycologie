@@ -63,3 +63,22 @@ def moyenne_geometrique(facteurs: Sequence[np.ndarray], poids: Sequence[float]) 
             somme[valide] += w * np.log(f[valide])
             total[valide] += w
         return np.where(total > 0, np.exp(somme / total), np.nan).astype("float32")
+
+
+def produit_pondere(facteurs: Sequence[np.ndarray], poids: Sequence[float]) -> np.ndarray:
+    """Produit des facteurs, chacun élevé à son poids rapporté au poids maximal : le facteur
+    principal compte pleinement, un facteur de poids moitié par sa racine carrée. Plus sélectif que
+    la moyenne géométrique (même classement des zones, mais chaque facteur imparfait pénalise).
+    Un facteur sans donnée (NaN) est écarté ; NaN si aucun facteur n'a de donnée."""
+    somme = np.zeros(facteurs[0].shape, dtype="float32")
+    present = np.zeros(facteurs[0].shape, dtype=bool)
+    reference = max(poids)
+    with np.errstate(divide="ignore", invalid="ignore"):
+        for f, w in zip(facteurs, poids, strict=True):
+            valide = ~np.isnan(f)
+            somme[valide] += w / reference * np.log(f[valide])
+            present |= valide
+        return np.where(present, np.exp(somme), np.nan).astype("float32")
+
+
+COMBINAISONS = {"moyenne_geometrique": moyenne_geometrique, "produit": produit_pondere}
