@@ -1,6 +1,6 @@
 {
   "run": "2026-10-30",
-  "genere_le": "2026-10-30T10:51:08+00:00",
+  "genere_le": "2026-10-31T15:20:03+00:00",
   "dates": [
     {
       "date": "2026-10-29",
@@ -8,7 +8,7 @@
     },
     {
       "date": "2026-10-30",
-      "type": "prevision"
+      "type": "analyse"
     },
     {
       "date": "2026-10-31",
@@ -54,21 +54,6 @@
   ],
   "legende": [
     {
-      "min": 0.0,
-      "libelle": "très faible",
-      "couleur": "#ffffb2"
-    },
-    {
-      "min": 0.2,
-      "libelle": "faible",
-      "couleur": "#fecc5c"
-    },
-    {
-      "min": 0.4,
-      "libelle": "moyen",
-      "couleur": "#fd8d3c"
-    },
-    {
       "min": 0.6,
       "libelle": "bon",
       "couleur": "#f03b20"
@@ -78,6 +63,11 @@
       "libelle": "très bon",
       "couleur": "#bd0026"
     }
+  ],
+  "classes_masquees": [
+    "très faible",
+    "faible",
+    "moyen"
   ],
   "zoom": {
     "min": 8,
