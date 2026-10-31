@@ -37,7 +37,7 @@ L'habitat est moyenné dans le cercle d'incertitude de chaque observation, puis 
 ![Habitat](habitat.png)
 
 - AUC observations / fond : 0.53 (faible)
-- Indice de Boyce continu : 0.32 (faible)
+- Indice de Boyce continu : 0.20 (faible)
 
 ### Composition : essences
 

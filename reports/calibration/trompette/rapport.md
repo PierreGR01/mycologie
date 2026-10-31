@@ -28,7 +28,7 @@ Requête GBIF : https://api.gbif.org/v1/occurrence/search?hasCoordinate=true&has
 
 ![Phénologie](phenologie.png)
 
-Observations hors de la fenêtre saisonnière du modèle : **10 %**.
+Observations hors de la fenêtre saisonnière du modèle : **6 %**.
 
 ## Habitat
 
@@ -36,8 +36,8 @@ L'habitat est moyenné dans le cercle d'incertitude de chaque observation, puis 
 
 ![Habitat](habitat.png)
 
-- AUC observations / fond : 0.51 (faible)
-- Indice de Boyce continu : 0.30 (faible)
+- AUC observations / fond : 0.54 (faible)
+- Indice de Boyce continu : -0.25 (faible)
 
 ### Composition : essences
 
@@ -81,8 +81,8 @@ Score M calculé avec la météo historique (Open-Meteo, ERA5-Land et ERA5), à 
 
 ![Météo](meteo.png)
 
-- AUC temporelle : 0.65 (correct)
-- Sous-scores moyens le jour observé : pluie_15j 0.82, tmoy_7j 0.91, saison 0.88, gel 0.97
+- AUC temporelle : 0.68 (correct)
+- Sous-scores moyens le jour observé : pluie_15j 0.82, tmoy_7j 0.91, saison 0.93, gel 0.97
 
 Valeurs des indicateurs les jours d'observation (déciles 10 et 90, médiane), comparées aux seuils du trapèze de la règle :
 
@@ -93,5 +93,4 @@ Valeurs des indicateurs les jours d'observation (déciles 10 et 90, médiane), c
 
 ## Règles à revoir
 
-- Phénologie : 10 % des observations hors saison du modèle (janv., avr., juil., déc.).
-- Habitat : AUC 0.51, le modèle distingue mal les zones observées du fond.
+- Habitat : AUC 0.54, le modèle distingue mal les zones observées du fond.

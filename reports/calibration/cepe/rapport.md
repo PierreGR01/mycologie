@@ -36,8 +36,8 @@ L'habitat est moyenné dans le cercle d'incertitude de chaque observation, puis 
 
 ![Habitat](habitat.png)
 
-- AUC observations / fond : 0.54 (faible)
-- Indice de Boyce continu : 0.53 (correct)
+- AUC observations / fond : 0.56 (faible)
+- Indice de Boyce continu : 0.71 (correct)
 
 ### Composition : essences
 
@@ -68,7 +68,7 @@ Part moyenne de chaque classe dans les cercles (observations et fond), et valeur
 
 |  | valeur_regle | part_observations | part_fond | ratio |
 |---|---|---|---|---|
-| detritique_mixte | 0.90 | 0.45 | 0.31 | 1.43 |
+| detritique_mixte | 1.00 | 0.45 | 0.31 | 1.43 |
 | calcaire | 0.60 | 0.21 | 0.28 | 0.76 |
 | marno_calcaire | 0.70 | 0.17 | 0.18 | 0.92 |
 | alluvions_recentes | 0.40 | 0.09 | 0.13 | 0.66 |
@@ -94,5 +94,5 @@ Valeurs des indicateurs les jours d'observation (déciles 10 et 90, médiane), c
 
 ## Règles à revoir
 
-- Habitat : AUC 0.54, le modèle distingue mal les zones observées du fond.
+- Habitat : AUC 0.56, le modèle distingue mal les zones observées du fond.
 - Météo : AUC temporelle 0.60, les jours observés ne sont pas nettement mieux notés que les autres jours.

@@ -36,8 +36,8 @@ L'habitat est moyenné dans le cercle d'incertitude de chaque observation, puis 
 
 ![Habitat](habitat.png)
 
-- AUC observations / fond : 0.50 (faible)
-- Indice de Boyce continu : -0.01 (faible)
+- AUC observations / fond : 0.51 (faible)
+- Indice de Boyce continu : 0.30 (faible)
 
 ### Composition : essences
 
@@ -94,5 +94,5 @@ Valeurs des indicateurs les jours d'observation (déciles 10 et 90, médiane), c
 
 ## Règles à revoir
 
-- Habitat : AUC 0.50, le modèle distingue mal les zones observées du fond.
+- Habitat : AUC 0.51, le modèle distingue mal les zones observées du fond.
 - Météo : AUC temporelle 0.59, les jours observés ne sont pas nettement mieux notés que les autres jours.
