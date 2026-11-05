@@ -16,8 +16,7 @@ from datetime import date
 from pathlib import Path
 
 RACINE = Path(__file__).resolve().parents[2]
-NOTE = ("Démonstration : cartes mises à jour manuellement, pas chaque jour ; géologie issue de "
-        "la BD LISA en attendant la BD Charm-50.")
+NOTE = "Démonstration : cartes mises à jour manuellement, pas chaque jour."
 
 
 def main() -> None:
