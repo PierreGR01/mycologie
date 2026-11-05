@@ -63,6 +63,16 @@ def score(config: Path | None, jour: str | None, garder_rasters: bool) -> None:
     logging.getLogger("myco").info("manifeste : %s", sortie)
 
 
+def habitat_seul(config: Path | None, jour: str | None) -> None:
+    from myco import score as module
+    from myco.especes import charger_especes
+
+    p = charger_parametres(config)
+    sortie = module.publier_habitat(p, charger_especes(), date_run(jour, p))
+    logging.getLogger("myco").info("météo désactivée (meteo.active) : habitat seul, manifeste %s",
+                                   sortie)
+
+
 def calibrage(config: Path | None, ids: list[str] | None, avec_meteo: bool,
               avec_base: bool) -> None:
     from myco.calibrage import executer
@@ -128,7 +138,11 @@ def main(argv: list[str] | None = None) -> None:
     elif args.commande == "score":
         score(args.config, args.date, args.garder_rasters)
     elif args.commande == "calibrage":
-        calibrage(args.config, args.especes, not args.sans_meteo, not args.sans_base)
+        avec_meteo = not args.sans_meteo and charger_parametres(args.config).meteo.active
+        calibrage(args.config, args.especes, avec_meteo, not args.sans_base)
     elif args.commande == "pipeline":
-        meteo(args.config, args.date, not args.sans_base, rafraichir=False)
-        score(args.config, args.date, args.garder_rasters)
+        if charger_parametres(args.config).meteo.active:
+            meteo(args.config, args.date, not args.sans_base, rafraichir=False)
+            score(args.config, args.date, args.garder_rasters)
+        else:
+            habitat_seul(args.config, args.date)

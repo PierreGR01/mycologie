@@ -58,8 +58,9 @@ function selectionInitiale(m: Manifeste, horsLigne: boolean): Selection {
     espece: m.especes.some((e) => e.id === precedente?.espece)
       ? precedente!.espece
       : m.especes[0].id,
-    date: dates.includes(m.run) ? m.run : dates[Math.floor(dates.length / 2)],
-    habitatSeul: precedente?.habitatSeul ?? false,
+    date: dates.includes(m.run) ? m.run : (dates[Math.floor(dates.length / 2)] ?? m.run),
+    // Sans météo (manifeste sans dates), seule la carte d'habitat existe.
+    habitatSeul: dates.length === 0 || (precedente?.habitatSeul ?? false),
   };
 }
 
@@ -75,6 +76,7 @@ async function demarrer(): Promise<void> {
   }
 
   let selection = selectionInitiale(manifeste, horsLigne);
+  const avecMeteo = manifeste.dates.length > 0;
   const carte = creerCarte("carte", manifeste);
   (window as unknown as { __carte: unknown }).__carte = carte; // tests de bout en bout
 
@@ -98,6 +100,11 @@ async function demarrer(): Promise<void> {
     changer({ ...selection, date: manifeste.dates[Number(curseur.value)].date }),
   );
   const habitatSeul = $<HTMLInputElement>("habitat-seul");
+  if (!avecMeteo) {
+    for (const element of [curseur, $("graduations"), habitatSeul.closest("label")!]) {
+      element.hidden = true;
+    }
+  }
   habitatSeul.addEventListener("change", () =>
     changer({ ...selection, habitatSeul: habitatSeul.checked }),
   );
@@ -130,9 +137,10 @@ async function demarrer(): Promise<void> {
   );
 
   // À propos
-  $("apropos-run").textContent =
-    `Météo du run du ${formatDate.format(new Date(manifeste.run))}, ` +
-    `cartes calculées le ${new Date(manifeste.genere_le).toLocaleString("fr-FR")}.`;
+  const calculees = new Date(manifeste.genere_le).toLocaleString("fr-FR");
+  $("apropos-run").textContent = avecMeteo
+    ? `Météo du run du ${formatDate.format(new Date(manifeste.run))}, cartes calculées le ${calculees}.`
+    : `Météo désactivée : cartes du potentiel de l'habitat, calculées le ${calculees}.`;
   $("sources").replaceChildren(
     ...manifeste.sources.map((s) => {
       const li = document.createElement("li");
@@ -161,13 +169,15 @@ async function demarrer(): Promise<void> {
     curseur.disabled = selection.habitatSeul;
     habitatSeul.checked = selection.habitatSeul;
     const jour = manifeste.dates[i];
-    $("date-libelle").textContent = selection.habitatSeul
-      ? "Habitat seul"
-      : formatDate.format(new Date(jour.date));
+    $("date-libelle").textContent = !avecMeteo
+      ? "Potentiel de l'habitat"
+      : selection.habitatSeul
+        ? "Habitat seul"
+        : formatDate.format(new Date(jour.date));
     const type = $("date-type");
-    type.hidden = selection.habitatSeul;
-    type.textContent = jour.type === "prevision" ? "prévision" : "analyse";
-    type.dataset.type = jour.type;
+    type.hidden = selection.habitatSeul || !jour;
+    type.textContent = jour?.type === "prevision" ? "prévision" : "analyse";
+    type.dataset.type = jour?.type ?? "";
     const espece = manifeste.especes.find((e) => e.id === selection.espece)!;
     const avert = $("avertissement-espece");
     avert.hidden = !espece.avertissement;
@@ -192,7 +202,9 @@ async function demarrer(): Promise<void> {
     horsLigne = !navigator.onLine;
     bandeau(
       horsLigne
-        ? `Hors ligne : dernière carte consultée (météo du ${formatDate.format(new Date(manifeste.run))}).`
+        ? avecMeteo
+          ? `Hors ligne : dernière carte consultée (météo du ${formatDate.format(new Date(manifeste.run))}).`
+          : "Hors ligne : dernière carte consultée."
         : null,
     );
   };

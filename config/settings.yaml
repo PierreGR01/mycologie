@@ -25,6 +25,9 @@ reseau:
 
 # Météo (étape 4) : échantillonnage Open-Meteo, correction d'altitude, dates calculées.
 meteo:
+  # Désactivée le 05/11/2026 : la carte montre le potentiel de chaque zone (habitat seul). Le quota
+  # gratuit d'Open-Meteo, partagé par l'adresse IP de l'environnement cloud, était souvent épuisé.
+  active: false
   url: https://api.open-meteo.com/v1/forecast
   modele: best_match
   fuseau: Europe/Paris

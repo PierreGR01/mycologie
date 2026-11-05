@@ -113,6 +113,12 @@ définies dans `config/settings.yaml`, rubrique `affichage`.
 
 ## Étape 4 : pipeline quotidien
 
+> **Météo désactivée pour l'instant** (`meteo.active: false` dans
+> [config/settings.yaml](config/settings.yaml)) : `make pipeline` ne fait aucune requête
+> Open-Meteo et publie seulement le manifeste des cartes d'habitat ; la PWA montre le potentiel de
+> chaque zone, sans curseur de date. Pour réactiver la météo, passer `active` à `true`. Le
+> calibrage saute alors aussi la météo historique.
+
 ```bash
 make pipeline                    # cartes du jour : J-7 à J+7, 5 espèces
 make pipeline DATE=2026-10-15    # rejouer un run

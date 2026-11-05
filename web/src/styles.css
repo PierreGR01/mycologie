@@ -1,3 +1,8 @@
+/* L'attribut hidden l'emporte sur les display: flex ci-dessous. */
+[hidden] {
+  display: none !important;
+}
+
 :root {
   --fond: #f4f1ea;
   --surface: #ffffffee;

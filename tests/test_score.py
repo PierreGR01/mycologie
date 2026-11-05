@@ -77,6 +77,7 @@ def test_pipeline_hors_ligne(projet, parametres, monkeypatch):
     monkeypatch.setattr(openmeteo, "obtenir", faux_obtenir([]))
     monkeypatch.setattr(recuperation, "aujourdhui", lambda p: date(2026, 10, 15))
     monkeypatch.setattr(parametres.meteo, "appels_par_minute", 1e9)
+    monkeypatch.setattr(parametres.meteo, "active", True)
     monkeypatch.setattr("myco.cli.charger_parametres", lambda config: parametres)
 
     main(["habitat", "--sans-tuiles"])
@@ -109,6 +110,26 @@ def test_pipeline_hors_ligne(projet, parametres, monkeypatch):
     # zoom minimal qui couvre ce petit département fictif.
     entete, _ = lire_pmtiles(publication / "runs" / "2026-10-15" / "morille" / "2026-10-15.pmtiles")
     assert entete["addressed_tiles_count"] == 1
+
+
+def test_pipeline_sans_meteo(projet, parametres, monkeypatch):
+    """meteo.active: false (réglage du dépôt) : aucune requête, manifeste « habitat seul »."""
+    deposer_couches_statiques(projet)
+    deposer_limite(projet)
+    monkeypatch.setattr(openmeteo, "obtenir", lambda *a, **k: pytest.fail("appel Open-Meteo"))
+    assert parametres.meteo.active is False
+
+    main(["habitat"])
+    main(["pipeline", "--date", "2026-11-05", "--sans-base"])
+
+    publication = projet / "web" / "data"
+    manifeste = json.loads((publication / "latest.json").read_text())
+    assert manifeste["run"] == "2026-11-05" and manifeste["dates"] == []
+    assert manifeste["meteo"] is False
+    ids = {s["id"] for s in manifeste["sources"]}
+    assert "open_meteo" not in ids
+    assert all((publication / e["habitat"]).exists() for e in manifeste["especes"])
+    assert not (publication / "runs").exists()
 
 
 def test_zoom_minimal_complete(parametres):

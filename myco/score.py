@@ -35,7 +35,7 @@ ANNEE_REF = 2001  # année non bissextile servant à numéroter les jours
 
 
 def sources_score(p: Parametres) -> list[str]:
-    return [*sources_habitat(p), "open_meteo"]
+    return [*sources_habitat(p), *(["open_meteo"] if p.meteo.active else [])]
 
 
 def sources_manifeste(p: Parametres) -> list[dict]:
@@ -43,6 +43,8 @@ def sources_manifeste(p: Parametres) -> list[dict]:
     et du fond de carte ont leur attribution affichée en permanence sur la carte."""
     carte = ["plan_ign", "admin_express", *sources_score(p)]
     ecartees = set(CHARGEURS) - set(sources_utilisees(p))
+    if not p.meteo.active:
+        ecartees.add("open_meteo")
     return [
         {"id": cle, "nom": s.nom, "licence": s.licence, "attribution": s.attribution,
          "url": s.url, "carte": cle in carte}
@@ -160,6 +162,7 @@ def ecrire_manifeste(p: Parametres, especes: dict[str, Espece], run: date, dates
     manifeste = {
         "run": run.isoformat(),
         "genere_le": datetime.now(UTC).isoformat(timespec="seconds"),
+        "meteo": bool(dates),  # sans dates : potentiel de l'habitat seul
         "dates": [{"date": d.isoformat(), "type": "prevision" if d >= recupere_le else "analyse"}
                   for d in dates],
         "especes": [
@@ -180,6 +183,11 @@ def ecrire_manifeste(p: Parametres, especes: dict[str, Espece], run: date, dates
     temporaire.write_text(json.dumps(manifeste, indent=2, ensure_ascii=False))
     os.replace(temporaire, chemin)
     return chemin
+
+
+def publier_habitat(p: Parametres, especes: dict[str, Espece], jour: date) -> Path:
+    """Météo désactivée : manifeste sans dates, la PWA ne montre que les cartes d'habitat."""
+    return ecrire_manifeste(p, especes, jour, [], jour, grille_reference(p))
 
 
 def publier_limite(p: Parametres) -> str:

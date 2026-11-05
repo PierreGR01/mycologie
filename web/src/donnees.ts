@@ -3,7 +3,8 @@
 export interface Manifeste {
   run: string;
   genere_le: string;
-  dates: { date: string; type: "analyse" | "prevision" }[];
+  meteo?: boolean; // false : météo désactivée, carte d'habitat seule
+  dates: { date: string; type: "analyse" | "prevision" }[]; // vide sans météo
   especes: {
     id: string;
     nom: string;

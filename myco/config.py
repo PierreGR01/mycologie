@@ -37,6 +37,8 @@ class Reseau(BaseModel):
 
 
 class ParamMeteo(BaseModel):
+    # false : aucune requête Open-Meteo, la PWA ne montre que le potentiel de l'habitat.
+    active: bool = True
     url: str
     modele: str = "best_match"
     fuseau: str = "Europe/Paris"

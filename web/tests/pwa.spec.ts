@@ -29,25 +29,36 @@ test("avertissement au premier lancement, puis plus ensuite", async ({ page }) =
   await expect(page.locator("#avertissement")).toBeHidden();
 });
 
+const avecMeteo = manifeste ? manifeste.dates.length > 0 : false;
+
 test("sélecteur d'espèce, curseur de date, légende et sources", async ({ page }) => {
   await accepterAvertissement(page);
   await expect(page.locator(".puce")).toHaveCount(manifeste.especes.length);
   await expect(page.locator("#legende li")).toHaveCount(manifeste.legende.length);
-  const jRun = manifeste.dates.findIndex((d: { date: string }) => d.date === manifeste.run);
-  await expect(page.locator("#graduations span").first()).toHaveText(`J-${jRun}`);
-  await expect(page.locator("#graduations span").last()).toHaveText(
-    `J+${manifeste.dates.length - 1 - jRun}`,
-  );
-
   await page.getByRole("radio", { name: "Girolle" }).click();
   await expect(page.getByRole("radio", { name: "Girolle" })).toHaveAttribute("aria-checked", "true");
-  await page.locator("#curseur-date").fill("0");
-  await expect(page.locator("#date-type")).toHaveText("analyse");
-  await page.locator("#curseur-date").fill(String(manifeste.dates.length - 1));
-  await expect(page.locator("#date-type")).toHaveText("prévision");
+
+  if (avecMeteo) {
+    const jRun = manifeste.dates.findIndex((d: { date: string }) => d.date === manifeste.run);
+    await expect(page.locator("#graduations span").first()).toHaveText(`J-${jRun}`);
+    await expect(page.locator("#graduations span").last()).toHaveText(
+      `J+${manifeste.dates.length - 1 - jRun}`,
+    );
+    await page.locator("#curseur-date").fill("0");
+    await expect(page.locator("#date-type")).toHaveText("analyse");
+    await page.locator("#curseur-date").fill(String(manifeste.dates.length - 1));
+    await expect(page.locator("#date-type")).toHaveText("prévision");
+  } else {
+    // Météo désactivée : ni curseur ni bascule, la carte d'habitat est affichée.
+    await expect(page.locator("#date-libelle")).toHaveText("Potentiel de l'habitat");
+    await expect(page.locator("#curseur-date")).toBeHidden();
+    await expect(page.locator("#habitat-seul")).toBeHidden();
+  }
   await carteChargee(page);
   const url = await page.evaluate(() => (window as any).__carte.getSource("score").url);
-  expect(url).toContain(`/girolle/${manifeste.dates.at(-1).date}.pmtiles`);
+  expect(url).toContain(
+    avecMeteo ? `/girolle/${manifeste.dates.at(-1).date}.pmtiles` : "/habitat/girolle.pmtiles",
+  );
 
   await page.getByRole("radio", { name: "Morille" }).click();
   await expect(page.locator("#avertissement-espece")).toContainText("toxiques crues");
@@ -79,8 +90,8 @@ test("hors ligne : la dernière carte consultée reste affichée", async ({ page
       () =>
         page.evaluate(async () => {
           const cache = await caches.open("derniere-carte");
-          const memorise = (await cache.keys()).some((r) => r.url.includes("/trompette/"));
-          return memorise && !!localStorage.getItem("derniere-carte-v1")?.includes("/trompette/");
+          const memorise = (await cache.keys()).some((r) => r.url.includes("trompette"));
+          return memorise && !!localStorage.getItem("derniere-carte-v1")?.includes("trompette");
         }),
       { timeout: 30_000 },
     )
@@ -89,7 +100,7 @@ test("hors ligne : la dernière carte consultée reste affichée", async ({ page
   await context.setOffline(true);
   const servies: number[] = [];
   page.on("response", (r) => {
-    if (r.url().includes("/trompette/") && r.fromServiceWorker()) servies.push(r.status());
+    if (r.url().includes("trompette") && r.fromServiceWorker()) servies.push(r.status());
   });
   await page.reload();
   await expect(page.locator("#bandeau")).toContainText("Hors ligne");

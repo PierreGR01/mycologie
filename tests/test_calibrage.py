@@ -173,6 +173,7 @@ def test_calibrage_hors_ligne(projet, parametres, monkeypatch):
     monkeypatch.setattr(gbif, "obtenir", faux)
     monkeypatch.setattr(historique, "obtenir", faux)
     monkeypatch.setattr(parametres.calibrage, "appels_par_minute", 1e9)
+    monkeypatch.setattr(parametres.meteo, "active", True)
     monkeypatch.setattr("myco.cli.charger_parametres", lambda config: parametres)
 
     main(["habitat", "--sans-tuiles"])
