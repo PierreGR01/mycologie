@@ -1,55 +1,43 @@
 {
-  "run": "2026-10-30",
-  "genere_le": "2026-11-05T08:21:05+00:00",
-  "dates": [
-    {
-      "date": "2026-10-29",
-      "type": "analyse"
-    },
-    {
-      "date": "2026-10-30",
-      "type": "analyse"
-    },
-    {
-      "date": "2026-10-31",
-      "type": "analyse"
-    }
-  ],
+  "run": "2026-11-05",
+  "genere_le": "2026-11-05T08:35:43+00:00",
+  "meteo": false,
+  "dates": [],
   "especes": [
     {
       "id": "cepe",
       "nom": "Cèpe",
       "avertissement": null,
       "habitat": "habitat/cepe.pmtiles",
-      "tuiles": "runs/2026-10-30/cepe/{date}.pmtiles"
+      "tuiles": "runs/2026-11-05/cepe/{date}.pmtiles"
     },
     {
       "id": "girolle",
       "nom": "Girolle",
       "avertissement": null,
       "habitat": "habitat/girolle.pmtiles",
-      "tuiles": "runs/2026-10-30/girolle/{date}.pmtiles"
+      "tuiles": "runs/2026-11-05/girolle/{date}.pmtiles"
     },
     {
       "id": "morille",
       "nom": "Morille",
       "avertissement": "Les morilles sont toxiques crues ou insuffisamment cuites.",
       "habitat": "habitat/morille.pmtiles",
-      "tuiles": "runs/2026-10-30/morille/{date}.pmtiles"
+      "tuiles": "runs/2026-11-05/morille/{date}.pmtiles"
     },
     {
       "id": "pied_de_mouton",
       "nom": "Pied-de-mouton",
       "avertissement": null,
       "habitat": "habitat/pied_de_mouton.pmtiles",
-      "tuiles": "runs/2026-10-30/pied_de_mouton/{date}.pmtiles"
+      "tuiles": "runs/2026-11-05/pied_de_mouton/{date}.pmtiles"
     },
     {
       "id": "trompette",
       "nom": "Trompette de la mort",
       "avertissement": null,
       "habitat": "habitat/trompette.pmtiles",
-      "tuiles": "runs/2026-10-30/trompette/{date}.pmtiles"
+      "tuiles": "runs/2026-11-05/trompette/{date}.pmtiles"
     }
   ],
   "legende": [
@@ -135,14 +123,6 @@
       "licence": "Licence Ouverte Etalab 2.0",
       "attribution": "© IGN – Plan IGN",
       "url": "https://geoservices.ign.fr/services-web-experts-cartes",
-      "carte": true
-    },
-    {
-      "id": "open_meteo",
-      "nom": "Open-Meteo (Forecast et Historical Weather API)",
-      "licence": "CC BY 4.0",
-      "attribution": "Weather data by Open-Meteo.com (Météo-France, ECMWF, DWD)",
-      "url": "https://open-meteo.com",
       "carte": true
     },
     {
