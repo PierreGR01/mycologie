@@ -1,6 +1,6 @@
 # Calibrage – Cèpe
 
-Généré le 31/10/2026. Taxons : Boletus edulis, Boletus pinophilus, Boletus aereus, Boletus reticulatus.
+Généré le 05/11/2026. Taxons : Boletus edulis, Boletus pinophilus, Boletus aereus, Boletus reticulatus.
 
 > **Rapport de diagnostic.** Les règles de `config/especes/cepe.yaml` ne sont pas modifiées automatiquement.
 
@@ -37,7 +37,7 @@ L'habitat est moyenné dans le cercle d'incertitude de chaque observation, puis 
 ![Habitat](habitat.png)
 
 - AUC observations / fond : 0.56 (faible)
-- Indice de Boyce continu : 0.71 (correct)
+- Indice de Boyce continu : 0.67 (correct)
 
 ### Composition : essences
 
@@ -68,12 +68,12 @@ Part moyenne de chaque classe dans les cercles (observations et fond), et valeur
 
 |  | valeur_regle | part_observations | part_fond | ratio |
 |---|---|---|---|---|
-| detritique_mixte | 1.00 | 0.45 | 0.31 | 1.43 |
-| calcaire | 0.60 | 0.21 | 0.28 | 0.76 |
-| marno_calcaire | 0.70 | 0.17 | 0.18 | 0.92 |
-| alluvions_recentes | 0.40 | 0.09 | 0.13 | 0.66 |
-| siliceux | 1.00 | 0.07 | 0.07 | 1.10 |
-| indetermine | 0.70 | 0.01 | 0.03 | 0.48 |
+| detritique_mixte | 1.00 | 0.53 | 0.43 | 1.23 |
+| calcaire | 0.60 | 0.16 | 0.23 | 0.66 |
+| marno_calcaire | 0.70 | 0.19 | 0.18 | 1.02 |
+| alluvions_recentes | 0.40 | 0.05 | 0.07 | 0.62 |
+| siliceux | 1.00 | 0.07 | 0.06 | 1.12 |
+| indetermine | 0.70 | 0.01 | 0.02 | 0.78 |
 
 ## Météo à la date d'observation
 

@@ -1,6 +1,6 @@
 # Calibrage – Trompette de la mort
 
-Généré le 31/10/2026. Taxons : Craterellus cornucopioides.
+Généré le 05/11/2026. Taxons : Craterellus cornucopioides.
 
 > **Rapport de diagnostic.** Les règles de `config/especes/trompette.yaml` ne sont pas modifiées automatiquement.
 
@@ -37,7 +37,7 @@ L'habitat est moyenné dans le cercle d'incertitude de chaque observation, puis 
 ![Habitat](habitat.png)
 
 - AUC observations / fond : 0.54 (faible)
-- Indice de Boyce continu : -0.25 (faible)
+- Indice de Boyce continu : -0.23 (faible)
 
 ### Composition : essences
 
@@ -68,12 +68,12 @@ Part moyenne de chaque classe dans les cercles (observations et fond), et valeur
 
 |  | valeur_regle | part_observations | part_fond | ratio |
 |---|---|---|---|---|
-| detritique_mixte | 0.80 | 0.35 | 0.31 | 1.13 |
-| calcaire | 1.00 | 0.32 | 0.28 | 1.14 |
-| marno_calcaire | 1.00 | 0.14 | 0.18 | 0.77 |
-| alluvions_recentes | 0.60 | 0.14 | 0.13 | 1.08 |
-| siliceux | 0.60 | 0.03 | 0.07 | 0.46 |
-| indetermine | 0.70 | 0.01 | 0.03 | 0.50 |
+| detritique_mixte | 0.80 | 0.47 | 0.43 | 1.09 |
+| calcaire | 1.00 | 0.23 | 0.23 | 0.99 |
+| marno_calcaire | 1.00 | 0.19 | 0.18 | 1.02 |
+| alluvions_recentes | 0.60 | 0.06 | 0.07 | 0.84 |
+| siliceux | 0.60 | 0.03 | 0.06 | 0.42 |
+| indetermine | 0.70 | 0.03 | 0.02 | 1.35 |
 
 ## Météo à la date d'observation
 

@@ -1,6 +1,6 @@
 # Calibrage – Girolle
 
-Généré le 31/10/2026. Taxons : Cantharellus cibarius.
+Généré le 05/11/2026. Taxons : Cantharellus cibarius.
 
 > **Rapport de diagnostic.** Les règles de `config/especes/girolle.yaml` ne sont pas modifiées automatiquement.
 
@@ -36,8 +36,8 @@ L'habitat est moyenné dans le cercle d'incertitude de chaque observation, puis 
 
 ![Habitat](habitat.png)
 
-- AUC observations / fond : 0.57 (faible)
-- Indice de Boyce continu : 0.33 (faible)
+- AUC observations / fond : 0.58 (faible)
+- Indice de Boyce continu : 0.38 (faible)
 
 ### Composition : essences
 
@@ -68,12 +68,12 @@ Part moyenne de chaque classe dans les cercles (observations et fond), et valeur
 
 |  | valeur_regle | part_observations | part_fond | ratio |
 |---|---|---|---|---|
-| detritique_mixte | 0.80 | 0.32 | 0.31 | 1.02 |
-| calcaire | 0.30 | 0.28 | 0.28 | 1.00 |
-| marno_calcaire | 0.40 | 0.17 | 0.18 | 0.95 |
-| alluvions_recentes | 0.30 | 0.10 | 0.13 | 0.80 |
-| siliceux | 1.00 | 0.12 | 0.07 | 1.80 |
-| indetermine | 0.60 | 0.00 | 0.03 | 0.06 |
+| detritique_mixte | 0.80 | 0.41 | 0.43 | 0.95 |
+| calcaire | 0.30 | 0.21 | 0.23 | 0.89 |
+| marno_calcaire | 0.40 | 0.20 | 0.18 | 1.09 |
+| alluvions_recentes | 0.30 | 0.06 | 0.07 | 0.76 |
+| siliceux | 1.00 | 0.12 | 0.06 | 1.91 |
+| indetermine | 0.60 | 0.01 | 0.02 | 0.74 |
 
 ## Météo à la date d'observation
 
@@ -93,4 +93,4 @@ Valeurs des indicateurs les jours d'observation (déciles 10 et 90, médiane), c
 
 ## Règles à revoir
 
-- Habitat : AUC 0.57, le modèle distingue mal les zones observées du fond.
+- Habitat : AUC 0.58, le modèle distingue mal les zones observées du fond.

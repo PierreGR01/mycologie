@@ -1,6 +1,6 @@
 # Calibrage – Morille
 
-Généré le 31/10/2026. Taxons : Morchella.
+Généré le 05/11/2026. Taxons : Morchella.
 
 > **Rapport de diagnostic.** Les règles de `config/especes/morille.yaml` ne sont pas modifiées automatiquement.
 
@@ -37,7 +37,7 @@ L'habitat est moyenné dans le cercle d'incertitude de chaque observation, puis 
 ![Habitat](habitat.png)
 
 - AUC observations / fond : 0.51 (faible)
-- Indice de Boyce continu : 0.30 (faible)
+- Indice de Boyce continu : 0.24 (faible)
 
 ### Composition : essences
 
@@ -68,12 +68,12 @@ Part moyenne de chaque classe dans les cercles (observations et fond), et valeur
 
 |  | valeur_regle | part_observations | part_fond | ratio |
 |---|---|---|---|---|
-| detritique_mixte | 0.80 | 0.34 | 0.31 | 1.08 |
-| calcaire | 0.90 | 0.35 | 0.28 | 1.22 |
-| marno_calcaire | 0.90 | 0.15 | 0.18 | 0.85 |
-| alluvions_recentes | 1.00 | 0.11 | 0.13 | 0.83 |
-| siliceux | 0.50 | 0.00 | 0.07 | 0.06 |
-| indetermine | 0.60 | 0.05 | 0.03 | 1.92 |
+| detritique_mixte | 0.80 | 0.42 | 0.43 | 0.98 |
+| calcaire | 0.90 | 0.29 | 0.23 | 1.23 |
+| marno_calcaire | 0.90 | 0.20 | 0.18 | 1.12 |
+| alluvions_recentes | 1.00 | 0.05 | 0.07 | 0.70 |
+| siliceux | 0.50 | 0.00 | 0.06 | 0.07 |
+| indetermine | 0.60 | 0.03 | 0.02 | 1.61 |
 
 ## Météo à la date d'observation
 

@@ -1,6 +1,6 @@
 # Calibrage – Pied-de-mouton
 
-Généré le 31/10/2026. Taxons : Hydnum repandum.
+Généré le 05/11/2026. Taxons : Hydnum repandum.
 
 > **Rapport de diagnostic.** Les règles de `config/especes/pied_de_mouton.yaml` ne sont pas modifiées automatiquement.
 
@@ -37,7 +37,7 @@ L'habitat est moyenné dans le cercle d'incertitude de chaque observation, puis 
 ![Habitat](habitat.png)
 
 - AUC observations / fond : 0.53 (faible)
-- Indice de Boyce continu : 0.20 (faible)
+- Indice de Boyce continu : 0.17 (faible)
 
 ### Composition : essences
 
@@ -68,12 +68,12 @@ Part moyenne de chaque classe dans les cercles (observations et fond), et valeur
 
 |  | valeur_regle | part_observations | part_fond | ratio |
 |---|---|---|---|---|
-| detritique_mixte | 0.90 | 0.42 | 0.31 | 1.35 |
-| calcaire | 1.00 | 0.24 | 0.28 | 0.84 |
-| marno_calcaire | 1.00 | 0.18 | 0.18 | 1.03 |
-| alluvions_recentes | 0.60 | 0.10 | 0.13 | 0.75 |
-| siliceux | 0.80 | 0.04 | 0.07 | 0.56 |
-| indetermine | 0.80 | 0.02 | 0.03 | 0.76 |
+| detritique_mixte | 0.90 | 0.52 | 0.43 | 1.21 |
+| calcaire | 1.00 | 0.18 | 0.23 | 0.76 |
+| marno_calcaire | 1.00 | 0.19 | 0.18 | 1.06 |
+| alluvions_recentes | 0.60 | 0.06 | 0.07 | 0.79 |
+| siliceux | 0.80 | 0.04 | 0.06 | 0.58 |
+| indetermine | 0.80 | 0.02 | 0.02 | 0.86 |
 
 ## Météo à la date d'observation
 
