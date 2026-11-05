@@ -171,5 +171,5 @@
     }
   ],
   "licence_cartes": "Les cartes de favorabilité sont dérivées de BD LISA v3, entités hydrogéologiques de niveau local (BRGM / SANDRE) : elles sont diffusées sous licence CC BY-NC-SA (attribution, pas d'usage commercial, partage dans les mêmes conditions).",
-  "note": "Démonstration : cartes mises à jour manuellement, pas chaque jour ; géologie issue de la BD LISA en attendant la BD Charm-50."
+  "note": "Démonstration : cartes mises à jour manuellement, pas chaque jour."
 }
