@@ -14,6 +14,7 @@ import zipfile
 from pathlib import Path
 
 import geopandas as gpd
+import numpy as np
 import pandas as pd
 from shapely.geometry import box
 
@@ -36,12 +37,16 @@ def chemin_csv(source: str = "bdcharm50") -> Path:
     return racine() / "config" / "classes" / nom
 
 
-def source_utilisee(p: Parametres) -> str:
-    """Source de geol.tif (lue dans sa trace) ; la première source configurée par défaut."""
+def sources_utilisees(p: Parametres) -> list[str]:
+    """Sources de geol.tif (lues dans sa trace) : la carte principale, puis celle de la roche
+    sous-jacente des formations superficielles si elle a servi. Par défaut, la première source
+    configurée."""
     trace = p.dossier_statique / "geol.tif.source.json"
-    if trace.exists():
-        return json.loads(trace.read_text(encoding="utf-8")).get("source", p.geologie.sources[0])
-    return p.geologie.sources[0]
+    if not trace.exists():
+        return [p.geologie.sources[0]]
+    t = json.loads(trace.read_text(encoding="utf-8"))
+    couverture = [t["couverture"]] if t.get("couverture") else []
+    return [t.get("source", p.geologie.sources[0]), *couverture]
 
 
 def normaliser(texte: str | None) -> str:
@@ -177,31 +182,68 @@ def charger(p: Parametres, grille: Grille) -> tuple[str, gpd.GeoDataFrame, Path]
     raise RuntimeError(f"aucune carte géologique accessible parmi {p.geologie.sources}")
 
 
+def classer_source(p: Parametres, cle: str, gdf: gpd.GeoDataFrame,
+                   regles: ReglesGeologie) -> tuple[pd.DataFrame, pd.Series]:
+    """Table de relecture de la source (écrite, corrections manuelles conservées) et classe de
+    chaque polygone."""
+    src = p.sources[cle]
+    table = fusionner_corrections(
+        classer_unites(unites(gdf, src.champs), regles), lire_csv(chemin_csv(cle)), regles
+    )
+    if regles.couverture and regles.couverture.source != cle:
+        texte = (table["notation"] + " " + table["description"].fillna("")).map(normaliser)
+        locale = texte.map(lambda t: re.search(regles.couverture.unites, t) is not None)
+        table["herite_socle"] = (table["classe"] == "detritique_mixte") & locale
+    table.to_csv(chemin_csv(cle), index=False)
+    log.info("%s : classes de substrat (ha) : %s", cle,
+             table.groupby("classe")["surface_ha"].sum().round().to_dict())
+    notation = gdf[colonne(gdf, src.champs["notation"])].astype("string").fillna("").str.strip()
+    return table, notation.map(dict(zip(table["notation"], table["classe"], strict=True)))
+
+
+def heriter_socle(p: Parametres, grille: Grille, regles: ReglesGeologie, cle: str,
+                  gdf: gpd.GeoDataFrame, table: pd.DataFrame, geol: np.ndarray) -> str | None:
+    """Formations superficielles locales : classe de la roche sous-jacente (`couverture`). Modifie
+    `geol` en place ; renvoie la source utilisée, ou None."""
+    c = regles.couverture
+    if not c or c.source == cle or "herite_socle" not in table:
+        return None
+    try:
+        socle_gdf, _ = CHARGEURS[c.source](p, grille)
+    except ErreurReseau as exc:
+        log.warning("roche sous-jacente (%s) inaccessible : formations superficielles gardées "
+                    "telles quelles (%s)", c.source, exc)
+        return None
+    _, socle_classe = classer_source(p, c.source, socle_gdf, regles)
+    socle = rasteriser(socle_gdf.geometry, socle_classe.map(regles.classes).fillna(0), grille)
+    notation = gdf[colonne(gdf, p.sources[cle].champs["notation"])].astype("string").str.strip()
+    locales = notation.isin(table.loc[table["herite_socle"], "notation"])
+    couverte = rasteriser(gdf.geometry, locales.astype(int), grille).astype(bool)
+    herite = couverte & np.isin(socle, [regles.classes[k] for k in c.classes])
+    geol[herite] = socle[herite]
+    log.info("formations superficielles sur roche %s : %.0f ha reclassés", c.classes,
+             herite.sum() * grille.resolution ** 2 / 1e4)
+    return c.source
+
+
 def executer(p: Parametres, avec_base: bool = True) -> Path:
     grille = grille_reference(p)
     regles = charger_regles_geologie()
     cle, gdf, fichier = charger(p, grille)
     src = p.sources[cle]
 
-    table = fusionner_corrections(
-        classer_unites(unites(gdf, src.champs), regles), lire_csv(chemin_csv(cle)), regles
-    )
-    table.to_csv(chemin_csv(cle), index=False)
-    log.info("classes de substrat (ha) : %s",
-             table.groupby("classe")["surface_ha"].sum().round().to_dict())
-
-    nom_notation = colonne(gdf, src.champs["notation"])
-    classe = gdf[nom_notation].astype("string").fillna("").str.strip().map(
-        dict(zip(table["notation"], table["classe"], strict=True))
-    )
+    table, classe = classer_source(p, cle, gdf, regles)
     codes = classe.map(regles.classes).fillna(regles.classes["indetermine"])
+    geol = rasteriser(gdf.geometry, codes, grille)
+    couverture = heriter_socle(p, grille, regles, cle, gdf, table, geol)
     sortie = ecrire_cog(
-        p.dossier_statique / "geol.tif", rasteriser(gdf.geometry, codes, grille), grille,
+        p.dossier_statique / "geol.tif", geol, grille,
         description="classe de substrat (config/classes/geologie_regles.yaml)",
     )
-    ecrire_trace(sortie, src.url, source=cle, table=chemin_csv(cle).name)
+    ecrire_trace(sortie, src.url, source=cle, table=chemin_csv(cle).name, couverture=couverture)
     if avec_base:
         eng = db.moteur(p.url_base)
+        nom_notation = colonne(gdf, src.champs["notation"])
         descr = colonne(gdf, src.champs.get("descr"))
         litho = colonne(gdf, src.champs.get("lithologie"))
         couche_db = gpd.GeoDataFrame(

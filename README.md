@@ -9,9 +9,8 @@ Le score final vaut habitat × météo, sur une maille de 25 m. La conception es
 
 Auteur : Pierre Grambert ([@PierreGR01](https://github.com/PierreGR01)).
 
-> Projet en cours. Toutes les étapes sont implémentées. La géologie vient de la BD LISA v3
-> (BRGM / SANDRE), en attendant le retour de la BD Charm-50 (serveur infoterre indisponible).
-> Les observations INPN (OpenObs) ne sont pas encore utilisées : l'accès renvoie 403.
+> Projet en cours. Toutes les étapes sont implémentées. Les observations INPN (OpenObs) ne sont
+> pas encore utilisées : l'accès renvoie 403.
 
 ## Prérequis
 
@@ -79,6 +78,13 @@ hydrogéologique affleurante (ordre relatif 1 dans sa pile), classée d'après s
 lithologies. Elle est moins fine que la BD Charm-50 : ses entités regroupent plusieurs formations
 (« Calcaires et marnes crétacés de la Chartreuse »). La source retenue est notée dans
 `data/static/geol.tif.source.json` et reprise dans les attributions.
+
+Avec la BD Charm-50, les formations superficielles d'origine locale (moraines, éboulis,
+colluvions, cônes) prennent la classe de la roche sous-jacente donnée par la BD LISA quand elle est
+calcaire, marno-calcaire ou siliceuse : une moraine du Vercors compte comme calcaire, une moraine
+du Bas-Dauphiné reste détritique. Règle : `couverture` dans
+[config/classes/geologie_regles.yaml](config/classes/geologie_regles.yaml) ; les unités concernées
+sont marquées `herite_socle` dans `geologie.csv`.
 - `reports/ingestion/foret_codes.csv` : codes BD Forêt rencontrés. Les codes rangés en `inconnu`
   sont à ajouter dans `foret.yaml`.
 

@@ -22,6 +22,7 @@
 | D10 | Licence du code | **Aucune pour l'instant** (23/10/2026) : code public mais « tous droits réservés ». Pas d'usage commercial envisagé ; piste si besoin : PolyForm Noncommercial 1.0.0 |
 | D12 | Carte géologique de repli | **Accordé le 25/10/2026** (BD Charm-50 inaccessible) : BD LISA v3, entité affleurante de chaque polygone élémentaire, classée par libellé et lithologies (`geologie_bdlisa.csv`, **à relire**). La BD Charm-50 reste la source préférée (`geologie.sources`). Cartes dérivées sous CC BY-NC-SA |
 | D13 | Sélectivité de la carte | **31/10/2026** : habitat en produit pondéré (§3) ; classes « très faible » à « moyen » calculées mais non affichées (`affichage.classes[].affichee`) |
+| D14 | Formations superficielles | **05/11/2026** : BD Charm-50 de nouveau disponible (source principale). Ses moraines, éboulis, colluvions et cônes d'origine locale prennent la classe de la roche sous-jacente donnée par la BD LISA si elle est calcaire, marno-calcaire ou siliceuse (`couverture` dans `geologie_regles.yaml`, ≈ 149 000 ha). La BD LISA entrant dans le calcul, les cartes restent sous CC BY-NC-SA |
 
 ---
 

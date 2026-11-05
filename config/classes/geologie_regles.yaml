@@ -26,3 +26,13 @@ regles:
   - {classe: marno_calcaire, texte: "\\bmarne|marneu|marno|argilo-calcaire|calcschiste|flysch|terres noires"}
   - {classe: calcaire, texte: "calcaire|dolomi|\\bcraie|\\btufs?\\b|travertin|urgonien"}
   - {classe: siliceux, texte: "granit|gneiss|micaschiste|schistes? cristallin|amphibolite|migmatite|anatexite|quartzite|\\bgres\\b|rhyolite|leptynite|gabbro|diorite|spilite|houiller|pegmatite|cristallin|cristallophyllien|roches? (metamorphique|magmatique|plutonique)|metaplutonite|granitoide"}
+
+# Formations superficielles d'origine locale (moraines, éboulis, colluvions, cônes) de la BD Charm-50 :
+# elles héritent de la classe de la roche sous-jacente (entité affleurante de la BD LISA) quand
+# celle-ci est calcaire, marno-calcaire ou siliceuse. Ex. : moraine du Vercors → calcaire ;
+# moraine du Bas-Dauphiné (molasse, cailloutis) → reste détritique. Validé le 05/11/2026.
+# Les alluvions fluvio-glaciaires, transportées loin, ne sont pas concernées.
+couverture:
+  source: bdlisa
+  unites: "moraine|\\bdepots glaciaires|eboulis|colluvi|cones? (de dejection|torrentiels|mixtes)|depots de versants"
+  classes: [calcaire, marno_calcaire, siliceux]

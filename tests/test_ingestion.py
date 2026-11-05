@@ -19,7 +19,7 @@ from myco.cli import main
 from myco.config import charger_parametres
 from myco.grid import Grille
 from myco.habitat import sources_habitat
-from myco.ingest.geologie import source_utilisee
+from myco.ingest.geologie import sources_utilisees
 from myco.rasters import lire
 from myco.score import licence_cartes, sources_manifeste
 from tests.conftest import ecrire_asc
@@ -53,7 +53,7 @@ def deposer_donnees_brutes(racine):
 
     shp = _dossier(racine / "tmp_geol")
     gpd.GeoDataFrame(
-        {"NOTATION": ["n4U", "Fz"], "DESCR": ["Calcaires urgoniens", "Alluvions récentes"]},
+        {"NOTATION": ["Gy", "Fz"], "DESCR": ["Moraines würmiennes", "Alluvions récentes"]},
         geometry=[box(X0, Y0, X0 + 2000, Y0 + 1000), box(X0, Y0 + 1000, X0 + 2000, Y0 + 2000)],
         crs="EPSG:2154",
     ).to_file(shp / "GEO050K_HARM_038_S_FGEOL_2154.shp")
@@ -88,6 +88,7 @@ def _dossier(chemin):
 
 def test_ingestion_hors_ligne(projet):
     deposer_donnees_brutes(projet)
+    deposer_bdlisa(projet)
     for couche in ("limite", "relief", "foret", "geologie"):
         main(["ingest", couche, "--sans-base"])
 
@@ -112,11 +113,19 @@ def test_ingestion_hors_ligne(projet):
     assert set(np.unique(foret[dedans])) == {2, 8}
     assert (foret[~dedans] == 0).all()
 
+    # Moraine (détritique) sur le karst du Vercors de la BD LISA : classe calcaire héritée.
     geol, _ = lire(statique / "geol.tif")
     assert set(np.unique(geol[dedans])) == {1, 5}
 
     table = pd.read_csv(projet / "config" / "classes" / "geologie.csv")
-    assert set(table["classe"]) == {"calcaire", "alluvions_recentes"}
+    assert dict(zip(table["notation"], table["classe"], strict=True)) == {
+        "Gy": "detritique_mixte", "Fz": "alluvions_recentes"}
+    assert dict(zip(table["notation"], table["herite_socle"], strict=True)) == {
+        "Gy": True, "Fz": False}
+    assert (projet / "config" / "classes" / "geologie_bdlisa.csv").exists()
+    p = charger_parametres()
+    assert sources_utilisees(p) == ["bdcharm50", "bdlisa"]
+    assert "CC BY-NC-SA" in licence_cartes(p)
     rapport = pd.read_csv(projet / "reports" / "ingestion" / "foret_codes.csv")
     assert set(rapport["classe"]) == {"hetre", "sapin_epicea"}
 
@@ -144,7 +153,7 @@ def test_geologie_bdlisa_en_repli(projet):
     assert not (projet / "config" / "classes" / "geologie.csv").exists()
 
     p = charger_parametres()
-    assert source_utilisee(p) == "bdlisa"
+    assert sources_utilisees(p) == ["bdlisa"]
     assert sources_habitat(p) == ["bdforet", "bdlisa", "soilgrids", "rgealti"]
     ids = {s["id"] for s in sources_manifeste(p)}
     assert "bdlisa" in ids and "bdcharm50" not in ids
@@ -157,6 +166,7 @@ def test_ingestion_avec_postgis(projet, monkeypatch):
     url = os.environ["MYCO_TEST_DATABASE_URL"]
     monkeypatch.setenv("DATABASE_URL", url)
     deposer_donnees_brutes(projet)
+    deposer_bdlisa(projet)
     for couche in ("limite", "relief", "foret", "geologie"):
         main(["ingest", couche])
 
@@ -167,4 +177,4 @@ def test_ingestion_avec_postgis(projet, monkeypatch):
         classes = set(cx.execute(text("SELECT DISTINCT classe FROM ref.geologie")).scalars())
     assert compte == {"departement": 1, "bdforet": 2, "geologie": 2}
     assert {"admin_express", "rgealti", "bdforet", "bdcharm50"} <= sources
-    assert classes == {"calcaire", "alluvions_recentes"}
+    assert classes == {"detritique_mixte", "alluvions_recentes"}

@@ -211,9 +211,18 @@ class RegleGeologie(BaseModel):
         return self
 
 
+class Couverture(BaseModel):
+    """Formations superficielles locales (moraines, éboulis…) qui prennent la classe de la roche
+    sous-jacente donnée par une autre carte (`source`), si cette classe est dans `classes`."""
+    source: str
+    unites: str  # expression régulière sur notation + description, minuscules sans accents
+    classes: list[str] = Field(min_length=1)
+
+
 class ReglesGeologie(BaseModel):
     classes: dict[str, int]
     regles: list[RegleGeologie]
+    couverture: Couverture | None = None
 
     @model_validator(mode="after")
     def _coherence(self) -> ReglesGeologie:
@@ -222,6 +231,8 @@ class ReglesGeologie(BaseModel):
         if 0 in self.classes.values():
             raise ValueError("le code 0 est réservé à l'absence de donnée")
         inconnues = {r.classe for r in self.regles} - self.classes.keys()
+        if self.couverture:
+            inconnues |= set(self.couverture.classes) - self.classes.keys()
         if inconnues:
             raise ValueError(f"classes inconnues dans les règles : {sorted(inconnues)}")
         return self

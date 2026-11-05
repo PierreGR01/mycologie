@@ -16,7 +16,7 @@ from myco import regles
 from myco.config import Parametres, charger_classes_foret, charger_regles_geologie
 from myco.especes import Espece, FacteurTable, Habitat
 from myco.ingest import grille_reference
-from myco.ingest.geologie import source_utilisee
+from myco.ingest.geologie import sources_utilisees
 from myco.rasters import ecrire_cog
 from myco.terrain import NODATA_U8, SECTEURS
 from myco.tuiles import attribution, classer, ecrire_pmtiles, palette, tuiler
@@ -28,7 +28,7 @@ LIGNES_PAR_BLOC = 512
 
 
 def sources_habitat(p: Parametres) -> list[str]:
-    return ["bdforet", source_utilisee(p), "soilgrids", "rgealti"]
+    return ["bdforet", *sources_utilisees(p), "soilgrids", "rgealti"]
 
 
 # Codage des couches catégorielles : code → clé du vocabulaire, et code « pas de donnée ».

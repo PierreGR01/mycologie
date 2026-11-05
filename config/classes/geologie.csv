@@ -1,359 +1,359 @@
-notation,classe,classe_auto,regle,surface_ha,n_polygones,description
-Gy,detritique_mixte,detritique_mixte,4,134802.9,1330,"Dépôts glaciaires (moraines) principalement du Würm, localement plus tardifs (?) ou plus récents. Dépôts fluvio-glaciaires ou glacio-lacustres localement associés."
-FGy,detritique_mixte,detritique_mixte,4,69456.8,356,Alluvions fluvio-glaciaires würmiennes
-m5C,detritique_mixte,detritique_mixte,4,43938.0,311,Conglomérats deltaïques surtout calcaires avec lits de sables (Tortonien)
-Fz,alluvions_recentes,alluvions_recentes,1,43442.9,225,Alluvions actuelles et récentes
-OEx,detritique_mixte,detritique_mixte,4,39072.4,235,Loess et limons
-Fy,detritique_mixte,detritique_mixte,4,38234.2,289,Alluvions anciennes (fluviatiles à fluvio-glacaires ou fluvio-lacustres). Würm à post-Würm (?)
-m5S,detritique_mixte,detritique_mixte,4,23669.8,403,Molasse sablo-gréseuse à lentilles conglomératiques (Tortonien)
-Ez,detritique_mixte,detritique_mixte,4,16814.6,1727,Eboulis vifs actuels
-E,detritique_mixte,detritique_mixte,4,16740.8,360,"Eboulis actuels à anciens (âge non précisé), localement cônes d'avalanches et éboulis mêlés à moraines"
-n4-5aU,calcaire,calcaire,7,16651.5,61,"Complexe calcaire urgonien : calcaires massifs à patine claire de faciès urgonien non différenciés, parfois calcaires à silex (Barrémien - Aptien inférieur)"
-Ey,detritique_mixte,detritique_mixte,4,16588.5,696,Eboulis stabilisés anciens würmiens à post-würmiens (?)
-p2-IV,indetermine,indetermine,,16268.8,12,Formation de Bonnevaux - l'Amballan (Pliocène supérieur - Pléistocène inférieur)
-FJy-z,detritique_mixte,detritique_mixte,4,14081.6,327,"Cônes de déjection stabilisés, anciens ou de retrait würmien"
-n4a2,marno_calcaire,marno_calcaire,6,11706.8,130,"Complexe calc urgonien : Calc arg gris, Calc biocl lités, Marnes du Pré de la Font, Marn de la Fontaine Graillère, Marn de la Fontaine Colombette, Marn du Col de l'Aimoux, Calc arg et à petits silex, Calc biocl du Plateau de Glandasse (Barrémien inf)"
-Gx,detritique_mixte,detritique_mixte,4,9815.3,149,Moraines rissiennes
-FJz,detritique_mixte,detritique_mixte,4,7803.3,205,Cônes torrentiels de déjection (d'épandage) post-würmiens à actuels (actifs) ou sans âge précisé
-¡p2,detritique_mixte,detritique_mixte,4,7118.1,20,Formations résiduelles de Chambaran : niveau supérieur : cailloutis et argiles
-j2C,calcaire,calcaire,7,7081.2,37,Formation de Bramefarine : alternance de bancs calcaires et de schistes (rive gauche du Grésivaudan) (Bajocien inférieur)
-C,detritique_mixte,detritique_mixte,4,6438.0,105,"Dépôts de versants composites (localement glissés) : colluvions, éboulis et moraines remaniés"
-n3,marno_calcaire,marno_calcaire,6,6364.0,287,"Marnes et calcaires noirs à Spatangues, à miches, calcaires siliceux très durs à spicules (Hauterivien)"
-æ(2),siliceux,siliceux,8,6239.0,228,"Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Gneiss du Lauvitel,  Gneiss de la Lavey migmatisé,  Migmatites indifférenciées"
-ä(2),siliceux,siliceux,8,5884.3,231,"Amphibolites ""Ophiolite de Chamrousse"". Complexe de Belledonne (Précambrien p.p.) (limite Cambrien - Ordovicien)"
-j2-3CS,marno_calcaire,marno_calcaire,6,5243.7,69,Alternance de calcaires argileux gris-noir et de marnes très noires (Bajocien - Bathonien p.p.)
-Gl-Ne,indetermine,indetermine,,5193.3,297,Glaciers et névés
-j1,indetermine,indetermine,,5032.3,287,Argilites brunes à nodules siliceux et pyriteux (Aalénien)
-l1-3a,marno_calcaire,marno_calcaire,6,5016.6,225,"""Lias calcaire"" : calcaires dominants et schistes ou calcschistes (Hettangien - Carixien indifférenciés)"
-j2cJ,calcaire,calcaire,7,4614.2,115,Calcaires oolithiques et à débris (Bajocien supérieur)
-j3-5,marno_calcaire,marno_calcaire,6,4294.5,206,"""Terres noires"" supérieures (Callovien supérieur - Oxfordien inférieur) ; Terres noires"" inférieures (Bathonien supérieur - Callovien moyen) (rive droite du Grésivaudan)"
-GLy,detritique_mixte,detritique_mixte,4,4290.4,80,Alluvions glacio-lacustres würmiennes
-Gz,detritique_mixte,detritique_mixte,4,4271.8,258,Dépôts glaciaires (moraines) historiques (récentes à actuelles)
-ã(2),siliceux,siliceux,8,4228.9,133,"Granites plus externes (non définis pétro-chimiquement) : Granite d'Entraigues. Zone Dauphinoise - Granite de Turbat-Lauranoure, des Etages, d'Ailefroide, leucocrate, souvent porphyroïde"
-c5-6S,calcaire,calcaire,7,4079.4,60,Calcaires cristallins massifs à silex (Campanien terminal - Maastrichtien)
-EJz,detritique_mixte,detritique_mixte,4,4010.0,217,"Cônes mixtes d'éboulis, de déjection et/ou d'avalanches (+/- remaniement par ruissellement), récents à actuels ou d'âge indéterminé"
-FGx,detritique_mixte,detritique_mixte,4,4009.7,56,Alluvions fluvio-glaciaires rissiennes
-c5L,indetermine,indetermine,,3982.4,105,Lauzes et formations biodétritiques diverses (Campanien)
-sñ,siliceux,siliceux,8,3794.1,80,"Micaschistes de la ""Série satinée"". Rameau externe de Belledonne (âge indéterminé)"
-j5,marno_calcaire,marno_calcaire,6,3790.5,191,"Calcaires marneux ""argovo-rauraciens"" (rive droite du Grésivaudan) (Oxfordien moyen-supérieur)"
-Ezb,detritique_mixte,detritique_mixte,4,3591.9,145,"Eboulis à gros blocs, éboulements en masse, écroulements, actuels à récents ou d'âge non précisé ; voir également les éboulements représentés par des surcharges"
-l2MB,calcaire,calcaire,7,3477.8,106,Calcaire gris (régions de La Mure et du Beaumont) (Lotharingien inférieur - Sinémurien s.s.)
-n5aU,calcaire,calcaire,7,3310.3,96,Complexe calcaire urgonien : masse urgonienne supérieure (Aptien inférieur : Bédoulien inférieur)
-j3J,calcaire,calcaire,7,3230.1,93,Calcaires « choin » et calcaires roux spathiques (Bathonien)
-Fx,detritique_mixte,detritique_mixte,4,3120.8,65,Alluvions anciennes (fluviatiles à fluvio-glacaires ou fluvio-lacustres). Riss
-ã2-4,siliceux,siliceux,8,3074.8,127,"Granites s.l. porphyroïdes (~30%) ou à grain fin (~70%), foliés, à biotite ± muscovite. Granite des Sept Laux (Viséen)"
-l2-3MB,calcaire,calcaire,7,2964.8,101,"Calcaire rouille et calcaire gris, niveau à entroques (régions de La Mure et du Beaumont) (Sinémurien supérieur - Carixien inférieur)"
-n1-2M,marno_calcaire,marno_calcaire,6,2838.8,259,Complexe des Marnes de Narbonne : Couches de transition aux Calcaires du Fontanil ; Calcaires argileux ; Marnes de Narbonne (Berriasien supérieur - Valanginien inférieur)
-ñGR,siliceux,siliceux,8,2811.0,70,"Chloritoschistes et micaschistes à biotite. Zone externe, Zone Dauphinoise, Massif des Grandes Rousses (Paléozoïque)"
-j2M,marno_calcaire,marno_calcaire,6,2707.6,106,Formation de Bramefarine : marnes noires à bancs calcaires (rive gauche du Grésivaudan) (Bajocien inférieur basal)
-ñc,detritique_mixte,detritique_mixte,4,2692.3,65,Roches cristallophylliennes non migmatitiques : Ensemble cortical du Pelvoux et série du Taillefer (Dévono-dinantien) : Conglomérat métamorphique
-l3aMB,calcaire,calcaire,7,2649.8,125,"Calcaire rubané, niveau à entroques, calcaire lité gris (régions de La Mure et du Beaumont) (Carixien)"
-ã(4),siliceux,siliceux,8,2529.4,53,"Granite basal de la Meije (la Bérarde), alcalin leucocrate"
-l4Sc,marno_calcaire,marno_calcaire,6,2485.3,67,Schistes calcaires et marno-calcaires (Toarcien indifférencié)
-n1b-C,marno_calcaire,marno_calcaire,6,2462.2,160,Néocomien inférieur marno-calcaire : Calcaires gris lités (Berriasien moyen-supérieur) ; Calcaires argileux et marnes (Berriasien inférieur) ; Calcaires gris lités (Berriasien)
-FyS,detritique_mixte,detritique_mixte,4,2376.7,9,Alluvions anciennes (fluviatiles à fluvio-glacaires ou fluvio-lacustres). Würm à post-Würm (?) : Sables
-ã(3),siliceux,siliceux,8,2277.8,50,"Granite du Pelvoux (Rochail, Pont Saint-Guillerme)"
-Ex,detritique_mixte,detritique_mixte,4,2169.4,59,Éboulis à gros blocs. Riss : anté-Würmien à Würmien ancien ?
-Jx,detritique_mixte,detritique_mixte,4,2159.5,35,Alluvions torrentielles rissiennes
-l3bMC,marno_calcaire,marno_calcaire,6,2111.8,57,"""Marnes de la Clapisse"", ""Marnes d'Allemont"", calcaires marneux noirs  (Domérien)"
-l3bM,marno_calcaire,marno_calcaire,6,2052.7,101,Marnes micacées (régions de La Mure et du Beaumont) (Domérien)
-h4-5,detritique_mixte,detritique_mixte,4,2048.0,270,"Conglomérats, grès et schistes noirs à plantes, anthracite (Westphalien - Stéphanien)"
-j5-6,calcaire,calcaire,7,2034.0,173,"Calcaires ""séquaniens"" (bordure Chartreuse subalpine) (Oxfordien terminal - Kimméridgien inférieur)"
-l1-2Cf,calcaire,calcaire,7,1875.5,25,Calcaire fin et schistes noirs (Hettangien - Sinémurien inférieur )
-íä,siliceux,siliceux,8,1865.0,118,"Alternance ""leptynites - amphibolites"". Rameau interne de Belledonne : Belledonne sud-ouest (Ouest de l'accident de la Belle Étoile - le Rivier) (Dévonien - Dinantien?)"
-n5b,calcaire,calcaire,7,1855.8,146,"Complexe calcaire urgonien : ""Lumachelle"" (Aptien supérieur)"
-j7Ts,calcaire,calcaire,7,1807.5,119,"Calcaires ""tithoniques"" supérieurs (bordure Chartreuse subalpine) (Tithonien supérieur)"
-j1-2aJ,calcaire,calcaire,7,1728.3,75,"Calcaires spathiques et à entroques, à lits de silex (Aalénien p.p. + Bajocien inférieur)"
-l3bSr,calcaire,calcaire,7,1713.0,8,Schistes roux et bancs calcaires roux (Domérien)
-Ec,indetermine,indetermine,,1706.7,48,"Coulées de matériel fin ou de gros blocs, coulées de solifluxion, coulées boueuses"
-j6aJ,calcaire,calcaire,7,1697.9,122,"Calcaires stratifiés à Céphalopodes, niveau repère à la base à débris avec lentilles ou banc à oncolithes (Kimméridgien inférieur)"
-EG,detritique_mixte,detritique_mixte,4,1682.6,115,"Glacier rocheux, avec bourelets d'accumulation (bourrelets de glissements ou moraines de névés)"
-K1-3,calcaire,calcaire,7,1660.1,92,Roches cristallophylliennes non migmatitiques : Ensemble cortical du Pelvoux et série du Taillefer (Dévono-dinantien) : Albitophyre et tuf sodique
-j6-7Tm,calcaire,calcaire,7,1633.6,117,"Calcaires ""tithoniques"" moyens (bordure Chartreuse subalpine) (Kimméridgien supérieur - Tithonien inférieur)"
-n2F,calcaire,calcaire,7,1602.8,114,Complexe des Calcaires du Fontanil : calcaires inférieurs du Fontanil (Berriasien terminal - Valanginien inférieur)
-Gz1,detritique_mixte,detritique_mixte,4,1589.3,88,Dépôts glaciaires (moraines) tardi-würmiens à historiques
-n2,indetermine,indetermine,,1558.6,33,Valanginien indifférencié
-æb-mR,siliceux,siliceux,8,1553.5,65,"Enclaves (septa) de gneiss de grande taille, à biotite ± muscovite, localement migmatiques. Granite des Sept Laux (Viséen)"
-n2R,calcaire,calcaire,7,1509.2,120,Complexe des Calcaires du Fontanil : calcaires roux supérieurs du Fontanil (Valanginien)
-c5-6,indetermine,indetermine,,1490.2,27,Sénonien indifférencié
-j6,indetermine,indetermine,,1421.0,57,Kimméridgien indifférencié
-Zíñ,siliceux,siliceux,8,1417.8,45,"Gneiss, leptynite et micaschiste"
-Mä,siliceux,siliceux,8,1411.5,112,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Amphibolite migmatisée
-ñN,siliceux,siliceux,8,1377.0,107,Roches cristallophylliennes non migmatitiques : Ensemble cortical du Pelvoux et série du Taillefer (Dévono-dinantien) : Schiste noir et métagrauwacke
-hydro,indetermine,indetermine,,1331.2,19,Réseau hydrographique
-j6-7Tms,calcaire,calcaire,7,1324.8,91,"Calcaires lithographiques, calcaires à silex, brèches intraformationnelles (Tithonien indifférencié)"
-M,siliceux,siliceux,8,1284.8,73,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Gneiss et migmatite non distingués
-äì,siliceux,siliceux,8,1223.6,41,"Métagabbro, métapyroxénite. Complexe de Belledonne (Précambrien p.p.)"
-n2S,calcaire,calcaire,7,1220.2,152,"Complexe des Calcaires du Fontanil : calcaires sommitaux du Fontanil ou ""Calcaires à silex"" (Valanginien supérieur)"
-l3-4,marno_calcaire,marno_calcaire,6,1182.5,95,Marnes noires et marno-calcaires (Domérien - Toarcien)
-c5-6C,calcaire,calcaire,7,1157.4,35,Calcaires argileux lités ou lauzes rubanées (Campanien terminal - Maastrichtien inférieur)
-m3-4,detritique_mixte,detritique_mixte,4,1154.2,1,Molasse sableuse  (= Sables siliceux de Pont-de-Beauvoisin) (Langhien à Serravallien)
-tD,calcaire,calcaire,7,1144.7,575,Dolomies et calcaires dolomitiques (Trias  supérieur)
-n4a1,calcaire,calcaire,7,1142.3,31,Complexe calcaire urgonien : calcaires argileux gris ou roux à rognons de silex (Barrémien inférieur)
-FyT,detritique_mixte,detritique_mixte,4,1141.9,17,Alluvions anciennes (fluviatiles à fluvio-glacaires ou fluvio-lacustres). Würm à post-Würm (?) : Tourbes
-j2bJ,calcaire,calcaire,7,1129.3,52,Calcaires à polypiers et Calcaires à petites huîtres (Bajocien moyen)
-Mæ,siliceux,siliceux,8,1079.8,44,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Gneiss très migmatisé
-m5,indetermine,indetermine,,1045.9,12,Miocène supérieur (Tortonien)
-st/ñæ,siliceux,siliceux,8,987.5,54,Minéraux repéres du métamorphisme : staurotide dans micaschiste et gneiss albitique. Complexe de Belledonne (Précambrien p.p.)
-st/Zæ,siliceux,siliceux,8,980.4,43,"Minéraux repères du métamorphisme : staurotide dans gneiss migmatitique. Gneiss d'Allemont à biotite, muscovite avec passées d'amphibolites. Rameau int. de Belledonne : W de l'accident de la Belle Étoile-le Rivier (Précambrien à Carbon. inférieur ?)"
-ä(4),siliceux,siliceux,8,974.0,24,Roches cristallophylliennes non migmatitiques : Ensemble cortical du Pelvoux et série du Taillefer (Dévono-dinantien) : Amphibolite
-Zí,siliceux,siliceux,8,953.5,89,"Gneiss, gneiss leptynitique et leptynite"
-n1,marno_calcaire,marno_calcaire,6,953.3,102,Calcaires argileux beiges et marnes grises (Berriasien)
-æ(2)ä,siliceux,siliceux,8,930.1,9,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Gneiss du Lauvitel avec passée d'amphibolite (nord du Vénéon)
-ím,siliceux,siliceux,8,864.2,36,"Leptynite à muscovite (""granulite de P. Termier"") (roche volcanique ou hypo-volcanique métamorphisée). Zone externe, Zone Dauphinoise, Massif des Grandes Rousses"
-l1-4L,calcaire,calcaire,7,859.8,135,"""Calcaires de Laffrey"" (région de La Mure) (Hettangien - Toarcien indifférenciés)"
-r,detritique_mixte,detritique_mixte,4,840.4,107,"Conglomérats, grès et pélites violettes ou vertes (Permien)"
-m5A,detritique_mixte,detritique_mixte,4,836.3,100,Molasse sablo-argileuse ou sablo-marneuse et niveaux argileux (Tortonien)
-m2,detritique_mixte,detritique_mixte,4,835.4,40,"Molasse calcaire, gréseuse et glauconieuse. Localement conglomérat à la base, intercalations marneuses (Burdigalien supérieur ?)"
-m,detritique_mixte,detritique_mixte,4,821.1,7,Molasses et poudingues (Miocène indifférencié)
-Zñ,siliceux,siliceux,8,802.6,24,Micaschiste
-æ,siliceux,siliceux,8,791.7,57,Gneiss ocellaire du Plan du Lac. Zone dauphinoise
-n2Co,calcaire,calcaire,7,735.2,49,Complexe des Calcaires du Fontanil :  calcaires coralligènes de la Sure (limite Berriasien - Valanginien)
-j5cJ(1),calcaire,calcaire,7,720.6,64,Calcaires lités (Oxfordien supérieur)
-æb,siliceux,siliceux,8,715.3,30,Gneiss biotitiques. Zone Dauphinoise : La Romanche supérieure (Meije-Plateau d'Emparis)
-GA,detritique_mixte,detritique_mixte,4,679.9,6,Dépôts glaciaires de la dépression d'Autrans d'âge indéterminé
-n5Uo,calcaire,calcaire,7,670.6,120,Complexe calcaire urgonien : couches inférieures à Orbitolines (Aptien inférieur : Bédoulien inférieur)
-Pz,detritique_mixte,detritique_mixte,4,661.7,49,"Dépôts palustres actuels à récents : limons, tourbe"
-æb-h,siliceux,siliceux,8,638.2,42,Gneiss à biotite-hornblende. Rameau interne de Belledonne : Belledonne nord-est (Est de l'accident de la Belle Étoile - le Rivier) (Précambrien ? - Paléozoïque inférieur)
-ñf2,siliceux,siliceux,8,632.8,23,"Chloritoschiste et micaschiste à biotite feldspathisés près des leptynites ; Chloritoschiste feldspathisé. Zone externe, Zone Dauphinoise, Massif des Grandes Rousses (Paléozoïque)"
-n2M,marno_calcaire,marno_calcaire,6,631.0,36,Marnes gris bleuté jaunissantes (Valanginien)
-äF,siliceux,siliceux,8,628.8,14,Amphibolites du Ferrouillet et de la Dent du Pra. Rameau interne de Belledonne : Belledonne sud-ouest (Ouest de l'accident de la Belle Étoile - le Rivier) (Paléozoïque inférieur)
-FGw,detritique_mixte,detritique_mixte,4,615.8,10,Alluvions fluvio-glaciaires du Mindel
-äB,detritique_mixte,detritique_mixte,4,600.8,43,Amphibolites des Rochers Rissiou. Rameau interne de Belledonne: Belledonne nord-est (Est de l'accident de la Belle Étoile - le Rivier) (Paléozoïque inférieur - Ordovicien inférieur)
-Mæ(1),siliceux,siliceux,8,584.0,35,Gneiss migmatitique des Grandes Rousses
-n1i,marno_calcaire,marno_calcaire,6,574.2,78,Néocomien inférieur marno-calcaire : Couches à ciment de la Porte de France : calcaires argileux (Berriasien basal)
-Fw,detritique_mixte,detritique_mixte,4,572.7,8,Alluvions anciennes interglaciaires (glacio-lacustres à fluvio-glaciaires) entre Riss et Würm ou intra Würm
-l4Cr,marno_calcaire,marno_calcaire,6,570.6,56,Calcaires argileux roux et calcschistes beiges (Toarcien inférieur et moyen)
-j5cJ,calcaire,calcaire,7,570.3,100,Calcaires sublithographiques sur calcaires lités pyriteux (Oxfordien supérieur)
-å,indetermine,indetermine,,567.0,51,Chloritoschistes de Chamrousse
-K3,siliceux,siliceux,8,557.6,297,Spilites et cinérites (Trias ?)
-Ly,detritique_mixte,detritique_mixte,4,548.2,25,Dépôts post-wurmiens de lac et marais
-æí1,siliceux,siliceux,8,513.7,19,"Gneiss plagioclasiques micacés, méta-granites avec qq. niv. d'amphibolites. Rameau int. de Belledonne : Belledonne SW (W de l'accident de la Belle Étoile - le Rivier) (Dévonien - Dinantien)"
-FyL,detritique_mixte,detritique_mixte,4,508.8,10,Alluvions anciennes (fluviatiles à fluvio-glacaires ou fluvio-lacustres). Würm à post-Würm (?) : Limons
-j6bJ(1),calcaire,calcaire,7,505.8,58,"Calcaires à silex (chailles), calcaires récifaux (Kimméridgien supérieur)"
-ñ(2),siliceux,siliceux,8,505.3,13,Micaschistes du dôme de La Mure. Complexe de Belledonne (Précambrien p.p.)
-j6Ti,calcaire,calcaire,7,503.8,78,"Calcaires ""tithoniques"" inférieurs (bordure Chartreuse subalpine) (Kimméridgien supérieur)"
-gl,indetermine,indetermine,,489.9,17,Terrains glissés
-n3-4R,indetermine,indetermine,,483.6,135,Couches rousses à Panopées (Hauterivien terminal - Barrémien inférieur)
-æí3,siliceux,siliceux,8,456.1,28,Roches très feldspathiques : Gneiss oeillé de l'Alpetta
-ä(b),siliceux,siliceux,8,453.4,44,Amphibolite dérivant de l'association spilite-kératophyre : Amphibolite (s.l.)
-æ(1),siliceux,siliceux,8,452.8,7,Gneiss non différenciés. Zone Dauphinoise : La Romanche supérieure (Meije-Plateau d'Emparis)
-n2-3,calcaire,calcaire,7,436.4,26,Calcaires gréso-argileux bruns (Valanginien - Hauterivien)
-tK,indetermine,indetermine,,430.5,205,Cargneules ocre bréchiques et vacuolaires (Trias)
-j6MB,calcaire,calcaire,7,411.5,25,Calcaire en petits bancs (régions de La Mure et du Beaumont) (Kimméridgien inférieur)
-j5b-cJ,marno_calcaire,marno_calcaire,6,405.9,53,"Calcaires, marno-calcaires et marnes : couches marno-calcaires : ""de Birmensdorff"", ""d'Effingen"" et ""du Geissberg"" (Oxfordien moyen à supérieur)"
-m3S,marno_calcaire,marno_calcaire,6,405.6,4,Marnes sableuses (Langhien)
-l3-4ol,calcaire,calcaire,7,387.9,26,Olistolithes et mégabrèches dans les calcaires et schistes gréseux du Domérien - Toarcien
-ô,indetermine,indetermine,,377.6,40,Serpentinites : pyroxénolite et péridotite serpentinisées. Complexe de Belledonne (Précambrien p.p.)
-ã3,siliceux,siliceux,8,376.2,48,"Monzogranite, à grain moyen, folié, à biotite. Granite des Sept Laux (Viséen)"
-Mã,siliceux,siliceux,8,367.4,49,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Granite d'anatexite
-Ty,detritique_mixte,detritique_mixte,4,358.6,25,Tourbe post-wurmienne
-pã1,siliceux,siliceux,8,356.5,5,"Granites monzonitiques, peu sodiques : Granite porphyroïde du Pic de Valsenestre, très chloriteux"
-Rs-a,detritique_mixte,detritique_mixte,4,334.6,13,Formations résiduelles : cailloutis siliceux et argiles de décalcification de la molasse caillouteuse
-ky/Zñ,siliceux,siliceux,8,330.5,60,Minéraux repéres du métamorphisme : disthène dans micaschiste. Micaschistes à grenat - staurotide - disthène. Rameau int. de Belledonne SW (Ouest de l'accident de la Belle Étoile-le Rivier) (Dévonien - Dinantien)
-n6G,detritique_mixte,detritique_mixte,4,303.4,58,Grès et sables verts glauconieux (Albien)
-n4,indetermine,indetermine,,299.6,34,Barrémien indifférencié (inférieur ?)
-j6StE,marno_calcaire,marno_calcaire,6,296.0,31,Couches de la galerie du Saint-Eynard : calcaires alternant avec des lits de marnes (Kimméridgien inférieur)
-æl,siliceux,siliceux,8,294.4,8,Gneiss leucocrates. Zone Dauphinoise : La Romanche supérieure (Meije-Plateau d'Emparis)
-æGR,siliceux,siliceux,8,291.2,25,"Gneiss ocellaires bruns (Paléozoïque). Zone externe, Zone Dauphinoise, Massif des Grandes Rousses"
-ã3-4a-b,siliceux,siliceux,8,285.5,13,"Granites monzonitiques, peu sodiques : Granite d'Orgières"
-tQ,detritique_mixte,detritique_mixte,4,278.2,224,"Conglomérats, grès, arkoses (Trias moyen-supérieur)"
-l4Mn,marno_calcaire,marno_calcaire,6,275.5,49,Marnes noires feuilletées (Toarcien supérieur)
-ãA,siliceux,siliceux,8,274.3,2,Granite de l'Alpette
-c2,calcaire,calcaire,7,273.3,17,Calcaires blancs à Bryozoaires (Turonien ?)
-st/Zñí,siliceux,siliceux,8,271.7,13,"Minéraux repéres du métamorphisme : staurotide dans gneiss, leptynite et micaschiste"
-j6A,calcaire,calcaire,7,270.1,26,Calcaires argileux (bordure Chartreuse subalpine) (Kimméridgien)
-æí4,siliceux,siliceux,8,269.8,6,"Gneiss de Saint-Christophe, à niveaux leptyniques. Zone dauphinoise"
-Mæ1-2E,siliceux,siliceux,8,269.8,9,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Gneiss de l'Embernard
-csC(1),marno_calcaire,marno_calcaire,6,261.6,16,Craie marneuse blanche (Crétacé supérieur)
-ñQä,siliceux,siliceux,8,255.2,10,Roches cristallophylliennes non migmatitiques : Ensemble cortical du Pelvoux et série du Taillefer (Dévono-dinantien) : Schiste quartzeux amphibolique
-Rs,indetermine,indetermine,,241.9,19,Résidus siliceux superficiels : galets siliceux
-æí2,siliceux,siliceux,8,241.5,13,Roches cristallophylliennes non migmatitiques : Ensemble cortical du Pelvoux et série du Taillefer (Dévono-dinantien) : Gneiss leptynitique
-ñ(1),siliceux,siliceux,8,237.6,27,Roches cristallophylliennes non migmatitiques : Ensemble cortical du Pelvoux et série du Taillefer (Dévono-dinantien) : Micaschiste
-gã1,siliceux,siliceux,8,237.6,20,"Granites alumino-sodiques à muscovite : Granite de la rive droite du Torrent de Béranger et du Vallon de la Chalp, granite du Ramu : Granite grossier parfois à tendance porphyroïde, sans enclave vaugnéritique"
-Lw,detritique_mixte,detritique_mixte,4,232.2,13,Argiles lacustres du début du Würm II
-í3,siliceux,siliceux,8,231.0,9,Leptynites fines à biotites
-l1-2,calcaire,calcaire,7,230.8,55,Calcaires noduleux et calcaires à entroques grisâtres (Hettangien - Sinémurien indifférenciés)
-ã'ò,siliceux,siliceux,8,228.7,34,Granite porphyroïde à biotite
-l4Cs,calcaire,calcaire,7,228.3,3,Calcaires schisteux  (Toarcien inférieur)
-l1-4GS,marno_calcaire,marno_calcaire,6,227.8,36,Calcaires noirs et marnes (région du Grand Serre) (Hettangien - Toarcien indifférenciés)
-ûñQ,siliceux,siliceux,8,226.0,4,Roches cristallophylliennes non migmatitiques : Ensemble cortical du Pelvoux et série du Taillefer (Dévono-dinantien) : Quartzite noir et schiste quartziteux verdâtre
-t,calcaire,calcaire,7,222.8,107,"Argilites, dolomies, cargneules, gypse, anhydrite  (Trias indifférencié)"
-l1-3,calcaire,calcaire,7,221.1,29,Calcaires lités (Hettangien-Carixien non différencié)
-ñ3-4 ã,siliceux,siliceux,8,218.3,6,Micaschistes à filons de granite
-p2P,detritique_mixte,detritique_mixte,4,217.3,3,Cailloutis polygéniques (Pliocène supérieur)
-l4bc,calcaire,calcaire,7,217.2,4,Calcaires argileux : barre à Dumortiera (Toarcien supérieur)
-GLx,detritique_mixte,detritique_mixte,4,216.7,16,Alluvions glacio-lacustres rissiennes
-ã2,siliceux,siliceux,8,212.3,15,"Granites monzonitiques, peu sodiques : Granite de Combe Guyon, de part et d'autre du bas Vallon de Valsenestre ; granite des flancs nord et ouest de la Muzelle (prolongation du granite de Turbat)"
-æCh,siliceux,siliceux,8,200.8,5,Paragneiss de l'îlot de Chamagnieu
-l2-3a,calcaire,calcaire,7,193.8,10,Calcaires (série des Têtes de Sainte-Marguerite) (Sinémurien - Carixien)
-ñF1,siliceux,siliceux,8,190.7,7,Roches cristallophylliennes non migmatitiques : Ensemble cortical du Pelvoux et série du Taillefer (Dévono-dinantien) : Micaschiste feldspathique
-ñ(3),indetermine,indetermine,,185.7,55,Schiste chloriteux. Zone dauphinoise
-Rt,indetermine,indetermine,,178.8,4,Formations résiduelles (le Taillefer)
-æã,siliceux,siliceux,8,163.1,8,"Zone de bordure hétérogène (du ""granite d'Epierre-les Sept-Laux"") à injection granitique, métamorphisme de contact du granite des Sept-Laux (Age ?)"
-n1-2F,calcaire,calcaire,7,162.2,35,Complexe des Calcaires du Fontanil s.l. (Berriasien sup. - Valanginien)
-c6LS,indetermine,indetermine,,160.2,14,Lauzes à silex (Maastrichtien inférieur)
-ñ3-4,siliceux,siliceux,8,151.0,11,Micaschiste à silicates d'alumine indifférenciés
-myñ,siliceux,siliceux,8,147.7,16,"Schiste chloriteux du Ramu, schiste du grand Chapelet, écailles cristallines. Mylonites post-granite hercynien"
-l1CD,calcaire,calcaire,7,135.9,67,Calcaires et localement dolomies (« couches à Cardinies ») (Hettangien)
-aã1,siliceux,siliceux,8,135.8,10,"Granite aplitique du col des Berches, potassique"
-äî,siliceux,siliceux,8,134.9,6,Amphibolite dérivant de l'association spilite-kératophyre : Amphibolite à caractère spilitique
-X,indetermine,indetermine,,134.0,14,Dépôts et remblais artificiels (anthropiques)
-tS,calcaire,calcaire,7,133.0,52,Argilites et dolomies versicolores (Trias)
-Zn,siliceux,siliceux,8,127.5,24,"Schiste carburé, grès, microbrèche"
-h5-r,detritique_mixte,detritique_mixte,4,121.0,24,"Conglomérats, grès clairs et schistes gris (Stéphanien supérieur - Permien inférieur)"
-p1,indetermine,indetermine,,117.0,6,Argiles bleues (Pliocène inférieur marin)
-n2CS,calcaire,calcaire,7,116.4,8,Calcaires siliceux roux en plaquettes et calcaires roux à silex (Valanginien)
-EGP,detritique_mixte,detritique_mixte,4,116.2,45,Eboulis par gélivation
-l3-n2,indetermine,indetermine,,113.4,5,Lias inférieur à Valanginien (Massif du Pelvoux ou des Ecrins et Vallée de la Malsanne)
-oM,siliceux,siliceux,8,111.4,18,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Gneiss oeillé de Crupillouse (orthogneiss)
-U,calcaire,calcaire,7,108.5,46,"Tufs, travertins et brèches de pentes récents à actuels, localement anciens"
-aã1c,siliceux,siliceux,8,103.7,9,"Granite aplitique à cordiérite du Cray, potassique"
-æ0,siliceux,siliceux,8,100.7,7,Gneiss oeillés leptynitiques
-c2-3,calcaire,calcaire,7,100.4,9,Calcaires lités à Bryozoaires (Turonien supérieur - Sénonien inférieur)
-í2,siliceux,siliceux,8,100.1,2,Leptynites grossières à biotite ou muscovite
-ñG,indetermine,indetermine,,96.9,8,Schistes graphiteux et chloriteux à niveaux gréseux. Écailles du col du Sabot (Carbonifère inférieur)
-æä,siliceux,siliceux,8,96.1,23,"Gneiss prasinitique, prasinite, amphibolite. Complexe de Belledonne (Précambrien p.p.)"
-ñ,siliceux,siliceux,8,89.9,10,Micaschistes chloriteux fins
-n4A,marno_calcaire,marno_calcaire,6,89.5,16,Complexe calcaire urgonien : marnes à Annélides (Barrémien supérieur)
-í(2),siliceux,siliceux,8,88.8,10,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Leptynite (gneiss mylonitisé) de la Pointe de Marceline
-myã,siliceux,siliceux,8,82.7,3,Granite mylonitisé de la pointe de la Chalp. Mylonites post-granite hercynien
-Zæ,siliceux,siliceux,8,82.2,13,Roches très feldspathiques : Gneiss gris migmatitique
-Mc,siliceux,siliceux,8,79.5,3,Anatexites sombres à cordiérite et/ou sillimanite (aubussonites)
-eP,indetermine,indetermine,,78.9,5,Poudingues et formations continentales (base du Tertiaire)
-FGz,detritique_mixte,detritique_mixte,4,77.4,2,Alluvions fluvio-glaciaires récentes
-l3a-j3,calcaire,calcaire,7,76.6,27,Lias calcaire à Malm (Massif du Pelvoux ou des Ecrins et Vallée de la Malsanne)
-n5M,marno_calcaire,marno_calcaire,6,71.0,17,Complexe calcaire urgonien : marnes : couches supérieures à Orbitolines (Aptien inférieur : Bédoulien supérieur)
-h5Ûö,siliceux,siliceux,8,68.6,14,"Rhyolites et dacites +/- trachytes (""orthophyres"") dans le Houiller (Stéphanien ?)"
-j2a-bJ,indetermine,indetermine,,68.4,2,Bajocien inférieur et moyen non différenciés
-æ1,siliceux,siliceux,8,65.5,3,Gneiss à cordiérite-sillimanite
-g2a,detritique_mixte,detritique_mixte,4,63.7,30,"Molasse rouge d'eau douce : grès grossiers et marnes bigarrées, argiles et marnes rouges et calcaires. Localement conglomérats (Chattien inférieur)"
-eS,detritique_mixte,detritique_mixte,4,63.5,48,Sables siliceux bariolés blancs et rouges (Eocène ?)
-ä(5),siliceux,siliceux,8,63.1,18,Gneiss amphibolique et amphibolite + faciès agmatique. Zone dauphinoise
-ä1,siliceux,siliceux,8,62.9,3,Amphibolite inférieure
-n2b,calcaire,calcaire,7,60.0,7,Calcaire (Valanginien supérieur)
-Eyb,detritique_mixte,detritique_mixte,4,58.0,7,Eboulements à gros blocs et écroulements anciens. Würm
-F,indetermine,indetermine,,57.4,4,Alluvions caillouteuses d'âge indéterminé
-Ê,indetermine,indetermine,,57.3,81,"Filons de quartz, localement quartz et sidérite non minéralisés"
-EJy,detritique_mixte,detritique_mixte,4,56.4,8,"Cônes mixtes d'éboulis, de déjection et/ou d'avalanches (+/- remaniement par ruissellement) du Würm"
-ñm,siliceux,siliceux,8,52.5,2,Micaschistes lamelleux à minéraux
-í,siliceux,siliceux,8,52.0,11,"Leptynite, métagranophyre. Complexe de Belledonne (Précambrien p.p.)"
-j7-n1Co,calcaire,calcaire,7,52.0,2,Calcaires coralliens de l'Echaillon (Tithonien supérieur - Berriasien)
-tG,indetermine,indetermine,,51.8,25,Gypse (Trias)
-ñs,siliceux,siliceux,8,50.7,1,Micaschistes chloriteux et sériciteux et faciès non différenciés. Lambeaux du linéament d'Aspres
-oMæ1-2,siliceux,siliceux,8,50.0,10,Gneiss migmatique leucocrate oeillé (orthogneiss en partie blastomylonitisé). Zone dauphinoise
-Lã4-5,siliceux,siliceux,8,49.5,44,"Granitoïdes : Filons de trondhjémites et leucogranodiorites, foliées, à biotite ± muscovite (Viséen probable)"
-blMæ,siliceux,siliceux,8,49.4,12,Gneiss de Peyre-Arguet-La Pilatte (blastomylonites acides). Zone dauphinoise
-æ2c,siliceux,siliceux,8,49.0,16,Gneiss à deux micas et grenat
-g1A,detritique_mixte,detritique_mixte,4,48.6,4,Sables fins bariolés (Sannoisien)
-æam,siliceux,siliceux,8,47.9,1,Gneiss amygdalaires
-pã2,siliceux,siliceux,8,47.0,11,"Granites alumino-sodiques à muscovite : Granite porphyroïde du Grun : Petit amas et filon au sud de la feuille, sans enclave vaugnéritique"
-j6bJ(2),calcaire,calcaire,7,46.5,7,Calcaire lithographique en plaquettes (Kimméridgien supérieur)
-C(2),siliceux,siliceux,8,38.6,31,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Cipolin de Valsenestre
-st-ky/Zñ,siliceux,siliceux,8,37.0,2,Minéraux repéres du métamorphisme : staurotide et disthène dans micaschiste
-æ(2)si,siliceux,siliceux,8,35.9,10,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Gneiss du Lauvitel à sillimanite (lac du Vallon)
-fã1,siliceux,siliceux,8,35.8,2,"Granites alumino-sodiques à muscovite : Gr. des Quatre Tours (E cabane du Vallon de Valsenestre) et Gr. de la Pointe de Marceline. Gr. à grain fin, local. aplitique, parfois à enclaves vaugnéritiques"
-j7J,calcaire,calcaire,7,35.8,11,"Calcaires fins micrograveleux, blancs à intercalations de dolomies (Tithonien)"
-l3J,calcaire,calcaire,7,35.2,7,Argiles à Tisoa et calcaires coquilliers (couche de mélange) (Pliensbachien)
-e7C,calcaire,calcaire,7,34.8,9,Calcaires à Nummulites (Priabonien)
-l3b-4G,calcaire,calcaire,7,34.3,1,Zone Dauphinoise. Série du vallon de Lanchâtra. Calcaires et schistes gréseux (Domérien - Toarcien)
-Rc,indetermine,indetermine,,34.2,2,Formations résiduelles du Sénonien
-æ(a),siliceux,siliceux,8,31.5,3,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Gneiss biotitique
-ña,siliceux,siliceux,8,31.3,3,Micaschistes albitiques
-Ew,detritique_mixte,detritique_mixte,4,27.7,1,Eboulis anciens antéwürmiens (?)
-n4R,calcaire,calcaire,7,27.3,15,Complexe calcaire urgonien : calcaires roux lités (Barrémien supérieur)
-æb-mR(2),detritique_mixte,detritique_mixte,4,27.2,3,Gneiss à biotite-muscovite du Rissiou - Rocher Blanc. Rameau interne de Belledonne: Belledonne NE (Est de l'accident de la Belle Étoile - le Rivier) (Précambrien ? - Paléozoïque inf.)
-ñG (1),detritique_mixte,detritique_mixte,4,25.9,2,Schistes graphiteux et chloriteux à niveaux gréseux et passées de métaconglomérats. Écailles du col du Sabot (Carbonifère inférieur)
-l4-j1J,marno_calcaire,marno_calcaire,6,25.8,7,"Marnes et calcaires noirs, Grande mine ou Minerai oolithique de Saint-Quentin, Banc à coquillages. Banc à bélemnites (Toarcien - Aalénien)"
-l1-3Br,indetermine,indetermine,,25.7,6,Brèches polygéniques (Série du vallon de Lanchâtra) (Lias inf. - Domérien-Toarcien ?)
-Lã3-4,siliceux,siliceux,8,25.6,14,"Leucogranites s.l. à grain fin, foliés, à biotite ± muscovite. Granite des Sept Laux (Viséen)"
-m4G,siliceux,siliceux,8,25.5,5,Grès grossiers (Serravallien)
-ñl1-5,calcaire,calcaire,7,25.3,1,Schistes cristallins mylonitiques contenant des filons clastiques de Lias calcaire (Croix de Cassini). Zone Dauphinoise
-n6-c1,indetermine,indetermine,,25.2,1,Albien - Cénomanien indifférenciés
-Ux-y,detritique_mixte,detritique_mixte,4,25.1,5,Tufs calcaires de l'interglaciaire Riss-Würm
-äR,siliceux,siliceux,8,24.3,2,Amphibolites et gneiss amphiboliques. Zone Dauphinoise : La Romanche supérieure (Meije-Plateau d'Emparis)
-dK(2),indetermine,indetermine,,24.0,39,Zone Dauphinoise - Filons de dolérite
-opì,siliceux,siliceux,8,22.8,5,Zone Dauphinoise - Dolérite ophitique à diorite quartzique en amas circonscrits
-íã,siliceux,siliceux,8,21.3,2,Leptynites granitiques
-æ1-2,siliceux,siliceux,8,20.5,10,Gneiss leucocrate (Sud-Est de St-Christophe). Zone dauphinoise
-Fã2,siliceux,siliceux,8,20.4,4,"Granites monzonitiques, peu sodiques : Granite à biotite, à grain fin du versant nord du Petit Chapelet"
-j4J,calcaire,calcaire,7,20.1,20,Calcaires ou calcaires argileux à oolithes ferrugineuses très fossilifères (Callovien)
-n3M,marno_calcaire,marno_calcaire,6,18.1,2,Marnes et marno-calcaires (Hauterivien terminal)
-æmy,siliceux,siliceux,8,16.9,16,"Cristallin mylonitique ou non identifié (Glacier de la Meije, glacier des Quirlies). Zone Dauphinoise : La Romanche supérieure (Meije-Plateau d'Emparis)"
-gBr,calcaire,calcaire,7,16.6,14,Brèche calcaire (Chattien ?)
-pã3,siliceux,siliceux,8,16.2,3,"Granite du Graou, porphyroïde"
-j3i,calcaire,calcaire,7,14.8,5,Calcaires noirs lités (rive droite du Grésivaudan) (Bathonien inférieur ?)
-æî,siliceux,siliceux,8,14.4,3,Roches très feldspathiques : Gneiss amphibolitique (Grande Lance d'Allemont)
-j5cJ(2),indetermine,indetermine,,14.3,4,Couches à Myes (île Crémieu) (Oxfordien supérieur)
-n4b,marno_calcaire,marno_calcaire,6,14.3,5,"Complexe calcaire urgonien : calcaires argileux beiges, parfois à silex et Marnes de la Plainie, calcaires argileux et marnes de la ""vire à Heteroceras auct."" (Barrémien supérieur)"
-ôë(1-2),siliceux,siliceux,8,14.2,37,"Granites alumino-sodiques à muscovite : Vaugnérites : amas bien circonscrits : Vallon de Valsenestre, Vallon Cros en rive droite, Combe du Lauvet au nord-ouest du Péou de Saint-Maurice et enclaves de petite taille disséminées"
-oæh,siliceux,siliceux,8,13.8,7,"Gneiss oeillé amphibolique (Olan, Bac du Canard, Alpe du Pin). Zone dauphinoise"
-j6-7,calcaire,calcaire,7,13.6,3,"Calcaires ""tithoniques"" (bordure Chartreuse subalpine) (Jurassique supérieur)"
-Mæ(2),siliceux,siliceux,8,13.5,2,Migmatites du Bec de l'Homme. Zone Dauphinoise : La Romanche supérieure (Meije-Plateau d'Emparis)
-Z,siliceux,siliceux,8,13.0,1,"Cristallin non déterminé, écrasé"
-m2M,marno_calcaire,marno_calcaire,6,12.6,2,Marnes (Burdigalien)
-c6L,indetermine,indetermine,,12.5,4,Lauzes à joints jaunes (Maastrichtien supérieur)
-aã(2),siliceux,siliceux,8,11.5,7,"Granite gris à grain fin des Rochers rouges (Etançons) du Coolidge, du Gioberney"
-e7MC,marno_calcaire,marno_calcaire,6,11.1,3,Marno-calcaires (Priabonien)
-c3S,detritique_mixte,detritique_mixte,4,10.5,5,Grès et sables (Sénonien inférieur)
-g2b,detritique_mixte,detritique_mixte,4,10.3,4,Marnes à bancs de sable et de calcaire (Chattien supérieur)
-ã(1),siliceux,siliceux,8,10.2,4,Granite à muscovite
-n5-6Mb,marno_calcaire,marno_calcaire,6,10.0,5,"Marnes ""bleues"" (Gargasien - Albien)"
-dK(1),indetermine,indetermine,,10.0,27,Filons basiques : diabase
-Jw,detritique_mixte,detritique_mixte,4,9.9,1,Alluvions torrentielles wurmiennes
-â,indetermine,indetermine,,9.7,25,Filons basiques : filons sombres indifférenciés
-n2a,marno_calcaire,marno_calcaire,6,8.5,4,Marnes (Valanginien)
-csC(2),calcaire,calcaire,7,8.2,2,"Calcaires en dalles (""Lauzes"") (Crétacé supérieur)"
-j5-n,indetermine,indetermine,,7.4,3,Massif du Pelvoux (ou des Ecrins et Vallée de la Malsanne) (Jurassique supérieur à Néocomien)
-ä,siliceux,siliceux,8,7.0,8,Amphibolites
-Zcarb,indetermine,indetermine,,6.8,8,Roches carbonatées métamorphiques diverses
-ï,indetermine,indetermine,,6.7,16,Filons de lamprophyre
-ñ3,siliceux,siliceux,8,6.6,3,"Micaschistes à deux micas, cordiérite, andalousite"
-n1-2CG,marno_calcaire,marno_calcaire,6,6.6,3,"Calcaire gréseux, marno-calcaire (Massif du Pelvoux ou des Ecrins et Vallée de la Malsanne) (Berriasien - Valanginien)"
-h5,detritique_mixte,detritique_mixte,4,6.5,4,"Conglomérats, grès, schistes houillers, charbon (Stéphanien inférieur à moyen p.p.)"
-aã,siliceux,siliceux,8,6.4,14,Zone Dauphinoise - Filons d'aplite et aplopegmatite
-l2J,calcaire,calcaire,7,6.4,2,Calcaires à grains de quartz et calcaires à Gryphées (Sinémurien)
-l1-3ol,indetermine,indetermine,,6.2,6,Olistolithes dans Hettangien-Carixien non différencié (Massif du Pelvoux ou des Ecrins et Vallée de la Malsanne)
-Mb,siliceux,siliceux,8,5.9,1,Anatexites claires à cordiérite
-c3C,calcaire,calcaire,7,5.7,3,Calcaires gréseux (Sénonien inférieur)
-n1a,calcaire,calcaire,7,5.0,2,Calcaires fins de faciès tithonien (Berriasien inférieur ?)
-æã3,indetermine,indetermine,,5.0,4,Porphyroïde. Complexe de Belledonne (Précambrien p.p.)
-t7C,calcaire,calcaire,7,4.7,7,Calcaires noirs dolomitiques (Rhétien ?)
-ô-ãqM,siliceux,siliceux,8,4.7,5,"Enclaves basiques : vaugnérites de la Belle Étoile, à biotite ± amphibole. Granite des Sept Laux (Viséen)"
-n1-2C,calcaire,calcaire,7,4.6,1,"Calcaires de type ""marbre bâtard"" (Berriasien sup. - Valanginien ?)"
-ä(a),siliceux,siliceux,8,4.5,6,Amphibolites en passées dans les gneiss d'Allemont. Rameau interne de Belledonne: Belledonne SW (Ouest de l'accident de la Belle Étoile - le Rivier) (Paléozoïque inférieur ?)
-p2F,detritique_mixte,detritique_mixte,4,4.5,2,Sables de Lens-Lestang (Pliocène supérieur)
-FG,detritique_mixte,detritique_mixte,4,4.4,2,Alluvions fluvio-glaciaires non datées
-ó,siliceux,siliceux,8,3.8,12,Zone Dauphinoise - Filons de rhyolite
-îë(1),siliceux,siliceux,8,3.2,6,Zone Dauphinoise - Filons de microdiorite quartzique
-Û,indetermine,indetermine,,3.1,2,"Métapyroxénites et péridotites ""Ophiolite de Chamrousse"". Rameau interne de Belledonne: Belledonne SW (Ouest de l'accident de la Belle Étoile - le Rivier) (limite Cambrien - Ordovicien)"
-Mæ1-2C,siliceux,siliceux,8,3.1,3,Migmatite leucocrate de Claphouse et de la Vallée des Bans. Zone dauphinoise
-Ci,indetermine,indetermine,,3.1,3,Filons de cipolin
-mó,siliceux,siliceux,8,3.0,9,"""Porphyroïde"" de Saint-Christophe (La Bernardière), rhyolite mylonitisée. Zone dauphinoise"
-l1-3E,indetermine,indetermine,,2.9,1,Niveau à entroques dans Hettangien-Carixien non différencié (Massif du Pelvoux ou des Ecrins et Vallée de la Malsanne)
-ñ2,siliceux,siliceux,8,2.6,3,Micaschistes à deux micas
-îë(2),siliceux,siliceux,8,2.6,1,"Zone Briançonnaise - Microdiorites (""filons-couches"" du Carbonifère)"
-j4-5J,indetermine,indetermine,,2.4,4,Callovien et Oxfordien s.s. non différenciés
-eK,detritique_mixte,detritique_mixte,4,2.2,3,Sables kaoliniques (Eocène continental)
-æcGR,detritique_mixte,detritique_mixte,4,2.2,3,Conglomérat métamorphique (accident médian des Rousses). Zone Dauphinoise : Les Grandes Rousses
-m-g,indetermine,indetermine,,2.1,4,Fentes à remplissage argileux rouge (Miocène - Oligocène)
-ñæ(1),siliceux,siliceux,8,1.9,9,"Micaschistes et gneiss albitiques, faciès oeillé. Complexe de Belledonne (Précambrien p.p.)"
-Ù,indetermine,indetermine,,1.9,3,Serpentinites et métapyroxénites. Rameau interne de Belledonne : Belledonne nord-est (Est de l'accident de la Belle Étoile - le Rivier) (Paléozoïque inférieur ?)
-c1,siliceux,siliceux,8,1.8,3,Grès friables blanchâtres (Cénomanien inférieur)
-l1J,calcaire,calcaire,7,1.8,2,Calcaires argileux (Choin bâtard) (Hettangien inférieur)
-óë,indetermine,indetermine,,1.7,5,"Zone Dauphinoise - Filons de rhyodacite, esterellite"
-j5aJ,marno_calcaire,marno_calcaire,6,1.6,6,Calcaires à sphérites et marnes à Creniceras renggeri (Oxfordien inférieur et Oxfordien moyen p.p.)
-Gw,detritique_mixte,detritique_mixte,4,1.4,1,Moraines du Mindel
-c6P,indetermine,indetermine,,1.4,2,Poudingues et brèches à ciment siliceux et à Microcodium (Maastrichtien supérieur ?)
-Fv1,calcaire,calcaire,7,1.4,2,"Formation de Chonas-Aubressin : Formation détritique, formée de galets et de graviers de quartzites et calcaires, consolidée en poudingue"
-sid,indetermine,indetermine,,1.4,3,Filons de sidérose
-mæL,siliceux,siliceux,8,1.0,1,Gneiss de la pointe de Longis
-t7L,indetermine,indetermine,,1.0,1,Lumachelle à Avicula conforta (Rhétien)
-l4Ceb,calcaire,calcaire,7,0.9,1,Calcaires durs à entroques et Bélemnites (Toarcien)
-ã1-2(1),siliceux,siliceux,8,0.8,3,Zone Dauphinoise - Filons de granite
-n6-c1Gv,siliceux,siliceux,8,0.8,2,Grès verts (Albien ? - Cénomanien ?)
-j7-n1J,marno_calcaire,marno_calcaire,6,0.5,1,Faciès purbeckien : calcaires fins gris clairs à horizons marneux verdâtres (Tithonien - Berriasien)
-Cip,indetermine,indetermine,,0.4,1,Cipolin de la Lavey (glacier de la Lavey). Zone dauphinoise
-j6Co,calcaire,calcaire,7,0.3,1,Calcaires récifaux (bordure Chartreuse subalpine) (Kimméridgien supérieur ?)
-pã1-2por,siliceux,siliceux,8,0.1,1,"Granite du Riéou-Blanc, faciès porphyroïde"
-ûb,siliceux,siliceux,8,0.0,1,Quartzite à biotite. Zone dauphinoise
+notation,classe,classe_auto,regle,surface_ha,n_polygones,description,herite_socle
+Gy,detritique_mixte,detritique_mixte,4,134802.9,1330,"Dépôts glaciaires (moraines) principalement du Würm, localement plus tardifs (?) ou plus récents. Dépôts fluvio-glaciaires ou glacio-lacustres localement associés.",True
+FGy,detritique_mixte,detritique_mixte,4,69456.8,356,Alluvions fluvio-glaciaires würmiennes,False
+m5C,detritique_mixte,detritique_mixte,4,43938.0,311,Conglomérats deltaïques surtout calcaires avec lits de sables (Tortonien),False
+Fz,alluvions_recentes,alluvions_recentes,1,43442.9,225,Alluvions actuelles et récentes,False
+OEx,detritique_mixte,detritique_mixte,4,39072.4,235,Loess et limons,False
+Fy,detritique_mixte,detritique_mixte,4,38234.2,289,Alluvions anciennes (fluviatiles à fluvio-glacaires ou fluvio-lacustres). Würm à post-Würm (?),False
+m5S,detritique_mixte,detritique_mixte,4,23669.8,403,Molasse sablo-gréseuse à lentilles conglomératiques (Tortonien),False
+Ez,detritique_mixte,detritique_mixte,4,16814.6,1727,Eboulis vifs actuels,True
+E,detritique_mixte,detritique_mixte,4,16740.8,360,"Eboulis actuels à anciens (âge non précisé), localement cônes d'avalanches et éboulis mêlés à moraines",True
+n4-5aU,calcaire,calcaire,7,16651.5,61,"Complexe calcaire urgonien : calcaires massifs à patine claire de faciès urgonien non différenciés, parfois calcaires à silex (Barrémien - Aptien inférieur)",False
+Ey,detritique_mixte,detritique_mixte,4,16588.5,696,Eboulis stabilisés anciens würmiens à post-würmiens (?),True
+p2-IV,detritique_mixte,indetermine,,16268.8,12,Formation de Bonnevaux - l'Amballan (Pliocène supérieur - Pléistocène inférieur),False
+FJy-z,detritique_mixte,detritique_mixte,4,14081.6,327,"Cônes de déjection stabilisés, anciens ou de retrait würmien",True
+n4a2,marno_calcaire,marno_calcaire,6,11706.8,130,"Complexe calc urgonien : Calc arg gris, Calc biocl lités, Marnes du Pré de la Font, Marn de la Fontaine Graillère, Marn de la Fontaine Colombette, Marn du Col de l'Aimoux, Calc arg et à petits silex, Calc biocl du Plateau de Glandasse (Barrémien inf)",False
+Gx,detritique_mixte,detritique_mixte,4,9815.3,149,Moraines rissiennes,True
+FJz,detritique_mixte,detritique_mixte,4,7803.3,205,Cônes torrentiels de déjection (d'épandage) post-würmiens à actuels (actifs) ou sans âge précisé,True
+¡p2,detritique_mixte,detritique_mixte,4,7118.1,20,Formations résiduelles de Chambaran : niveau supérieur : cailloutis et argiles,False
+j2C,marno_calcaire,calcaire,7,7081.2,37,Formation de Bramefarine : alternance de bancs calcaires et de schistes (rive gauche du Grésivaudan) (Bajocien inférieur),False
+C,detritique_mixte,detritique_mixte,4,6438.0,105,"Dépôts de versants composites (localement glissés) : colluvions, éboulis et moraines remaniés",True
+n3,marno_calcaire,marno_calcaire,6,6364.0,287,"Marnes et calcaires noirs à Spatangues, à miches, calcaires siliceux très durs à spicules (Hauterivien)",False
+æ(2),siliceux,siliceux,8,6239.0,228,"Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Gneiss du Lauvitel,  Gneiss de la Lavey migmatisé,  Migmatites indifférenciées",False
+ä(2),siliceux,siliceux,8,5884.3,231,"Amphibolites ""Ophiolite de Chamrousse"". Complexe de Belledonne (Précambrien p.p.) (limite Cambrien - Ordovicien)",False
+j2-3CS,marno_calcaire,marno_calcaire,6,5243.7,69,Alternance de calcaires argileux gris-noir et de marnes très noires (Bajocien - Bathonien p.p.),False
+Gl-Ne,indetermine,indetermine,,5193.3,297,Glaciers et névés,False
+j1,indetermine,indetermine,,5032.3,287,Argilites brunes à nodules siliceux et pyriteux (Aalénien),False
+l1-3a,marno_calcaire,marno_calcaire,6,5016.6,225,"""Lias calcaire"" : calcaires dominants et schistes ou calcschistes (Hettangien - Carixien indifférenciés)",False
+j2cJ,calcaire,calcaire,7,4614.2,115,Calcaires oolithiques et à débris (Bajocien supérieur),False
+j3-5,marno_calcaire,marno_calcaire,6,4294.5,206,"""Terres noires"" supérieures (Callovien supérieur - Oxfordien inférieur) ; Terres noires"" inférieures (Bathonien supérieur - Callovien moyen) (rive droite du Grésivaudan)",False
+GLy,detritique_mixte,detritique_mixte,4,4290.4,80,Alluvions glacio-lacustres würmiennes,False
+Gz,detritique_mixte,detritique_mixte,4,4271.8,258,Dépôts glaciaires (moraines) historiques (récentes à actuelles),True
+ã(2),siliceux,siliceux,8,4228.9,133,"Granites plus externes (non définis pétro-chimiquement) : Granite d'Entraigues. Zone Dauphinoise - Granite de Turbat-Lauranoure, des Etages, d'Ailefroide, leucocrate, souvent porphyroïde",False
+c5-6S,calcaire,calcaire,7,4079.4,60,Calcaires cristallins massifs à silex (Campanien terminal - Maastrichtien),False
+EJz,detritique_mixte,detritique_mixte,4,4010.0,217,"Cônes mixtes d'éboulis, de déjection et/ou d'avalanches (+/- remaniement par ruissellement), récents à actuels ou d'âge indéterminé",True
+FGx,detritique_mixte,detritique_mixte,4,4009.7,56,Alluvions fluvio-glaciaires rissiennes,False
+c5L,calcaire,indetermine,,3982.4,105,Lauzes et formations biodétritiques diverses (Campanien),False
+sñ,siliceux,siliceux,8,3794.1,80,"Micaschistes de la ""Série satinée"". Rameau externe de Belledonne (âge indéterminé)",False
+j5,marno_calcaire,marno_calcaire,6,3790.5,191,"Calcaires marneux ""argovo-rauraciens"" (rive droite du Grésivaudan) (Oxfordien moyen-supérieur)",False
+Ezb,detritique_mixte,detritique_mixte,4,3591.9,145,"Eboulis à gros blocs, éboulements en masse, écroulements, actuels à récents ou d'âge non précisé ; voir également les éboulements représentés par des surcharges",True
+l2MB,calcaire,calcaire,7,3477.8,106,Calcaire gris (régions de La Mure et du Beaumont) (Lotharingien inférieur - Sinémurien s.s.),False
+n5aU,calcaire,calcaire,7,3310.3,96,Complexe calcaire urgonien : masse urgonienne supérieure (Aptien inférieur : Bédoulien inférieur),False
+j3J,calcaire,calcaire,7,3230.1,93,Calcaires « choin » et calcaires roux spathiques (Bathonien),False
+Fx,detritique_mixte,detritique_mixte,4,3120.8,65,Alluvions anciennes (fluviatiles à fluvio-glacaires ou fluvio-lacustres). Riss,False
+ã2-4,siliceux,siliceux,8,3074.8,127,"Granites s.l. porphyroïdes (~30%) ou à grain fin (~70%), foliés, à biotite ± muscovite. Granite des Sept Laux (Viséen)",False
+l2-3MB,calcaire,calcaire,7,2964.8,101,"Calcaire rouille et calcaire gris, niveau à entroques (régions de La Mure et du Beaumont) (Sinémurien supérieur - Carixien inférieur)",False
+n1-2M,marno_calcaire,marno_calcaire,6,2838.8,259,Complexe des Marnes de Narbonne : Couches de transition aux Calcaires du Fontanil ; Calcaires argileux ; Marnes de Narbonne (Berriasien supérieur - Valanginien inférieur),False
+ñGR,siliceux,siliceux,8,2811.0,70,"Chloritoschistes et micaschistes à biotite. Zone externe, Zone Dauphinoise, Massif des Grandes Rousses (Paléozoïque)",False
+j2M,marno_calcaire,marno_calcaire,6,2707.6,106,Formation de Bramefarine : marnes noires à bancs calcaires (rive gauche du Grésivaudan) (Bajocien inférieur basal),False
+ñc,detritique_mixte,detritique_mixte,4,2692.3,65,Roches cristallophylliennes non migmatitiques : Ensemble cortical du Pelvoux et série du Taillefer (Dévono-dinantien) : Conglomérat métamorphique,False
+l3aMB,calcaire,calcaire,7,2649.8,125,"Calcaire rubané, niveau à entroques, calcaire lité gris (régions de La Mure et du Beaumont) (Carixien)",False
+ã(4),siliceux,siliceux,8,2529.4,53,"Granite basal de la Meije (la Bérarde), alcalin leucocrate",False
+l4Sc,marno_calcaire,marno_calcaire,6,2485.3,67,Schistes calcaires et marno-calcaires (Toarcien indifférencié),False
+n1b-C,marno_calcaire,marno_calcaire,6,2462.2,160,Néocomien inférieur marno-calcaire : Calcaires gris lités (Berriasien moyen-supérieur) ; Calcaires argileux et marnes (Berriasien inférieur) ; Calcaires gris lités (Berriasien),False
+FyS,detritique_mixte,detritique_mixte,4,2376.7,9,Alluvions anciennes (fluviatiles à fluvio-glacaires ou fluvio-lacustres). Würm à post-Würm (?) : Sables,False
+ã(3),siliceux,siliceux,8,2277.8,50,"Granite du Pelvoux (Rochail, Pont Saint-Guillerme)",False
+Ex,detritique_mixte,detritique_mixte,4,2169.4,59,Éboulis à gros blocs. Riss : anté-Würmien à Würmien ancien ?,True
+Jx,detritique_mixte,detritique_mixte,4,2159.5,35,Alluvions torrentielles rissiennes,False
+l3bMC,marno_calcaire,marno_calcaire,6,2111.8,57,"""Marnes de la Clapisse"", ""Marnes d'Allemont"", calcaires marneux noirs  (Domérien)",False
+l3bM,marno_calcaire,marno_calcaire,6,2052.7,101,Marnes micacées (régions de La Mure et du Beaumont) (Domérien),False
+h4-5,detritique_mixte,detritique_mixte,4,2048.0,270,"Conglomérats, grès et schistes noirs à plantes, anthracite (Westphalien - Stéphanien)",False
+j5-6,calcaire,calcaire,7,2034.0,173,"Calcaires ""séquaniens"" (bordure Chartreuse subalpine) (Oxfordien terminal - Kimméridgien inférieur)",False
+l1-2Cf,calcaire,calcaire,7,1875.5,25,Calcaire fin et schistes noirs (Hettangien - Sinémurien inférieur ),False
+íä,siliceux,siliceux,8,1865.0,118,"Alternance ""leptynites - amphibolites"". Rameau interne de Belledonne : Belledonne sud-ouest (Ouest de l'accident de la Belle Étoile - le Rivier) (Dévonien - Dinantien?)",False
+n5b,calcaire,calcaire,7,1855.8,146,"Complexe calcaire urgonien : ""Lumachelle"" (Aptien supérieur)",False
+j7Ts,calcaire,calcaire,7,1807.5,119,"Calcaires ""tithoniques"" supérieurs (bordure Chartreuse subalpine) (Tithonien supérieur)",False
+j1-2aJ,calcaire,calcaire,7,1728.3,75,"Calcaires spathiques et à entroques, à lits de silex (Aalénien p.p. + Bajocien inférieur)",False
+l3bSr,calcaire,calcaire,7,1713.0,8,Schistes roux et bancs calcaires roux (Domérien),False
+Ec,indetermine,indetermine,,1706.7,48,"Coulées de matériel fin ou de gros blocs, coulées de solifluxion, coulées boueuses",False
+j6aJ,calcaire,calcaire,7,1697.9,122,"Calcaires stratifiés à Céphalopodes, niveau repère à la base à débris avec lentilles ou banc à oncolithes (Kimméridgien inférieur)",False
+EG,detritique_mixte,detritique_mixte,4,1682.6,115,"Glacier rocheux, avec bourelets d'accumulation (bourrelets de glissements ou moraines de névés)",True
+K1-3,calcaire,calcaire,7,1660.1,92,Roches cristallophylliennes non migmatitiques : Ensemble cortical du Pelvoux et série du Taillefer (Dévono-dinantien) : Albitophyre et tuf sodique,False
+j6-7Tm,calcaire,calcaire,7,1633.6,117,"Calcaires ""tithoniques"" moyens (bordure Chartreuse subalpine) (Kimméridgien supérieur - Tithonien inférieur)",False
+n2F,calcaire,calcaire,7,1602.8,114,Complexe des Calcaires du Fontanil : calcaires inférieurs du Fontanil (Berriasien terminal - Valanginien inférieur),False
+Gz1,detritique_mixte,detritique_mixte,4,1589.3,88,Dépôts glaciaires (moraines) tardi-würmiens à historiques,True
+n2,indetermine,indetermine,,1558.6,33,Valanginien indifférencié,False
+æb-mR,siliceux,siliceux,8,1553.5,65,"Enclaves (septa) de gneiss de grande taille, à biotite ± muscovite, localement migmatiques. Granite des Sept Laux (Viséen)",False
+n2R,calcaire,calcaire,7,1509.2,120,Complexe des Calcaires du Fontanil : calcaires roux supérieurs du Fontanil (Valanginien),False
+c5-6,indetermine,indetermine,,1490.2,27,Sénonien indifférencié,False
+j6,indetermine,indetermine,,1421.0,57,Kimméridgien indifférencié,False
+Zíñ,siliceux,siliceux,8,1417.8,45,"Gneiss, leptynite et micaschiste",False
+Mä,siliceux,siliceux,8,1411.5,112,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Amphibolite migmatisée,False
+ñN,siliceux,siliceux,8,1377.0,107,Roches cristallophylliennes non migmatitiques : Ensemble cortical du Pelvoux et série du Taillefer (Dévono-dinantien) : Schiste noir et métagrauwacke,False
+hydro,indetermine,indetermine,,1331.2,19,Réseau hydrographique,False
+j6-7Tms,calcaire,calcaire,7,1324.8,91,"Calcaires lithographiques, calcaires à silex, brèches intraformationnelles (Tithonien indifférencié)",False
+M,siliceux,siliceux,8,1284.8,73,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Gneiss et migmatite non distingués,False
+äì,siliceux,siliceux,8,1223.6,41,"Métagabbro, métapyroxénite. Complexe de Belledonne (Précambrien p.p.)",False
+n2S,calcaire,calcaire,7,1220.2,152,"Complexe des Calcaires du Fontanil : calcaires sommitaux du Fontanil ou ""Calcaires à silex"" (Valanginien supérieur)",False
+l3-4,marno_calcaire,marno_calcaire,6,1182.5,95,Marnes noires et marno-calcaires (Domérien - Toarcien),False
+c5-6C,calcaire,calcaire,7,1157.4,35,Calcaires argileux lités ou lauzes rubanées (Campanien terminal - Maastrichtien inférieur),False
+m3-4,detritique_mixte,detritique_mixte,4,1154.2,1,Molasse sableuse  (= Sables siliceux de Pont-de-Beauvoisin) (Langhien à Serravallien),False
+tD,calcaire,calcaire,7,1144.7,575,Dolomies et calcaires dolomitiques (Trias  supérieur),False
+n4a1,calcaire,calcaire,7,1142.3,31,Complexe calcaire urgonien : calcaires argileux gris ou roux à rognons de silex (Barrémien inférieur),False
+FyT,detritique_mixte,detritique_mixte,4,1141.9,17,Alluvions anciennes (fluviatiles à fluvio-glacaires ou fluvio-lacustres). Würm à post-Würm (?) : Tourbes,False
+j2bJ,calcaire,calcaire,7,1129.3,52,Calcaires à polypiers et Calcaires à petites huîtres (Bajocien moyen),False
+Mæ,siliceux,siliceux,8,1079.8,44,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Gneiss très migmatisé,False
+m5,indetermine,indetermine,,1045.9,12,Miocène supérieur (Tortonien),False
+st/ñæ,siliceux,siliceux,8,987.5,54,Minéraux repéres du métamorphisme : staurotide dans micaschiste et gneiss albitique. Complexe de Belledonne (Précambrien p.p.),False
+st/Zæ,siliceux,siliceux,8,980.4,43,"Minéraux repères du métamorphisme : staurotide dans gneiss migmatitique. Gneiss d'Allemont à biotite, muscovite avec passées d'amphibolites. Rameau int. de Belledonne : W de l'accident de la Belle Étoile-le Rivier (Précambrien à Carbon. inférieur ?)",False
+ä(4),siliceux,siliceux,8,974.0,24,Roches cristallophylliennes non migmatitiques : Ensemble cortical du Pelvoux et série du Taillefer (Dévono-dinantien) : Amphibolite,False
+Zí,siliceux,siliceux,8,953.5,89,"Gneiss, gneiss leptynitique et leptynite",False
+n1,marno_calcaire,marno_calcaire,6,953.3,102,Calcaires argileux beiges et marnes grises (Berriasien),False
+æ(2)ä,siliceux,siliceux,8,930.1,9,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Gneiss du Lauvitel avec passée d'amphibolite (nord du Vénéon),False
+ím,siliceux,siliceux,8,864.2,36,"Leptynite à muscovite (""granulite de P. Termier"") (roche volcanique ou hypo-volcanique métamorphisée). Zone externe, Zone Dauphinoise, Massif des Grandes Rousses",False
+l1-4L,calcaire,calcaire,7,859.8,135,"""Calcaires de Laffrey"" (région de La Mure) (Hettangien - Toarcien indifférenciés)",False
+r,detritique_mixte,detritique_mixte,4,840.4,107,"Conglomérats, grès et pélites violettes ou vertes (Permien)",False
+m5A,detritique_mixte,detritique_mixte,4,836.3,100,Molasse sablo-argileuse ou sablo-marneuse et niveaux argileux (Tortonien),False
+m2,detritique_mixte,detritique_mixte,4,835.4,40,"Molasse calcaire, gréseuse et glauconieuse. Localement conglomérat à la base, intercalations marneuses (Burdigalien supérieur ?)",False
+m,detritique_mixte,detritique_mixte,4,821.1,7,Molasses et poudingues (Miocène indifférencié),False
+Zñ,siliceux,siliceux,8,802.6,24,Micaschiste,False
+æ,siliceux,siliceux,8,791.7,57,Gneiss ocellaire du Plan du Lac. Zone dauphinoise,False
+n2Co,calcaire,calcaire,7,735.2,49,Complexe des Calcaires du Fontanil :  calcaires coralligènes de la Sure (limite Berriasien - Valanginien),False
+j5cJ(1),calcaire,calcaire,7,720.6,64,Calcaires lités (Oxfordien supérieur),False
+æb,siliceux,siliceux,8,715.3,30,Gneiss biotitiques. Zone Dauphinoise : La Romanche supérieure (Meije-Plateau d'Emparis),False
+GA,detritique_mixte,detritique_mixte,4,679.9,6,Dépôts glaciaires de la dépression d'Autrans d'âge indéterminé,True
+n5Uo,calcaire,calcaire,7,670.6,120,Complexe calcaire urgonien : couches inférieures à Orbitolines (Aptien inférieur : Bédoulien inférieur),False
+Pz,detritique_mixte,detritique_mixte,4,661.7,49,"Dépôts palustres actuels à récents : limons, tourbe",False
+æb-h,siliceux,siliceux,8,638.2,42,Gneiss à biotite-hornblende. Rameau interne de Belledonne : Belledonne nord-est (Est de l'accident de la Belle Étoile - le Rivier) (Précambrien ? - Paléozoïque inférieur),False
+ñf2,siliceux,siliceux,8,632.8,23,"Chloritoschiste et micaschiste à biotite feldspathisés près des leptynites ; Chloritoschiste feldspathisé. Zone externe, Zone Dauphinoise, Massif des Grandes Rousses (Paléozoïque)",False
+n2M,marno_calcaire,marno_calcaire,6,631.0,36,Marnes gris bleuté jaunissantes (Valanginien),False
+äF,siliceux,siliceux,8,628.8,14,Amphibolites du Ferrouillet et de la Dent du Pra. Rameau interne de Belledonne : Belledonne sud-ouest (Ouest de l'accident de la Belle Étoile - le Rivier) (Paléozoïque inférieur),False
+FGw,detritique_mixte,detritique_mixte,4,615.8,10,Alluvions fluvio-glaciaires du Mindel,False
+äB,detritique_mixte,detritique_mixte,4,600.8,43,Amphibolites des Rochers Rissiou. Rameau interne de Belledonne: Belledonne nord-est (Est de l'accident de la Belle Étoile - le Rivier) (Paléozoïque inférieur - Ordovicien inférieur),False
+Mæ(1),siliceux,siliceux,8,584.0,35,Gneiss migmatitique des Grandes Rousses,False
+n1i,marno_calcaire,marno_calcaire,6,574.2,78,Néocomien inférieur marno-calcaire : Couches à ciment de la Porte de France : calcaires argileux (Berriasien basal),False
+Fw,detritique_mixte,detritique_mixte,4,572.7,8,Alluvions anciennes interglaciaires (glacio-lacustres à fluvio-glaciaires) entre Riss et Würm ou intra Würm,False
+l4Cr,marno_calcaire,marno_calcaire,6,570.6,56,Calcaires argileux roux et calcschistes beiges (Toarcien inférieur et moyen),False
+j5cJ,calcaire,calcaire,7,570.3,100,Calcaires sublithographiques sur calcaires lités pyriteux (Oxfordien supérieur),False
+å,indetermine,indetermine,,567.0,51,Chloritoschistes de Chamrousse,False
+K3,siliceux,siliceux,8,557.6,297,Spilites et cinérites (Trias ?),False
+Ly,detritique_mixte,detritique_mixte,4,548.2,25,Dépôts post-wurmiens de lac et marais,False
+æí1,siliceux,siliceux,8,513.7,19,"Gneiss plagioclasiques micacés, méta-granites avec qq. niv. d'amphibolites. Rameau int. de Belledonne : Belledonne SW (W de l'accident de la Belle Étoile - le Rivier) (Dévonien - Dinantien)",False
+FyL,detritique_mixte,detritique_mixte,4,508.8,10,Alluvions anciennes (fluviatiles à fluvio-glacaires ou fluvio-lacustres). Würm à post-Würm (?) : Limons,False
+j6bJ(1),calcaire,calcaire,7,505.8,58,"Calcaires à silex (chailles), calcaires récifaux (Kimméridgien supérieur)",False
+ñ(2),siliceux,siliceux,8,505.3,13,Micaschistes du dôme de La Mure. Complexe de Belledonne (Précambrien p.p.),False
+j6Ti,calcaire,calcaire,7,503.8,78,"Calcaires ""tithoniques"" inférieurs (bordure Chartreuse subalpine) (Kimméridgien supérieur)",False
+gl,indetermine,indetermine,,489.9,17,Terrains glissés,False
+n3-4R,indetermine,indetermine,,483.6,135,Couches rousses à Panopées (Hauterivien terminal - Barrémien inférieur),False
+æí3,siliceux,siliceux,8,456.1,28,Roches très feldspathiques : Gneiss oeillé de l'Alpetta,False
+ä(b),siliceux,siliceux,8,453.4,44,Amphibolite dérivant de l'association spilite-kératophyre : Amphibolite (s.l.),False
+æ(1),siliceux,siliceux,8,452.8,7,Gneiss non différenciés. Zone Dauphinoise : La Romanche supérieure (Meije-Plateau d'Emparis),False
+n2-3,calcaire,calcaire,7,436.4,26,Calcaires gréso-argileux bruns (Valanginien - Hauterivien),False
+tK,indetermine,indetermine,,430.5,205,Cargneules ocre bréchiques et vacuolaires (Trias),False
+j6MB,calcaire,calcaire,7,411.5,25,Calcaire en petits bancs (régions de La Mure et du Beaumont) (Kimméridgien inférieur),False
+j5b-cJ,marno_calcaire,marno_calcaire,6,405.9,53,"Calcaires, marno-calcaires et marnes : couches marno-calcaires : ""de Birmensdorff"", ""d'Effingen"" et ""du Geissberg"" (Oxfordien moyen à supérieur)",False
+m3S,marno_calcaire,marno_calcaire,6,405.6,4,Marnes sableuses (Langhien),False
+l3-4ol,calcaire,calcaire,7,387.9,26,Olistolithes et mégabrèches dans les calcaires et schistes gréseux du Domérien - Toarcien,False
+ô,indetermine,indetermine,,377.6,40,Serpentinites : pyroxénolite et péridotite serpentinisées. Complexe de Belledonne (Précambrien p.p.),False
+ã3,siliceux,siliceux,8,376.2,48,"Monzogranite, à grain moyen, folié, à biotite. Granite des Sept Laux (Viséen)",False
+Mã,siliceux,siliceux,8,367.4,49,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Granite d'anatexite,False
+Ty,detritique_mixte,detritique_mixte,4,358.6,25,Tourbe post-wurmienne,False
+pã1,siliceux,siliceux,8,356.5,5,"Granites monzonitiques, peu sodiques : Granite porphyroïde du Pic de Valsenestre, très chloriteux",False
+Rs-a,detritique_mixte,detritique_mixte,4,334.6,13,Formations résiduelles : cailloutis siliceux et argiles de décalcification de la molasse caillouteuse,False
+ky/Zñ,siliceux,siliceux,8,330.5,60,Minéraux repéres du métamorphisme : disthène dans micaschiste. Micaschistes à grenat - staurotide - disthène. Rameau int. de Belledonne SW (Ouest de l'accident de la Belle Étoile-le Rivier) (Dévonien - Dinantien),False
+n6G,detritique_mixte,detritique_mixte,4,303.4,58,Grès et sables verts glauconieux (Albien),False
+n4,indetermine,indetermine,,299.6,34,Barrémien indifférencié (inférieur ?),False
+j6StE,marno_calcaire,marno_calcaire,6,296.0,31,Couches de la galerie du Saint-Eynard : calcaires alternant avec des lits de marnes (Kimméridgien inférieur),False
+æl,siliceux,siliceux,8,294.4,8,Gneiss leucocrates. Zone Dauphinoise : La Romanche supérieure (Meije-Plateau d'Emparis),False
+æGR,siliceux,siliceux,8,291.2,25,"Gneiss ocellaires bruns (Paléozoïque). Zone externe, Zone Dauphinoise, Massif des Grandes Rousses",False
+ã3-4a-b,siliceux,siliceux,8,285.5,13,"Granites monzonitiques, peu sodiques : Granite d'Orgières",False
+tQ,detritique_mixte,detritique_mixte,4,278.2,224,"Conglomérats, grès, arkoses (Trias moyen-supérieur)",False
+l4Mn,marno_calcaire,marno_calcaire,6,275.5,49,Marnes noires feuilletées (Toarcien supérieur),False
+ãA,siliceux,siliceux,8,274.3,2,Granite de l'Alpette,False
+c2,calcaire,calcaire,7,273.3,17,Calcaires blancs à Bryozoaires (Turonien ?),False
+st/Zñí,siliceux,siliceux,8,271.7,13,"Minéraux repéres du métamorphisme : staurotide dans gneiss, leptynite et micaschiste",False
+j6A,calcaire,calcaire,7,270.1,26,Calcaires argileux (bordure Chartreuse subalpine) (Kimméridgien),False
+æí4,siliceux,siliceux,8,269.8,6,"Gneiss de Saint-Christophe, à niveaux leptyniques. Zone dauphinoise",False
+Mæ1-2E,siliceux,siliceux,8,269.8,9,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Gneiss de l'Embernard,False
+csC(1),marno_calcaire,marno_calcaire,6,261.6,16,Craie marneuse blanche (Crétacé supérieur),False
+ñQä,siliceux,siliceux,8,255.2,10,Roches cristallophylliennes non migmatitiques : Ensemble cortical du Pelvoux et série du Taillefer (Dévono-dinantien) : Schiste quartzeux amphibolique,False
+Rs,indetermine,indetermine,,241.9,19,Résidus siliceux superficiels : galets siliceux,False
+æí2,siliceux,siliceux,8,241.5,13,Roches cristallophylliennes non migmatitiques : Ensemble cortical du Pelvoux et série du Taillefer (Dévono-dinantien) : Gneiss leptynitique,False
+ñ(1),siliceux,siliceux,8,237.6,27,Roches cristallophylliennes non migmatitiques : Ensemble cortical du Pelvoux et série du Taillefer (Dévono-dinantien) : Micaschiste,False
+gã1,siliceux,siliceux,8,237.6,20,"Granites alumino-sodiques à muscovite : Granite de la rive droite du Torrent de Béranger et du Vallon de la Chalp, granite du Ramu : Granite grossier parfois à tendance porphyroïde, sans enclave vaugnéritique",False
+Lw,detritique_mixte,detritique_mixte,4,232.2,13,Argiles lacustres du début du Würm II,False
+í3,siliceux,siliceux,8,231.0,9,Leptynites fines à biotites,False
+l1-2,calcaire,calcaire,7,230.8,55,Calcaires noduleux et calcaires à entroques grisâtres (Hettangien - Sinémurien indifférenciés),False
+ã'ò,siliceux,siliceux,8,228.7,34,Granite porphyroïde à biotite,False
+l4Cs,calcaire,calcaire,7,228.3,3,Calcaires schisteux  (Toarcien inférieur),False
+l1-4GS,marno_calcaire,marno_calcaire,6,227.8,36,Calcaires noirs et marnes (région du Grand Serre) (Hettangien - Toarcien indifférenciés),False
+ûñQ,siliceux,siliceux,8,226.0,4,Roches cristallophylliennes non migmatitiques : Ensemble cortical du Pelvoux et série du Taillefer (Dévono-dinantien) : Quartzite noir et schiste quartziteux verdâtre,False
+t,calcaire,calcaire,7,222.8,107,"Argilites, dolomies, cargneules, gypse, anhydrite  (Trias indifférencié)",False
+l1-3,calcaire,calcaire,7,221.1,29,Calcaires lités (Hettangien-Carixien non différencié),False
+ñ3-4 ã,siliceux,siliceux,8,218.3,6,Micaschistes à filons de granite,False
+p2P,detritique_mixte,detritique_mixte,4,217.3,3,Cailloutis polygéniques (Pliocène supérieur),False
+l4bc,calcaire,calcaire,7,217.2,4,Calcaires argileux : barre à Dumortiera (Toarcien supérieur),False
+GLx,detritique_mixte,detritique_mixte,4,216.7,16,Alluvions glacio-lacustres rissiennes,False
+ã2,siliceux,siliceux,8,212.3,15,"Granites monzonitiques, peu sodiques : Granite de Combe Guyon, de part et d'autre du bas Vallon de Valsenestre ; granite des flancs nord et ouest de la Muzelle (prolongation du granite de Turbat)",False
+æCh,siliceux,siliceux,8,200.8,5,Paragneiss de l'îlot de Chamagnieu,False
+l2-3a,calcaire,calcaire,7,193.8,10,Calcaires (série des Têtes de Sainte-Marguerite) (Sinémurien - Carixien),False
+ñF1,siliceux,siliceux,8,190.7,7,Roches cristallophylliennes non migmatitiques : Ensemble cortical du Pelvoux et série du Taillefer (Dévono-dinantien) : Micaschiste feldspathique,False
+ñ(3),indetermine,indetermine,,185.7,55,Schiste chloriteux. Zone dauphinoise,False
+Rt,indetermine,indetermine,,178.8,4,Formations résiduelles (le Taillefer),False
+æã,siliceux,siliceux,8,163.1,8,"Zone de bordure hétérogène (du ""granite d'Epierre-les Sept-Laux"") à injection granitique, métamorphisme de contact du granite des Sept-Laux (Age ?)",False
+n1-2F,calcaire,calcaire,7,162.2,35,Complexe des Calcaires du Fontanil s.l. (Berriasien sup. - Valanginien),False
+c6LS,indetermine,indetermine,,160.2,14,Lauzes à silex (Maastrichtien inférieur),False
+ñ3-4,siliceux,siliceux,8,151.0,11,Micaschiste à silicates d'alumine indifférenciés,False
+myñ,siliceux,siliceux,8,147.7,16,"Schiste chloriteux du Ramu, schiste du grand Chapelet, écailles cristallines. Mylonites post-granite hercynien",False
+l1CD,calcaire,calcaire,7,135.9,67,Calcaires et localement dolomies (« couches à Cardinies ») (Hettangien),False
+aã1,siliceux,siliceux,8,135.8,10,"Granite aplitique du col des Berches, potassique",False
+äî,siliceux,siliceux,8,134.9,6,Amphibolite dérivant de l'association spilite-kératophyre : Amphibolite à caractère spilitique,False
+X,indetermine,indetermine,,134.0,14,Dépôts et remblais artificiels (anthropiques),False
+tS,calcaire,calcaire,7,133.0,52,Argilites et dolomies versicolores (Trias),False
+Zn,siliceux,siliceux,8,127.5,24,"Schiste carburé, grès, microbrèche",False
+h5-r,detritique_mixte,detritique_mixte,4,121.0,24,"Conglomérats, grès clairs et schistes gris (Stéphanien supérieur - Permien inférieur)",False
+p1,indetermine,indetermine,,117.0,6,Argiles bleues (Pliocène inférieur marin),False
+n2CS,calcaire,calcaire,7,116.4,8,Calcaires siliceux roux en plaquettes et calcaires roux à silex (Valanginien),False
+EGP,detritique_mixte,detritique_mixte,4,116.2,45,Eboulis par gélivation,True
+l3-n2,indetermine,indetermine,,113.4,5,Lias inférieur à Valanginien (Massif du Pelvoux ou des Ecrins et Vallée de la Malsanne),False
+oM,siliceux,siliceux,8,111.4,18,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Gneiss oeillé de Crupillouse (orthogneiss),False
+U,calcaire,calcaire,7,108.5,46,"Tufs, travertins et brèches de pentes récents à actuels, localement anciens",False
+aã1c,siliceux,siliceux,8,103.7,9,"Granite aplitique à cordiérite du Cray, potassique",False
+æ0,siliceux,siliceux,8,100.7,7,Gneiss oeillés leptynitiques,False
+c2-3,calcaire,calcaire,7,100.4,9,Calcaires lités à Bryozoaires (Turonien supérieur - Sénonien inférieur),False
+í2,siliceux,siliceux,8,100.1,2,Leptynites grossières à biotite ou muscovite,False
+ñG,indetermine,indetermine,,96.9,8,Schistes graphiteux et chloriteux à niveaux gréseux. Écailles du col du Sabot (Carbonifère inférieur),False
+æä,siliceux,siliceux,8,96.1,23,"Gneiss prasinitique, prasinite, amphibolite. Complexe de Belledonne (Précambrien p.p.)",False
+ñ,siliceux,siliceux,8,89.9,10,Micaschistes chloriteux fins,False
+n4A,marno_calcaire,marno_calcaire,6,89.5,16,Complexe calcaire urgonien : marnes à Annélides (Barrémien supérieur),False
+í(2),siliceux,siliceux,8,88.8,10,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Leptynite (gneiss mylonitisé) de la Pointe de Marceline,False
+myã,siliceux,siliceux,8,82.7,3,Granite mylonitisé de la pointe de la Chalp. Mylonites post-granite hercynien,False
+Zæ,siliceux,siliceux,8,82.2,13,Roches très feldspathiques : Gneiss gris migmatitique,False
+Mc,siliceux,siliceux,8,79.5,3,Anatexites sombres à cordiérite et/ou sillimanite (aubussonites),False
+eP,indetermine,indetermine,,78.9,5,Poudingues et formations continentales (base du Tertiaire),False
+FGz,detritique_mixte,detritique_mixte,4,77.4,2,Alluvions fluvio-glaciaires récentes,False
+l3a-j3,calcaire,calcaire,7,76.6,27,Lias calcaire à Malm (Massif du Pelvoux ou des Ecrins et Vallée de la Malsanne),False
+n5M,marno_calcaire,marno_calcaire,6,71.0,17,Complexe calcaire urgonien : marnes : couches supérieures à Orbitolines (Aptien inférieur : Bédoulien supérieur),False
+h5Ûö,siliceux,siliceux,8,68.6,14,"Rhyolites et dacites +/- trachytes (""orthophyres"") dans le Houiller (Stéphanien ?)",False
+j2a-bJ,indetermine,indetermine,,68.4,2,Bajocien inférieur et moyen non différenciés,False
+æ1,siliceux,siliceux,8,65.5,3,Gneiss à cordiérite-sillimanite,False
+g2a,detritique_mixte,detritique_mixte,4,63.7,30,"Molasse rouge d'eau douce : grès grossiers et marnes bigarrées, argiles et marnes rouges et calcaires. Localement conglomérats (Chattien inférieur)",False
+eS,detritique_mixte,detritique_mixte,4,63.5,48,Sables siliceux bariolés blancs et rouges (Eocène ?),False
+ä(5),siliceux,siliceux,8,63.1,18,Gneiss amphibolique et amphibolite + faciès agmatique. Zone dauphinoise,False
+ä1,siliceux,siliceux,8,62.9,3,Amphibolite inférieure,False
+n2b,calcaire,calcaire,7,60.0,7,Calcaire (Valanginien supérieur),False
+Eyb,detritique_mixte,detritique_mixte,4,58.0,7,Eboulements à gros blocs et écroulements anciens. Würm,False
+F,indetermine,indetermine,,57.4,4,Alluvions caillouteuses d'âge indéterminé,False
+Ê,indetermine,indetermine,,57.3,81,"Filons de quartz, localement quartz et sidérite non minéralisés",False
+EJy,detritique_mixte,detritique_mixte,4,56.4,8,"Cônes mixtes d'éboulis, de déjection et/ou d'avalanches (+/- remaniement par ruissellement) du Würm",True
+ñm,siliceux,siliceux,8,52.5,2,Micaschistes lamelleux à minéraux,False
+í,siliceux,siliceux,8,52.0,11,"Leptynite, métagranophyre. Complexe de Belledonne (Précambrien p.p.)",False
+j7-n1Co,calcaire,calcaire,7,52.0,2,Calcaires coralliens de l'Echaillon (Tithonien supérieur - Berriasien),False
+tG,indetermine,indetermine,,51.8,25,Gypse (Trias),False
+ñs,siliceux,siliceux,8,50.7,1,Micaschistes chloriteux et sériciteux et faciès non différenciés. Lambeaux du linéament d'Aspres,False
+oMæ1-2,siliceux,siliceux,8,50.0,10,Gneiss migmatique leucocrate oeillé (orthogneiss en partie blastomylonitisé). Zone dauphinoise,False
+Lã4-5,siliceux,siliceux,8,49.5,44,"Granitoïdes : Filons de trondhjémites et leucogranodiorites, foliées, à biotite ± muscovite (Viséen probable)",False
+blMæ,siliceux,siliceux,8,49.4,12,Gneiss de Peyre-Arguet-La Pilatte (blastomylonites acides). Zone dauphinoise,False
+æ2c,siliceux,siliceux,8,49.0,16,Gneiss à deux micas et grenat,False
+g1A,detritique_mixte,detritique_mixte,4,48.6,4,Sables fins bariolés (Sannoisien),False
+æam,siliceux,siliceux,8,47.9,1,Gneiss amygdalaires,False
+pã2,siliceux,siliceux,8,47.0,11,"Granites alumino-sodiques à muscovite : Granite porphyroïde du Grun : Petit amas et filon au sud de la feuille, sans enclave vaugnéritique",False
+j6bJ(2),calcaire,calcaire,7,46.5,7,Calcaire lithographique en plaquettes (Kimméridgien supérieur),False
+C(2),siliceux,siliceux,8,38.6,31,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Cipolin de Valsenestre,False
+st-ky/Zñ,siliceux,siliceux,8,37.0,2,Minéraux repéres du métamorphisme : staurotide et disthène dans micaschiste,False
+æ(2)si,siliceux,siliceux,8,35.9,10,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Gneiss du Lauvitel à sillimanite (lac du Vallon),False
+fã1,siliceux,siliceux,8,35.8,2,"Granites alumino-sodiques à muscovite : Gr. des Quatre Tours (E cabane du Vallon de Valsenestre) et Gr. de la Pointe de Marceline. Gr. à grain fin, local. aplitique, parfois à enclaves vaugnéritiques",False
+j7J,calcaire,calcaire,7,35.8,11,"Calcaires fins micrograveleux, blancs à intercalations de dolomies (Tithonien)",False
+l3J,calcaire,calcaire,7,35.2,7,Argiles à Tisoa et calcaires coquilliers (couche de mélange) (Pliensbachien),False
+e7C,calcaire,calcaire,7,34.8,9,Calcaires à Nummulites (Priabonien),False
+l3b-4G,calcaire,calcaire,7,34.3,1,Zone Dauphinoise. Série du vallon de Lanchâtra. Calcaires et schistes gréseux (Domérien - Toarcien),False
+Rc,indetermine,indetermine,,34.2,2,Formations résiduelles du Sénonien,False
+æ(a),siliceux,siliceux,8,31.5,3,Roches cristallophylliennes migmatitiques (formation du noyau du Pelvoux) : Gneiss biotitique,False
+ña,siliceux,siliceux,8,31.3,3,Micaschistes albitiques,False
+Ew,detritique_mixte,detritique_mixte,4,27.7,1,Eboulis anciens antéwürmiens (?),True
+n4R,calcaire,calcaire,7,27.3,15,Complexe calcaire urgonien : calcaires roux lités (Barrémien supérieur),False
+æb-mR(2),detritique_mixte,detritique_mixte,4,27.2,3,Gneiss à biotite-muscovite du Rissiou - Rocher Blanc. Rameau interne de Belledonne: Belledonne NE (Est de l'accident de la Belle Étoile - le Rivier) (Précambrien ? - Paléozoïque inf.),False
+ñG (1),detritique_mixte,detritique_mixte,4,25.9,2,Schistes graphiteux et chloriteux à niveaux gréseux et passées de métaconglomérats. Écailles du col du Sabot (Carbonifère inférieur),False
+l4-j1J,marno_calcaire,marno_calcaire,6,25.8,7,"Marnes et calcaires noirs, Grande mine ou Minerai oolithique de Saint-Quentin, Banc à coquillages. Banc à bélemnites (Toarcien - Aalénien)",False
+l1-3Br,indetermine,indetermine,,25.7,6,Brèches polygéniques (Série du vallon de Lanchâtra) (Lias inf. - Domérien-Toarcien ?),False
+Lã3-4,siliceux,siliceux,8,25.6,14,"Leucogranites s.l. à grain fin, foliés, à biotite ± muscovite. Granite des Sept Laux (Viséen)",False
+m4G,siliceux,siliceux,8,25.5,5,Grès grossiers (Serravallien),False
+ñl1-5,calcaire,calcaire,7,25.3,1,Schistes cristallins mylonitiques contenant des filons clastiques de Lias calcaire (Croix de Cassini). Zone Dauphinoise,False
+n6-c1,indetermine,indetermine,,25.2,1,Albien - Cénomanien indifférenciés,False
+Ux-y,detritique_mixte,detritique_mixte,4,25.1,5,Tufs calcaires de l'interglaciaire Riss-Würm,False
+äR,siliceux,siliceux,8,24.3,2,Amphibolites et gneiss amphiboliques. Zone Dauphinoise : La Romanche supérieure (Meije-Plateau d'Emparis),False
+dK(2),indetermine,indetermine,,24.0,39,Zone Dauphinoise - Filons de dolérite,False
+opì,siliceux,siliceux,8,22.8,5,Zone Dauphinoise - Dolérite ophitique à diorite quartzique en amas circonscrits,False
+íã,siliceux,siliceux,8,21.3,2,Leptynites granitiques,False
+æ1-2,siliceux,siliceux,8,20.5,10,Gneiss leucocrate (Sud-Est de St-Christophe). Zone dauphinoise,False
+Fã2,siliceux,siliceux,8,20.4,4,"Granites monzonitiques, peu sodiques : Granite à biotite, à grain fin du versant nord du Petit Chapelet",False
+j4J,calcaire,calcaire,7,20.1,20,Calcaires ou calcaires argileux à oolithes ferrugineuses très fossilifères (Callovien),False
+n3M,marno_calcaire,marno_calcaire,6,18.1,2,Marnes et marno-calcaires (Hauterivien terminal),False
+æmy,siliceux,siliceux,8,16.9,16,"Cristallin mylonitique ou non identifié (Glacier de la Meije, glacier des Quirlies). Zone Dauphinoise : La Romanche supérieure (Meije-Plateau d'Emparis)",False
+gBr,calcaire,calcaire,7,16.6,14,Brèche calcaire (Chattien ?),False
+pã3,siliceux,siliceux,8,16.2,3,"Granite du Graou, porphyroïde",False
+j3i,calcaire,calcaire,7,14.8,5,Calcaires noirs lités (rive droite du Grésivaudan) (Bathonien inférieur ?),False
+æî,siliceux,siliceux,8,14.4,3,Roches très feldspathiques : Gneiss amphibolitique (Grande Lance d'Allemont),False
+j5cJ(2),indetermine,indetermine,,14.3,4,Couches à Myes (île Crémieu) (Oxfordien supérieur),False
+n4b,marno_calcaire,marno_calcaire,6,14.3,5,"Complexe calcaire urgonien : calcaires argileux beiges, parfois à silex et Marnes de la Plainie, calcaires argileux et marnes de la ""vire à Heteroceras auct."" (Barrémien supérieur)",False
+ôë(1-2),siliceux,siliceux,8,14.2,37,"Granites alumino-sodiques à muscovite : Vaugnérites : amas bien circonscrits : Vallon de Valsenestre, Vallon Cros en rive droite, Combe du Lauvet au nord-ouest du Péou de Saint-Maurice et enclaves de petite taille disséminées",False
+oæh,siliceux,siliceux,8,13.8,7,"Gneiss oeillé amphibolique (Olan, Bac du Canard, Alpe du Pin). Zone dauphinoise",False
+j6-7,calcaire,calcaire,7,13.6,3,"Calcaires ""tithoniques"" (bordure Chartreuse subalpine) (Jurassique supérieur)",False
+Mæ(2),siliceux,siliceux,8,13.5,2,Migmatites du Bec de l'Homme. Zone Dauphinoise : La Romanche supérieure (Meije-Plateau d'Emparis),False
+Z,siliceux,siliceux,8,13.0,1,"Cristallin non déterminé, écrasé",False
+m2M,marno_calcaire,marno_calcaire,6,12.6,2,Marnes (Burdigalien),False
+c6L,indetermine,indetermine,,12.5,4,Lauzes à joints jaunes (Maastrichtien supérieur),False
+aã(2),siliceux,siliceux,8,11.5,7,"Granite gris à grain fin des Rochers rouges (Etançons) du Coolidge, du Gioberney",False
+e7MC,marno_calcaire,marno_calcaire,6,11.1,3,Marno-calcaires (Priabonien),False
+c3S,detritique_mixte,detritique_mixte,4,10.5,5,Grès et sables (Sénonien inférieur),False
+g2b,detritique_mixte,detritique_mixte,4,10.3,4,Marnes à bancs de sable et de calcaire (Chattien supérieur),False
+ã(1),siliceux,siliceux,8,10.2,4,Granite à muscovite,False
+n5-6Mb,marno_calcaire,marno_calcaire,6,10.0,5,"Marnes ""bleues"" (Gargasien - Albien)",False
+dK(1),indetermine,indetermine,,10.0,27,Filons basiques : diabase,False
+Jw,detritique_mixte,detritique_mixte,4,9.9,1,Alluvions torrentielles wurmiennes,False
+â,indetermine,indetermine,,9.7,25,Filons basiques : filons sombres indifférenciés,False
+n2a,marno_calcaire,marno_calcaire,6,8.5,4,Marnes (Valanginien),False
+csC(2),calcaire,calcaire,7,8.2,2,"Calcaires en dalles (""Lauzes"") (Crétacé supérieur)",False
+j5-n,indetermine,indetermine,,7.4,3,Massif du Pelvoux (ou des Ecrins et Vallée de la Malsanne) (Jurassique supérieur à Néocomien),False
+ä,siliceux,siliceux,8,7.0,8,Amphibolites,False
+Zcarb,indetermine,indetermine,,6.8,8,Roches carbonatées métamorphiques diverses,False
+ï,indetermine,indetermine,,6.7,16,Filons de lamprophyre,False
+ñ3,siliceux,siliceux,8,6.6,3,"Micaschistes à deux micas, cordiérite, andalousite",False
+n1-2CG,marno_calcaire,marno_calcaire,6,6.6,3,"Calcaire gréseux, marno-calcaire (Massif du Pelvoux ou des Ecrins et Vallée de la Malsanne) (Berriasien - Valanginien)",False
+h5,detritique_mixte,detritique_mixte,4,6.5,4,"Conglomérats, grès, schistes houillers, charbon (Stéphanien inférieur à moyen p.p.)",False
+aã,siliceux,siliceux,8,6.4,14,Zone Dauphinoise - Filons d'aplite et aplopegmatite,False
+l2J,calcaire,calcaire,7,6.4,2,Calcaires à grains de quartz et calcaires à Gryphées (Sinémurien),False
+l1-3ol,indetermine,indetermine,,6.2,6,Olistolithes dans Hettangien-Carixien non différencié (Massif du Pelvoux ou des Ecrins et Vallée de la Malsanne),False
+Mb,siliceux,siliceux,8,5.9,1,Anatexites claires à cordiérite,False
+c3C,calcaire,calcaire,7,5.7,3,Calcaires gréseux (Sénonien inférieur),False
+n1a,calcaire,calcaire,7,5.0,2,Calcaires fins de faciès tithonien (Berriasien inférieur ?),False
+æã3,indetermine,indetermine,,5.0,4,Porphyroïde. Complexe de Belledonne (Précambrien p.p.),False
+t7C,calcaire,calcaire,7,4.7,7,Calcaires noirs dolomitiques (Rhétien ?),False
+ô-ãqM,siliceux,siliceux,8,4.7,5,"Enclaves basiques : vaugnérites de la Belle Étoile, à biotite ± amphibole. Granite des Sept Laux (Viséen)",False
+n1-2C,calcaire,calcaire,7,4.6,1,"Calcaires de type ""marbre bâtard"" (Berriasien sup. - Valanginien ?)",False
+ä(a),siliceux,siliceux,8,4.5,6,Amphibolites en passées dans les gneiss d'Allemont. Rameau interne de Belledonne: Belledonne SW (Ouest de l'accident de la Belle Étoile - le Rivier) (Paléozoïque inférieur ?),False
+p2F,detritique_mixte,detritique_mixte,4,4.5,2,Sables de Lens-Lestang (Pliocène supérieur),False
+FG,detritique_mixte,detritique_mixte,4,4.4,2,Alluvions fluvio-glaciaires non datées,False
+ó,siliceux,siliceux,8,3.8,12,Zone Dauphinoise - Filons de rhyolite,False
+îë(1),siliceux,siliceux,8,3.2,6,Zone Dauphinoise - Filons de microdiorite quartzique,False
+Û,indetermine,indetermine,,3.1,2,"Métapyroxénites et péridotites ""Ophiolite de Chamrousse"". Rameau interne de Belledonne: Belledonne SW (Ouest de l'accident de la Belle Étoile - le Rivier) (limite Cambrien - Ordovicien)",False
+Mæ1-2C,siliceux,siliceux,8,3.1,3,Migmatite leucocrate de Claphouse et de la Vallée des Bans. Zone dauphinoise,False
+Ci,indetermine,indetermine,,3.1,3,Filons de cipolin,False
+mó,siliceux,siliceux,8,3.0,9,"""Porphyroïde"" de Saint-Christophe (La Bernardière), rhyolite mylonitisée. Zone dauphinoise",False
+l1-3E,indetermine,indetermine,,2.9,1,Niveau à entroques dans Hettangien-Carixien non différencié (Massif du Pelvoux ou des Ecrins et Vallée de la Malsanne),False
+ñ2,siliceux,siliceux,8,2.6,3,Micaschistes à deux micas,False
+îë(2),siliceux,siliceux,8,2.6,1,"Zone Briançonnaise - Microdiorites (""filons-couches"" du Carbonifère)",False
+j4-5J,indetermine,indetermine,,2.4,4,Callovien et Oxfordien s.s. non différenciés,False
+eK,detritique_mixte,detritique_mixte,4,2.2,3,Sables kaoliniques (Eocène continental),False
+æcGR,detritique_mixte,detritique_mixte,4,2.2,3,Conglomérat métamorphique (accident médian des Rousses). Zone Dauphinoise : Les Grandes Rousses,False
+m-g,indetermine,indetermine,,2.1,4,Fentes à remplissage argileux rouge (Miocène - Oligocène),False
+ñæ(1),siliceux,siliceux,8,1.9,9,"Micaschistes et gneiss albitiques, faciès oeillé. Complexe de Belledonne (Précambrien p.p.)",False
+Ù,indetermine,indetermine,,1.9,3,Serpentinites et métapyroxénites. Rameau interne de Belledonne : Belledonne nord-est (Est de l'accident de la Belle Étoile - le Rivier) (Paléozoïque inférieur ?),False
+c1,siliceux,siliceux,8,1.8,3,Grès friables blanchâtres (Cénomanien inférieur),False
+l1J,calcaire,calcaire,7,1.8,2,Calcaires argileux (Choin bâtard) (Hettangien inférieur),False
+óë,indetermine,indetermine,,1.7,5,"Zone Dauphinoise - Filons de rhyodacite, esterellite",False
+j5aJ,marno_calcaire,marno_calcaire,6,1.6,6,Calcaires à sphérites et marnes à Creniceras renggeri (Oxfordien inférieur et Oxfordien moyen p.p.),False
+Gw,detritique_mixte,detritique_mixte,4,1.4,1,Moraines du Mindel,True
+c6P,indetermine,indetermine,,1.4,2,Poudingues et brèches à ciment siliceux et à Microcodium (Maastrichtien supérieur ?),False
+Fv1,calcaire,calcaire,7,1.4,2,"Formation de Chonas-Aubressin : Formation détritique, formée de galets et de graviers de quartzites et calcaires, consolidée en poudingue",False
+sid,indetermine,indetermine,,1.4,3,Filons de sidérose,False
+mæL,siliceux,siliceux,8,1.0,1,Gneiss de la pointe de Longis,False
+t7L,indetermine,indetermine,,1.0,1,Lumachelle à Avicula conforta (Rhétien),False
+l4Ceb,calcaire,calcaire,7,0.9,1,Calcaires durs à entroques et Bélemnites (Toarcien),False
+ã1-2(1),siliceux,siliceux,8,0.8,3,Zone Dauphinoise - Filons de granite,False
+n6-c1Gv,siliceux,siliceux,8,0.8,2,Grès verts (Albien ? - Cénomanien ?),False
+j7-n1J,marno_calcaire,marno_calcaire,6,0.5,1,Faciès purbeckien : calcaires fins gris clairs à horizons marneux verdâtres (Tithonien - Berriasien),False
+Cip,indetermine,indetermine,,0.4,1,Cipolin de la Lavey (glacier de la Lavey). Zone dauphinoise,False
+j6Co,calcaire,calcaire,7,0.3,1,Calcaires récifaux (bordure Chartreuse subalpine) (Kimméridgien supérieur ?),False
+pã1-2por,siliceux,siliceux,8,0.1,1,"Granite du Riéou-Blanc, faciès porphyroïde",False
+ûb,siliceux,siliceux,8,0.0,1,Quartzite à biotite. Zone dauphinoise,False

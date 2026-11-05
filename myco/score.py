@@ -22,7 +22,7 @@ from myco.especes import Espece, Gel, Meteo, Saison
 from myco.grid import Grille
 from myco.habitat import LIGNES_PAR_BLOC, NODATA_H, sources_habitat
 from myco.ingest import grille_reference
-from myco.ingest.geologie import CHARGEURS, source_utilisee
+from myco.ingest.geologie import CHARGEURS, sources_utilisees
 from myco.meteo import champs as mod_champs
 from myco.meteo.indicateurs import INDICATEURS, agreger, fenetre
 from myco.meteo.recuperation import dossier_meteo, limite_departement
@@ -42,7 +42,7 @@ def sources_manifeste(p: Parametres) -> list[dict]:
     """Sources de la page « À propos » (sans la carte géologique non retenue). Celles du score
     et du fond de carte ont leur attribution affichée en permanence sur la carte."""
     carte = ["plan_ign", "admin_express", *sources_score(p)]
-    ecartees = set(CHARGEURS) - {source_utilisee(p)}
+    ecartees = set(CHARGEURS) - set(sources_utilisees(p))
     return [
         {"id": cle, "nom": s.nom, "licence": s.licence, "attribution": s.attribution,
          "url": s.url, "carte": cle in carte}
