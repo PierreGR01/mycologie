@@ -1,6 +1,6 @@
 {
   "run": "2026-10-30",
-  "genere_le": "2026-10-31T15:20:03+00:00",
+  "genere_le": "2026-11-05T08:21:05+00:00",
   "dates": [
     {
       "date": "2026-10-29",
@@ -12,7 +12,7 @@
     },
     {
       "date": "2026-10-31",
-      "type": "prevision"
+      "type": "analyse"
     }
   ],
   "especes": [
@@ -103,6 +103,14 @@
       "licence": "Licence Ouverte Etalab 2.0",
       "attribution": "© IGN – BD Forêt® V2",
       "url": "https://geoservices.ign.fr/bdforet",
+      "carte": true
+    },
+    {
+      "id": "bdcharm50",
+      "nom": "BD Charm-50, carte géologique harmonisée au 1/50 000 (BRGM)",
+      "licence": "Licence Ouverte Etalab 2.0 (à confirmer)",
+      "attribution": "© BRGM – BD Charm-50",
+      "url": "https://infoterre.brgm.fr",
       "carte": true
     },
     {
