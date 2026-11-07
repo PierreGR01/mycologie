@@ -1,7 +1,7 @@
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./styles.css";
 import { registerSW } from "virtual:pwa-register";
-import { afficherCouche, cadrer, creerCarte } from "./carte";
+import { afficherCouche, ajouterLocalisation, cadrer, creerCarte } from "./carte";
 import {
   chargerManifeste,
   ecrire,
@@ -95,6 +95,32 @@ async function demarrer(): Promise<void> {
     if (!t) return;
     ecrire(CLE_TERRITOIRE, t.code);
     cadrer(carte, t.emprise);
+  });
+
+  // Localisation : le territoire où se trouve l'utilisateur devient le territoire choisi.
+  let messageReseau: string | null = null;
+  let minuterie: number | undefined;
+  const signaler = (texte: string) => {
+    bandeau(texte);
+    clearTimeout(minuterie);
+    minuterie = window.setTimeout(() => bandeau(messageReseau), 6000);
+  };
+  ajouterLocalisation(carte, {
+    position: (lng, lat) => {
+      const ici = territoires.find(({ emprise: [o, s, e, n] }) =>
+        lng >= o && lng <= e && lat >= s && lat <= n,
+      );
+      if (!ici || ici.code === choixTerritoire.value) return;
+      choixTerritoire.value = ici.code;
+      ecrire(CLE_TERRITOIRE, ici.code);
+    },
+    horsZone: () => signaler("Votre position est en dehors des territoires couverts."),
+    erreur: (refusee) =>
+      signaler(
+        refusee
+          ? "Localisation refusée : autorisez-la dans les réglages du navigateur."
+          : "Position indisponible pour le moment.",
+      ),
   });
 
   // Espèces
@@ -217,13 +243,12 @@ async function demarrer(): Promise<void> {
   // Le manifeste peut venir du cache du service worker : l'état du réseau prime.
   const etatReseau = () => {
     horsLigne = !navigator.onLine;
-    bandeau(
-      horsLigne
-        ? avecMeteo
-          ? `Hors ligne : dernière carte consultée (météo du ${formatDate.format(new Date(manifeste.run))}).`
-          : "Hors ligne : dernière carte consultée."
-        : null,
-    );
+    messageReseau = horsLigne
+      ? avecMeteo
+        ? `Hors ligne : dernière carte consultée (météo du ${formatDate.format(new Date(manifeste.run))}).`
+        : "Hors ligne : dernière carte consultée."
+      : null;
+    bandeau(messageReseau);
   };
   window.addEventListener("online", etatReseau);
   window.addEventListener("offline", etatReseau);

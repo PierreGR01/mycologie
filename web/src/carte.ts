@@ -58,6 +58,10 @@ export function creerCarte(conteneur: string, m: Manifeste, vue: Emprise = m.emp
     maxZoom: 16,
     attributionControl: { compact: true, customAttribution: attributions },
     cooperativeGestures: false,
+    locale: {
+      "GeolocateControl.FindMyLocation": "Me localiser",
+      "GeolocateControl.LocationNotAvailable": "Localisation indisponible",
+    },
   });
   // L'attribution compacte s'ouvre au chargement : on la replie pour ne pas masquer la carte
   // sur mobile (elle reste accessible par le bouton ⓘ et dans « À propos »).
@@ -89,4 +93,31 @@ export function afficherCouche(carte: CarteMapLibre, url: string): void {
 /** Recadre la carte sur un territoire. */
 export function cadrer(carte: CarteMapLibre, emprise: Emprise): void {
   carte.fitBounds(emprise, { padding: 20, duration: 600 });
+}
+
+/** Bouton « Me localiser » : position suivie sur la carte (point bleu et cercle de précision).
+ *  La position reste dans le navigateur ; elle n'est envoyée à aucun serveur. */
+export function ajouterLocalisation(
+  carte: CarteMapLibre,
+  rappels: {
+    position: (lng: number, lat: number) => void;
+    horsZone: () => void;
+    erreur: (refusee: boolean) => void;
+  },
+): void {
+  if (!("geolocation" in navigator)) return;
+  const controle = new maplibregl.GeolocateControl({
+    positionOptions: { enableHighAccuracy: true, timeout: 15_000 },
+    trackUserLocation: true,
+    showAccuracyCircle: true,
+    fitBoundsOptions: { maxZoom: 14 },
+  });
+  carte.addControl(controle, "bottom-right");
+  controle.on("geolocate", (e: GeolocationPosition) =>
+    rappels.position(e.coords.longitude, e.coords.latitude),
+  );
+  controle.on("outofmaxbounds", () => rappels.horsZone());
+  controle.on("error", (e: GeolocationPositionError) =>
+    rappels.erreur(e.code === e.PERMISSION_DENIED),
+  );
 }

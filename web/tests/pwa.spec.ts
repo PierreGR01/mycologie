@@ -95,6 +95,35 @@ test("choix du territoire : recadrage, mémorisé au lancement suivant", async (
   await centreDans(autre.emprise);
 });
 
+test.describe("localisation", () => {
+  // Le Puy-en-Velay (Haute-Loire).
+  test.use({ geolocation: { longitude: 3.885, latitude: 45.043 }, permissions: ["geolocation"] });
+
+  test("me localiser : carte centrée sur la position, territoire choisi", async ({ page }) => {
+    test.skip(territoires.length < 2, "un seul territoire dans le manifeste");
+    await accepterAvertissement(page);
+    await page.getByRole("combobox", { name: "Territoire" }).selectOption("38");
+    await page.getByRole("button", { name: "Me localiser" }).click();
+    await expect(page.getByRole("combobox", { name: "Territoire" })).toHaveValue("43");
+    await page.waitForFunction(() => {
+      const c = (window as any).__carte;
+      if (c.isMoving()) return false;
+      const { lng, lat } = c.getCenter();
+      return Math.abs(lng - 3.885) < 0.01 && Math.abs(lat - 45.043) < 0.01 && c.getZoom() > 12;
+    });
+    await expect(page.locator(".maplibregl-user-location-dot")).toBeVisible();
+  });
+
+  test.describe("hors des territoires", () => {
+    test.use({ geolocation: { longitude: 2.35, latitude: 48.85 } }); // Paris
+    test("un bandeau le signale", async ({ page }) => {
+      await accepterAvertissement(page);
+      await page.getByRole("button", { name: "Me localiser" }).click();
+      await expect(page.locator("#bandeau")).toContainText("en dehors des territoires");
+    });
+  });
+});
+
 test("installable : manifeste et service worker", async ({ page }) => {
   await page.goto("./");
   const webmanifest = await (await page.request.get("manifest.webmanifest")).json();

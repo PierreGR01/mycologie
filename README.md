@@ -181,7 +181,9 @@ cd web && npm run dev   # développement (Vite), données servies depuis web/dat
 L'application, en Vite, TypeScript et MapLibre GL JS, lit `data/latest.json`. Elle affiche la
 carte de l'espèce et de la date choisies (J-7 à J+7), la légende, et une bascule « habitat
 seul ». Avec plusieurs départements (`territoires` du manifeste), un sélecteur recadre la carte
-sur l'un d'eux ; le dernier choisi est rouvert au lancement suivant. Au premier lancement, un avertissement sur les risques d'intoxication doit être accepté.
+sur l'un d'eux ; le dernier choisi est rouvert au lancement suivant. Le bouton « Me localiser »
+(géolocalisation du navigateur, HTTPS requis) centre la carte sur l'utilisateur, suit sa position
+et choisit le territoire où il se trouve ; la position n'est envoyée à aucun serveur. Au premier lancement, un avertissement sur les risques d'intoxication doit être accepté.
 L'application ne propose aucune fonction d'identification.
 
 **Hors ligne** : le service worker garde l'application et les tuiles du fond Plan IGN déjà
