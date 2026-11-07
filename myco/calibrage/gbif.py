@@ -109,7 +109,7 @@ def telecharger(cle: int, params: dict, pc: ParamCalibrage, reseau: Reseau,
 
 
 def en_observations(df: pd.DataFrame, espece: str, limite: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
-    """Occurrences situées dans le département, en Lambert-93, au format de obs.observation."""
+    """Occurrences situées dans les départements, en Lambert-93, au format de obs.observation."""
     jour = pd.to_datetime(df["eventDate"].astype("string").str[:10], errors="coerce",
                           format="%Y-%m-%d")
     obs = gpd.GeoDataFrame(

@@ -1,6 +1,6 @@
 # Calibrage – Girolle
 
-Généré le 05/11/2026. Taxons : Cantharellus cibarius.
+Généré le 07/11/2026. Taxons : Cantharellus cibarius.
 
 > **Rapport de diagnostic.** Les règles de `config/especes/girolle.yaml` ne sont pas modifiées automatiquement.
 
@@ -8,10 +8,10 @@ Généré le 05/11/2026. Taxons : Cantharellus cibarius.
 
 | | Nombre |
 |---|---:|
-| Observations GBIF dans le département (≥ 2005, CC0, CC BY, CC BY-NC) | 91 |
-| … datées au jour près (phénologie) | 91 |
-| … localisées à ≤ 3000 m (habitat, météo) | 84 |
-| Fond « target-group » : observations de champignons localisées | 25125 |
+| Observations GBIF dans les départements (≥ 2005, CC0, CC BY, CC BY-NC) | 93 |
+| … datées au jour près (phénologie) | 93 |
+| … localisées à ≤ 3000 m (habitat, météo) | 85 |
+| Fond « target-group » : observations de champignons localisées | 30199 |
 
 Principaux jeux de données (GBIF) :
 
@@ -22,13 +22,13 @@ Principaux jeux de données (GBIF) :
 - 50c9509d-22c7-4a22-a47d-8c48425ef4a7 : 6
 - 26dfdca2-d8a1-4135-a03a-b669b67eb187 : 3
 
-Requête GBIF : https://api.gbif.org/v1/occurrence/search?hasCoordinate=true&hasGeospatialIssue=false&occurrenceStatus=PRESENT&decimalLatitude=44.6959,45.8834&decimalLongitude=4.7420,6.3593&year=2005,2026&license=CC0_1_0,CC_BY_4_0,CC_BY_NC_4_0
+Requête GBIF : https://api.gbif.org/v1/occurrence/search?hasCoordinate=true&hasGeospatialIssue=false&occurrenceStatus=PRESENT&decimalLatitude=44.6959,45.8834&decimalLongitude=3.0822,6.3593&year=2005,2026&license=CC0_1_0,CC_BY_4_0,CC_BY_NC_4_0
 
 ## Phénologie
 
 ![Phénologie](phenologie.png)
 
-Observations hors de la fenêtre saisonnière du modèle : **3 %**.
+Observations hors de la fenêtre saisonnière du modèle : **4 %**.
 
 ## Habitat
 
@@ -36,8 +36,8 @@ L'habitat est moyenné dans le cercle d'incertitude de chaque observation, puis 
 
 ![Habitat](habitat.png)
 
-- AUC observations / fond : 0.58 (faible)
-- Indice de Boyce continu : 0.38 (faible)
+- AUC observations / fond : 0.59 (faible)
+- Indice de Boyce continu : -0.05 (faible)
 
 ### Composition : essences
 
@@ -45,21 +45,21 @@ Part moyenne de chaque classe dans les cercles (observations et fond), et valeur
 
 |  | valeur_regle | part_observations | part_fond | ratio |
 |---|---|---|---|---|
-| melange_feuillus | 0.80 | 0.34 | 0.36 | 0.94 |
-| sapin_epicea | 0.80 | 0.33 | 0.27 | 1.23 |
-| chataignier | 0.90 | 0.09 | 0.08 | 1.16 |
-| mixte_feuillus | 0.90 | 0.08 | 0.08 | 1.00 |
-| mixte_coniferes | 0.80 | 0.06 | 0.06 | 0.96 |
-| chenes_decidus | 0.90 | 0.05 | 0.05 | 0.97 |
-| autres_feuillus | 0.60 | 0.01 | 0.02 | 0.65 |
-| foret_ouverte | 0.50 | 0.02 | 0.02 | 0.88 |
-| hetre | 1.00 | 0.01 | 0.02 | 0.67 |
-| pin_sylvestre | 0.70 | 0.00 | 0.01 | 0.09 |
-| peupleraie | 0.00 | 0.00 | 0.01 | 0.08 |
-| melange_coniferes | 0.60 | 0.00 | 0.01 | 0.22 |
+| melange_feuillus | 0.80 | 0.34 | 0.36 | 0.93 |
+| sapin_epicea | 0.80 | 0.33 | 0.26 | 1.29 |
+| mixte_feuillus | 0.90 | 0.08 | 0.08 | 1.02 |
+| chataignier | 0.90 | 0.09 | 0.07 | 1.29 |
+| mixte_coniferes | 0.80 | 0.06 | 0.06 | 0.92 |
+| chenes_decidus | 0.90 | 0.05 | 0.04 | 1.05 |
+| autres_feuillus | 0.60 | 0.01 | 0.03 | 0.51 |
+| pin_sylvestre | 0.70 | 0.00 | 0.02 | 0.12 |
+| foret_ouverte | 0.50 | 0.02 | 0.02 | 0.85 |
+| hetre | 1.00 | 0.01 | 0.02 | 0.68 |
+| melange_coniferes | 0.60 | 0.01 | 0.01 | 0.32 |
+| peupleraie | 0.00 | 0.00 | 0.01 | 0.09 |
 | douglas | 0.40 | 0.00 | 0.00 | 0.72 |
 | robinier | 0.10 | 0.00 | 0.00 | 0.00 |
-| autres_pins | 0.40 | 0.00 | 0.00 | 0.24 |
+| autres_pins | 0.40 | 0.00 | 0.00 | 0.26 |
 | meleze | 0.30 | 0.00 | 0.00 | 0.00 |
 
 ### Composition : substrat
@@ -68,29 +68,17 @@ Part moyenne de chaque classe dans les cercles (observations et fond), et valeur
 
 |  | valeur_regle | part_observations | part_fond | ratio |
 |---|---|---|---|---|
-| detritique_mixte | 0.80 | 0.41 | 0.43 | 0.95 |
-| calcaire | 0.30 | 0.21 | 0.23 | 0.89 |
-| marno_calcaire | 0.40 | 0.20 | 0.18 | 1.09 |
-| alluvions_recentes | 0.30 | 0.06 | 0.07 | 0.76 |
-| siliceux | 1.00 | 0.12 | 0.06 | 1.91 |
-| indetermine | 0.60 | 0.01 | 0.02 | 0.74 |
+| detritique_mixte | 0.80 | 0.41 | 0.40 | 1.02 |
+| calcaire | 0.30 | 0.20 | 0.20 | 1.05 |
+| siliceux | 1.00 | 0.12 | 0.17 | 0.74 |
+| marno_calcaire | 0.40 | 0.20 | 0.15 | 1.27 |
+| alluvions_recentes | 0.30 | 0.06 | 0.07 | 0.80 |
+| indetermine | 0.60 | 0.01 | 0.02 | 0.87 |
 
 ## Météo à la date d'observation
 
-Score M calculé avec la météo historique (Open-Meteo, ERA5-Land et ERA5), à l'altitude médiane des forêts du cercle, comparé aux autres jours de la saison au même endroit.
-
-![Météo](meteo.png)
-
-- AUC temporelle : 0.61 (correct)
-- Sous-scores moyens le jour observé : pluie_15j 0.87, tmoy_7j 0.87, saison 0.97, gel 0.98
-
-Valeurs des indicateurs les jours d'observation (déciles 10 et 90, médiane), comparées aux seuils du trapèze de la règle :
-
-|  | seuils_regle | p10 | mediane | p90 | sous_score_moyen | jours_a_zero_pct |
-|---|---|---|---|---|---|---|
-| pluie_15j | 15 / 30 / 150 / 300 | 19.20 | 50.50 | 109.40 | 0.87 | 4.76 |
-| tmoy_7j | 9 / 13 / 22 / 27 | 11.16 | 14.83 | 18.53 | 0.87 | 4.76 |
+Météo historique non évaluée.
 
 ## Règles à revoir
 
-- Habitat : AUC 0.58, le modèle distingue mal les zones observées du fond.
+- Habitat : AUC 0.59, le modèle distingue mal les zones observées du fond.

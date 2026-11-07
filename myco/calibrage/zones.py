@@ -46,7 +46,7 @@ def rayons(obs: pd.DataFrame, resolution: float) -> np.ndarray:
 
 
 def h_moyen(zones: Zones, h: np.ndarray, obs: pd.DataFrame) -> np.ndarray:
-    """Habitat moyen (0–1) dans le cercle, pixels du département seulement."""
+    """Habitat moyen (0–1) dans le cercle, pixels des départements seulement."""
     cache: dict[tuple, float] = {}
     for x, y, r in _positions(obs, zones.grille.resolution).index:
         v = zones.pixels(h, x, y, r)

@@ -111,7 +111,7 @@ def ecrire(r: Resultat, dossier: Path, contexte: dict) -> Path:
         "",
         "| | Nombre |",
         "|---|---:|",
-        f"| Observations GBIF dans le département (≥ {contexte['annee_min']}, "
+        f"| Observations GBIF dans les départements (≥ {contexte['annee_min']}, "
         f"{contexte['licences']}) "
         f"| {r.n_total} |",
         f"| … datées au jour près (phénologie) | {r.n_dates} |",
