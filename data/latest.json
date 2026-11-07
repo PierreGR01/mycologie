@@ -1,6 +1,6 @@
 {
-  "run": "2026-11-05",
-  "genere_le": "2026-11-05T08:35:43+00:00",
+  "run": "2026-11-07",
+  "genere_le": "2026-11-07T16:45:51+00:00",
   "meteo": false,
   "dates": [],
   "especes": [
@@ -9,35 +9,35 @@
       "nom": "Cèpe",
       "avertissement": null,
       "habitat": "habitat/cepe.pmtiles",
-      "tuiles": "runs/2026-11-05/cepe/{date}.pmtiles"
+      "tuiles": "runs/2026-11-07/cepe/{date}.pmtiles"
     },
     {
       "id": "girolle",
       "nom": "Girolle",
       "avertissement": null,
       "habitat": "habitat/girolle.pmtiles",
-      "tuiles": "runs/2026-11-05/girolle/{date}.pmtiles"
+      "tuiles": "runs/2026-11-07/girolle/{date}.pmtiles"
     },
     {
       "id": "morille",
       "nom": "Morille",
       "avertissement": "Les morilles sont toxiques crues ou insuffisamment cuites.",
       "habitat": "habitat/morille.pmtiles",
-      "tuiles": "runs/2026-11-05/morille/{date}.pmtiles"
+      "tuiles": "runs/2026-11-07/morille/{date}.pmtiles"
     },
     {
       "id": "pied_de_mouton",
       "nom": "Pied-de-mouton",
       "avertissement": null,
       "habitat": "habitat/pied_de_mouton.pmtiles",
-      "tuiles": "runs/2026-11-05/pied_de_mouton/{date}.pmtiles"
+      "tuiles": "runs/2026-11-07/pied_de_mouton/{date}.pmtiles"
     },
     {
       "id": "trompette",
       "nom": "Trompette de la mort",
       "avertissement": null,
       "habitat": "habitat/trompette.pmtiles",
-      "tuiles": "runs/2026-11-05/trompette/{date}.pmtiles"
+      "tuiles": "runs/2026-11-07/trompette/{date}.pmtiles"
     }
   ],
   "legende": [
@@ -62,12 +62,34 @@
     "max": 12
   },
   "emprise": [
-    4.707301935950052,
+    3.0685047460635,
     44.67019636011339,
     6.431920965389893,
-    45.90348949560133
+    45.91691820962883
   ],
-  "limite": "departement.geojson",
+  "limite": "limites.geojson",
+  "territoires": [
+    {
+      "code": "38",
+      "nom": "Isère",
+      "emprise": [
+        4.74204,
+        44.69587,
+        6.3593,
+        45.88339
+      ]
+    },
+    {
+      "code": "43",
+      "nom": "Haute-Loire",
+      "emprise": [
+        3.08219,
+        44.74396,
+        4.49082,
+        45.42761
+      ]
+    }
+  ],
   "sources": [
     {
       "id": "admin_express",

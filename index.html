@@ -3,22 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Champignons Isère</title>
-    <meta name="description" content="Zones et périodes favorables à la cueillette de champignons en Isère. Aucune fonction d'identification." />
+    <title>Champignons – Isère et Haute-Loire</title>
+    <meta name="description" content="Zones et périodes favorables à la cueillette de champignons en Isère et en Haute-Loire. Aucune fonction d'identification." />
     <meta name="theme-color" content="#1f3d2b" />
     <link rel="icon" type="image/png" href="icons/icone-192.png" />
     <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="Champis 38" />
-    <script type="module" crossorigin src="./assets/index-DlSIUt97.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-n3ANLT8O.css">
+    <meta name="apple-mobile-web-app-title" content="Champis" />
+    <script type="module" crossorigin src="./assets/index-Dx_GelkD.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CY9KxPt_.css">
   <link rel="manifest" href="./manifest.webmanifest"></head>
   <body>
     <div id="carte" role="region" aria-label="Carte de favorabilité"></div>
 
     <header class="barre-haut">
       <div class="titre">
-        <h1>Champignons Isère</h1>
+        <h1>Champignons</h1>
+        <select id="territoire" class="territoire" aria-label="Territoire" hidden></select>
         <button id="bouton-apropos" class="bouton-rond" type="button" aria-label="À propos, sources et licences">i</button>
       </div>
       <div id="especes" class="especes" role="radiogroup" aria-label="Espèce"></div>
@@ -54,7 +55,7 @@
       </p>
       <p>
         Respectez la réglementation locale (arrêtés municipaux et préfectoraux, propriétés privées,
-        Parc national des Écrins et réserves naturelles), que l'application ne prend pas en compte.
+        parcs nationaux et réserves naturelles), que l'application ne prend pas en compte.
       </p>
       <label class="bascule"><input id="avertissement-lu" type="checkbox" /> J'ai lu et compris ces risques</label>
       <button id="avertissement-ok" class="bouton" type="button" disabled>Accéder à la carte</button>
