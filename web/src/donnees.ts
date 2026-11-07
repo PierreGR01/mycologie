@@ -15,8 +15,10 @@ export interface Manifeste {
   legende: { min: number; libelle: string; couleur: string }[]; // classes affichées
   classes_masquees?: string[]; // classes calculées mais transparentes sur la carte
   zoom: { min: number; max: number };
-  emprise: [number, number, number, number];
+  emprise: [number, number, number, number]; // ensemble des territoires
   limite: string;
+  // Départements couverts ; absent des manifestes antérieurs (un seul territoire).
+  territoires?: { code: string; nom: string; emprise: [number, number, number, number] }[];
   note?: string; // précision sur les données (ex. démonstration), affichée dans le panneau
   licence_cartes?: string | null; // licence imposée aux cartes par une source « SA »
   sources: {

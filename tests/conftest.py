@@ -11,8 +11,14 @@ RACINE = Path(__file__).resolve().parent.parent
 
 @pytest.fixture
 def projet(tmp_path, monkeypatch):
-    """Copie de config/ dans un répertoire temporaire servant de racine du projet."""
+    """Copie de config/ dans un répertoire temporaire servant de racine du projet, limitée à un
+    département (38) : les données de test sont déposées pour lui seul."""
     shutil.copytree(RACINE / "config", tmp_path / "config")
+    reglages = tmp_path / "config" / "settings.yaml"
+    texte = reglages.read_text(encoding="utf-8")
+    assert 'departements: ["38", "43"]' in texte
+    reglages.write_text(texte.replace('departements: ["38", "43"]', 'departements: ["38"]'),
+                        encoding="utf-8")
     for table in (tmp_path / "config" / "classes").glob("geologie*.csv"):
         table.unlink()
     monkeypatch.setenv("MYCO_RACINE", str(tmp_path))

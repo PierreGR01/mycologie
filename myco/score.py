@@ -23,9 +23,10 @@ from myco.grid import Grille
 from myco.habitat import LIGNES_PAR_BLOC, NODATA_H, sources_habitat
 from myco.ingest import grille_reference
 from myco.ingest.geologie import CHARGEURS, sources_utilisees
+from myco.ingest.limite import lire_limites
 from myco.meteo import champs as mod_champs
 from myco.meteo.indicateurs import INDICATEURS, agreger, fenetre
-from myco.meteo.recuperation import dossier_meteo, limite_departement
+from myco.meteo.recuperation import dossier_meteo
 from myco.rasters import ecrire_cog
 from myco.tuiles import attribution, classer, ecrire_pmtiles, legende_affichee, tuiler
 
@@ -175,6 +176,7 @@ def ecrire_manifeste(p: Parametres, especes: dict[str, Espece], run: date, dates
         "zoom": {"min": p.affichage.zoom_min, "max": p.affichage.zoom_max},
         "emprise": list(transform_bounds(grille.crs, "EPSG:4326", *grille.bornes)),
         "limite": publier_limite(p),
+        "territoires": territoires(p),
         "sources": sources_manifeste(p),
         "licence_cartes": licence_cartes(p),
     }
@@ -191,13 +193,22 @@ def publier_habitat(p: Parametres, especes: dict[str, Espece], jour: date) -> Pa
 
 
 def publier_limite(p: Parametres) -> str:
-    """Contour du département simplifié (≈ 25 m), en WGS84, pour l'affichage dans la PWA."""
-    limite = limite_departement(p)
-    limite = limite.assign(geometry=limite.simplify(25)).to_crs("EPSG:4326")[["geometry"]]
-    chemin = p.dossier_publication / "departement.geojson"
+    """Contours des départements simplifiés (≈ 25 m), en WGS84, pour l'affichage dans la PWA."""
+    limite = lire_limites(p)
+    limite = limite.assign(geometry=limite.simplify(25)).to_crs("EPSG:4326")
+    chemin = p.dossier_publication / "limites.geojson"
     chemin.parent.mkdir(parents=True, exist_ok=True)
     chemin.write_text(limite.to_json(drop_id=True, to_wgs84=True))
     return chemin.name
+
+
+def territoires(p: Parametres) -> list[dict]:
+    """Départements couverts, avec leur emprise en WGS84 (choix du territoire dans la PWA)."""
+    limite = lire_limites(p).to_crs("EPSG:4326")
+    return [
+        {"code": code, "nom": nom, "emprise": [round(v, 5) for v in geom.bounds]}
+        for code, nom, geom in zip(limite["code"], limite["nom"], limite.geometry, strict=True)
+    ]
 
 
 def purger(dossier: Path, garder: int, courant: str) -> None:
@@ -243,7 +254,7 @@ def executer(p: Parametres, especes: dict[str, Espece], run: date,
                 {"name": f"{especes[i].nom} – {jour}", "espece": i, "date": jour.isoformat(),
                  "run": run.isoformat(), "type": "score", "attribution": attrib},
             )
-        log.info("%s : part du département en classe « bon » ou mieux : %s", jour,
+        log.info("%s : part du territoire en classe « bon » ou mieux : %s", jour,
                  {i: f"{100 * (s[s != NODATA_H] >= 60).mean():.1f} %" for i, s in scores.items()})
     manifeste = ecrire_manifeste(p, especes, run, dates, recupere_le, grille)
     purger(p.dossier_publication / "runs", p.meteo.retention_runs, run.isoformat())

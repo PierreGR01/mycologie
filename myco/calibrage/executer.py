@@ -19,7 +19,7 @@ from myco.calibrage.meteo_points import score_series
 from myco.config import Parametres, charger_classes_foret, charger_regles_geologie
 from myco.especes import Espece
 from myco.ingest import grille_reference
-from myco.meteo.recuperation import limite_departement
+from myco.ingest.limite import lire_limites
 
 log = logging.getLogger(__name__)
 
@@ -90,7 +90,7 @@ def meteo_observations(p: Parametres, especes: dict[str, Espece], obs: pd.DataFr
 
 
 def contexte_provisoire(p: Parametres, geol: np.ndarray | None, masque: np.ndarray) -> str | None:
-    if geol is None or not (geol[masque == 1] > 0).any():
+    if geol is None or not (geol[masque > 0] > 0).any():
         return ("habitat calculé sans la carte géologique BRGM (serveur indisponible) : "
                 "rapports à régénérer après son intégration.")
     return None
@@ -124,7 +124,7 @@ def charger_base(p: Parametres, obs, taxons: pd.DataFrame, resultats) -> None:
 def executer(p: Parametres, especes: dict[str, Espece], avec_meteo: bool = True,
              avec_base: bool = True) -> list[Path]:
     pc = p.calibrage
-    limite = limite_departement(p)
+    limite = lire_limites(p)
     grille = grille_reference(p)
     zones = z.Zones(grille)
     obs, fond, taxons, requete = observations(p, especes, limite)
@@ -137,7 +137,7 @@ def executer(p: Parametres, especes: dict[str, Espece], avec_meteo: bool = True,
     ignorer_foret = {classes_foret[k].code for k in NON_FORESTIER}
     en_foret = ~np.isin(foret, list(ignorer_foret))
     codes_geol = {code: k for k, code in charger_regles_geologie().classes.items()}
-    geol_ok = geol is not None and (geol[masque == 1] > 0).any()
+    geol_ok = geol is not None and (geol[masque > 0] > 0).any()
 
     fond_loc = fond[fond["incertitude_m"] <= pc.incertitude_max_m]
     localisees = obs[obs["incertitude_m"] <= pc.incertitude_max_m]

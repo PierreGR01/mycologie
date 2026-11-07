@@ -81,6 +81,20 @@ h1 {
   margin: 0;
 }
 
+.territoire {
+  flex: 1;
+  min-width: 0;
+  max-width: 200px;
+  margin-right: auto;
+  border: 1px solid var(--bordure);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--texte);
+  font: inherit;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
 .especes {
   display: flex;
   gap: 6px;

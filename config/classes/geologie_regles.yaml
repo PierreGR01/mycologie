@@ -23,9 +23,13 @@ regles:
   - {classe: detritique_mixte, texte: "moraine|glaciaire|colluvi|eboulis|molasse|cones? de dejection|alluvions? anciennes|terrasse|loess|\\blimons?\\b|cailloutis|conglomerat|\\bsables?\\b|\\b(gunz|mindel|riss|wurm)"}
   # BD LISA : « Alluvions de l'Isère… », « Alluvions du Rhône… » (fonds de vallée actuels).
   - {classe: alluvions_recentes, texte: "\\balluvions? (a |de |du |des |d'|en |entre )"}
+  # Roches volcaniques (Velay, Devès, Mézenc en Haute-Loire) : sols non calcaires, acides à
+  # neutres (andosols), rangés avec le siliceux ; le pH SoilGrids nuance. Avant les règles
+  # calcaires : les « tufs » de maar sont volcaniques. Ajouté le 07/11/2026.
+  - {classe: siliceux, texte: "volcan|basalt|basanit|phonolit|trachy|andesit|pyroclast|epiclast|\\bmaar\\b|lahar|hawaiite|benmoreite|mugearite|nephelinite|ankaramit|scorie|pouzzolane|cinerite"}
   - {classe: marno_calcaire, texte: "\\bmarne|marneu|marno|argilo-calcaire|calcschiste|flysch|terres noires"}
   - {classe: calcaire, texte: "calcaire|dolomi|\\bcraie|\\btufs?\\b|travertin|urgonien"}
-  - {classe: siliceux, texte: "granit|gneiss|micaschiste|schistes? cristallin|amphibolite|migmatite|anatexite|quartzite|\\bgres\\b|rhyolite|leptynite|gabbro|diorite|spilite|houiller|pegmatite|cristallin|cristallophyllien|roches? (metamorphique|magmatique|plutonique)|metaplutonite|granitoide"}
+  - {classe: siliceux, texte: "granit|gneiss|micaschiste|schistes? cristallin|amphibolite|migmatite|anatexite|quartzite|\\bgres\\b|rhyolite|leptynite|gabbro|diorite|spilite|houiller|pegmatite|cristallin|cristallophyllien|roches? (metamorphique|magmatique|plutonique)|metaplutonite|granitoide|metatexite|granulite|eclogite|arkose"}
 
 # Formations superficielles d'origine locale (moraines, éboulis, colluvions, cônes) de la BD Charm-50 :
 # elles héritent de la classe de la roche sous-jacente (entité affleurante de la BD LISA) quand

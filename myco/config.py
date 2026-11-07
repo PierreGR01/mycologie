@@ -73,7 +73,7 @@ class ClasseAffichage(BaseModel):
 
 class Affichage(BaseModel):
     zoom_min: int = Field(ge=0)
-    zoom_max: int = Field(le=12)  # z12 ≈ 27 m/px en Isère : rien de plus fin que 25 m
+    zoom_max: int = Field(le=12)  # z12 ≈ 27 m/px à 45° N : rien de plus fin que 25 m
     classes: list[ClasseAffichage] = Field(min_length=1, max_length=254)
 
     @model_validator(mode="after")
@@ -102,7 +102,8 @@ class Source(BaseModel):
 
 
 class Parametres(BaseModel):
-    departement: str
+    # Codes INSEE des départements couverts (« 38 », « 43 »…). Une seule grille les englobe tous.
+    departements: list[str] = Field(min_length=1)
     grille: ParamGrille
     chemins: Chemins
     base_de_donnees: str
@@ -113,16 +114,32 @@ class Parametres(BaseModel):
     geologie: ParamGeologie
     sources: dict[str, Source]
 
+    @model_validator(mode="before")
+    @classmethod
+    def _departement_seul(cls, donnees: dict) -> dict:
+        """Ancienne forme `departement: "38"` acceptée."""
+        if isinstance(donnees, dict) and "departement" in donnees:
+            donnees = dict(donnees)
+            donnees.setdefault("departements", [donnees.pop("departement")])
+        return donnees
+
     @model_validator(mode="after")
     def _sources_geologie(self) -> Parametres:
         inconnues = set(self.geologie.sources) - self.sources.keys()
         if inconnues:
             raise ValueError(f"geologie.sources : sources non déclarées {sorted(inconnues)}")
+        if len(set(self.departements)) != len(self.departements):
+            raise ValueError("departements : codes en double")
         return self
 
     @property
     def url_base(self) -> str:
         return os.environ.get("DATABASE_URL", self.base_de_donnees)
+
+    @staticmethod
+    def code_long(departement: str) -> str:
+        """Code sur 3 caractères des noms de fichiers IGN et BRGM : « 38 » → « 038 »."""
+        return departement.zfill(3)
 
     def chemin(self, *morceaux: str | Path) -> Path:
         return racine().joinpath(*morceaux)

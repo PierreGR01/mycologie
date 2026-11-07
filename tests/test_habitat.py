@@ -5,7 +5,7 @@ import rasterio
 from myco.config import charger_classes_foret, charger_regles_geologie
 from myco.especes import charger_especes
 from myco.grid import Grille
-from myco.habitat import NODATA_H, codes_categoriels, evaluer, executer
+from myco.habitat import NODATA_H, codes_categoriels, evaluer, executer, resume
 from myco.rasters import ecrire_cog
 from myco.terrain import SECTEURS
 from myco.tuiles import lire_pmtiles
@@ -105,3 +105,13 @@ def test_executer_rasters_tuiles_apercus(parametres, projet):
 
     rapports = projet / "reports" / "habitat"
     assert (rapports / "cepe.png").exists() and (rapports / "resume.csv").exists()
+
+
+def test_resume_par_departement(parametres, monkeypatch):
+    monkeypatch.setattr(parametres, "departements", ["38", "43"])
+    masque = np.array([[1, 1, 2, 2, 0]], dtype="uint8")
+    h = np.array([[90, 0, 90, 90, NODATA_H]], dtype="uint8")
+    t = resume({"cepe": h}, parametres, masque).set_index("territoire")
+    assert list(t.index) == ["ensemble", "38", "43"]
+    assert t.loc["ensemble", "très bon_%"] == 75 and t.loc["38", "H_nul_%"] == 50
+    assert t.loc["43", "très bon_%"] == 100

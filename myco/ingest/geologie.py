@@ -31,6 +31,14 @@ COLONNES_CSV = ["notation", "classe", "classe_auto", "regle", "surface_ha", "n_p
                 "description"]
 
 
+def cle_unites(df: pd.DataFrame) -> pd.Series:
+    """Clé d'une unité géologique : sa notation, précédée du département pour une carte livrée par
+    département (BD Charm-50), où une même notation peut désigner deux formations différentes."""
+    if "departement" in df:
+        return df["departement"].astype("string") + ":" + df["notation"].astype("string")
+    return df["notation"].astype("string")
+
+
 def chemin_csv(source: str = "bdcharm50") -> Path:
     """Table de relecture : geologie.csv (BD Charm-50), geologie_<source>.csv sinon."""
     nom = "geologie.csv" if source == "bdcharm50" else f"geologie_{source}.csv"
@@ -80,8 +88,12 @@ def unites(gdf: gpd.GeoDataFrame, champs: dict) -> pd.DataFrame:
     })
     df["notation"] = df["notation"].fillna("").str.strip()
     df["surface_ha"] = gdf.geometry.area / 1e4
+    groupes = ["notation"]
+    if "departement" in gdf:
+        df["departement"] = gdf["departement"].astype("string")
+        groupes = ["departement", "notation"]
     return (
-        df.groupby("notation", dropna=False)
+        df.groupby(groupes, dropna=False)
         .agg(
             description=("descr", "first"),
             lithologie=("lithologie", "first"),
@@ -105,7 +117,8 @@ def classer_unites(df: pd.DataFrame, regles: ReglesGeologie) -> pd.DataFrame:
     df["regle"] = df["regle"].astype("Int64")
     df["classe"] = df["classe_auto"]
     df["surface_ha"] = df["surface_ha"].round(1)
-    return df.sort_values("surface_ha", ascending=False)[COLONNES_CSV].reset_index(drop=True)
+    colonnes = (["departement"] if "departement" in df else []) + COLONNES_CSV
+    return df.sort_values("surface_ha", ascending=False)[colonnes].reset_index(drop=True)
 
 
 def fusionner_corrections(nouveau: pd.DataFrame, existant: pd.DataFrame | None,
@@ -113,12 +126,13 @@ def fusionner_corrections(nouveau: pd.DataFrame, existant: pd.DataFrame | None,
     """Reporte les corrections manuelles (classe ≠ classe_auto) d'un CSV déjà relu."""
     if existant is None or existant.empty:
         return nouveau
-    corrige = existant[existant["classe"] != existant["classe_auto"]].set_index("notation")
+    corrige = existant[existant["classe"] != existant["classe_auto"]]
+    corrige = corrige.set_index(cle_unites(corrige))
     inconnues = set(corrige["classe"]) - regles.classes.keys()
     if inconnues:
         raise ValueError(f"classes inconnues dans geologie.csv : {sorted(inconnues)}")
     sortie = nouveau.copy()
-    manuel = sortie["notation"].map(corrige["classe"])
+    manuel = cle_unites(sortie).map(corrige["classe"]).astype("object")
     sortie["classe"] = manuel.fillna(sortie["classe"])
     if manuel.notna().any():
         log.info("%d corrections manuelles conservées", int(manuel.notna().sum()))
@@ -128,21 +142,28 @@ def fusionner_corrections(nouveau: pd.DataFrame, existant: pd.DataFrame | None,
 def lire_csv(chemin: Path) -> pd.DataFrame | None:
     if not chemin.exists():
         return None
-    return pd.read_csv(chemin, dtype={"notation": "string"}, keep_default_na=False)
+    return pd.read_csv(chemin, dtype={"notation": "string", "departement": "string"},
+                       keep_default_na=False)
 
 
 def charger_bdcharm50(p: Parametres, grille: Grille) -> tuple[gpd.GeoDataFrame, Path]:
+    """Cartes départementales assemblées ; la colonne `departement` distingue leurs notations."""
     src = p.sources["bdcharm50"]
     dossier = p.dossier_brut / "bdcharm50"
-    archive = telecharger(src.archive, dossier / src.archive.rsplit("/", 1)[-1], p.reseau)
-    extrait = dossier / "extrait"
-    if not extrait.exists():
-        with zipfile.ZipFile(archive) as z:
-            z.extractall(extrait)
-    couches = sorted(extrait.rglob(src.couche_motif))
-    if not couches:
-        raise RuntimeError(f"aucune couche {src.couche_motif} dans {archive}")
-    return gpd.read_file(couches[0]).to_crs(grille.crs), couches[0]
+    morceaux, premiere = [], None
+    for d in p.departements:
+        url = src.archive.format(dep=p.code_long(d))
+        archive = telecharger(url, dossier / url.rsplit("/", 1)[-1], p.reseau)
+        extrait = dossier / archive.stem
+        if not extrait.exists():
+            with zipfile.ZipFile(archive) as z:
+                z.extractall(extrait)
+        couches = sorted(extrait.rglob(src.couche_motif))
+        if not couches:
+            raise RuntimeError(f"aucune couche {src.couche_motif} dans {archive}")
+        morceaux.append(gpd.read_file(couches[0]).to_crs(grille.crs).assign(departement=d))
+        premiere = premiere or couches[0]
+    return gpd.GeoDataFrame(pd.concat(morceaux, ignore_index=True), crs=grille.crs), premiere
 
 
 def charger_bdlisa(p: Parametres, grille: Grille) -> tuple[gpd.GeoDataFrame, Path]:
@@ -197,8 +218,17 @@ def classer_source(p: Parametres, cle: str, gdf: gpd.GeoDataFrame,
     table.to_csv(chemin_csv(cle), index=False)
     log.info("%s : classes de substrat (ha) : %s", cle,
              table.groupby("classe")["surface_ha"].sum().round().to_dict())
-    notation = gdf[colonne(gdf, src.champs["notation"])].astype("string").fillna("").str.strip()
-    return table, notation.map(dict(zip(table["notation"], table["classe"], strict=True)))
+    classe = dict(zip(cle_unites(table), table["classe"], strict=True))
+    return table, cles_polygones(gdf, src.champs).map(classe)
+
+
+def cles_polygones(gdf: gpd.GeoDataFrame, champs: dict) -> pd.Series:
+    """Clé d'unité (voir `cle_unites`) de chaque polygone."""
+    notation = gdf[colonne(gdf, champs["notation"])].astype("string").fillna("").str.strip()
+    df = pd.DataFrame({"notation": notation}, index=gdf.index)
+    if "departement" in gdf:
+        df["departement"] = gdf["departement"]
+    return cle_unites(df)
 
 
 def heriter_socle(p: Parametres, grille: Grille, regles: ReglesGeologie, cle: str,
@@ -216,8 +246,8 @@ def heriter_socle(p: Parametres, grille: Grille, regles: ReglesGeologie, cle: st
         return None
     _, socle_classe = classer_source(p, c.source, socle_gdf, regles)
     socle = rasteriser(socle_gdf.geometry, socle_classe.map(regles.classes).fillna(0), grille)
-    notation = gdf[colonne(gdf, p.sources[cle].champs["notation"])].astype("string").str.strip()
-    locales = notation.isin(table.loc[table["herite_socle"], "notation"])
+    locales = cles_polygones(gdf, p.sources[cle].champs).isin(
+        cle_unites(table[table["herite_socle"]]))
     couverte = rasteriser(gdf.geometry, locales.astype(int), grille).astype(bool)
     herite = couverte & np.isin(socle, [regles.classes[k] for k in c.classes])
     geol[herite] = socle[herite]

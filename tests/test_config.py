@@ -62,3 +62,13 @@ def test_regles_geologie_du_depot():
     regles = charger_regles_geologie(RACINE / "config" / "classes" / "geologie_regles.yaml")
     for r in regles.regles:
         re.compile(r.notation or r.texte)
+
+
+def test_departements():
+    brut = lire_yaml(RACINE / "config" / "settings.yaml")
+    assert Parametres.model_validate(brut).departements == ["38", "43"]
+    assert Parametres.code_long("43") == "043"
+    ancien = {k: v for k, v in brut.items() if k != "departements"} | {"departement": "38"}
+    assert Parametres.model_validate(ancien).departements == ["38"]  # ancienne forme acceptée
+    with pytest.raises(ValidationError, match="double"):
+        Parametres.model_validate(brut | {"departements": ["38", "38"]})

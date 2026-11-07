@@ -1,7 +1,7 @@
 # mycologie
 
-Prévision des zones et périodes favorables à la cueillette de champignons en Isère (38) :
-cèpe, girolle, trompette de la mort, pied-de-mouton et morille.
+Prévision des zones et périodes favorables à la cueillette de champignons en Isère (38) et en
+Haute-Loire (43) : cèpe, girolle, trompette de la mort, pied-de-mouton et morille.
 
 Le score final vaut habitat × météo, sur une maille de 25 m. La conception est décrite dans [PLAN.md](PLAN.md).
 
@@ -39,6 +39,15 @@ make up        # PostGIS dans Docker ; le schéma db/init.sql est appliqué au p
 La connexion par défaut est `postgresql+psycopg://myco:myco@localhost:5432/myco`. Elle peut être
 surchargée par la variable `DATABASE_URL`.
 
+## Territoires
+
+Les départements couverts sont listés dans `departements` ([config/settings.yaml](config/settings.yaml)).
+Une seule grille de 25 m les englobe ; les calculs sont restreints à leurs contours. Les sources
+livrées par département (RGE ALTI, BD Forêt, BD Charm-50) sont téléchargées pour chacun. Pour
+ajouter un département, ajoutez son code puis relancez toute la chaîne (`make ingest` reconstruit la
+grille, puis `make habitat`), et relisez les nouvelles lignes de `geologie.csv` et
+`foret_codes.csv`. Dans la PWA, un sélecteur recadre la carte sur chaque département.
+
 ## Étape 2 : ingestion
 
 ```bash
@@ -52,7 +61,7 @@ définit la grille.
 
 | Sortie (`data/static/`, COG, EPSG:2154, 25 m) | Contenu |
 |-----------------------------------------------|---------|
-| `masque.tif` | 1 = département. Ce fichier définit la grille de référence |
+| `masque.tif` | Rang du département dans `departements` (1, 2…), 0 en dehors. Ce fichier définit la grille de référence |
 | `alt.tif` | Altitude (m), moyenne du RGE ALTI 5 m. Nodata −9999 |
 | `pente.tif` | Pente (°). Nodata 255 |
 | `expo.tif` | Exposition : 0 N, 1 NE … 7 NO, 8 plat. Nodata 255 |
@@ -63,13 +72,17 @@ définit la grille.
 Les téléchargements bruts sont rangés dans `data/raw/`. Ils ne sont pas retéléchargés s'ils sont
 déjà présents. Chaque fichier est accompagné d'un `.source.json` qui donne l'URL, la date et le
 sha256. Une archive RGE ALTI introuvable automatiquement peut être déposée à la main dans
-`data/raw/rgealti/`.
+`data/raw/rgealti/D0xx/` (par exemple `D043/`).
 
 **À relire après la première ingestion :**
 
 - `config/classes/geologie.csv` (BD Charm-50) ou `geologie_bdlisa.csv` (BD LISA) : classe de
   substrat de chaque unité géologique. Pour corriger une unité, modifiez sa colonne `classe` : la
-  correction est conservée aux exécutions suivantes.
+  correction est conservée aux exécutions suivantes. La BD Charm-50 étant livrée par département,
+  `geologie.csv` a une colonne `departement` : une même notation peut y désigner deux formations
+  différentes, et une correction ne vaut que pour son département. Les roches volcaniques
+  (basaltes, phonolites, pyroclastites du Velay et du Devès) sont rangées en `siliceux` : sols non
+  calcaires, le pH SoilGrids nuançant leur acidité.
 
 La carte géologique vient de la première source accessible de `geologie.sources`
 ([config/settings.yaml](config/settings.yaml)) : la BD Charm-50 du BRGM (1/50 000), sinon la
@@ -103,10 +116,10 @@ entre guillemets : sans guillemets, `NO` est lu comme « faux ».
 
 | Sortie | Contenu |
 |--------|---------|
-| `data/habitat/<espece>.tif` | H de 0 à 100 (uint8), 255 hors département |
+| `data/habitat/<espece>.tif` | H de 0 à 100 (uint8), 255 hors des départements |
 | `web/data/habitat/<espece>.pmtiles` | Tuiles PNG z8–z12 en 5 classes, avec légende et attributions dans les métadonnées |
 | `reports/habitat/<espece>.png` | Aperçu de contrôle à 100 m sur fond de relief |
-| `reports/habitat/resume.csv` | Part du département dans chaque classe, par espèce |
+| `reports/habitat/resume.csv` | Part de la surface dans chaque classe, par espèce, pour l'ensemble et pour chaque département |
 
 Les classes d'affichage (seuils et couleurs) sont communes à toutes les espèces. Elles sont
 définies dans `config/settings.yaml`, rubrique `affichage`.
@@ -167,7 +180,8 @@ cd web && npm run dev   # développement (Vite), données servies depuis web/dat
 
 L'application, en Vite, TypeScript et MapLibre GL JS, lit `data/latest.json`. Elle affiche la
 carte de l'espèce et de la date choisies (J-7 à J+7), la légende, et une bascule « habitat
-seul ». Au premier lancement, un avertissement sur les risques d'intoxication doit être accepté.
+seul ». Avec plusieurs départements (`territoires` du manifeste), un sélecteur recadre la carte
+sur l'un d'eux ; le dernier choisi est rouvert au lancement suivant. Au premier lancement, un avertissement sur les risques d'intoxication doit être accepté.
 L'application ne propose aucune fonction d'identification.
 
 **Hors ligne** : le service worker garde l'application et les tuiles du fond Plan IGN déjà

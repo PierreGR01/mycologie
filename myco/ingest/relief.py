@@ -71,16 +71,24 @@ def trouver_archives(flux: str, motif: str, reseau: Reseau, profondeur: int = 2)
     return sorted(a for a in archives if a.rsplit("/", 1)[-1].startswith(derniere))
 
 
-def telecharger_archives(p: Parametres) -> list[Path]:
+def dossier_departement(p: Parametres, departement: str) -> Path:
+    return p.dossier_brut / "rgealti" / f"D{p.code_long(departement)}"
+
+
+def telecharger_archives(p: Parametres, departement: str) -> list[Path]:
+    """Archive RGE ALTI d'un département (une ou plusieurs parties)."""
     src = p.sources["rgealti"]
-    dossier = p.dossier_brut / "rgealti"
+    dossier = dossier_departement(p, departement)
     locales = sorted(f for f in dossier.glob("*") if ARCHIVE.search(f.name))
     if locales:
         return locales
-    urls = [src.archive] if src.archive else trouver_archives(src.flux, src.motif, p.reseau)
+    dep = p.code_long(departement)
+    flux, motif = src.flux.format(dep=dep), src.motif.format(dep=dep)
+    urls = [src.archive.format(dep=dep)] if src.archive else trouver_archives(flux, motif,
+                                                                               p.reseau)
     if not urls:
         raise RuntimeError(
-            f"archive RGE ALTI introuvable dans {src.flux} (motif {src.motif}). Renseigner "
+            f"archive RGE ALTI introuvable dans {flux} (motif {motif}). Renseigner "
             "sources.rgealti.archive dans config/settings.yaml, ou déposer l'archive dans "
             f"{dossier}."
         )
@@ -136,9 +144,12 @@ def agreger_mnt(dalles: list[Path], grille: Grille, nodata_source: float) -> np.
 def executer(p: Parametres, avec_base: bool = True) -> Path:
     src = p.sources["rgealti"]
     grille = grille_reference(p)
-    archives = telecharger_archives(p)
-    dalles = extraire_dalles(archives, p.dossier_brut / "rgealti" / "dalles", src.motif_dalles)
-    log.info("%d dalles RGE ALTI", len(dalles))
+    archives, dalles = [], []
+    for d in p.departements:
+        a = telecharger_archives(p, d)
+        dalles += extraire_dalles(a, dossier_departement(p, d) / "dalles", src.motif_dalles)
+        archives += a
+    log.info("%d dalles RGE ALTI (départements %s)", len(dalles), ", ".join(p.departements))
 
     alt = agreger_mnt(dalles, grille, src.nodata)
     pente, expo = pente_exposition(alt, grille.resolution)

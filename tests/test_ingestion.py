@@ -15,6 +15,7 @@ import pytest
 from shapely.geometry import box
 from sqlalchemy import create_engine, text
 
+from myco import score
 from myco.cli import main
 from myco.config import charger_parametres
 from myco.grid import Grille
@@ -27,39 +28,42 @@ from tests.conftest import ecrire_asc
 X0, Y0 = 900000, 6450000
 
 
-def deposer_donnees_brutes(racine):
+def deposer_donnees_brutes(racine, dep="38", nom="Isère", x0=X0,
+                           descriptions=("Moraines würmiennes", "Alluvions récentes")):
+    """Département fictif de 2 × 2 km au coin (x0, Y0) : limite, MNT, BD Forêt et BD Charm-50
+    (notations Gy au sud et Fz au nord, avec les descriptions données)."""
     brut = racine / "data" / "raw"
-    (brut / "limite").mkdir(parents=True)
     gpd.GeoDataFrame(
-        {"code_insee": ["38"], "nom_officiel": ["Isère"]},
-        geometry=[box(X0, Y0, X0 + 2000, Y0 + 2000)], crs="EPSG:2154",
-    ).to_file(brut / "limite" / "departement_38.geojson", driver="GeoJSON")
+        {"code_insee": [dep], "nom_officiel": [nom]},
+        geometry=[box(x0, Y0, x0 + 2000, Y0 + 2000)], crs="EPSG:2154",
+    ).to_file(_dossier(brut / "limite") / f"departement_{dep}.geojson", driver="GeoJSON")
 
     # MNT : plan montant vers le nord (pente ≈ 5,7°, exposition sud), dalles de 1 km à 5 m.
-    dalles = racine / "tmp_dalles"
-    with py7zr.SevenZipFile(_dossier(brut / "rgealti") / "RGEALTI_D038.7z", "w") as z:
+    dalles = racine / f"tmp_dalles_{dep}"
+    archive = _dossier(brut / "rgealti" / f"D0{dep}") / f"RGEALTI_D0{dep}.7z"
+    with py7zr.SevenZipFile(archive, "w") as z:
         for i in range(4):
             for j in range(4):
-                x, y = X0 - 1000 + 1000 * i, Y0 - 1000 + 1000 * j
+                x, y = x0 - 1000 + 1000 * i, Y0 - 1000 + 1000 * j
                 nom = f"RGEALTI_FXX_{x // 1000:04d}_{(y + 1000) // 1000:04d}_MNT_LAMB93_IGN69.asc"
                 d = ecrire_asc(dalles / nom, x, y, 200, 5.0, lambda xx, yy: 200 + 0.1 * (yy - Y0))
                 z.write(d, f"1_DONNEES_LIVRAISON/{nom}")
 
     gpd.GeoDataFrame(
         {"code_tfv": ["FF1-09-09", "FF2G61-61"], "tfv": ["Hêtre", "Sapin ou épicéa"]},
-        geometry=[box(X0, Y0, X0 + 1000, Y0 + 2000), box(X0 + 1000, Y0, X0 + 2000, Y0 + 2000)],
+        geometry=[box(x0, Y0, x0 + 1000, Y0 + 2000), box(x0 + 1000, Y0, x0 + 2000, Y0 + 2000)],
         crs="EPSG:2154",
-    ).to_file(_dossier(brut / "bdforet") / "bdforet_38.gpkg", driver="GPKG")
+    ).to_file(_dossier(brut / "bdforet") / f"bdforet_{dep}.gpkg", driver="GPKG")
 
-    shp = _dossier(racine / "tmp_geol")
+    shp = _dossier(racine / f"tmp_geol_{dep}")
     gpd.GeoDataFrame(
-        {"NOTATION": ["Gy", "Fz"], "DESCR": ["Moraines würmiennes", "Alluvions récentes"]},
-        geometry=[box(X0, Y0, X0 + 2000, Y0 + 1000), box(X0, Y0 + 1000, X0 + 2000, Y0 + 2000)],
+        {"NOTATION": ["Gy", "Fz"], "DESCR": list(descriptions)},
+        geometry=[box(x0, Y0, x0 + 2000, Y0 + 1000), box(x0, Y0 + 1000, x0 + 2000, Y0 + 2000)],
         crs="EPSG:2154",
-    ).to_file(shp / "GEO050K_HARM_038_S_FGEOL_2154.shp")
-    with zipfile.ZipFile(_dossier(brut / "bdcharm50") / "GEO050K_HARM_038.zip", "w") as z:
+    ).to_file(shp / f"GEO050K_HARM_0{dep}_S_FGEOL_2154.shp")
+    with zipfile.ZipFile(_dossier(brut / "bdcharm50") / f"GEO050K_HARM_0{dep}.zip", "w") as z:
         for f in shp.iterdir():
-            z.write(f, f"GEO050K_HARM_038/{f.name}")
+            z.write(f, f"GEO050K_HARM_0{dep}/{f.name}")
 
 
 def deposer_bdlisa(racine):
@@ -158,6 +162,57 @@ def test_geologie_bdlisa_en_repli(projet):
     ids = {s["id"] for s in sources_manifeste(p)}
     assert "bdlisa" in ids and "bdcharm50" not in ids
     assert "CC BY-NC-SA" in licence_cartes(p)
+
+
+def test_ingestion_deux_departements(projet):
+    """Deux départements disjoints (38, 43) : une grille commune, un masque au rang du
+    département, des téléchargements par département et des notations BD Charm-50 distinguées
+    par département (Gy : moraine en Isère, basalte en Haute-Loire)."""
+    settings = projet / "config" / "settings.yaml"
+    settings.write_text(settings.read_text().replace(
+        'departements: ["38"]', 'departements: ["38", "43"]'))
+    deposer_donnees_brutes(projet)
+    deposer_donnees_brutes(projet, "43", "Haute-Loire", X0 + 6000,
+                           ("Formations volcaniques laviques - basaltes", "Alluvions modernes"))
+    deposer_bdlisa(projet)
+    for couche in ("limite", "relief", "foret", "geologie"):
+        main(["ingest", couche, "--sans-base"])
+
+    statique = projet / "data" / "static"
+    grille = Grille.depuis_raster(statique / "masque.tif")
+    assert grille.forme == (160, 400)  # 8 km d'Isère au bout de la Haute-Loire, + 1 km de marge
+    masque, _ = lire(statique / "masque.tif")
+    assert (masque == 1).sum() == (masque == 2).sum() == 2000 * 2000 / 625
+    assert (masque[:, :120] != 2).all() and (masque[:, 200:] != 1).all()
+
+    alt, _ = lire(statique / "alt.tif")
+    assert (alt[masque > 0] != -9999).all()
+    foret, _ = lire(statique / "foret.tif")
+    assert set(np.unique(foret[masque == 2])) == {2, 8}
+
+    table = pd.read_csv(projet / "config" / "classes" / "geologie.csv", dtype=str)
+    classes = dict(zip(table["departement"] + ":" + table["notation"], table["classe"],
+                       strict=True))
+    assert classes == {"38:Gy": "detritique_mixte", "38:Fz": "alluvions_recentes",
+                       "43:Gy": "siliceux", "43:Fz": "alluvions_recentes"}
+    geol, _ = lire(statique / "geol.tif")
+    sud = np.zeros_like(masque, dtype=bool)
+    sud[80:, :] = True  # y < Y0 + 1000 : bande sud (Gy) des deux départements
+    assert set(np.unique(geol[(masque == 1) & sud])) == {1}  # moraine sur karst : calcaire
+    assert set(np.unique(geol[(masque == 2) & sud])) == {3}  # basalte : siliceux
+
+    # Une correction manuelle ne vaut que pour son département.
+    table.loc[(table["departement"] == "43") & (table["notation"] == "Fz"), "classe"] = "calcaire"
+    table.to_csv(projet / "config" / "classes" / "geologie.csv", index=False)
+    main(["ingest", "geologie", "--sans-base"])
+    table = pd.read_csv(projet / "config" / "classes" / "geologie.csv", dtype=str)
+    corrigees = table[table["classe"] != table["classe_auto"]]
+    assert list(corrigees["departement"] + ":" + corrigees["notation"]) == ["43:Fz"]
+
+    p = charger_parametres()
+    territoires = score.territoires(p)
+    assert [(t["code"], t["nom"]) for t in territoires] == [("38", "Isère"), ("43", "Haute-Loire")]
+    assert territoires[0]["emprise"][2] < territoires[1]["emprise"][0]  # ici, 38 à l'ouest
 
 
 @pytest.mark.skipif(not os.environ.get("MYCO_TEST_DATABASE_URL"),

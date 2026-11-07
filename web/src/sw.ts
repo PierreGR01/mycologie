@@ -16,9 +16,9 @@ cleanupOutdatedCaches();
 self.skipWaiting();
 clientsClaim();
 
-// Manifeste et contour du département : réseau d'abord, dernière version connue sinon.
+// Manifeste et contours des départements : réseau d'abord, dernière version connue sinon.
 registerRoute(
-  ({ url }) => /\/data\/(latest\.json|departement\.geojson)$/.test(url.pathname),
+  ({ url }) => /\/data\/(latest\.json|limites\.geojson|departement\.geojson)$/.test(url.pathname),
   new NetworkFirst({ cacheName: "donnees", networkTimeoutSeconds: 5 }),
 );
 

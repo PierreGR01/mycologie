@@ -1,7 +1,7 @@
 import "maplibre-gl/dist/maplibre-gl.css";
 import "./styles.css";
 import { registerSW } from "virtual:pwa-register";
-import { afficherCouche, creerCarte } from "./carte";
+import { afficherCouche, cadrer, creerCarte } from "./carte";
 import {
   chargerManifeste,
   ecrire,
@@ -15,6 +15,7 @@ import {
 
 const CLE_AVERTISSEMENT = "avertissement-accepte-v1";
 const CLE_SELECTION = "selection-v1";
+const CLE_TERRITOIRE = "territoire-v1";
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
 const formatDate = new Intl.DateTimeFormat("fr-FR", {
@@ -77,8 +78,24 @@ async function demarrer(): Promise<void> {
 
   let selection = selectionInitiale(manifeste, horsLigne);
   const avecMeteo = manifeste.dates.length > 0;
-  const carte = creerCarte("carte", manifeste);
+
+  // Territoires : la carte s'ouvre sur le dernier choisi (le premier sinon).
+  const territoires = manifeste.territoires ?? [];
+  const territoire =
+    territoires.find((t) => t.code === lire<string>(CLE_TERRITOIRE)) ?? territoires[0];
+  const carte = creerCarte("carte", manifeste, territoire?.emprise);
   (window as unknown as { __carte: unknown }).__carte = carte; // tests de bout en bout
+  const choixTerritoire = $<HTMLSelectElement>("territoire");
+  choixTerritoire.replaceChildren(
+    ...territoires.map((t) => new Option(t.nom, t.code, false, t === territoire)),
+  );
+  choixTerritoire.hidden = territoires.length < 2;
+  choixTerritoire.addEventListener("change", () => {
+    const t = territoires.find((x) => x.code === choixTerritoire.value);
+    if (!t) return;
+    ecrire(CLE_TERRITOIRE, t.code);
+    cadrer(carte, t.emprise);
+  });
 
   // Espèces
   const especes = $("especes");

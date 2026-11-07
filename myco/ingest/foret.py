@@ -12,6 +12,7 @@ from myco import db
 from myco.config import ClassesForet, Parametres, charger_classes_foret
 from myco.grid import Grille
 from myco.ingest import colonne, grille_reference
+from myco.ingest.limite import lire_limites
 from myco.rasters import ecrire_cog, rasteriser
 from myco.reseau import ecrire_trace
 from myco.wfs import lire_entites
@@ -19,19 +20,35 @@ from myco.wfs import lire_entites
 log = logging.getLogger(__name__)
 
 
-def telecharger(p: Parametres, grille: Grille) -> Path:
+def telecharger(p: Parametres, departement: str, emprise: Grille) -> Path:
+    """Polygones BD Forêt de l'emprise d'un département (avec la marge de la grille)."""
     src = p.sources["bdforet"]
-    destination = p.dossier_brut / "bdforet" / f"bdforet_{p.departement}.gpkg"
+    destination = p.dossier_brut / "bdforet" / f"bdforet_{departement}.gpkg"
     if destination.exists():
         return destination
     gdf = lire_entites(
-        src.wfs, src.couche, p.reseau, crs=p.grille.crs, bbox=grille.bornes,
+        src.wfs, src.couche, p.reseau, crs=p.grille.crs, bbox=emprise.bornes,
         taille_page=src.taille_page,
     )
     destination.parent.mkdir(parents=True, exist_ok=True)
     gdf.to_file(destination, driver="GPKG")
-    ecrire_trace(destination, src.wfs, couche=src.couche, bbox=list(grille.bornes))
+    ecrire_trace(destination, src.wfs, couche=src.couche, bbox=list(emprise.bornes))
     return destination
+
+
+def emprise_departement(p: Parametres, limite: gpd.GeoSeries) -> Grille:
+    return Grille.englobant(tuple(limite.total_bounds), p.grille.resolution_m,
+                            p.grille.tampon_m, p.grille.crs)
+
+
+def charger(p: Parametres) -> tuple[gpd.GeoDataFrame, list[Path]]:
+    """BD Forêt de tous les départements. Un polygone en bordure, présent dans deux
+    téléchargements, est rastérisé deux fois à l'identique."""
+    limites = lire_limites(p)
+    fichiers = [telecharger(p, code, emprise_departement(p, limites[limites["code"] == code]))
+                for code in limites["code"]]
+    gdf = pd.concat([gpd.read_file(f).to_crs(p.grille.crs) for f in fichiers], ignore_index=True)
+    return gpd.GeoDataFrame(gdf, crs=p.grille.crs), fichiers
 
 
 def classer(gdf: gpd.GeoDataFrame, classes: ClassesForet, champs: dict) -> gpd.GeoDataFrame:
@@ -64,9 +81,9 @@ def rapport_codes(classe: gpd.GeoDataFrame) -> pd.DataFrame:
 
 def executer(p: Parametres, avec_base: bool = True) -> Path:
     grille = grille_reference(p)
-    fichier = telecharger(p, grille)
+    brut, fichiers = charger(p)
     classes = charger_classes_foret()
-    gdf = classer(gpd.read_file(fichier).to_crs(p.grille.crs), classes, p.sources["bdforet"].champs)
+    gdf = classer(brut, classes, p.sources["bdforet"].champs)
 
     rapport = rapport_codes(gdf)
     chemin_rapport = p.dossier_rapports / "ingestion" / "foret_codes.csv"
@@ -85,5 +102,5 @@ def executer(p: Parametres, avec_base: bool = True) -> Path:
         eng = db.moteur(p.url_base)
         table = gdf.drop(columns="code").assign(id=[str(i) for i in range(len(gdf))])
         db.remplacer_table(eng, table, "ref", "bdforet")
-        db.enregistrer_source(eng, "bdforet", p.sources["bdforet"], fichier)
+        db.enregistrer_source(eng, "bdforet", p.sources["bdforet"], fichiers[0])
     return sortie

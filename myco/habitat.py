@@ -23,7 +23,7 @@ from myco.tuiles import attribution, classer, ecrire_pmtiles, palette, tuiler
 
 log = logging.getLogger(__name__)
 
-NODATA_H = 255  # H est stocké en uint8 de 0 à 100 ; 255 = hors département
+NODATA_H = 255  # H est stocké en uint8 de 0 à 100 ; 255 = hors des départements
 LIGNES_PAR_BLOC = 512
 
 
@@ -112,18 +112,27 @@ def calculer(p: Parametres, especes: dict[str, Espece]) -> dict[str, np.ndarray]
     return sorties
 
 
-def resume(scores: dict[str, np.ndarray], p: Parametres) -> pd.DataFrame:
-    """Part de la surface du département dans chaque classe d'affichage, par espèce."""
+def resume(scores: dict[str, np.ndarray], p: Parametres,
+           masque: np.ndarray | None = None) -> pd.DataFrame:
+    """Part de la surface dans chaque classe d'affichage, par espèce : pour l'ensemble, puis pour
+    chaque département si `masque` (rang du département) est fourni et qu'il y en a plusieurs."""
+    zones = [("ensemble", None)]
+    if masque is not None and len(p.departements) > 1:
+        zones += [(d, masque == k) for k, d in enumerate(p.departements, start=1)]
     lignes = []
     for i, h in scores.items():
-        dedans = h != NODATA_H
-        classes = classer(h[dedans], p.affichage)
-        n = dedans.sum()
-        ligne = {"espece": i, "H_nul_%": round(100 * (classes == 0).sum() / n, 1)}
-        for k, c in enumerate(p.affichage.classes, start=1):
-            ligne[f"{c.libelle}_%"] = round(100 * (classes == k).sum() / n, 2)
-        ligne["H_moyen_hors_zeros"] = round(float(h[dedans & (h > 0)].mean()) / 100, 3)
-        lignes.append(ligne)
+        for territoire, zone in zones:
+            dedans = (h != NODATA_H) if zone is None else (h != NODATA_H) & zone
+            n = dedans.sum()
+            if not n:
+                continue
+            classes = classer(h[dedans], p.affichage)
+            ligne = {"espece": i, "territoire": territoire,
+                     "H_nul_%": round(100 * (classes == 0).sum() / n, 1)}
+            for k, c in enumerate(p.affichage.classes, start=1):
+                ligne[f"{c.libelle}_%"] = round(100 * (classes == k).sum() / n, 2)
+            ligne["H_moyen_hors_zeros"] = round(float(h[dedans & (h > 0)].mean()) / 100, 3)
+            lignes.append(ligne)
     return pd.DataFrame(lignes)
 
 
@@ -166,6 +175,8 @@ def executer(p: Parametres, especes: dict[str, Espece], tuiles: bool = True) -> 
     rapports.mkdir(parents=True, exist_ok=True)
     with rasterio.open(p.dossier_statique / "alt.tif") as src:
         alt = src.read(1)
+    with rasterio.open(p.dossier_statique / "masque.tif") as src:
+        masque = src.read(1)
     for i, h in scores.items():
         sorties.append(ecrire_cog(p.dossier_habitat / f"{i}.tif", h, grille, nodata=NODATA_H,
                                   description=f"habitat {i} (0–100)"))
@@ -177,7 +188,7 @@ def executer(p: Parametres, especes: dict[str, Espece], tuiles: bool = True) -> 
                 {"name": f"Habitat – {especes[i].nom}", "espece": i, "type": "habitat",
                  "attribution": attribution(p.sources, sources_habitat(p))},
             ))
-    tableau = resume(scores, p)
+    tableau = resume(scores, p, masque)
     tableau.to_csv(rapports / "resume.csv", index=False)
     log.info("résumé habitat :\n%s", tableau.to_string(index=False))
     return sorties

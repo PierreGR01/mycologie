@@ -1,4 +1,4 @@
-# PLAN — Prévision des zones de cueillette de champignons en Isère (38)
+# PLAN — Prévision des zones de cueillette de champignons en Isère (38) et Haute-Loire (43)
 
 > Statut : **plan validé le 22/10/2026** (décisions ci-dessous).
 > Les valeurs écologiques (§4) sont des **valeurs initiales d'expert**, validées pour être codées telles quelles, puis ajustées au calibrage (étape 5).
@@ -16,7 +16,7 @@
 | D5 | Morille : BD Forêt n'identifie pas le frêne | **Deux profils** : plaine (ripisylves, alluvions) et montagne (conifères). H = max des deux (§4.6) |
 | D6 | Maille d'échantillonnage Open-Meteo | 2,5 km (≈ 1 600 points, ≈ 3 500 appels/jour). Repli : 5 km |
 | D7 | Usage Open-Meteo | **Non commercial** : API gratuite (10 000 appels/jour) |
-| D8 | Zone de calibrage | Isère seule. Option : ajouter les départements limitrophes si les effectifs sont trop faibles |
+| D8 | Zone de calibrage | Isère seule ; Isère et Haute-Loire depuis le 07/11/2026 (D16). Option : ajouter les départements limitrophes si les effectifs sont trop faibles |
 | D9 | Fond de carte | Plan IGN v2 (WMTS Géoplateforme, Licence Ouverte) |
 | D11 | Sens de « données ouvertes » (contrainte initiale) | **Clarifié le 25/10/2026** : données utilisables **gratuitement pour un usage non commercial**. Les licences non commerciales (CC BY-NC, CC BY-NC-SA) sont admises, avec attribution affichée ; les cartes dérivées d'une source « SA » reprennent sa licence |
 | D10 | Licence du code | **Aucune pour l'instant** (23/10/2026) : code public mais « tous droits réservés ». Pas d'usage commercial envisagé ; piste si besoin : PolyForm Noncommercial 1.0.0 |
@@ -24,6 +24,7 @@
 | D13 | Sélectivité de la carte | **31/10/2026** : habitat en produit pondéré (§3) ; classes « très faible » à « moyen » calculées mais non affichées (`affichage.classes[].affichee`) |
 | D14 | Formations superficielles | **05/11/2026** : BD Charm-50 de nouveau disponible (source principale). Ses moraines, éboulis, colluvions et cônes d'origine locale prennent la classe de la roche sous-jacente donnée par la BD LISA si elle est calcaire, marno-calcaire ou siliceuse (`couverture` dans `geologie_regles.yaml`, ≈ 149 000 ha). La BD LISA entrant dans le calcul, les cartes restent sous CC BY-NC-SA |
 | D15 | Météo | **Désactivée le 05/11/2026** (`meteo.active: false`) : priorité au potentiel de chaque zone (habitat). Le quota gratuit d'Open-Meteo, partagé par l'adresse IP de l'environnement cloud, était souvent épuisé. Le code météo reste en place |
+| D16 | Haute-Loire | **07/11/2026** : département 43 ajouté (`departements: ["38", "43"]`). Une grille commune englobe les deux départements (10 430 × 5 312 px) ; `masque.tif` porte le rang du département. RGE ALTI, BD Forêt et BD Charm-50 sont téléchargés par département ; les notations BD Charm-50 sont distinguées par département dans `geologie.csv`. Roches volcaniques (basaltes, phonolites, pyroclastites) classées `siliceux`. Règles des espèces inchangées ; le calibrage couvre les deux départements |
 
 ---
 
@@ -158,7 +159,7 @@ La PWA affiche ces attributions dans le contrôle d'attribution MapLibre et sur 
 
 ### 3.2 Grille de référence
 
-- **EPSG:2154 (Lambert-93), pas de 25 m**, origine calée sur un multiple de 25 m. L'emprise couvre le département plus un tampon de 1 km. Le masque restreint ensuite les calculs au département.
+- **EPSG:2154 (Lambert-93), pas de 25 m**, origine calée sur un multiple de 25 m. L'emprise couvre les départements configurés plus un tampon de 1 km (D16). Le masque restreint ensuite les calculs aux départements.
 - Aucune sortie sous 25 m. Les entrées plus fines sont **agrégées** : le RGE ALTI 5 m est moyenné par blocs de 5 × 5 pixels. Les entrées plus grossières (SoilGrids à 250 m, champs météo à 2,5 km) sont interpolées de façon lisse sur la grille, et le poids de SoilGrids reste faible.
 - Rastérisation des vecteurs : centre du pixel. L'unité minimale de BD Forêt (0,5 ha) et la précision de la carte au 1/50 000 restent compatibles avec 25 m.
 - Tuiles : zoom maximal natif **z12** (≈ 27 m/px à 45° N). Aucune tuile z13 et plus n'est produite : MapLibre sur-zoome au-delà.
@@ -167,7 +168,7 @@ La PWA affiche ces attributions dans le contrôle d'attribution MapLibre et sur 
 
 | Fichier | Type | Contenu |
 |---------|------|---------|
-| `masque.tif` | uint8 | 1 = département |
+| `masque.tif` | uint8 | Rang du département (1 = 38, 2 = 43), 0 en dehors |
 | `alt.tif` | float32 | Altitude (m), moyenne 5 × 5 du RGE ALTI 5 m |
 | `pente.tif` | uint8 | Pente (°), Horn sur `alt.tif` |
 | `expo.tif` | uint8 | Secteur 0–7 (N, NE…, NO), 8 = plat (pente < 3°) |
@@ -223,7 +224,7 @@ Les index GiST portent sur toutes les géométries. Les rasters restent hors bas
 ```
 web/data/
 ├── latest.json                         # run courant, dates, espèces, légende, sources
-├── departement.geojson                 # contour du département (WGS84, simplifié)
+├── limites.geojson                     # contours des départements (WGS84, simplifiés)
 ├── habitat/<espece>.pmtiles            # habitat seul (statique)
 └── runs/<AAAA-MM-JJ>/<espece>/<date>.pmtiles   # 5 espèces × 15 dates
 ```
@@ -493,11 +494,12 @@ Biais connus : observations concentrées près des routes et des villes, effecti
 
 | Élément | Estimation |
 |---------|-----------|
-| Département | **Mesuré** : 7 869 km² (contour ADMIN EXPRESS), soit 12,59 M pixels de 625 m² |
-| Emprise rectangulaire (+1 km) | **Mesuré** : 5 238 × 5 312 px, soit **27,8 M px** |
+| Département | **Mesuré** : 7 869 km² (contour ADMIN EXPRESS), soit 12,59 M pixels de 625 m². Haute-Loire (D16) : 8,00 M px, soit ≈ 5 000 km² |
+| Emprise commune 38 + 43 (+1 km) | **Mesuré** : 10 430 × 5 312 px, soit **55,4 M px** (habitat des 5 espèces ≈ 70 s ; PMTiles d'habitat ≈ 3 Mo par espèce) |
+| Emprise rectangulaire de l'Isère seule (+1 km) | **Mesuré** : 5 238 × 5 312 px, soit **27,8 M px** |
 | Pixels forestiers (H > 0) | **Mesuré** : 40 % du département (classes forestières de BD Forêt), soit 5,07 M px |
 | 1 couche de 28 M px, brute | uint8 ≈ 28 Mo · float32 ≈ 113 Mo |
-| Téléchargements bruts (une fois) | **Mesuré** : archive RGE ALTI 5 m de 505 Mo (383 dalles, 2,6 Go une fois extraites) · BD Forêt 445 Mo (GeoPackage, 49 914 polygones) · BD Charm-50 à mesurer · BD LISA v3 (France métropolitaine) 370 Mo · SoilGrids lu à distance, **soit ≈ 3,5 Go** |
+| Téléchargements bruts (une fois) | **Mesuré** : archive RGE ALTI 5 m de 505 Mo (383 dalles, 2,6 Go une fois extraites) · BD Forêt 445 Mo (GeoPackage, 49 914 polygones) · BD Charm-50 à mesurer · BD LISA v3 (France métropolitaine) 370 Mo · SoilGrids lu à distance, **soit ≈ 3,5 Go**. Haute-Loire : RGE ALTI 501 Mo (252 dalles, 1,8 Go extraites), BD Forêt 229 Mo, BD Charm-50 28 Mo |
 | Couches statiques (COG compressés) | ≈ 100–200 Mo |
 | Habitat, 5 espèces (COG) | **Mesuré** : 3 à 4 Mo par espèce, soit ≈ 19 Mo |
 | Champs météo grossiers par run | < 10 Mo (≈ 60 × 60 px × 30 jours × 4 variables) |

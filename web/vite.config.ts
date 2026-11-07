@@ -70,10 +70,11 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 3 * 1024 * 1024,
       },
       manifest: {
-        name: "Champignons Isère – zones favorables",
-        short_name: "Champis 38",
+        name: "Champignons – zones favorables (Isère, Haute-Loire)",
+        short_name: "Champis",
         description:
-          "Carte des zones et périodes favorables à la cueillette de champignons en Isère. " +
+          "Carte des zones et périodes favorables à la cueillette de champignons en Isère et " +
+          "en Haute-Loire. " +
           "Aucune fonction d'identification.",
         lang: "fr",
         start_url: ".",

@@ -27,7 +27,10 @@ maplibregl.addProtocol("pmtiles", async (params, abandon) => {
   return reponse;
 });
 
-export function creerCarte(conteneur: string, m: Manifeste): CarteMapLibre {
+type Emprise = [number, number, number, number];
+
+/** Carte cadrée sur `vue` (un territoire) ; la navigation reste possible sur tous les territoires. */
+export function creerCarte(conteneur: string, m: Manifeste, vue: Emprise = m.emprise): CarteMapLibre {
   const style: StyleSpecification = {
     version: 8,
     sources: {
@@ -49,7 +52,7 @@ export function creerCarte(conteneur: string, m: Manifeste): CarteMapLibre {
   const carte = new maplibregl.Map({
     container: conteneur,
     style,
-    bounds: [ouest, sud, est, nord],
+    bounds: vue,
     fitBoundsOptions: { padding: 20 },
     maxBounds: [ouest - 1, sud - 0.6, est + 1, nord + 0.6],
     maxZoom: 16,
@@ -81,4 +84,9 @@ export function afficherCouche(carte: CarteMapLibre, url: string): void {
     },
     "limite",
   );
+}
+
+/** Recadre la carte sur un territoire. */
+export function cadrer(carte: CarteMapLibre, emprise: Emprise): void {
+  carte.fitBounds(emprise, { padding: 20, duration: 600 });
 }

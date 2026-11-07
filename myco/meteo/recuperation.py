@@ -14,6 +14,7 @@ from sqlalchemy import text
 
 from myco import db
 from myco.config import Parametres
+from myco.ingest.limite import lire_limites
 from myco.meteo import champs as mod_champs
 from myco.meteo import openmeteo
 from myco.meteo.indicateurs import FENETRE_MAX
@@ -35,13 +36,6 @@ def jours_du_run(run: date, p: Parametres) -> list[date]:
 
 def dossier_meteo(p: Parametres, run: date) -> Path:
     return p.dossier_runs / run.isoformat() / "meteo"
-
-
-def limite_departement(p: Parametres) -> gpd.GeoDataFrame:
-    chemin = p.dossier_brut / "limite" / f"departement_{p.departement}.geojson"
-    if not chemin.exists():
-        raise FileNotFoundError(f"{chemin} absent : lancer d'abord `myco ingest limite`")
-    return gpd.read_file(chemin).to_crs(p.grille.crs)
 
 
 def charger_base(p: Parametres, run: date, points: gpd.GeoDataFrame, tableau: pd.DataFrame,
@@ -68,7 +62,7 @@ def charger_base(p: Parametres, run: date, points: gpd.GeoDataFrame, tableau: pd
 
 
 def executer(p: Parametres, run: date, avec_base: bool = True, rafraichir: bool = False) -> Path:
-    limite = limite_departement(p)
+    limite = lire_limites(p)
     grille, points = points_echantillonnage(limite, p.meteo)
     jours = jours_du_run(run, p)
     dossier = dossier_meteo(p, run)

@@ -68,6 +68,33 @@ test("sélecteur d'espèce, curseur de date, légende et sources", async ({ page
   await expect(page.locator("#apropos")).toContainText("Aucune fonction d'identification");
 });
 
+const territoires: { code: string; nom: string; emprise: number[] }[] = manifeste?.territoires ?? [];
+
+test("choix du territoire : recadrage, mémorisé au lancement suivant", async ({ page }) => {
+  test.skip(territoires.length < 2, "un seul territoire dans le manifeste");
+  const centreDans = (emprise: number[]) =>
+    page.waitForFunction(([o, s, e, n]) => {
+      const c = (window as any).__carte;
+      if (!c || c.isMoving()) return false;
+      const { lng, lat } = c.getCenter();
+      return lng > o && lng < e && lat > s && lat < n;
+    }, emprise);
+
+  await accepterAvertissement(page);
+  const choix = page.getByRole("combobox", { name: "Territoire" });
+  await expect(choix).toBeVisible();
+  await expect(choix.locator("option")).toHaveText(territoires.map((t) => t.nom));
+  await expect(choix).toHaveValue(territoires[0].code);
+  await centreDans(territoires[0].emprise);
+
+  const autre = territoires[1];
+  await choix.selectOption(autre.code);
+  await centreDans(autre.emprise);
+  await page.reload();
+  await expect(page.getByRole("combobox", { name: "Territoire" })).toHaveValue(autre.code);
+  await centreDans(autre.emprise);
+});
+
 test("installable : manifeste et service worker", async ({ page }) => {
   await page.goto("./");
   const webmanifest = await (await page.request.get("manifest.webmanifest")).json();
